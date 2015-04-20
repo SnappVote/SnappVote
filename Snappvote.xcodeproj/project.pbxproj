@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F72CC33F1AE4FFF500895417 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC33E1AE4FFF500895417 /* main.m */; };
+		F72CC3421AE4FFF500895417 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3411AE4FFF500895417 /* AppDelegate.m */; };
+		F72CC3451AE4FFF500895417 /* Snappvote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3431AE4FFF500895417 /* Snappvote.xcdatamodeld */; };
+		F72CC3481AE4FFF500895417 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3471AE4FFF500895417 /* ViewController.m */; };
+		F72CC34B1AE4FFF500895417 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72CC3491AE4FFF500895417 /* Main.storyboard */; };
+		F72CC34D1AE4FFF500895417 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F72CC34C1AE4FFF500895417 /* Images.xcassets */; };
+		F72CC3501AE4FFF500895417 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72CC34E1AE4FFF500895417 /* LaunchScreen.xib */; };
+		F72CC35C1AE4FFF500895417 /* SnappvoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC35B1AE4FFF500895417 /* SnappvoteTests.m */; };
+		F72CC3861AE504ED00895417 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3741AE504ED00895417 /* AFHTTPRequestOperation.m */; };
+		F72CC3871AE504ED00895417 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3761AE504ED00895417 /* AFHTTPRequestOperationManager.m */; };
+		F72CC3881AE504ED00895417 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3781AE504ED00895417 /* AFHTTPSessionManager.m */; };
+		F72CC3891AE504ED00895417 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC37B1AE504ED00895417 /* AFNetworkReachabilityManager.m */; };
+		F72CC38A1AE504ED00895417 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC37D1AE504ED00895417 /* AFSecurityPolicy.m */; };
+		F72CC38B1AE504ED00895417 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC37F1AE504ED00895417 /* AFURLConnectionOperation.m */; };
+		F72CC38C1AE504ED00895417 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3811AE504ED00895417 /* AFURLRequestSerialization.m */; };
+		F72CC38D1AE504ED00895417 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3831AE504ED00895417 /* AFURLResponseSerialization.m */; };
+		F72CC38E1AE504ED00895417 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3851AE504ED00895417 /* AFURLSessionManager.m */; };
+		F72CC3911AE50C0400895417 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3901AE50C0400895417 /* RegisterViewController.m */; };
+		F72CC3931AE5229300895417 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72CC3921AE5229300895417 /* FBSDKCoreKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F72CC3561AE4FFF500895417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F72CC3311AE4FFF500895417 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F72CC3381AE4FFF500895417;
+			remoteInfo = Snappvote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F72CC3391AE4FFF500895417 /* Snappvote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snappvote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F72CC33D1AE4FFF500895417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F72CC33E1AE4FFF500895417 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F72CC3401AE4FFF500895417 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F72CC3411AE4FFF500895417 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F72CC3441AE4FFF500895417 /* Snappvote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Snappvote.xcdatamodel; sourceTree = "<group>"; };
+		F72CC3461AE4FFF500895417 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F72CC3471AE4FFF500895417 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F72CC34A1AE4FFF500895417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F72CC34C1AE4FFF500895417 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F72CC34F1AE4FFF500895417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F72CC3551AE4FFF500895417 /* SnappvoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnappvoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F72CC35A1AE4FFF500895417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F72CC35B1AE4FFF500895417 /* SnappvoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnappvoteTests.m; sourceTree = "<group>"; };
+		F72CC3731AE504ED00895417 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		F72CC3741AE504ED00895417 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		F72CC3751AE504ED00895417 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		F72CC3761AE504ED00895417 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		F72CC3771AE504ED00895417 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		F72CC3781AE504ED00895417 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		F72CC3791AE504ED00895417 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		F72CC37A1AE504ED00895417 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		F72CC37B1AE504ED00895417 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		F72CC37C1AE504ED00895417 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		F72CC37D1AE504ED00895417 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		F72CC37E1AE504ED00895417 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		F72CC37F1AE504ED00895417 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		F72CC3801AE504ED00895417 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		F72CC3811AE504ED00895417 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		F72CC3821AE504ED00895417 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		F72CC3831AE504ED00895417 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		F72CC3841AE504ED00895417 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		F72CC3851AE504ED00895417 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		F72CC38F1AE50C0400895417 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		F72CC3901AE50C0400895417 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		F72CC3921AE5229300895417 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F72CC3361AE4FFF500895417 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F72CC3931AE5229300895417 /* FBSDKCoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F72CC3521AE4FFF500895417 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F72CC3301AE4FFF500895417 = {
+			isa = PBXGroup;
+			children = (
+				F72CC3651AE5000A00895417 /* Frameworks */,
+				F72CC33B1AE4FFF500895417 /* Snappvote */,
+				F72CC3581AE4FFF500895417 /* SnappvoteTests */,
+				F72CC33A1AE4FFF500895417 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F72CC33A1AE4FFF500895417 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC3391AE4FFF500895417 /* Snappvote.app */,
+				F72CC3551AE4FFF500895417 /* SnappvoteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F72CC33B1AE4FFF500895417 /* Snappvote */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC3401AE4FFF500895417 /* AppDelegate.h */,
+				F72CC3411AE4FFF500895417 /* AppDelegate.m */,
+				F72CC3461AE4FFF500895417 /* ViewController.h */,
+				F72CC3471AE4FFF500895417 /* ViewController.m */,
+				F72CC38F1AE50C0400895417 /* RegisterViewController.h */,
+				F72CC3901AE50C0400895417 /* RegisterViewController.m */,
+				F72CC3491AE4FFF500895417 /* Main.storyboard */,
+				F72CC34C1AE4FFF500895417 /* Images.xcassets */,
+				F72CC34E1AE4FFF500895417 /* LaunchScreen.xib */,
+				F72CC3431AE4FFF500895417 /* Snappvote.xcdatamodeld */,
+				F72CC33C1AE4FFF500895417 /* Supporting Files */,
+			);
+			path = Snappvote;
+			sourceTree = "<group>";
+		};
+		F72CC33C1AE4FFF500895417 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC33D1AE4FFF500895417 /* Info.plist */,
+				F72CC33E1AE4FFF500895417 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F72CC3581AE4FFF500895417 /* SnappvoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC35B1AE4FFF500895417 /* SnappvoteTests.m */,
+				F72CC3591AE4FFF500895417 /* Supporting Files */,
+			);
+			path = SnappvoteTests;
+			sourceTree = "<group>";
+		};
+		F72CC3591AE4FFF500895417 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC35A1AE4FFF500895417 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F72CC3651AE5000A00895417 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC3921AE5229300895417 /* FBSDKCoreKit.framework */,
+				F72CC3721AE504ED00895417 /* AFNetworking */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F72CC3721AE504ED00895417 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				F72CC3731AE504ED00895417 /* AFHTTPRequestOperation.h */,
+				F72CC3741AE504ED00895417 /* AFHTTPRequestOperation.m */,
+				F72CC3751AE504ED00895417 /* AFHTTPRequestOperationManager.h */,
+				F72CC3761AE504ED00895417 /* AFHTTPRequestOperationManager.m */,
+				F72CC3771AE504ED00895417 /* AFHTTPSessionManager.h */,
+				F72CC3781AE504ED00895417 /* AFHTTPSessionManager.m */,
+				F72CC3791AE504ED00895417 /* AFNetworking.h */,
+				F72CC37A1AE504ED00895417 /* AFNetworkReachabilityManager.h */,
+				F72CC37B1AE504ED00895417 /* AFNetworkReachabilityManager.m */,
+				F72CC37C1AE504ED00895417 /* AFSecurityPolicy.h */,
+				F72CC37D1AE504ED00895417 /* AFSecurityPolicy.m */,
+				F72CC37E1AE504ED00895417 /* AFURLConnectionOperation.h */,
+				F72CC37F1AE504ED00895417 /* AFURLConnectionOperation.m */,
+				F72CC3801AE504ED00895417 /* AFURLRequestSerialization.h */,
+				F72CC3811AE504ED00895417 /* AFURLRequestSerialization.m */,
+				F72CC3821AE504ED00895417 /* AFURLResponseSerialization.h */,
+				F72CC3831AE504ED00895417 /* AFURLResponseSerialization.m */,
+				F72CC3841AE504ED00895417 /* AFURLSessionManager.h */,
+				F72CC3851AE504ED00895417 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F72CC3381AE4FFF500895417 /* Snappvote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F72CC35F1AE4FFF500895417 /* Build configuration list for PBXNativeTarget "Snappvote" */;
+			buildPhases = (
+				F72CC3351AE4FFF500895417 /* Sources */,
+				F72CC3361AE4FFF500895417 /* Frameworks */,
+				F72CC3371AE4FFF500895417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Snappvote;
+			productName = Snappvote;
+			productReference = F72CC3391AE4FFF500895417 /* Snappvote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F72CC3541AE4FFF500895417 /* SnappvoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F72CC3621AE4FFF500895417 /* Build configuration list for PBXNativeTarget "SnappvoteTests" */;
+			buildPhases = (
+				F72CC3511AE4FFF500895417 /* Sources */,
+				F72CC3521AE4FFF500895417 /* Frameworks */,
+				F72CC3531AE4FFF500895417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F72CC3571AE4FFF500895417 /* PBXTargetDependency */,
+			);
+			name = SnappvoteTests;
+			productName = SnappvoteTests;
+			productReference = F72CC3551AE4FFF500895417 /* SnappvoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F72CC3311AE4FFF500895417 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Creative2Thoughts;
+				TargetAttributes = {
+					F72CC3381AE4FFF500895417 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					F72CC3541AE4FFF500895417 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = F72CC3381AE4FFF500895417;
+					};
+				};
+			};
+			buildConfigurationList = F72CC3341AE4FFF500895417 /* Build configuration list for PBXProject "Snappvote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F72CC3301AE4FFF500895417;
+			productRefGroup = F72CC33A1AE4FFF500895417 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F72CC3381AE4FFF500895417 /* Snappvote */,
+				F72CC3541AE4FFF500895417 /* SnappvoteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F72CC3371AE4FFF500895417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F72CC34B1AE4FFF500895417 /* Main.storyboard in Resources */,
+				F72CC3501AE4FFF500895417 /* LaunchScreen.xib in Resources */,
+				F72CC34D1AE4FFF500895417 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F72CC3531AE4FFF500895417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F72CC3351AE4FFF500895417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F72CC3421AE4FFF500895417 /* AppDelegate.m in Sources */,
+				F72CC38A1AE504ED00895417 /* AFSecurityPolicy.m in Sources */,
+				F72CC3451AE4FFF500895417 /* Snappvote.xcdatamodeld in Sources */,
+				F72CC3871AE504ED00895417 /* AFHTTPRequestOperationManager.m in Sources */,
+				F72CC38B1AE504ED00895417 /* AFURLConnectionOperation.m in Sources */,
+				F72CC3861AE504ED00895417 /* AFHTTPRequestOperation.m in Sources */,
+				F72CC3481AE4FFF500895417 /* ViewController.m in Sources */,
+				F72CC38C1AE504ED00895417 /* AFURLRequestSerialization.m in Sources */,
+				F72CC3881AE504ED00895417 /* AFHTTPSessionManager.m in Sources */,
+				F72CC3891AE504ED00895417 /* AFNetworkReachabilityManager.m in Sources */,
+				F72CC38D1AE504ED00895417 /* AFURLResponseSerialization.m in Sources */,
+				F72CC3911AE50C0400895417 /* RegisterViewController.m in Sources */,
+				F72CC38E1AE504ED00895417 /* AFURLSessionManager.m in Sources */,
+				F72CC33F1AE4FFF500895417 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F72CC3511AE4FFF500895417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F72CC35C1AE4FFF500895417 /* SnappvoteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F72CC3571AE4FFF500895417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F72CC3381AE4FFF500895417 /* Snappvote */;
+			targetProxy = F72CC3561AE4FFF500895417 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F72CC3491AE4FFF500895417 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F72CC34A1AE4FFF500895417 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F72CC34E1AE4FFF500895417 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F72CC34F1AE4FFF500895417 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F72CC35D1AE4FFF500895417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F72CC35E1AE4FFF500895417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F72CC3601AE4FFF500895417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					/Users/MartinDzhonov/Documents/FacebookSDK,
+				);
+				INFOPLIST_FILE = Snappvote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F72CC3611AE4FFF500895417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					/Users/MartinDzhonov/Documents/FacebookSDK,
+				);
+				INFOPLIST_FILE = Snappvote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F72CC3631AE4FFF500895417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SnappvoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snappvote.app/Snappvote";
+			};
+			name = Debug;
+		};
+		F72CC3641AE4FFF500895417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SnappvoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snappvote.app/Snappvote";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F72CC3341AE4FFF500895417 /* Build configuration list for PBXProject "Snappvote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72CC35D1AE4FFF500895417 /* Debug */,
+				F72CC35E1AE4FFF500895417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F72CC35F1AE4FFF500895417 /* Build configuration list for PBXNativeTarget "Snappvote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72CC3601AE4FFF500895417 /* Debug */,
+				F72CC3611AE4FFF500895417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F72CC3621AE4FFF500895417 /* Build configuration list for PBXNativeTarget "SnappvoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72CC3631AE4FFF500895417 /* Debug */,
+				F72CC3641AE4FFF500895417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F72CC3431AE4FFF500895417 /* Snappvote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F72CC3441AE4FFF500895417 /* Snappvote.xcdatamodel */,
+			);
+			currentVersion = F72CC3441AE4FFF500895417 /* Snappvote.xcdatamodel */;
+			path = Snappvote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F72CC3311AE4FFF500895417 /* Project object */;
+}
