@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface RegisterViewController : ViewController
+@interface RegisterViewController : UIViewController
 
 @end

@@ -8,7 +8,8 @@
 
 #import "RegisterViewController.h"
 #import "AFHTTPRequestOperationManager.h"
-
+#import <FBSDKCoreKit/FBSDKAccessToken.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *email;
@@ -21,6 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        NSLog(@"user logged in");
+        // User is logged in, do work such as go to next view controller.
+    }
     // Do any additional setup after loading the view.
 }
 

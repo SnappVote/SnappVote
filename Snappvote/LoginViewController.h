@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  LoginViewController.h
 //  Snappvote
 //
-//  Created by Martin Dzhonov on 4/20/15.
+//  Created by Martin Dzhonov on 4/21/15.
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface LoginViewController : UIViewController
 
 @end
-

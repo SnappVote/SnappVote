@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,22 +16,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jc-AD-3S1">
-                                <rect key="frame" x="277" y="40" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XR-zE-iCa">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="103" width="46" height="30"/>
+                                </variation>
                                 <connections>
-                                    <action selector="test:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6jt-HW-a0m"/>
-                                    <segue destination="oES-EF-X83" kind="show" id="9Tv-vU-rbU"/>
+                                    <segue destination="oES-EF-X83" kind="show" id="5FH-Ty-z72"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spi-b0-1C7">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="141" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="asda:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GAq-ye-Wii"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3XR-zE-iCa"/>
+                                <exclude reference="spi-b0-1C7"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="3XR-zE-iCa"/>
+                                <include reference="spi-b0-1C7"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <segue destination="oES-EF-X83" kind="show" identifier="ToRegister" id="YV3-8R-ORo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="717" y="-15"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="fMq-Ru-tsa">
@@ -89,4 +119,7 @@
             <point key="canvasLocation" x="1465" y="-15"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YV3-8R-ORo"/>
+    </inferredMetricsTieBreakers>
 </document>
