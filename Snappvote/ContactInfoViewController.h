@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  ContactInfoViewController.h
 //  Snappvote
 //
 //  Created by Martin Dzhonov on 4/21/15.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate>
+@interface ContactInfoViewController : UIViewController
 
 @end

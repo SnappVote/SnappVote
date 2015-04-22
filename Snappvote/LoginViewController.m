@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKAccessToken.h>
+
 @interface LoginViewController ()
 
 @end
@@ -17,30 +18,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    [self.view addSubview:loginButton];
-    loginButton.center = CGPointMake(220.0, 380.0);// for bottomright
-    [loginButton addTarget:self action:@selector(loginClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    // Do any additional setup after loading the view.
+    //FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    //loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    //[self.view addSubview:loginButton];
+    //loginButton.center = CGPointMake(220.0, 380.0);
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"Bool value: %d",[defaults boolForKey:@"registered"]);
+}
+
+- (IBAction)test:(id)sender {
+    [self performSegueWithIdentifier:@"ToHome" sender:self];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-- (IBAction)asda:(id)sender {
-    if ([FBSDKAccessToken currentAccessToken]) {
-        NSLog(@"user logged in");
-        // User is logged in, do work such as go to next view controller.
-    }
-    else{
-        NSLog(@"sad");
-    }
+
+
+- (void)loginButton:	(FBSDKLoginButton *)loginButton
+didCompleteWithResult:	(FBSDKLoginManagerLoginResult *)result
+              error:	(NSError *)error{
+    NSLog(@"user logged in");
+
+}
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+    NSLog(@"user logged out");
 }
 
 -(void)loginClicked{
-    }
+}
 /*
 #pragma mark - Navigation
 

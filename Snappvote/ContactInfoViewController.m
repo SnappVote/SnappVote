@@ -1,34 +1,40 @@
 //
-//  RegisterViewController.m
+//  ContactInfoViewController.m
 //  Snappvote
 //
-//  Created by Martin Dzhonov on 4/20/15.
+//  Created by Martin Dzhonov on 4/21/15.
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
-#import "RegisterViewController.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "UserUtils.h"
+#import "ContactInfoViewController.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKAccessToken.h>
 
-@interface RegisterViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *name;
+@interface ContactInfoViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
-@property (weak, nonatomic) IBOutlet UITextField *country;
 
 @end
 
-@implementation RegisterViewController
+@implementation ContactInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)okTapped:(id)sender {
+    if ([FBSDKAccessToken currentAccessToken]) {
+        NSLog(@"user logged in");
+        // User is logged in, do work such as go to next view controller.
+    }
+    else{
+        NSLog(@"sad");
+    }
 }
 
 /*
@@ -40,8 +46,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)test:(id)sender {
-    [UserUtils createUser:self.name.text phone:self.phone.text email:self.email.text country:self.country.text];
-}
 
 @end

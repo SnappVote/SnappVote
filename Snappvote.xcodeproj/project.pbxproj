@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F716EE701AE797D9003D43E0 /* UserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F716EE6F1AE797D9003D43E0 /* UserUtils.m */; };
 		F72CC33F1AE4FFF500895417 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC33E1AE4FFF500895417 /* main.m */; };
 		F72CC3421AE4FFF500895417 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3411AE4FFF500895417 /* AppDelegate.m */; };
 		F72CC3451AE4FFF500895417 /* Snappvote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3431AE4FFF500895417 /* Snappvote.xcdatamodeld */; };
@@ -27,6 +28,18 @@
 		F72CC3961AE641CE00895417 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CC3951AE641CE00895417 /* LoginViewController.m */; };
 		F7AA311E1AE645D4002ACA59 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA311D1AE645D4002ACA59 /* FBSDKCoreKit.framework */; };
 		F7AA31201AE645DE002ACA59 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA311F1AE645DE002ACA59 /* FBSDKLoginKit.framework */; };
+		F7AA31231AE66600002ACA59 /* ContactInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AA31221AE66600002ACA59 /* ContactInfoViewController.m */; };
+		F7AA31251AE67F4E002ACA59 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31241AE67F4E002ACA59 /* AddressBook.framework */; };
+		F7AA31271AE67F56002ACA59 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31261AE67F56002ACA59 /* AssetsLibrary.framework */; };
+		F7AA31291AE67F62002ACA59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31281AE67F62002ACA59 /* Foundation.framework */; };
+		F7AA312B1AE67F6E002ACA59 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA312A1AE67F6E002ACA59 /* CoreLocation.framework */; };
+		F7AA312D1AE67F76002ACA59 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA312C1AE67F76002ACA59 /* CoreMotion.framework */; };
+		F7AA312F1AE67F81002ACA59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA312E1AE67F81002ACA59 /* CoreGraphics.framework */; };
+		F7AA31311AE67F8A002ACA59 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31301AE67F8A002ACA59 /* CoreText.framework */; };
+		F7AA31331AE67F92002ACA59 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31321AE67F92002ACA59 /* MediaPlayer.framework */; };
+		F7AA31351AE67F9B002ACA59 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31341AE67F9B002ACA59 /* Security.framework */; };
+		F7AA31371AE67FA5002ACA59 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31361AE67FA5002ACA59 /* SystemConfiguration.framework */; };
+		F7AA31391AE67FAC002ACA59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AA31381AE67FAC002ACA59 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F716EE6E1AE797D9003D43E0 /* UserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUtils.h; sourceTree = "<group>"; };
+		F716EE6F1AE797D9003D43E0 /* UserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUtils.m; sourceTree = "<group>"; };
 		F72CC3391AE4FFF500895417 /* Snappvote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snappvote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72CC33D1AE4FFF500895417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F72CC33E1AE4FFF500895417 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,6 +92,19 @@
 		F72CC3951AE641CE00895417 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F7AA311D1AE645D4002ACA59 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F7AA311F1AE645DE002ACA59 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F7AA31211AE66600002ACA59 /* ContactInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInfoViewController.h; sourceTree = "<group>"; };
+		F7AA31221AE66600002ACA59 /* ContactInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactInfoViewController.m; sourceTree = "<group>"; };
+		F7AA31241AE67F4E002ACA59 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F7AA31261AE67F56002ACA59 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		F7AA31281AE67F62002ACA59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F7AA312A1AE67F6E002ACA59 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F7AA312C1AE67F76002ACA59 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		F7AA312E1AE67F81002ACA59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F7AA31301AE67F8A002ACA59 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F7AA31321AE67F92002ACA59 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		F7AA31341AE67F9B002ACA59 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F7AA31361AE67FA5002ACA59 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F7AA31381AE67FAC002ACA59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +112,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7AA31391AE67FAC002ACA59 /* UIKit.framework in Frameworks */,
+				F7AA31371AE67FA5002ACA59 /* SystemConfiguration.framework in Frameworks */,
+				F7AA31351AE67F9B002ACA59 /* Security.framework in Frameworks */,
+				F7AA31331AE67F92002ACA59 /* MediaPlayer.framework in Frameworks */,
+				F7AA31311AE67F8A002ACA59 /* CoreText.framework in Frameworks */,
+				F7AA312F1AE67F81002ACA59 /* CoreGraphics.framework in Frameworks */,
+				F7AA312D1AE67F76002ACA59 /* CoreMotion.framework in Frameworks */,
+				F7AA312B1AE67F6E002ACA59 /* CoreLocation.framework in Frameworks */,
+				F7AA31291AE67F62002ACA59 /* Foundation.framework in Frameworks */,
+				F7AA31271AE67F56002ACA59 /* AssetsLibrary.framework in Frameworks */,
+				F7AA31251AE67F4E002ACA59 /* AddressBook.framework in Frameworks */,
 				F7AA31201AE645DE002ACA59 /* FBSDKLoginKit.framework in Frameworks */,
 				F7AA311E1AE645D4002ACA59 /* FBSDKCoreKit.framework in Frameworks */,
 			);
@@ -123,8 +162,12 @@
 			children = (
 				F72CC3401AE4FFF500895417 /* AppDelegate.h */,
 				F72CC3411AE4FFF500895417 /* AppDelegate.m */,
+				F716EE6E1AE797D9003D43E0 /* UserUtils.h */,
+				F716EE6F1AE797D9003D43E0 /* UserUtils.m */,
 				F72CC3941AE641CE00895417 /* LoginViewController.h */,
 				F72CC3951AE641CE00895417 /* LoginViewController.m */,
+				F7AA31211AE66600002ACA59 /* ContactInfoViewController.h */,
+				F7AA31221AE66600002ACA59 /* ContactInfoViewController.m */,
 				F72CC38F1AE50C0400895417 /* RegisterViewController.h */,
 				F72CC3901AE50C0400895417 /* RegisterViewController.m */,
 				F72CC3491AE4FFF500895417 /* Main.storyboard */,
@@ -165,6 +208,17 @@
 		F72CC3651AE5000A00895417 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7AA31381AE67FAC002ACA59 /* UIKit.framework */,
+				F7AA31361AE67FA5002ACA59 /* SystemConfiguration.framework */,
+				F7AA31341AE67F9B002ACA59 /* Security.framework */,
+				F7AA31321AE67F92002ACA59 /* MediaPlayer.framework */,
+				F7AA31301AE67F8A002ACA59 /* CoreText.framework */,
+				F7AA312E1AE67F81002ACA59 /* CoreGraphics.framework */,
+				F7AA312C1AE67F76002ACA59 /* CoreMotion.framework */,
+				F7AA312A1AE67F6E002ACA59 /* CoreLocation.framework */,
+				F7AA31281AE67F62002ACA59 /* Foundation.framework */,
+				F7AA31261AE67F56002ACA59 /* AssetsLibrary.framework */,
+				F7AA31241AE67F4E002ACA59 /* AddressBook.framework */,
 				F7AA311F1AE645DE002ACA59 /* FBSDKLoginKit.framework */,
 				F7AA311D1AE645D4002ACA59 /* FBSDKCoreKit.framework */,
 				F72CC3721AE504ED00895417 /* AFNetworking */,
@@ -303,6 +357,8 @@
 				F72CC3451AE4FFF500895417 /* Snappvote.xcdatamodeld in Sources */,
 				F72CC3871AE504ED00895417 /* AFHTTPRequestOperationManager.m in Sources */,
 				F72CC3961AE641CE00895417 /* LoginViewController.m in Sources */,
+				F7AA31231AE66600002ACA59 /* ContactInfoViewController.m in Sources */,
+				F716EE701AE797D9003D43E0 /* UserUtils.m in Sources */,
 				F72CC38B1AE504ED00895417 /* AFURLConnectionOperation.m in Sources */,
 				F72CC3861AE504ED00895417 /* AFHTTPRequestOperation.m in Sources */,
 				F72CC38C1AE504ED00895417 /* AFURLRequestSerialization.m in Sources */,
