@@ -2,12 +2,11 @@
 //  RegisterViewController.m
 //  Snappvote
 //
-//  Created by Martin Dzhonov on 4/20/15.
+//  Created by Martin Dzhonov on 4/23/15.
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
 #import "RegisterViewController.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "UserUtils.h"
 
 @interface RegisterViewController ()
@@ -22,13 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)goTapped:(id)sender {
+    [UserUtils createUser:self.name.text phone:self.phone.text email:self.email.text country:self.country.text];
+
 }
 
 /*
@@ -40,8 +42,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)test:(id)sender {
-    [UserUtils createUser:self.name.text phone:self.phone.text email:self.email.text country:self.country.text];
-}
 
 @end

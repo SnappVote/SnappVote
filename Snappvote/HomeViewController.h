@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  HomeViewController.h
 //  Snappvote
 //
 //  Created by Martin Dzhonov on 4/23/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface HomeViewController : UIViewController
 
 @end

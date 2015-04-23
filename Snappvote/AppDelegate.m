@@ -2,12 +2,11 @@
 //  AppDelegate.m
 //  Snappvote
 //
-//  Created by Martin Dzhonov on 4/20/15.
+//  Created by Martin Dzhonov on 4/23/15.
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate ()
 
@@ -17,16 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
+    // Override point for customization after application launch.
     return YES;
-}
-
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -44,7 +35,6 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [FBSDKAppEvents activateApp];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

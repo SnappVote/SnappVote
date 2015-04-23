@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F72CC3381AE4FFF500895417"
+               BlueprintIdentifier = "F718CD951AE8F686009A8B5B"
                BuildableName = "Snappvote.app"
                BlueprintName = "Snappvote"
                ReferencedContainer = "container:Snappvote.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F72CC3541AE4FFF500895417"
+               BlueprintIdentifier = "F718CDB11AE8F686009A8B5B"
                BuildableName = "SnappvoteTests.xctest"
                BlueprintName = "SnappvoteTests"
                ReferencedContainer = "container:Snappvote.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F72CC3541AE4FFF500895417"
+               BlueprintIdentifier = "F718CDB11AE8F686009A8B5B"
                BuildableName = "SnappvoteTests.xctest"
                BlueprintName = "SnappvoteTests"
                ReferencedContainer = "container:Snappvote.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F72CC3381AE4FFF500895417"
+            BlueprintIdentifier = "F718CD951AE8F686009A8B5B"
             BuildableName = "Snappvote.app"
             BlueprintName = "Snappvote"
             ReferencedContainer = "container:Snappvote.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F72CC3381AE4FFF500895417"
+            BlueprintIdentifier = "F718CD951AE8F686009A8B5B"
             BuildableName = "Snappvote.app"
             BlueprintName = "Snappvote"
             ReferencedContainer = "container:Snappvote.xcodeproj">
@@ -95,7 +95,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F72CC3381AE4FFF500895417"
+            BlueprintIdentifier = "F718CD951AE8F686009A8B5B"
             BuildableName = "Snappvote.app"
             BlueprintName = "Snappvote"
             ReferencedContainer = "container:Snappvote.xcodeproj">
