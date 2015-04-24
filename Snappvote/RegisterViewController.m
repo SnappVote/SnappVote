@@ -29,8 +29,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)goTapped:(id)sender {
+    
     [UserUtils createUser:self.name.text phone:self.phone.text email:self.email.text country:self.country.text];
-
 }
 
 /*

@@ -27,6 +27,11 @@
 		F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDE71AE90615009A8B5B /* UserUtils.m */; };
 		F718CDEB1AE90640009A8B5B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDEA1AE90640009A8B5B /* HomeViewController.m */; };
 		F718CDED1AE9097B009A8B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F718CDEC1AE9097B009A8B5B /* Main.storyboard */; };
+		F718CDF01AE91898009A8B5B /* SVRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDEF1AE91898009A8B5B /* SVRequester.m */; };
+		F718CDF41AE920DA009A8B5B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF31AE920DA009A8B5B /* User.m */; };
+		F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF61AE923E6009A8B5B /* Snappvote.m */; };
+		F718CDFA1AEA3951009A8B5B /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF91AEA3951009A8B5B /* Utils.m */; };
+		F718CDFD1AEA3B29009A8B5B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = F718CDFC1AEA3B29009A8B5B /* test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,15 @@
 		F718CDE91AE90640009A8B5B /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F718CDEA1AE90640009A8B5B /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F718CDEC1AE9097B009A8B5B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F718CDEE1AE91898009A8B5B /* SVRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRequester.h; sourceTree = "<group>"; };
+		F718CDEF1AE91898009A8B5B /* SVRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRequester.m; sourceTree = "<group>"; };
+		F718CDF21AE920DA009A8B5B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F718CDF31AE920DA009A8B5B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F718CDF51AE923E6009A8B5B /* Snappvote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snappvote.h; sourceTree = "<group>"; };
+		F718CDF61AE923E6009A8B5B /* Snappvote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snappvote.m; sourceTree = "<group>"; };
+		F718CDF81AEA3951009A8B5B /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		F718CDF91AEA3951009A8B5B /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		F718CDFC1AEA3B29009A8B5B /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,15 +135,21 @@
 		F718CD981AE8F686009A8B5B /* Snappvote */ = {
 			isa = PBXGroup;
 			children = (
+				F718CDFB1AEA3B12009A8B5B /* Images */,
+				F718CDF11AE920AC009A8B5B /* Models */,
 				F718CDEC1AE9097B009A8B5B /* Main.storyboard */,
+				F718CDEE1AE91898009A8B5B /* SVRequester.h */,
+				F718CDEF1AE91898009A8B5B /* SVRequester.m */,
+				F718CDE61AE90615009A8B5B /* UserUtils.h */,
+				F718CDE71AE90615009A8B5B /* UserUtils.m */,
+				F718CDF81AEA3951009A8B5B /* Utils.h */,
+				F718CDF91AEA3951009A8B5B /* Utils.m */,
 				F718CD9D1AE8F686009A8B5B /* AppDelegate.h */,
 				F718CD9E1AE8F686009A8B5B /* AppDelegate.m */,
 				F718CDC21AE8F6B3009A8B5B /* RegisterViewController.h */,
 				F718CDC31AE8F6B3009A8B5B /* RegisterViewController.m */,
 				F718CDE31AE8F7B4009A8B5B /* LoginViewController.h */,
 				F718CDE41AE8F7B4009A8B5B /* LoginViewController.m */,
-				F718CDE61AE90615009A8B5B /* UserUtils.h */,
-				F718CDE71AE90615009A8B5B /* UserUtils.m */,
 				F718CDE91AE90640009A8B5B /* HomeViewController.h */,
 				F718CDEA1AE90640009A8B5B /* HomeViewController.m */,
 				F718CDA91AE8F686009A8B5B /* Images.xcassets */,
@@ -198,6 +218,25 @@
 				F718CDD91AE8F78D009A8B5B /* AFURLSessionManager.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		F718CDF11AE920AC009A8B5B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F718CDF21AE920DA009A8B5B /* User.h */,
+				F718CDF31AE920DA009A8B5B /* User.m */,
+				F718CDF51AE923E6009A8B5B /* Snappvote.h */,
+				F718CDF61AE923E6009A8B5B /* Snappvote.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F718CDFB1AEA3B12009A8B5B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F718CDFC1AEA3B29009A8B5B /* test.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F718CDFD1AEA3B29009A8B5B /* test.png in Resources */,
 				F718CDED1AE9097B009A8B5B /* Main.storyboard in Resources */,
 				F718CDAD1AE8F686009A8B5B /* LaunchScreen.xib in Resources */,
 				F718CDAA1AE8F686009A8B5B /* Images.xcassets in Resources */,
@@ -302,10 +342,14 @@
 			files = (
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
+				F718CDF41AE920DA009A8B5B /* User.m in Sources */,
+				F718CDFA1AEA3951009A8B5B /* Utils.m in Sources */,
 				F718CDDD1AE8F78D009A8B5B /* AFNetworkReachabilityManager.m in Sources */,
+				F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */,
 				F718CDE21AE8F78D009A8B5B /* AFURLSessionManager.m in Sources */,
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
+				F718CDF01AE91898009A8B5B /* SVRequester.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDEB1AE90640009A8B5B /* HomeViewController.m in Sources */,
 				F718CDC41AE8F6B3009A8B5B /* RegisterViewController.m in Sources */,

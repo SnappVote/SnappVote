@@ -8,14 +8,22 @@
 
 #import "UserUtils.h"
 #import "AFHTTPRequestOperationManager.h"
+#import <UIKit/UIKit.h>
+#import "Utils.h"
 
 @implementation UserUtils
 
 +(void)createUser: (NSString*)username phone:(NSString*)phone email:(NSString*)email country:(NSString*)country{
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    UIImage* avatar = [UIImage imageNamed:@"test.png"];
+    NSString* base64avatar = [Utils encodeToBase64String:avatar];
     
-    NSDictionary *parameters = @{@"username": username, @"phone" :phone, @"email": email, @"country" : country};
+    NSDictionary *parameters = @{@"username": username,
+                                 @"avatar":base64avatar,
+                                 @"phone" :phone,
+                                 @"email": email,
+                                 @"country" : country};
     
     [manager POST:@"http://localhost/api/v1/users" parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -32,7 +40,7 @@
               
               [defaults synchronize];
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error");
+              NSLog(@"%@",[error localizedDescription]);
           }];
 }
 
