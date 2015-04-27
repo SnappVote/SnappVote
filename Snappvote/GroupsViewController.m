@@ -1,23 +1,18 @@
 //
-//  RegisterViewController.m
+//  GroupsViewController.m
 //  Snappvote
 //
-//  Created by Martin Dzhonov on 4/23/15.
+//  Created by Martin Dzhonov on 4/27/15.
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
-#import "RegisterViewController.h"
-#import "UserUtils.h"
+#import "GroupsViewController.h"
 
-@interface RegisterViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *email;
-@property (weak, nonatomic) IBOutlet UITextField *phone;
-@property (weak, nonatomic) IBOutlet UITextField *country;
+@interface GroupsViewController ()
 
 @end
 
-@implementation RegisterViewController
+@implementation GroupsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,9 +22,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)goTapped:(id)sender {
-    [UserUtils createUser:self.name.text phone:self.phone.text email:self.email.text country:self.country.text];
 }
 
 /*

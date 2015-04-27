@@ -17,9 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%d", [UserUtils userExists]);
-    NSLog(@"%ld", [UserUtils getUserId]);
-
     // Do any additional setup after loading the view.
 }
 
