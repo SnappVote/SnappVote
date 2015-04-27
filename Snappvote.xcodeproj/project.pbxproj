@@ -36,6 +36,7 @@
 		F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */; };
 		F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */; };
 		F73A71C21AEE521C00DF5BF9 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71C11AEE521C00DF5BF9 /* GroupsViewController.m */; };
+		F73A71C51AEE62A300DF5BF9 /* asdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71C41AEE62A300DF5BF9 /* asdTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTabViewController.m; sourceTree = "<group>"; };
 		F73A71C01AEE521C00DF5BF9 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
 		F73A71C11AEE521C00DF5BF9 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		F73A71C31AEE62A300DF5BF9 /* asdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asdTableViewController.h; sourceTree = "<group>"; };
+		F73A71C41AEE62A300DF5BF9 /* asdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asdTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 				F718CDAB1AE8F686009A8B5B /* LaunchScreen.xib */,
 				F718CDA01AE8F686009A8B5B /* Snappvote.xcdatamodeld */,
 				F718CD991AE8F686009A8B5B /* Supporting Files */,
+				F73A71C31AEE62A300DF5BF9 /* asdTableViewController.h */,
+				F73A71C41AEE62A300DF5BF9 /* asdTableViewController.m */,
 			);
 			path = Snappvote;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 			files = (
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
+				F73A71C51AEE62A300DF5BF9 /* asdTableViewController.m in Sources */,
 				F718CDF41AE920DA009A8B5B /* User.m in Sources */,
 				F718CDFA1AEA3951009A8B5B /* Utils.m in Sources */,
 				F73A71C21AEE521C00DF5BF9 /* GroupsViewController.m in Sources */,

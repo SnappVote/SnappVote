@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(self.snappvote.title);
+
     // Do any additional setup after loading the view.
 }
 

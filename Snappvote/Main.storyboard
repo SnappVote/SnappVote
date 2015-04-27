@@ -135,7 +135,7 @@
         <!--Item 2-->
         <scene sceneID="Wa6-mW-tY3">
             <objects>
-                <viewController id="bSa-Bj-ibg" sceneMemberID="viewController">
+                <viewController id="bSa-Bj-ibg" customClass="GroupsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oeM-Bk-16t"/>
                         <viewControllerLayoutGuide type="bottom" id="lqK-Yg-vNy"/>
@@ -147,11 +147,18 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="c4h-MU-nzK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bSa-Bj-ibg" id="aXj-Mz-fpA"/>
+                                    <outlet property="delegate" destination="bSa-Bj-ibg" id="Zwl-lH-s6z"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="fba-4q-gck"/>
+                    <connections>
+                        <outlet property="tableView" destination="c4h-MU-nzK" id="kHY-5P-jv7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Xb-Ut-kpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,7 +167,7 @@
         <!--Item 1-->
         <scene sceneID="aSN-Eo-mdj">
             <objects>
-                <viewController id="WCz-J6-rf9" sceneMemberID="viewController">
+                <viewController id="WCz-J6-rf9" customClass="GroupsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="53c-jg-ICK"/>
                         <viewControllerLayoutGuide type="bottom" id="Zwn-mz-vp5"/>
