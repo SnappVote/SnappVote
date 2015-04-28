@@ -36,7 +36,13 @@
 		F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */; };
 		F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */; };
 		F73A71C21AEE521C00DF5BF9 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71C11AEE521C00DF5BF9 /* GroupsViewController.m */; };
-		F73A71C51AEE62A300DF5BF9 /* asdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71C41AEE62A300DF5BF9 /* asdTableViewController.m */; };
+		F73A71C81AEF943B00DF5BF9 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71C71AEF943B00DF5BF9 /* TestViewController.m */; };
+		F73A71CB1AEFA5FD00DF5BF9 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71CA1AEFA5FD00DF5BF9 /* ContactsViewController.m */; };
+		F73A71CE1AEFA78800DF5BF9 /* GroupsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73A71CD1AEFA78800DF5BF9 /* GroupsTableCell.xib */; };
+		F73A71D11AEFA82400DF5BF9 /* GroupsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D01AEFA82400DF5BF9 /* GroupsTableCell.m */; };
+		F73A71D51AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73A71D21AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib */; };
+		F73A71D61AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D41AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m */; };
+		F73A71DA1AEFB69F00DF5BF9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D91AEFB69F00DF5BF9 /* Group.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,8 +111,18 @@
 		F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTabViewController.m; sourceTree = "<group>"; };
 		F73A71C01AEE521C00DF5BF9 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
 		F73A71C11AEE521C00DF5BF9 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
-		F73A71C31AEE62A300DF5BF9 /* asdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asdTableViewController.h; sourceTree = "<group>"; };
-		F73A71C41AEE62A300DF5BF9 /* asdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asdTableViewController.m; sourceTree = "<group>"; };
+		F73A71C61AEF943B00DF5BF9 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		F73A71C71AEF943B00DF5BF9 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		F73A71C91AEFA5FD00DF5BF9 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		F73A71CA1AEFA5FD00DF5BF9 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		F73A71CD1AEFA78800DF5BF9 /* GroupsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsTableCell.xib; sourceTree = "<group>"; };
+		F73A71CF1AEFA82400DF5BF9 /* GroupsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsTableCell.h; sourceTree = "<group>"; };
+		F73A71D01AEFA82400DF5BF9 /* GroupsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsTableCell.m; sourceTree = "<group>"; };
+		F73A71D21AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferBidsUITableViewCell.xib; sourceTree = "<group>"; };
+		F73A71D31AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferBidsUITableViewCell.h; sourceTree = "<group>"; };
+		F73A71D41AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferBidsUITableViewCell.m; sourceTree = "<group>"; };
+		F73A71D81AEFB69F00DF5BF9 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		F73A71D91AEFB69F00DF5BF9 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,21 +165,13 @@
 		F718CD981AE8F686009A8B5B /* Snappvote */ = {
 			isa = PBXGroup;
 			children = (
+				F73A71CC1AEFA76D00DF5BF9 /* Views */,
 				F718CDFB1AEA3B12009A8B5B /* Images */,
 				F718CDF11AE920AC009A8B5B /* Models */,
+				F73A71D71AEFB62B00DF5BF9 /* ViewControllers */,
 				F718CDEC1AE9097B009A8B5B /* Main.storyboard */,
-				F718CDE31AE8F7B4009A8B5B /* LoginViewController.h */,
-				F718CDE41AE8F7B4009A8B5B /* LoginViewController.m */,
-				F718CDC21AE8F6B3009A8B5B /* RegisterViewController.h */,
-				F718CDC31AE8F6B3009A8B5B /* RegisterViewController.m */,
-				F718CDE91AE90640009A8B5B /* HomeViewController.h */,
-				F718CDEA1AE90640009A8B5B /* HomeViewController.m */,
-				F73A71B81AEE221F00DF5BF9 /* NewSnappvoteViewController.h */,
-				F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */,
-				F73A71BD1AEE4BE600DF5BF9 /* ContactsTabViewController.h */,
-				F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */,
-				F73A71C01AEE521C00DF5BF9 /* GroupsViewController.h */,
-				F73A71C11AEE521C00DF5BF9 /* GroupsViewController.m */,
+				F73A71C61AEF943B00DF5BF9 /* TestViewController.h */,
+				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
 				F718CDEE1AE91898009A8B5B /* SVRequester.h */,
 				F718CDEF1AE91898009A8B5B /* SVRequester.m */,
 				F718CDE61AE90615009A8B5B /* UserUtils.h */,
@@ -176,8 +184,6 @@
 				F718CDAB1AE8F686009A8B5B /* LaunchScreen.xib */,
 				F718CDA01AE8F686009A8B5B /* Snappvote.xcdatamodeld */,
 				F718CD991AE8F686009A8B5B /* Supporting Files */,
-				F73A71C31AEE62A300DF5BF9 /* asdTableViewController.h */,
-				F73A71C41AEE62A300DF5BF9 /* asdTableViewController.m */,
 			);
 			path = Snappvote;
 			sourceTree = "<group>";
@@ -247,6 +253,8 @@
 			children = (
 				F718CDF21AE920DA009A8B5B /* User.h */,
 				F718CDF31AE920DA009A8B5B /* User.m */,
+				F73A71D81AEFB69F00DF5BF9 /* Group.h */,
+				F73A71D91AEFB69F00DF5BF9 /* Group.m */,
 				F718CDF51AE923E6009A8B5B /* Snappvote.h */,
 				F718CDF61AE923E6009A8B5B /* Snappvote.m */,
 			);
@@ -260,6 +268,40 @@
 				F718CDFC1AEA3B29009A8B5B /* test.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		F73A71CC1AEFA76D00DF5BF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F73A71CD1AEFA78800DF5BF9 /* GroupsTableCell.xib */,
+				F73A71CF1AEFA82400DF5BF9 /* GroupsTableCell.h */,
+				F73A71D01AEFA82400DF5BF9 /* GroupsTableCell.m */,
+				F73A71D21AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib */,
+				F73A71D31AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.h */,
+				F73A71D41AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F73A71D71AEFB62B00DF5BF9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F718CDE31AE8F7B4009A8B5B /* LoginViewController.h */,
+				F718CDE41AE8F7B4009A8B5B /* LoginViewController.m */,
+				F718CDC21AE8F6B3009A8B5B /* RegisterViewController.h */,
+				F718CDC31AE8F6B3009A8B5B /* RegisterViewController.m */,
+				F718CDE91AE90640009A8B5B /* HomeViewController.h */,
+				F718CDEA1AE90640009A8B5B /* HomeViewController.m */,
+				F73A71B81AEE221F00DF5BF9 /* NewSnappvoteViewController.h */,
+				F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */,
+				F73A71BD1AEE4BE600DF5BF9 /* ContactsTabViewController.h */,
+				F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */,
+				F73A71C91AEFA5FD00DF5BF9 /* ContactsViewController.h */,
+				F73A71CA1AEFA5FD00DF5BF9 /* ContactsViewController.m */,
+				F73A71C01AEE521C00DF5BF9 /* GroupsViewController.h */,
+				F73A71C11AEE521C00DF5BF9 /* GroupsViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,8 +386,10 @@
 			files = (
 				F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */,
 				F718CDFD1AEA3B29009A8B5B /* test.png in Resources */,
+				F73A71CE1AEFA78800DF5BF9 /* GroupsTableCell.xib in Resources */,
 				F718CDED1AE9097B009A8B5B /* Main.storyboard in Resources */,
 				F718CDAD1AE8F686009A8B5B /* LaunchScreen.xib in Resources */,
+				F73A71D51AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib in Resources */,
 				F718CDAA1AE8F686009A8B5B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,16 +410,19 @@
 			files = (
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
-				F73A71C51AEE62A300DF5BF9 /* asdTableViewController.m in Sources */,
 				F718CDF41AE920DA009A8B5B /* User.m in Sources */,
 				F718CDFA1AEA3951009A8B5B /* Utils.m in Sources */,
 				F73A71C21AEE521C00DF5BF9 /* GroupsViewController.m in Sources */,
 				F718CDDD1AE8F78D009A8B5B /* AFNetworkReachabilityManager.m in Sources */,
+				F73A71C81AEF943B00DF5BF9 /* TestViewController.m in Sources */,
+				F73A71CB1AEFA5FD00DF5BF9 /* ContactsViewController.m in Sources */,
+				F73A71D11AEFA82400DF5BF9 /* GroupsTableCell.m in Sources */,
 				F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */,
 				F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */,
 				F718CDE21AE8F78D009A8B5B /* AFURLSessionManager.m in Sources */,
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
+				F73A71D61AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m in Sources */,
 				F718CDF01AE91898009A8B5B /* SVRequester.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDEB1AE90640009A8B5B /* HomeViewController.m in Sources */,
@@ -384,6 +431,7 @@
 				F718CD9F1AE8F686009A8B5B /* AppDelegate.m in Sources */,
 				F718CDA21AE8F686009A8B5B /* Snappvote.xcdatamodeld in Sources */,
 				F73A71BA1AEE221F00DF5BF9 /* NewSnappvoteViewController.m in Sources */,
+				F73A71DA1AEFB69F00DF5BF9 /* Group.m in Sources */,
 				F718CDDB1AE8F78D009A8B5B /* AFHTTPRequestOperationManager.m in Sources */,
 				F718CDDE1AE8F78D009A8B5B /* AFSecurityPolicy.m in Sources */,
 				F718CD9C1AE8F686009A8B5B /* main.m in Sources */,
