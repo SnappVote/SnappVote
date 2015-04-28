@@ -94,7 +94,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="okTapped:" destination="4Iu-dp-Jq3" eventType="touchUpInside" id="QxH-ry-lCY"/>
+                                    <segue destination="ERN-NV-niC" kind="show" identifier="toContacts" id="3ly-dx-e2S"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1d-34-LFe">
@@ -130,12 +130,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LO5-ug-cCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="390"/>
+            <point key="canvasLocation" x="2013" y="962"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="Wa6-mW-tY3">
             <objects>
-                <viewController id="bSa-Bj-ibg" customClass="GroupsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="test2" id="bSa-Bj-ibg" customClass="GroupsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oeM-Bk-16t"/>
                         <viewControllerLayoutGuide type="bottom" id="lqK-Yg-vNy"/>
@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="2838" y="1313"/>
         </scene>
-        <!--Contacts Tab View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="BuY-2r-4Jg">
             <objects>
-                <tabBarController storyboardIdentifier="test" id="ERN-NV-niC" customClass="ContactsTabViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="test" id="ERN-NV-niC" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vtQ-L1-PBR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -206,7 +206,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kog-5f-lUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013" y="1723"/>
+            <point key="canvasLocation" x="2013" y="1719"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="G4E-Aa-uMQ">

@@ -28,29 +28,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)okTapped:(id)sender {
-    ContactsTabViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"test"];
-    
-    Snappvote* snappvote = [[Snappvote alloc] init];
-    
-    snappvote.title = self.wtf.text;
-    
-    snappvote.authorId = [UserUtils getUserId];
-    
-    snappvote.isSingle = TRUE;
-    
-    snappvote.image1 = self.img1ImageView.image;
-    
-    snappvote.answer1 = @"YES";
-    
-    snappvote.answer2= @"NO";
-    
-    snappvote.expireDate = self.expireDatePicker.date;
-    
-    controller.snappvote = snappvote;
-    // Pass data to controller
-    [self.navigationController pushViewController:controller animated:YES];
-}
+
 /*
 #pragma mark - Navigation
 

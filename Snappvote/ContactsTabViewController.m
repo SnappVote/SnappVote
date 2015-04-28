@@ -7,7 +7,7 @@
 //
 
 #import "ContactsTabViewController.h"
-
+#import "GroupsViewController.h"
 @interface ContactsTabViewController ()
 
 @end
@@ -16,9 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"tab bar");
     NSLog(self.snappvote.title);
-
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

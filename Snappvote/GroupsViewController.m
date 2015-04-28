@@ -7,6 +7,8 @@
 //
 
 #import "GroupsViewController.h"
+#import "ContactsTabViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface GroupsViewController ()
 
@@ -18,7 +20,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    data = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    NSLog(@"groups");
+    NSLog(self.snappvote.title);
+    data = [[NSArray alloc] init];
+    NSMutableArray* responseData = [[NSMutableArray alloc] init];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://localhost/api/v1/users/1/groups" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *jsonDict = (NSDictionary *) responseObject;
+        for (NSDictionary *dictionary in responseObject) {
+            NSNumber *identifier = dictionary[@"id"];
+            NSString* name = dictionary[@"name"];
+            [responseData addObject:name];
+        }
+        data = [NSArray arrayWithArray:responseData];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 
     // Do any additional setup after loading the view.
 }

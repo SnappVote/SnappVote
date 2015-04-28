@@ -10,5 +10,5 @@
 
 @interface GroupsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) Snappvote* snappvote;
 @end
