@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(self.snappvote.title);
     [self setDelegate:self];
     NSLog(@"tab bar");
 }
@@ -32,6 +33,7 @@
     }
     if (viewController == [tbController.viewControllers objectAtIndex:1] )
     {
+        ((GroupsViewController*)viewController).snappvote = self.snappvote;
         NSLog(@"1");
     }
     return YES;

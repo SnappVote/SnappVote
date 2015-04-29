@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Groups");
-
+   
     contactsIds = [[NSMutableSet alloc] init];
     NSMutableArray* responseData = [[NSMutableArray alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -45,22 +45,20 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-
-    // Do any additional setup after loading the view.
 }
-
+-(void)test{
+    NSLog(@"TESTING");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return [data count];
 }
 
@@ -97,8 +95,6 @@
         for (NSDictionary *dictionary in responseObject) {
             NSNumber *identifier = dictionary[@"id"];
             [contactsIds addObject:identifier];
-            NSLog(@"%@", contactsIds);
-            //NSLog(@"%li", (long)[identifier integerValue]);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

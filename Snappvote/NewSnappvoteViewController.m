@@ -21,12 +21,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(goToContacts)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)goToContacts{
+    [self performSegueWithIdentifier:@"toContacts" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    Snappvote* snappvote = [[Snappvote alloc] init];
+    
+    snappvote.title = @"TITLE";
+    
+        // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"toContacts"])
+    {
+        // Get reference to the destination view controller
+        ContactsTabViewController *vc = [segue destinationViewController];
+        vc.snappvote = snappvote;
+        // Pass any objects to the view controller here, like...
+        
+    }
 }
 
 /*

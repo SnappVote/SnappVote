@@ -115,6 +115,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="utx-yp-yJn"/>
                                 <exclude reference="M1d-34-LFe"/>
                             </mask>
                         </variation>
@@ -123,11 +124,12 @@
                         <outlet property="expireDatePicker" destination="FRW-CI-Yui" id="w3I-dO-dgE"/>
                         <outlet property="img1ImageView" destination="PWY-bb-ovu" id="Z8U-zb-GWH"/>
                         <outlet property="wtf" destination="D6q-4a-BKi" id="RsD-6Q-gWi"/>
+                        <segue destination="ZmF-Cw-bWF" kind="show" identifier="toContacts" id="Xhx-SU-lRx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LO5-ug-cCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013" y="962"/>
+            <point key="canvasLocation" x="2021" y="957"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="G4E-Aa-uMQ">
@@ -159,7 +161,7 @@
                                     <segue destination="Ym2-0n-NYA" kind="show" id="ciE-2O-nOb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu8-6K-W1n">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu8-6K-W1n">
                                 <rect key="frame" x="285" y="323" width="30" height="30"/>
                                 <state key="normal" title="Test">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -172,6 +174,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Lch-Yv-uhO" firstAttribute="centerY" secondItem="W8W-Uw-plz" secondAttribute="centerY" id="6LR-Jg-bUV"/>
+                            <constraint firstItem="hu8-6K-W1n" firstAttribute="top" secondItem="Lch-Yv-uhO" secondAttribute="bottom" constant="8" symbolic="YES" id="Hzf-27-A2b"/>
+                            <constraint firstItem="hu8-6K-W1n" firstAttribute="centerX" secondItem="Lch-Yv-uhO" secondAttribute="centerX" id="JwK-d7-UDf"/>
                             <constraint firstItem="Lch-Yv-uhO" firstAttribute="centerX" secondItem="ueS-V7-Vd6" secondAttribute="centerX" id="cDd-nm-7aQ"/>
                             <constraint firstItem="Lch-Yv-uhO" firstAttribute="top" secondItem="ueS-V7-Vd6" secondAttribute="bottom" constant="8" symbolic="YES" id="dhf-7U-zXf"/>
                             <constraint firstItem="Lch-Yv-uhO" firstAttribute="centerX" secondItem="W8W-Uw-plz" secondAttribute="centerX" id="qY3-G6-iFk"/>
@@ -348,4 +352,7 @@
     <resources>
         <image name="paris.jpeg" width="168" height="299"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FQl-X7-YIc"/>
+    </inferredMetricsTieBreakers>
 </document>
