@@ -16,9 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(self.snappvote.title);
     [self setDelegate:self];
-    NSLog(@"tab bar");
+    NSLog(@"Tab Controller");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,12 +28,12 @@
 {
     if (viewController == [tbController.viewControllers objectAtIndex:0] )
     {
-        NSLog(@"0");
+        NSLog(@"Contacts");
     }
     if (viewController == [tbController.viewControllers objectAtIndex:1] )
     {
         ((GroupsViewController*)viewController).snappvote = self.snappvote;
-        NSLog(@"1");
+        NSLog(@"Groups");
     }
     return YES;
 }/*

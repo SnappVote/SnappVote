@@ -12,6 +12,9 @@
 #import "GroupsTableCell.h"
 #import "OfferBidsUITableViewCell.h"
 #import "Group.h"
+#import "Utils.h"
+#import "UserUtils.h"
+
 @interface GroupsViewController ()
 
 @end
@@ -23,9 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Groups");
-   
+    
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
+    self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
     contactsIds = [[NSMutableSet alloc] init];
+    
     NSMutableArray* responseData = [[NSMutableArray alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://localhost/api/v1/users/1/groups" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -46,9 +51,40 @@
         NSLog(@"Error: %@", error);
     }];
 }
+
+-(void)okTapped{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/1", [Utils getBaseUrl]];
+    NSDictionary *parameters = @{@"title": self.snappvote.title,
+                                 @"img_1": @"test",
+                                 @"img_2" :@"test",
+                                 @"answer_1": self.snappvote.answer1,
+                                 @"answer_2" : self.snappvote.answer2,
+                                 @"expire_date": self.snappvote.expireDate};
+    
+    [manager POST:url parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              NSLog(@"JSON: %@", responseObject);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"%@",[error localizedDescription]);
+          }];
+    for (NSNumber* contactId in contactsIds) {
+        NSDictionary *parameters = @{@"voter_id": contactId,
+                                     @"answer_id": contactId};
+        NSString* url = [NSString stringWithFormat:@"%@/snappvotes/answers/1", [Utils getBaseUrl]];
+        [manager POST:url parameters:parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  NSLog(@"JSON: %@", responseObject);
+              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  NSLog(@"%@",[error localizedDescription]);
+              }];
+    }
+}
+
 -(void)test{
     NSLog(@"TESTING");
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -88,8 +124,7 @@
 {
     Group* group =[data objectAtIndex:indexPath.row];
     NSInteger groupId = group.id;
-    NSString* baseUrl =@"http://localhost/api/v1";
-    NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", baseUrl, groupId];
+    NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", [Utils getBaseUrl], groupId];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary *dictionary in responseObject) {

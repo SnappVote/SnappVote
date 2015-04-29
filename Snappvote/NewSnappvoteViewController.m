@@ -11,7 +11,7 @@
 #import "Snappvote.h"
 #import "UserUtils.h"
 @interface NewSnappvoteViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *wtf;
+@property (weak, nonatomic) IBOutlet UITextField *editTextTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *img1ImageView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *expireDatePicker;
 
@@ -37,7 +37,19 @@
 {
     Snappvote* snappvote = [[Snappvote alloc] init];
     
-    snappvote.title = @"TITLE";
+    snappvote.title = self.editTextTitle.text;
+    
+    snappvote.authorId = [UserUtils getUserId];
+    
+    snappvote.isSingle = TRUE;
+    
+    snappvote.image1 = self.img1ImageView.image;
+    
+    snappvote.answer1 = @"YES";
+    
+    snappvote.answer2= @"NO";
+    
+    snappvote.expireDate = self.expireDatePicker.date;
     
         // Make sure your segue name in storyboard is the same as this line
     if ([[segue identifier] isEqualToString:@"toContacts"])

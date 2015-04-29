@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Utils : NSObject
++ (NSString*)getBaseUrl;
 + (NSString *)encodeToBase64String:(UIImage *)image;
 + (UIImage *)decodeFromBase64:(NSString *)strEncodeData;
 @end

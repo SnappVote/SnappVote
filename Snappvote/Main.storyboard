@@ -121,9 +121,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="editTextTitle" destination="D6q-4a-BKi" id="fWM-if-Pm4"/>
                         <outlet property="expireDatePicker" destination="FRW-CI-Yui" id="w3I-dO-dgE"/>
                         <outlet property="img1ImageView" destination="PWY-bb-ovu" id="Z8U-zb-GWH"/>
-                        <outlet property="wtf" destination="D6q-4a-BKi" id="RsD-6Q-gWi"/>
                         <segue destination="ZmF-Cw-bWF" kind="show" identifier="toContacts" id="Xhx-SU-lRx"/>
                     </connections>
                 </viewController>
