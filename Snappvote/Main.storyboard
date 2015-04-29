@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFC-HP-MNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="901" y="1751"/>
+            <point key="canvasLocation" x="1741" y="1737"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="wpE-uE-p4G">
@@ -232,12 +232,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cd-HT-p9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="1751"/>
+            <point key="canvasLocation" x="1037" y="1737"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Contacts Tab View Controller-->
         <scene sceneID="Icn-Pp-ZnT">
             <objects>
-                <tabBarController id="ZmF-Cw-bWF" sceneMemberID="viewController">
+                <tabBarController id="ZmF-Cw-bWF" customClass="ContactsTabViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="giN-sa-bej">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -251,7 +251,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKS-ZI-Mhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1315" y="1004"/>
+            <point key="canvasLocation" x="1315" y="962"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="jm9-Un-KzE">

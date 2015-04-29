@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"tab bar");
-    NSLog(self.snappvote.title);
 }
 
 - (void)didReceiveMemoryWarning {

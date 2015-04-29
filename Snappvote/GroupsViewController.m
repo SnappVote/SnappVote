@@ -18,12 +18,14 @@
 
 @implementation GroupsViewController{
     NSArray *data;
+    NSMutableSet* contactsIds;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Groups");
-    NSLog(self.snappvote.title);
+
+    contactsIds = [[NSMutableSet alloc] init];
     NSMutableArray* responseData = [[NSMutableArray alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://localhost/api/v1/users/1/groups" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -83,6 +85,27 @@
 
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Group* group =[data objectAtIndex:indexPath.row];
+    NSInteger groupId = group.id;
+    NSString* baseUrl =@"http://localhost/api/v1";
+    NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", baseUrl, groupId];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        for (NSDictionary *dictionary in responseObject) {
+            NSNumber *identifier = dictionary[@"id"];
+            [contactsIds addObject:identifier];
+            NSLog(@"%@", contactsIds);
+            //NSLog(@"%li", (long)[identifier integerValue]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
 }

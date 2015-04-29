@@ -27,7 +27,6 @@
 		F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDE71AE90615009A8B5B /* UserUtils.m */; };
 		F718CDEB1AE90640009A8B5B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDEA1AE90640009A8B5B /* HomeViewController.m */; };
 		F718CDED1AE9097B009A8B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F718CDEC1AE9097B009A8B5B /* Main.storyboard */; };
-		F718CDF01AE91898009A8B5B /* SVRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDEF1AE91898009A8B5B /* SVRequester.m */; };
 		F718CDF41AE920DA009A8B5B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF31AE920DA009A8B5B /* User.m */; };
 		F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF61AE923E6009A8B5B /* Snappvote.m */; };
 		F718CDFA1AEA3951009A8B5B /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF91AEA3951009A8B5B /* Utils.m */; };
@@ -95,8 +94,6 @@
 		F718CDE91AE90640009A8B5B /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F718CDEA1AE90640009A8B5B /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F718CDEC1AE9097B009A8B5B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F718CDEE1AE91898009A8B5B /* SVRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRequester.h; sourceTree = "<group>"; };
-		F718CDEF1AE91898009A8B5B /* SVRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRequester.m; sourceTree = "<group>"; };
 		F718CDF21AE920DA009A8B5B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		F718CDF31AE920DA009A8B5B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F718CDF51AE923E6009A8B5B /* Snappvote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snappvote.h; sourceTree = "<group>"; };
@@ -170,19 +167,17 @@
 				F718CDF11AE920AC009A8B5B /* Models */,
 				F73A71D71AEFB62B00DF5BF9 /* ViewControllers */,
 				F718CDEC1AE9097B009A8B5B /* Main.storyboard */,
-				F73A71C61AEF943B00DF5BF9 /* TestViewController.h */,
-				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
-				F718CDEE1AE91898009A8B5B /* SVRequester.h */,
-				F718CDEF1AE91898009A8B5B /* SVRequester.m */,
+				F718CD9D1AE8F686009A8B5B /* AppDelegate.h */,
+				F718CD9E1AE8F686009A8B5B /* AppDelegate.m */,
 				F718CDE61AE90615009A8B5B /* UserUtils.h */,
 				F718CDE71AE90615009A8B5B /* UserUtils.m */,
 				F718CDF81AEA3951009A8B5B /* Utils.h */,
 				F718CDF91AEA3951009A8B5B /* Utils.m */,
-				F718CD9D1AE8F686009A8B5B /* AppDelegate.h */,
-				F718CD9E1AE8F686009A8B5B /* AppDelegate.m */,
 				F718CDA91AE8F686009A8B5B /* Images.xcassets */,
 				F718CDAB1AE8F686009A8B5B /* LaunchScreen.xib */,
 				F718CDA01AE8F686009A8B5B /* Snappvote.xcdatamodeld */,
+				F73A71C61AEF943B00DF5BF9 /* TestViewController.h */,
+				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
 				F718CD991AE8F686009A8B5B /* Supporting Files */,
 			);
 			path = Snappvote;
@@ -423,7 +418,6 @@
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
 				F73A71D61AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m in Sources */,
-				F718CDF01AE91898009A8B5B /* SVRequester.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDEB1AE90640009A8B5B /* HomeViewController.m in Sources */,
 				F718CDC41AE8F6B3009A8B5B /* RegisterViewController.m in Sources */,
