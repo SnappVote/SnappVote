@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setDelegate:self];
     NSLog(@"tab bar");
 }
 
@@ -23,8 +24,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
+- (BOOL)tabBarController:(UITabBarController *)tbController shouldSelectViewController:(UIViewController *)viewController
+{
+    if (viewController == [tbController.viewControllers objectAtIndex:0] )
+    {
+        NSLog(@"0");
+    }
+    if (viewController == [tbController.viewControllers objectAtIndex:1] )
+    {
+        NSLog(@"1");
+    }
+    return YES;
+}/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Snappvote.h"
-@interface ContactsTabViewController : UITabBarController
+@interface ContactsTabViewController : UITabBarController<UITabBarControllerDelegate>
 @property(strong, nonatomic) Snappvote *snappvote;
 @end
