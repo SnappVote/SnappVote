@@ -33,6 +33,8 @@
 		F7305B211AF21EFF001F362A /* OutgoingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B201AF21EFF001F362A /* OutgoingViewController.m */; };
 		F7305B251AF22AF8001F362A /* OutgoingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */; };
 		F7305B281AF22B1C001F362A /* OutgoingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B271AF22B1C001F362A /* OutgoingTableCell.m */; };
+		F7305B2A1AF240A2001F362A /* IncomingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7305B291AF240A2001F362A /* IncomingTableCell.xib */; };
+		F7305B2D1AF240B4001F362A /* IncomingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B2C1AF240B4001F362A /* IncomingTableCell.m */; };
 		F73A71BA1AEE221F00DF5BF9 /* NewSnappvoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */; };
 		F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */; };
 		F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */; };
@@ -108,6 +110,9 @@
 		F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutgoingTableCell.xib; sourceTree = "<group>"; };
 		F7305B261AF22B1C001F362A /* OutgoingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingTableCell.h; sourceTree = "<group>"; };
 		F7305B271AF22B1C001F362A /* OutgoingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingTableCell.m; sourceTree = "<group>"; };
+		F7305B291AF240A2001F362A /* IncomingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IncomingTableCell.xib; sourceTree = "<group>"; };
+		F7305B2B1AF240B4001F362A /* IncomingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingTableCell.h; sourceTree = "<group>"; };
+		F7305B2C1AF240B4001F362A /* IncomingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingTableCell.m; sourceTree = "<group>"; };
 		F73A71B81AEE221F00DF5BF9 /* NewSnappvoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSnappvoteViewController.h; sourceTree = "<group>"; };
 		F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSnappvoteViewController.m; sourceTree = "<group>"; };
 		F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paris.jpeg; sourceTree = "<group>"; };
@@ -314,6 +319,9 @@
 				F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */,
 				F7305B261AF22B1C001F362A /* OutgoingTableCell.h */,
 				F7305B271AF22B1C001F362A /* OutgoingTableCell.m */,
+				F7305B291AF240A2001F362A /* IncomingTableCell.xib */,
+				F7305B2B1AF240B4001F362A /* IncomingTableCell.h */,
+				F7305B2C1AF240B4001F362A /* IncomingTableCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -413,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7305B2A1AF240A2001F362A /* IncomingTableCell.xib in Resources */,
 				F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */,
 				F718CDFD1AEA3B29009A8B5B /* test.png in Resources */,
 				F7305B251AF22AF8001F362A /* OutgoingTableCell.xib in Resources */,
@@ -462,6 +471,7 @@
 				F718CDA21AE8F686009A8B5B /* Snappvote.xcdatamodeld in Sources */,
 				F7305B281AF22B1C001F362A /* OutgoingTableCell.m in Sources */,
 				F73A71BA1AEE221F00DF5BF9 /* NewSnappvoteViewController.m in Sources */,
+				F7305B2D1AF240B4001F362A /* IncomingTableCell.m in Sources */,
 				F753B6131AF11D270017E34A /* HomeTabBarController.m in Sources */,
 				F73A71DA1AEFB69F00DF5BF9 /* Group.m in Sources */,
 				F718CDDB1AE8F78D009A8B5B /* AFHTTPRequestOperationManager.m in Sources */,

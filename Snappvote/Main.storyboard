@@ -131,11 +131,18 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="a7l-kM-8cB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="d05-54-4LE" id="4oT-bM-NaB"/>
+                                    <outlet property="delegate" destination="d05-54-4LE" id="IhV-TV-Onh"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="JHA-Bk-fJc"/>
+                    <connections>
+                        <outlet property="tableView" destination="a7l-kM-8cB" id="I1O-UG-HhK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9y-lu-Gww" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
