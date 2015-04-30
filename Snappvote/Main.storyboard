@@ -26,13 +26,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="paris.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="PWY-bb-ovu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paris.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="PWY-bb-ovu">
                                 <rect key="frame" x="180" y="110" width="240" height="283"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="IkI-r0-ZIl"/>
                                 </constraints>
                             </imageView>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FRW-CI-Yui">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FRW-CI-Yui">
                                 <rect key="frame" x="0.0" y="401" width="600" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="eGm-zz-mDb"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="PWY-bb-ovu" firstAttribute="centerX" secondItem="FRW-CI-Yui" secondAttribute="centerX" id="50O-67-5jl"/>
                             <constraint firstItem="PWY-bb-ovu" firstAttribute="top" secondItem="D6q-4a-BKi" secondAttribute="bottom" constant="8" symbolic="YES" id="CJG-dK-7bI"/>
                             <constraint firstItem="utx-yp-yJn" firstAttribute="centerX" secondItem="FRW-CI-Yui" secondAttribute="centerX" id="Ibb-0j-prW"/>
-                            <constraint firstItem="3gc-OA-pgN" firstAttribute="top" secondItem="FRW-CI-Yui" secondAttribute="bottom" constant="37" id="KYf-ua-FXW"/>
+                            <constraint firstItem="3gc-OA-pgN" firstAttribute="top" secondItem="FRW-CI-Yui" secondAttribute="bottom" constant="-12" id="KYf-ua-FXW"/>
                             <constraint firstItem="D6q-4a-BKi" firstAttribute="top" secondItem="2EC-LC-ZNS" secondAttribute="bottom" constant="8" symbolic="YES" id="M3g-G1-A1r"/>
                             <constraint firstItem="FRW-CI-Yui" firstAttribute="top" secondItem="PWY-bb-ovu" secondAttribute="bottom" constant="8" symbolic="YES" id="UM3-K3-hQ5"/>
                             <constraint firstAttribute="trailing" secondItem="FRW-CI-Yui" secondAttribute="trailing" id="aGT-Ln-v1g"/>
@@ -203,9 +203,6 @@
                                 <state key="normal" title="Test">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="ZmF-Cw-bWF" kind="show" id="FQl-X7-YIc"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -389,7 +386,4 @@
     <resources>
         <image name="paris.jpeg" width="168" height="299"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="FQl-X7-YIc"/>
-    </inferredMetricsTieBreakers>
 </document>

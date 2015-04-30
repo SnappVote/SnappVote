@@ -14,7 +14,7 @@
 #import "Group.h"
 #import "Utils.h"
 #import "UserUtils.h"
-
+#import "SVModelParser.h"
 @interface GroupsViewController ()
 
 @end
@@ -26,27 +26,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
     self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
     contactsIds = [[NSMutableSet alloc] init];
-    
-    NSMutableArray* responseData = [[NSMutableArray alloc] init];
+    SVModelParser* parser = [[SVModelParser alloc] init];
+    NSString* url = [NSString stringWithFormat:@"%@/users/1/groups", [Utils getBaseUrl]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://localhost/api/v1/users/1/groups" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (NSDictionary *dictionary in responseObject) {
-            NSNumber *identifier = dictionary[@"id"];
-            NSNumber *userId = dictionary[@"user_id"];
-            NSString* name = dictionary[@"name"];
-            Group* group = [[Group alloc] init];
-            group.id = [identifier integerValue];
-            group.userId = [userId integerValue];
-            group.name = name;
-            [responseData addObject:group];
-        }
-        data = [NSArray arrayWithArray:responseData];
+    
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        data = [parser parseGroups:responseObject];
         [self.tableView reloadData];
-
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -68,6 +57,7 @@
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);
           }];
+    
     for (NSNumber* contactId in contactsIds) {
         NSDictionary *parameters = @{@"voter_id": contactId,
                                      @"answer_id": contactId};

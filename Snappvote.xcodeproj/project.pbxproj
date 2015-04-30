@@ -35,6 +35,7 @@
 		F7305B281AF22B1C001F362A /* OutgoingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B271AF22B1C001F362A /* OutgoingTableCell.m */; };
 		F7305B2A1AF240A2001F362A /* IncomingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7305B291AF240A2001F362A /* IncomingTableCell.xib */; };
 		F7305B2D1AF240B4001F362A /* IncomingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B2C1AF240B4001F362A /* IncomingTableCell.m */; };
+		F7305B301AF26F84001F362A /* SVModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B2F1AF26F84001F362A /* SVModelParser.m */; };
 		F73A71BA1AEE221F00DF5BF9 /* NewSnappvoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */; };
 		F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */; };
 		F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71BE1AEE4BE600DF5BF9 /* ContactsTabViewController.m */; };
@@ -113,6 +114,8 @@
 		F7305B291AF240A2001F362A /* IncomingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IncomingTableCell.xib; sourceTree = "<group>"; };
 		F7305B2B1AF240B4001F362A /* IncomingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingTableCell.h; sourceTree = "<group>"; };
 		F7305B2C1AF240B4001F362A /* IncomingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingTableCell.m; sourceTree = "<group>"; };
+		F7305B2E1AF26F84001F362A /* SVModelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModelParser.h; sourceTree = "<group>"; };
+		F7305B2F1AF26F84001F362A /* SVModelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModelParser.m; sourceTree = "<group>"; };
 		F73A71B81AEE221F00DF5BF9 /* NewSnappvoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSnappvoteViewController.h; sourceTree = "<group>"; };
 		F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSnappvoteViewController.m; sourceTree = "<group>"; };
 		F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paris.jpeg; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				F718CDEC1AE9097B009A8B5B /* Main.storyboard */,
 				F718CD9D1AE8F686009A8B5B /* AppDelegate.h */,
 				F718CD9E1AE8F686009A8B5B /* AppDelegate.m */,
+				F7305B2E1AF26F84001F362A /* SVModelParser.h */,
+				F7305B2F1AF26F84001F362A /* SVModelParser.m */,
 				F718CDE61AE90615009A8B5B /* UserUtils.h */,
 				F718CDE71AE90615009A8B5B /* UserUtils.m */,
 				F718CDF81AEA3951009A8B5B /* Utils.h */,
@@ -464,6 +469,7 @@
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
 				F73A71D61AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m in Sources */,
+				F7305B301AF26F84001F362A /* SVModelParser.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDC41AE8F6B3009A8B5B /* RegisterViewController.m in Sources */,
 				F718CDE11AE8F78D009A8B5B /* AFURLResponseSerialization.m in Sources */,
