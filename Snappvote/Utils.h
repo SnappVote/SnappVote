@@ -13,4 +13,5 @@
 + (NSString*)getBaseUrl;
 + (NSString *)encodeToBase64String:(UIImage *)image;
 + (UIImage *)decodeFromBase64:(NSString *)strEncodeData;
++(NSString*)getFriendlyDateString:(NSDate *)date;
 @end

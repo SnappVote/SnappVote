@@ -32,7 +32,7 @@
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+        //NSLog(@"%@", responseObject);
         for (NSDictionary *dictionary in responseObject) {
             [usernames addObject:dictionary[@"author_username"]];
         }

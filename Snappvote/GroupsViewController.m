@@ -121,6 +121,7 @@
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary *dictionary in responseObject) {
             NSNumber *identifier = dictionary[@"id"];
+            NSLog(@"%ld", [identifier integerValue]);
             [contactsIds addObject:identifier];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

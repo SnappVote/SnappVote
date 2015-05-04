@@ -20,4 +20,10 @@
     NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return [UIImage imageWithData:data];
 }
++(NSString*)getFriendlyDateString:(NSDate *)date{
+    NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
+    [dateformate setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"]; // Date formater
+    NSString *dateStr = [dateformate stringFromDate:[NSDate date]];
+    return dateStr;
+}
 @end

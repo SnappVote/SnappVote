@@ -64,7 +64,7 @@
         }
     }
     Snappvote* snappvote = [data objectAtIndex:indexPath.row];
-    cell.labelTitle.text = snappvote.answer1;
+    cell.labelTitle.text = snappvote.title;
     return cell;
 }
 
