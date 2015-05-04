@@ -23,4 +23,23 @@
     }
     return [NSArray arrayWithArray:groups];
 }
+-(NSArray*)parseSnappvotes:(id)responseObject{
+    NSMutableArray* snappvotes = [[NSMutableArray alloc] init];
+    for (NSDictionary *dictionary in responseObject) {
+        NSNumber *identifier = dictionary[@"id"];
+        NSNumber *author_id = dictionary[@"author_id"];
+        NSString* answer1 = dictionary[@"answer_1"];
+        NSString* answer2 = dictionary[@"answer_2"];
+        NSDate* expireDate = dictionary[@"expire_date"];
+        Snappvote* snappvote = [[Snappvote alloc] init];
+        snappvote.id = [identifier integerValue];
+        snappvote.authorId = [author_id integerValue];
+        snappvote.answer1 = answer1;
+        snappvote.answer2 = answer2;
+        snappvote.expireDate = expireDate;
+        [snappvotes addObject:snappvote];
+    }
+    return [NSArray arrayWithArray:snappvotes];
+}
+
 @end

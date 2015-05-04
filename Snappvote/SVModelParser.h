@@ -13,4 +13,6 @@
 
 @interface SVModelParser : NSObject
 -(NSArray*)parseGroups:(id)responseObject;
+-(NSArray*)parseSnappvotes:(id)responseObject;
+
 @end

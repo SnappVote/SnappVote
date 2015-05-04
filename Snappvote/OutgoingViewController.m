@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "Utils.h"
 #import "Snappvote.h"
+#import "SVModelParser.h"
 @interface OutgoingViewController ()
 
 @end
@@ -21,25 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSMutableArray* responseData = [[NSMutableArray alloc] init];
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/1", [Utils getBaseUrl]];
+    SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (NSDictionary *dictionary in responseObject) {
-            NSNumber *identifier = dictionary[@"id"];
-            NSNumber *author_id = dictionary[@"author_id"];
-            NSString* answer1 = dictionary[@"answer_1"];
-            NSString* answer2 = dictionary[@"answer_2"];
-            NSDate* expireDate = dictionary[@"expire_date"];
-            Snappvote* snappvote = [[Snappvote alloc] init];
-            snappvote.id = [identifier integerValue];
-            snappvote.authorId = [author_id integerValue];
-            snappvote.answer1 = answer1;
-            snappvote.answer2 = answer2;
-            snappvote.expireDate = expireDate;
-            [responseData addObject:snappvote];
-        }
-        data = [NSArray arrayWithArray:responseData];
+        data = [parser parseSnappvotes:responseObject];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

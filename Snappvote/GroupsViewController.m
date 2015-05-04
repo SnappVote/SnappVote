@@ -25,9 +25,11 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
     self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
+    
     contactsIds = [[NSMutableSet alloc] init];
     SVModelParser* parser = [[SVModelParser alloc] init];
     NSString* url = [NSString stringWithFormat:@"%@/users/1/groups", [Utils getBaseUrl]];
@@ -53,22 +55,22 @@
     
     [manager POST:url parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              for (NSNumber* contactId in contactsIds) {
+                  NSNumber* snapvoteId = responseObject[@"id"];
+                  NSDictionary *parameters = @{@"voter_id": contactId,
+                                               @"answer_id": [NSNumber numberWithInt:-1]};
+                  NSString* url = [NSString stringWithFormat:@"%@/snappvotes/answers/%ld", [Utils getBaseUrl], [snapvoteId integerValue]];
+                  [manager POST:url parameters:parameters
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            NSLog(@"JSON: %@", responseObject);
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"%@",[error localizedDescription]);
+                        }];
+              }
               NSLog(@"JSON: %@", responseObject);
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);
           }];
-    
-    for (NSNumber* contactId in contactsIds) {
-        NSDictionary *parameters = @{@"voter_id": contactId,
-                                     @"answer_id": contactId};
-        NSString* url = [NSString stringWithFormat:@"%@/snappvotes/answers/1", [Utils getBaseUrl]];
-        [manager POST:url parameters:parameters
-              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                  NSLog(@"JSON: %@", responseObject);
-              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                  NSLog(@"%@",[error localizedDescription]);
-              }];
-    }
 }
 
 -(void)test{
@@ -89,7 +91,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     static NSString *simpleTableIdentifier = @"GroupsTableCell";
     
     GroupsTableCell *cell = (GroupsTableCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -106,7 +108,7 @@
     
     Group* group =[data objectAtIndex:indexPath.row];
     cell.labelName.text = group.name;
-
+    
     return cell;
 }
 
@@ -131,13 +133,13 @@
     return 44;
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

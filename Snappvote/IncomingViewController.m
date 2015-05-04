@@ -12,13 +12,14 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "Utils.h"
 #import "Snappvote.h"
-
+#import "SVModelParser.h"
 @interface IncomingViewController ()
 
 @end
 
 @implementation IncomingViewController{
     NSArray *data;
+    NSMutableArray *usernames;
 }
 
 - (void)viewDidLoad {
@@ -26,31 +27,20 @@
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
     self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
     
-    NSMutableArray* responseData = [[NSMutableArray alloc] init];
+    usernames = [[NSMutableArray alloc] init];
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/in/2", [Utils getBaseUrl]];
+    SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@", responseObject);
         for (NSDictionary *dictionary in responseObject) {
-            NSNumber *identifier = dictionary[@"id"];
-            NSNumber *author_id = dictionary[@"author_id"];
-            NSString* answer1 = dictionary[@"answer_1"];
-            NSString* answer2 = dictionary[@"answer_2"];
-            NSDate* expireDate = dictionary[@"expire_date"];
-            Snappvote* snappvote = [[Snappvote alloc] init];
-            snappvote.id = [identifier integerValue];
-            snappvote.authorId = [author_id integerValue];
-            snappvote.answer1 = answer1;
-            snappvote.answer2 = answer2;
-            snappvote.expireDate = expireDate;
-            [responseData addObject:snappvote];
+            [usernames addObject:dictionary[@"author_username"]];
         }
-        data = [NSArray arrayWithArray:responseData];
+        data = [parser parseSnappvotes:responseObject];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-
-    // Do any additional setup after loading the view.
 }
 
 -(void)okTapped{
@@ -87,7 +77,8 @@
         }
     }
     Snappvote* snappvote = [data objectAtIndex:indexPath.row];
-    cell.labelTitle.text = snappvote.answer1;
+    cell.labelTitle.text = snappvote.title;
+    cell.labelUsername.text = [usernames objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -97,7 +88,7 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return 60;
 }
 
 

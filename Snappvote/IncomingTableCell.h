@@ -10,5 +10,6 @@
 
 @interface IncomingTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet UILabel *labelUsername;
 
 @end
