@@ -13,6 +13,8 @@
 #import "Utils.h"
 #import "Snappvote.h"
 #import "SVModelParser.h"
+#import "VotingViewController.h"
+
 @interface IncomingViewController ()
 
 @end
@@ -79,16 +81,24 @@
     Snappvote* snappvote = [data objectAtIndex:indexPath.row];
     cell.labelTitle.text = snappvote.title;
     cell.labelUsername.text = [usernames objectAtIndex:indexPath.row];
+    cell.labelExpireDate.text = [Utils getFriendlyDateString:snappvote.expireDate];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Snappvote *snappvote = [data objectAtIndex:indexPath.row];
+    
+    VotingViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"VotingViewController"];
+    
+    // Pass data to controller
+    controller.snappvote = snappvote;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 100;
 }
 
 

@@ -49,6 +49,7 @@
 		F73A71DA1AEFB69F00DF5BF9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D91AEFB69F00DF5BF9 /* Group.m */; };
 		F753B6131AF11D270017E34A /* HomeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6121AF11D270017E34A /* HomeTabBarController.m */; };
 		F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6151AF11DAB0017E34A /* IncomingViewController.m */; };
+		F761C6D01AF7B6BD00B98915 /* VotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,8 @@
 		F753B6121AF11D270017E34A /* HomeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTabBarController.m; sourceTree = "<group>"; };
 		F753B6141AF11DAB0017E34A /* IncomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingViewController.h; sourceTree = "<group>"; };
 		F753B6151AF11DAB0017E34A /* IncomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingViewController.m; sourceTree = "<group>"; };
+		F761C6CE1AF7B6BD00B98915 /* VotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotingViewController.h; sourceTree = "<group>"; };
+		F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +345,8 @@
 				F718CDC31AE8F6B3009A8B5B /* RegisterViewController.m */,
 				F73A71B81AEE221F00DF5BF9 /* NewSnappvoteViewController.h */,
 				F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */,
+				F761C6CE1AF7B6BD00B98915 /* VotingViewController.h */,
+				F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				F753B6131AF11D270017E34A /* HomeTabBarController.m in Sources */,
 				F73A71DA1AEFB69F00DF5BF9 /* Group.m in Sources */,
 				F718CDDB1AE8F78D009A8B5B /* AFHTTPRequestOperationManager.m in Sources */,
+				F761C6D01AF7B6BD00B98915 /* VotingViewController.m in Sources */,
 				F718CDDE1AE8F78D009A8B5B /* AFSecurityPolicy.m in Sources */,
 				F718CD9C1AE8F686009A8B5B /* main.m in Sources */,
 				F718CDDC1AE8F78D009A8B5B /* AFHTTPSessionManager.m in Sources */,

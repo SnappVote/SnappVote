@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "Snappvote.h"
 #import "SVModelParser.h"
+#import "VotingViewController.h"
 @interface OutgoingViewController ()
 
 @end
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/1", [Utils getBaseUrl]];
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -65,16 +67,25 @@
     }
     Snappvote* snappvote = [data objectAtIndex:indexPath.row];
     cell.labelTitle.text = snappvote.title;
+    cell.labelAnswer1.text = snappvote.answer1;
+    cell.labelAnswer2.text = snappvote.answer2;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Snappvote *snappvote = [data objectAtIndex:indexPath.row];
+    
+    VotingViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"VotingViewController"];
+    
+    // Pass data to controller
+    controller.snappvote = snappvote;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return 100;
 }
 
 /*

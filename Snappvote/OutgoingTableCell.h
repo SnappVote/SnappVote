@@ -10,5 +10,8 @@
 
 @interface OutgoingTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
-
+@property (weak, nonatomic) IBOutlet UILabel *labelAnswer1;
+@property (weak, nonatomic) IBOutlet UILabel *labelAnswer2;
+@property (weak, nonatomic) IBOutlet UILabel *labelAnswer1Count;
+@property (weak, nonatomic) IBOutlet UILabel *labelAnswer2Count;
 @end
