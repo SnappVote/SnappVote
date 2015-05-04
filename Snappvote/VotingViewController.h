@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Snappvote.h"
+
 @interface VotingViewController : UIViewController
 @property (strong, nonatomic) Snappvote* snappvote;
 @end

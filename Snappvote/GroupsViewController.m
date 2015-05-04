@@ -7,14 +7,13 @@
 //
 
 #import "GroupsViewController.h"
-#import "ContactsTabViewController.h"
 #import "AFHTTPRequestOperationManager.h"
-#import "GroupsTableCell.h"
-#import "OfferBidsUITableViewCell.h"
-#import "Group.h"
 #import "Utils.h"
 #import "UserUtils.h"
+#import "Group.h"
 #import "SVModelParser.h"
+#import "GroupsTableCell.h"
+
 @interface GroupsViewController ()
 
 @end

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Snappvote/GroupsViewController.m"
-            timestampString = "452004507.32157"
+            timestampString = "452442254.81702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "@implementation GroupsViewController"
             landmarkType = "3">
          </BreakpointContent>

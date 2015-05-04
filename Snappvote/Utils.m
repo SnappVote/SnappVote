@@ -22,7 +22,7 @@
 }
 +(NSString*)getFriendlyDateString:(NSDate *)date{
     NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
-    [dateformate setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; // Date formater
+    [dateformate setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateStr = [dateformate stringFromDate:[NSDate date]];
     return dateStr;
 }

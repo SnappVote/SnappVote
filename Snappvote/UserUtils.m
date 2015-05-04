@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
-#import "UserUtils.h"
-#import "AFHTTPRequestOperationManager.h"
-#import <UIKit/UIKit.h>
 #import "Utils.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UserUtils.h"
+#import <UIKit/UIKit.h>
 
 @implementation UserUtils
 
@@ -27,9 +27,8 @@
     
     [manager POST:@"http://localhost/api/v1/users" parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"JSON: %@", responseObject);
-              NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
               
+              NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
               NSNumber* userId = responseObject[@"id"];
               [defaults setObject:userId forKey:@"id"];
               [defaults setObject:username forKey:@"username"];
@@ -37,7 +36,6 @@
               [defaults setObject:email forKey:@"email"];
               [defaults setObject:country forKey:@"country"];
               [defaults setBool:TRUE forKey:@"registered"];
-              
               [defaults synchronize];
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);

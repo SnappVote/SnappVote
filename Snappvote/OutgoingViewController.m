@@ -7,12 +7,13 @@
 //
 
 #import "OutgoingViewController.h"
-#import "OutgoingTableCell.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Utils.h"
 #import "Snappvote.h"
 #import "SVModelParser.h"
+#import "OutgoingTableCell.h"
 #import "VotingViewController.h"
+
 @interface OutgoingViewController ()
 
 @end
@@ -27,18 +28,17 @@
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/1", [Utils getBaseUrl]];
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = [parser parseSnappvotes:responseObject];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -52,12 +52,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *simpleTableIdentifier = @"OutgoingTableCell";
+    static NSString *cellIdentifier = @"OutgoingTableCell";
     
-    OutgoingTableCell *cell = (OutgoingTableCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    OutgoingTableCell *cell = (OutgoingTableCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"OutgoingTableCell" owner:nil options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:nil options:nil];
         for (id eachObject in nib) {
             if ([eachObject isKindOfClass:[UITableViewCell class]]) {
                 cell = eachObject;
@@ -65,10 +65,12 @@
             }
         }
     }
+    
     Snappvote* snappvote = [data objectAtIndex:indexPath.row];
     cell.labelTitle.text = snappvote.title;
     cell.labelAnswer1.text = snappvote.answer1;
     cell.labelAnswer2.text = snappvote.answer2;
+    
     return cell;
 }
 
@@ -78,7 +80,6 @@
     
     VotingViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"VotingViewController"];
     
-    // Pass data to controller
     controller.snappvote = snappvote;
     [self.navigationController pushViewController:controller animated:YES];
 }
