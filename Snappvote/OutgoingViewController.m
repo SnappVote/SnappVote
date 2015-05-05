@@ -9,6 +9,7 @@
 #import "OutgoingViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Utils.h"
+#import "UserUtils.h"
 #import "Snappvote.h"
 #import "SVModelParser.h"
 #import "OutgoingTableCell.h"
@@ -25,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/1", [Utils getBaseUrl]];
+    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     

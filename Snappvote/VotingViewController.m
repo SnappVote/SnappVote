@@ -10,6 +10,8 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "Utils.h"
 #import "UserUtils.h"
+#import "IncomingViewController.h"
+#import "HomeTabBarController.h"
 
 @interface VotingViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
@@ -40,28 +42,33 @@
     answerIndex = 1;
 }
 - (IBAction)confirmTapped:(id)sender {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString* url =@"http://localhost/api/v1/snappvotes/answers/9";// [NSString stringWithFormat:@"%@/snappvotes/%i/answers",[Utils getBaseUrl], 9];
-    NSDictionary *parameters = @{@"voter_id": @2,
-                                 @"answer_id": @1};
-    
-    [manager PUT:url parameters:parameters
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"JSON: %@", responseObject);
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"%@",[error localizedDescription]);
-          }];
-
+    if(answerIndex == -1){
+        [Utils showAlert:@"Error" withMessage:@"Answer not selected"];
+    }
+    else{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSString* url =[NSString stringWithFormat:@"%@/snappvotes/answers/%ld",[Utils getBaseUrl], self.snappvote.id];
+        NSDictionary *parameters = @{@"voter_id":  [NSNumber numberWithInt:[UserUtils getUserId]],
+                                     @"answer_id": [NSNumber numberWithInt:answerIndex]};
+        
+        [manager PUT:url parameters:parameters
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 HomeTabBarController *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarController"];
+                 [self.navigationController pushViewController:newView animated:YES];
+             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"%@",[error localizedDescription]);
+                 }];
+    }
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

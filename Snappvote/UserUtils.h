@@ -10,7 +10,7 @@
 
 @interface UserUtils : NSObject
 +(void)createUser: (NSString*)username phone:(NSString*)phone email:(NSString*)email country:(NSString*)country;
-+(NSInteger)getUserId;
++(int)getUserId;
 +(BOOL)userExists;
 
 @end

@@ -14,4 +14,6 @@
 + (NSString *)encodeToBase64String:(UIImage *)image;
 + (UIImage *)decodeFromBase64:(NSString *)strEncodeData;
 +(NSString*)getFriendlyDateString:(NSDate *)date;
++ (void) showAlert: (NSString *) title withMessage: (NSString*) message;
+
 @end

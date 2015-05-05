@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Creative2Thoughts. All rights reserved.
 //
 
-#import "Utils.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "UserUtils.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "Utils.h"
 #import <UIKit/UIKit.h>
 
 @implementation UserUtils
@@ -37,15 +37,17 @@
               [defaults setObject:country forKey:@"country"];
               [defaults setBool:TRUE forKey:@"registered"];
               [defaults synchronize];
+              [Utils showAlert:@"Success" withMessage:@"User registered"];
+              
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);
           }];
 }
 
-+(NSInteger)getUserId{
++(int)getUserId{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"id"]){
-        return [[defaults objectForKey:@"id"] integerValue];
+        return 1;// [[defaults objectForKey:@"id"] integerValue];
     }
     else{
         return -1;
@@ -61,5 +63,6 @@
         return FALSE;
     }
 }
+
 
 @end

@@ -31,7 +31,7 @@
     
     contactsIds = [[NSMutableSet alloc] init];
     SVModelParser* parser = [[SVModelParser alloc] init];
-    NSString* url = [NSString stringWithFormat:@"%@/users/1/groups", [Utils getBaseUrl]];
+    NSString* url = [NSString stringWithFormat:@"%@/users/%i/groups", [Utils getBaseUrl], [UserUtils getUserId]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -44,7 +44,7 @@
 
 -(void)okTapped{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/1", [Utils getBaseUrl]];
+    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl],[UserUtils getUserId]];
     NSDictionary *parameters = @{@"title": self.snappvote.title,
                                  @"img_1": @"test",
                                  @"img_2" :@"test",

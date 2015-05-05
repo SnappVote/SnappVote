@@ -87,7 +87,7 @@
         <!--Item 2-->
         <scene sceneID="DeG-eU-cei">
             <objects>
-                <viewController id="bq1-Jh-cjl" customClass="OutgoingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OutgoingViewController" id="bq1-Jh-cjl" customClass="OutgoingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C8P-eI-JQk"/>
                         <viewControllerLayoutGuide type="bottom" id="eJx-F9-RZA"/>
@@ -99,6 +99,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mQu-jW-auD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="bq1-Jh-cjl" id="ZI0-OX-vhj"/>
                                     <outlet property="delegate" destination="bq1-Jh-cjl" id="dAU-nA-Iy2"/>
@@ -181,9 +184,9 @@
                                 <exclude reference="Wxu-6h-22g"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="uC4-jG-Myn"/>
                                 <exclude reference="Rwf-nd-I6M"/>
                                 <exclude reference="sqX-8h-dgG"/>
+                                <exclude reference="uC4-jG-Myn"/>
                                 <exclude reference="i2K-7L-Gqb"/>
                                 <exclude reference="qNO-2x-Ax3"/>
                                 <exclude reference="Doz-el-lij"/>
@@ -199,9 +202,9 @@
                                 <include reference="Wxu-6h-22g"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="uC4-jG-Myn"/>
                                 <include reference="Rwf-nd-I6M"/>
                                 <include reference="sqX-8h-dgG"/>
+                                <include reference="uC4-jG-Myn"/>
                                 <include reference="i2K-7L-Gqb"/>
                                 <include reference="qNO-2x-Ax3"/>
                                 <include reference="Doz-el-lij"/>
@@ -223,7 +226,7 @@
         <!--Item 1-->
         <scene sceneID="Db9-n3-BFu">
             <objects>
-                <viewController id="d05-54-4LE" customClass="IncomingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IncomingViewController" id="d05-54-4LE" customClass="IncomingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xU4-ot-rBP"/>
                         <viewControllerLayoutGuide type="bottom" id="Abx-7m-mCr"/>
@@ -259,7 +262,7 @@
         <!--Home Tab Bar Controller-->
         <scene sceneID="Tuk-54-cqs">
             <objects>
-                <tabBarController id="KAE-Ze-hRC" customClass="HomeTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabBarController" id="KAE-Ze-hRC" customClass="HomeTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="oV9-a7-QxK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

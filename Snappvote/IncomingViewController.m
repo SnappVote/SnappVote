@@ -9,6 +9,7 @@
 #import "IncomingViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Utils.h"
+#import "UserUtils.h"
 #import "Snappvote.h"
 #import "SVModelParser.h"
 #import "IncomingTableCell.h"
@@ -29,7 +30,7 @@
     [self initNavItems];
 
     usernames = [[NSMutableArray alloc] init];
-    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/in/2", [Utils getBaseUrl]];
+    NSString* url = [NSString stringWithFormat:@"%@/snappvotes/in/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
