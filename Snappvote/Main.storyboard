@@ -125,13 +125,100 @@
                         <viewControllerLayoutGuide type="bottom" id="4X1-8J-XTp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lut-sH-5pb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgO-hn-pT5">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAI-hk-QOx">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="answer1Tapped:" destination="Kbg-ZC-wt7" eventType="touchUpInside" id="dtt-EM-lKT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJG-58-gKy">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="answer2Tapped:" destination="Kbg-ZC-wt7" eventType="touchUpInside" id="SjO-ML-Suq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxu-6h-22g">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmTapped:" destination="Kbg-ZC-wt7" eventType="touchUpInside" id="R2T-zZ-qGl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yJG-58-gKy" firstAttribute="leading" secondItem="QAI-hk-QOx" secondAttribute="trailing" constant="26" id="Doz-el-lij"/>
+                            <constraint firstItem="yJG-58-gKy" firstAttribute="top" secondItem="QgO-hn-pT5" secondAttribute="bottom" constant="8" symbolic="YES" id="Fbo-A0-dyN"/>
+                            <constraint firstItem="QgO-hn-pT5" firstAttribute="centerX" secondItem="lut-sH-5pb" secondAttribute="centerX" id="Rwf-nd-I6M"/>
+                            <constraint firstItem="Wxu-6h-22g" firstAttribute="top" secondItem="QgO-hn-pT5" secondAttribute="bottom" constant="35" id="i2K-7L-Gqb"/>
+                            <constraint firstItem="yJG-58-gKy" firstAttribute="baseline" secondItem="QAI-hk-QOx" secondAttribute="baseline" id="kgP-5j-EYu"/>
+                            <constraint firstItem="Wxu-6h-22g" firstAttribute="centerX" secondItem="QgO-hn-pT5" secondAttribute="centerX" id="qNO-2x-Ax3"/>
+                            <constraint firstItem="QgO-hn-pT5" firstAttribute="top" secondItem="NyW-oI-ccD" secondAttribute="bottom" constant="8" symbolic="YES" id="sqX-8h-dgG"/>
+                            <constraint firstItem="QAI-hk-QOx" firstAttribute="leading" secondItem="lut-sH-5pb" secondAttribute="leading" constant="138" id="uC4-jG-Myn"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="QgO-hn-pT5"/>
+                                <exclude reference="QAI-hk-QOx"/>
+                                <exclude reference="yJG-58-gKy"/>
+                                <exclude reference="Wxu-6h-22g"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="uC4-jG-Myn"/>
+                                <exclude reference="Rwf-nd-I6M"/>
+                                <exclude reference="sqX-8h-dgG"/>
+                                <exclude reference="i2K-7L-Gqb"/>
+                                <exclude reference="qNO-2x-Ax3"/>
+                                <exclude reference="Doz-el-lij"/>
+                                <exclude reference="Fbo-A0-dyN"/>
+                                <exclude reference="kgP-5j-EYu"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="QgO-hn-pT5"/>
+                                <include reference="QAI-hk-QOx"/>
+                                <include reference="yJG-58-gKy"/>
+                                <include reference="Wxu-6h-22g"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="uC4-jG-Myn"/>
+                                <include reference="Rwf-nd-I6M"/>
+                                <include reference="sqX-8h-dgG"/>
+                                <include reference="i2K-7L-Gqb"/>
+                                <include reference="qNO-2x-Ax3"/>
+                                <include reference="Doz-el-lij"/>
+                                <include reference="Fbo-A0-dyN"/>
+                                <include reference="kgP-5j-EYu"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="btnAnswer1" destination="QAI-hk-QOx" id="pRJ-X3-FGF"/>
+                        <outlet property="btnAnswer2" destination="yJG-58-gKy" id="2mH-38-y4S"/>
+                        <outlet property="labelTitle" destination="QgO-hn-pT5" id="TEZ-Ng-XtE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kV9-Rb-r6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556.5" y="-125.25"/>
+            <point key="canvasLocation" x="3619.5" y="-125.25"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="Db9-n3-BFu">
@@ -162,6 +249,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="JHA-Bk-fJc"/>
                     <connections>
                         <outlet property="tableView" destination="a7l-kM-8cB" id="I1O-UG-HhK"/>
+                        <segue destination="Kbg-ZC-wt7" kind="show" id="wPt-xE-lPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9y-lu-Gww" userLabel="First Responder" sceneMemberID="firstResponder"/>
