@@ -102,7 +102,7 @@
 }
 -(void)okTapped{
     NewSnappvoteViewController *vc2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"NewSnappvoteViewController"];
-    [[self navigationController] pushViewController:vc2 animated:YES];
+    [self.navigationController pushViewController:vc2 animated:YES];
 }
 
 /*

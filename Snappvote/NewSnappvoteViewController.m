@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self initNavItems];
     // Do any additional setup after loading the view.
 }
 

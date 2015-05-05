@@ -30,18 +30,21 @@
     self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
     
     contactsIds = [[NSMutableSet alloc] init];
-    SVModelParser* parser = [[SVModelParser alloc] init];
+    
+}
+-(void)fetchGroups{
     NSString* url = [NSString stringWithFormat:@"%@/users/%i/groups", [Utils getBaseUrl], [UserUtils getUserId]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
+    SVModelParser* parser = [[SVModelParser alloc] init];
+
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = [parser parseGroups:responseObject];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
 }
-
 -(void)okTapped{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl],[UserUtils getUserId]];
@@ -131,6 +134,26 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
+}
+- (IBAction)addGroupTapped:(id)sender {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"New group" message:@"Group name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString* url = [NSString stringWithFormat:@"%@/groups/%i",[Utils getBaseUrl], [UserUtils getUserId]];
+    NSDictionary *parameters = @{@"name": [[alertView textFieldAtIndex:0] text]};
+    
+    [manager POST:url parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [self fetchGroups];
+              NSLog(@"JSON: %@", responseObject);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"%@",[error localizedDescription]);
+          }];
+    
+    NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
 }
 /*
  #pragma mark - Navigation

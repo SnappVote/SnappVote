@@ -38,7 +38,6 @@
               [defaults setBool:TRUE forKey:@"registered"];
               [defaults synchronize];
               [Utils showAlert:@"Success" withMessage:@"User registered"];
-              
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);
           }];
@@ -47,7 +46,7 @@
 +(int)getUserId{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"id"]){
-        return 1;// [[defaults objectForKey:@"id"] integerValue];
+        return 4;// [[defaults objectForKey:@"id"] integerValue];
     }
     else{
         return -1;
