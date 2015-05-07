@@ -46,7 +46,7 @@
 +(int)getUserId{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"id"]){
-        return 4;// [[defaults objectForKey:@"id"] integerValue];
+        return 1;// [[defaults objectForKey:@"id"] integerValue];
     }
     else{
         return -1;

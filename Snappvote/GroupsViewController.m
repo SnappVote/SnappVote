@@ -30,6 +30,7 @@
     self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
     
     contactsIds = [[NSMutableSet alloc] init];
+    [self fetchGroups];
     
 }
 -(void)fetchGroups{
@@ -108,27 +109,55 @@
         }
     }
     
+    cell.switchSelectGroup.tag = indexPath.row;
+    [cell.switchSelectGroup addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
+
     Group* group =[data objectAtIndex:indexPath.row];
     cell.labelName.text = group.name;
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)switchClicked:(UISwitch*)sender
 {
-    Group* group =[data objectAtIndex:indexPath.row];
+    if(!sender.isOn){
+    Group* group =[data objectAtIndex:sender.tag];
     NSInteger groupId = group.id;
     NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", [Utils getBaseUrl], groupId];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary *dictionary in responseObject) {
             NSNumber *identifier = dictionary[@"id"];
-            NSLog(@"%ld", [identifier integerValue]);
             [contactsIds addObject:identifier];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    }
+    else{
+        Group* group =[data objectAtIndex:sender.tag];
+        NSInteger groupId = group.id;
+        NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", [Utils getBaseUrl], groupId];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            for (NSDictionary *dictionary in responseObject) {
+                NSNumber *identifier = dictionary[@"id"];
+                [contactsIds removeObject:identifier];
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    }
+    NSLog(@"%ld", [contactsIds count]);
+   // for(NSNumber* number in contactsIds) {
+   //     NSLog(@"%ld", [number integerValue]);
+    //}
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
 }
 
 

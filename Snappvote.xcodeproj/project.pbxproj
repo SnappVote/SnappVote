@@ -44,8 +44,6 @@
 		F73A71CB1AEFA5FD00DF5BF9 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71CA1AEFA5FD00DF5BF9 /* ContactsViewController.m */; };
 		F73A71CE1AEFA78800DF5BF9 /* GroupsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73A71CD1AEFA78800DF5BF9 /* GroupsTableCell.xib */; };
 		F73A71D11AEFA82400DF5BF9 /* GroupsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D01AEFA82400DF5BF9 /* GroupsTableCell.m */; };
-		F73A71D51AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F73A71D21AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib */; };
-		F73A71D61AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D41AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m */; };
 		F73A71DA1AEFB69F00DF5BF9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = F73A71D91AEFB69F00DF5BF9 /* Group.m */; };
 		F753B6131AF11D270017E34A /* HomeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6121AF11D270017E34A /* HomeTabBarController.m */; };
 		F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6151AF11DAB0017E34A /* IncomingViewController.m */; };
@@ -131,9 +129,6 @@
 		F73A71CD1AEFA78800DF5BF9 /* GroupsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsTableCell.xib; sourceTree = "<group>"; };
 		F73A71CF1AEFA82400DF5BF9 /* GroupsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsTableCell.h; sourceTree = "<group>"; };
 		F73A71D01AEFA82400DF5BF9 /* GroupsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsTableCell.m; sourceTree = "<group>"; };
-		F73A71D21AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferBidsUITableViewCell.xib; sourceTree = "<group>"; };
-		F73A71D31AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferBidsUITableViewCell.h; sourceTree = "<group>"; };
-		F73A71D41AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferBidsUITableViewCell.m; sourceTree = "<group>"; };
 		F73A71D81AEFB69F00DF5BF9 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		F73A71D91AEFB69F00DF5BF9 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		F753B6111AF11D270017E34A /* HomeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTabBarController.h; sourceTree = "<group>"; };
@@ -321,9 +316,6 @@
 				F73A71CD1AEFA78800DF5BF9 /* GroupsTableCell.xib */,
 				F73A71CF1AEFA82400DF5BF9 /* GroupsTableCell.h */,
 				F73A71D01AEFA82400DF5BF9 /* GroupsTableCell.m */,
-				F73A71D21AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib */,
-				F73A71D31AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.h */,
-				F73A71D41AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m */,
 				F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */,
 				F7305B261AF22B1C001F362A /* OutgoingTableCell.h */,
 				F7305B271AF22B1C001F362A /* OutgoingTableCell.m */,
@@ -438,7 +430,6 @@
 				F73A71CE1AEFA78800DF5BF9 /* GroupsTableCell.xib in Resources */,
 				F718CDED1AE9097B009A8B5B /* Main.storyboard in Resources */,
 				F718CDAD1AE8F686009A8B5B /* LaunchScreen.xib in Resources */,
-				F73A71D51AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.xib in Resources */,
 				F718CDAA1AE8F686009A8B5B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,7 +464,6 @@
 				F718CDE21AE8F78D009A8B5B /* AFURLSessionManager.m in Sources */,
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
-				F73A71D61AEFAF0D00DF5BF9 /* OfferBidsUITableViewCell.m in Sources */,
 				F7305B301AF26F84001F362A /* SVModelParser.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDC41AE8F6B3009A8B5B /* RegisterViewController.m in Sources */,
