@@ -2,9 +2,63 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qrg-bw-61e">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="QtN-Vi-3UP">
+            <objects>
+                <viewController id="WtH-4X-Pih" customClass="AR_ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GXO-k4-a6y"/>
+                        <viewControllerLayoutGuide type="bottom" id="eCh-Rp-k3k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Ti-km-5z9">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spq-fV-hKQ">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Spq-fV-hKQ" secondAttribute="trailing" id="gKR-am-bnJ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Spq-fV-hKQ" secondAttribute="bottom" constant="-64" id="ppI-y9-7ha"/>
+                            <constraint firstItem="Spq-fV-hKQ" firstAttribute="top" secondItem="GXO-k4-a6y" secondAttribute="bottom" id="roG-AH-CDg"/>
+                            <constraint firstItem="Spq-fV-hKQ" firstAttribute="leading" secondItem="2Ti-km-5z9" secondAttribute="leading" id="wsC-HC-WfA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Spq-fV-hKQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="gKR-am-bnJ"/>
+                                <exclude reference="ppI-y9-7ha"/>
+                                <exclude reference="roG-AH-CDg"/>
+                                <exclude reference="wsC-HC-WfA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Spq-fV-hKQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="gKR-am-bnJ"/>
+                                <include reference="ppI-y9-7ha"/>
+                                <include reference="roG-AH-CDg"/>
+                                <include reference="wsC-HC-WfA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="scrollViewForAccordian" destination="Spq-fV-hKQ" id="MVJ-QP-GnO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ec-2D-KRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="957"/>
+        </scene>
         <!--New Snappvote View Controller-->
         <scene sceneID="6Nv-QO-hrH">
             <objects>
@@ -326,6 +380,7 @@
                                 </state>
                                 <connections>
                                     <action selector="testTapped:" destination="Br8-Cw-mTN" eventType="touchUpInside" id="mOk-Sd-Gwy"/>
+                                    <segue destination="WtH-4X-Pih" kind="show" id="buq-Dd-mA5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -357,7 +412,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-C4-lZB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-C4-lZB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -401,10 +456,10 @@
                                 <exclude reference="1tA-Qk-9dP"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8Kt-NH-fqc"/>
-                                <exclude reference="Iak-8u-Ljl"/>
                                 <exclude reference="8Rx-3i-KTu"/>
                                 <exclude reference="S0O-27-swa"/>
+                                <exclude reference="8Kt-NH-fqc"/>
+                                <exclude reference="Iak-8u-Ljl"/>
                                 <exclude reference="But-FV-6NC"/>
                             </mask>
                         </variation>
@@ -413,10 +468,10 @@
                                 <include reference="1tA-Qk-9dP"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8Kt-NH-fqc"/>
-                                <include reference="Iak-8u-Ljl"/>
                                 <include reference="8Rx-3i-KTu"/>
                                 <include reference="S0O-27-swa"/>
+                                <include reference="8Kt-NH-fqc"/>
+                                <include reference="Iak-8u-Ljl"/>
                                 <include reference="But-FV-6NC"/>
                             </mask>
                         </variation>

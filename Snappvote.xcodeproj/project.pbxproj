@@ -35,6 +35,12 @@
 		F72C33281AFB9586006ACD0B /* SubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C33211AFB9586006ACD0B /* SubTableViewCell.m */; };
 		F72C33291AFB9586006ACD0B /* ExpandedContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C33231AFB9586006ACD0B /* ExpandedContainer.m */; };
 		F72C332A1AFB9586006ACD0B /* SubTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C33251AFB9586006ACD0B /* SubTableView.m */; };
+		F72C332D1AFB9F4A006ACD0B /* AR_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C332C1AFB9F4A006ACD0B /* AR_ViewController.m */; };
+		F72C332F1AFBA166006ACD0B /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = F72C332E1AFBA166006ACD0B /* close.png */; };
+		F72C33321AFBA1AD006ACD0B /* gray_bar_520X88_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F72C33301AFBA1AD006ACD0B /* gray_bar_520X88_selected.png */; };
+		F72C33331AFBA1AD006ACD0B /* gray_bar_520X88.png in Resources */ = {isa = PBXBuildFile; fileRef = F72C33311AFBA1AD006ACD0B /* gray_bar_520X88.png */; };
+		F72C33351AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png in Resources */ = {isa = PBXBuildFile; fileRef = F72C33341AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png */; };
+		F72C33371AFBA1BF006ACD0B /* open.png in Resources */ = {isa = PBXBuildFile; fileRef = F72C33361AFBA1BF006ACD0B /* open.png */; };
 		F7305B211AF21EFF001F362A /* OutgoingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B201AF21EFF001F362A /* OutgoingViewController.m */; };
 		F7305B251AF22AF8001F362A /* OutgoingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */; };
 		F7305B281AF22B1C001F362A /* OutgoingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B271AF22B1C001F362A /* OutgoingTableCell.m */; };
@@ -120,6 +126,13 @@
 		F72C33231AFB9586006ACD0B /* ExpandedContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandedContainer.m; sourceTree = "<group>"; };
 		F72C33241AFB9586006ACD0B /* SubTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTableView.h; sourceTree = "<group>"; };
 		F72C33251AFB9586006ACD0B /* SubTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTableView.m; sourceTree = "<group>"; };
+		F72C332B1AFB9F4A006ACD0B /* AR_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR_ViewController.h; sourceTree = "<group>"; };
+		F72C332C1AFB9F4A006ACD0B /* AR_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AR_ViewController.m; sourceTree = "<group>"; };
+		F72C332E1AFBA166006ACD0B /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		F72C33301AFBA1AD006ACD0B /* gray_bar_520X88_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_bar_520X88_selected.png; sourceTree = "<group>"; };
+		F72C33311AFBA1AD006ACD0B /* gray_bar_520X88.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_bar_520X88.png; sourceTree = "<group>"; };
+		F72C33341AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_gray_bar_with_blue_stripe.png; sourceTree = "<group>"; };
+		F72C33361AFBA1BF006ACD0B /* open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open.png; sourceTree = "<group>"; };
 		F7305B1F1AF21EFF001F362A /* OutgoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingViewController.h; sourceTree = "<group>"; };
 		F7305B201AF21EFF001F362A /* OutgoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingViewController.m; sourceTree = "<group>"; };
 		F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutgoingTableCell.xib; sourceTree = "<group>"; };
@@ -294,6 +307,11 @@
 		F718CDFB1AEA3B12009A8B5B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F72C332E1AFBA166006ACD0B /* close.png */,
+				F72C33361AFBA1BF006ACD0B /* open.png */,
+				F72C33301AFBA1AD006ACD0B /* gray_bar_520X88_selected.png */,
+				F72C33311AFBA1AD006ACD0B /* gray_bar_520X88.png */,
+				F72C33341AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png */,
 				F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */,
 				F718CDFC1AEA3B29009A8B5B /* test.png */,
 			);
@@ -345,6 +363,8 @@
 		F7305B221AF21F11001F362A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F72C332B1AFB9F4A006ACD0B /* AR_ViewController.h */,
+				F72C332C1AFB9F4A006ACD0B /* AR_ViewController.m */,
 				F753B6111AF11D270017E34A /* HomeTabBarController.h */,
 				F753B6121AF11D270017E34A /* HomeTabBarController.m */,
 				F753B6141AF11DAB0017E34A /* IncomingViewController.h */,
@@ -481,11 +501,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72C33351AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png in Resources */,
+				F72C332F1AFBA166006ACD0B /* close.png in Resources */,
+				F72C33331AFBA1AD006ACD0B /* gray_bar_520X88.png in Resources */,
+				F72C33371AFBA1BF006ACD0B /* open.png in Resources */,
 				F7305B2A1AF240A2001F362A /* IncomingTableCell.xib in Resources */,
 				F73A71BC1AEE399E00DF5BF9 /* paris.jpeg in Resources */,
 				F718CDFD1AEA3B29009A8B5B /* test.png in Resources */,
 				F7305B251AF22AF8001F362A /* OutgoingTableCell.xib in Resources */,
 				F73A71CE1AEFA78800DF5BF9 /* GroupsTableCell.xib in Resources */,
+				F72C33321AFBA1AD006ACD0B /* gray_bar_520X88_selected.png in Resources */,
 				F718CDED1AE9097B009A8B5B /* Main.storyboard in Resources */,
 				F718CDAD1AE8F686009A8B5B /* LaunchScreen.xib in Resources */,
 				F718CDAA1AE8F686009A8B5B /* Images.xcassets in Resources */,
@@ -525,6 +550,7 @@
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
 				F7305B301AF26F84001F362A /* SVModelParser.m in Sources */,
+				F72C332D1AFB9F4A006ACD0B /* AR_ViewController.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDC41AE8F6B3009A8B5B /* RegisterViewController.m in Sources */,
 				F718CDE11AE8F78D009A8B5B /* AFURLResponseSerialization.m in Sources */,

@@ -24,9 +24,9 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)testTapped:(id)sender {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This is an example alert!" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
+    //UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This is an example alert!" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles:nil];
+    //alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    //[alert show];
 }
 
 /*

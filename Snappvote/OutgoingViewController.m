@@ -14,7 +14,7 @@
 #import "SVModelParser.h"
 #import "OutgoingTableCell.h"
 #import "VotingViewController.h"
-#import "SLExpandableTableView.h"
+
 @interface OutgoingViewController ()
 
 @end
@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
