@@ -29,6 +29,7 @@
     [super viewDidLoad];
     [self initNavItems];
 
+
     usernames = [[NSMutableArray alloc] init];
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/in/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     SVModelParser* parser = [[SVModelParser alloc] init];

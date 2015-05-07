@@ -30,6 +30,11 @@
 		F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF61AE923E6009A8B5B /* Snappvote.m */; };
 		F718CDFA1AEA3951009A8B5B /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F718CDF91AEA3951009A8B5B /* Utils.m */; };
 		F718CDFD1AEA3B29009A8B5B /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = F718CDFC1AEA3B29009A8B5B /* test.png */; };
+		F72C33261AFB9586006ACD0B /* ParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C331B1AFB9586006ACD0B /* ParentTableViewCell.m */; };
+		F72C33271AFB9586006ACD0B /* ParentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C331D1AFB9586006ACD0B /* ParentTableView.m */; };
+		F72C33281AFB9586006ACD0B /* SubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C33211AFB9586006ACD0B /* SubTableViewCell.m */; };
+		F72C33291AFB9586006ACD0B /* ExpandedContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C33231AFB9586006ACD0B /* ExpandedContainer.m */; };
+		F72C332A1AFB9586006ACD0B /* SubTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72C33251AFB9586006ACD0B /* SubTableView.m */; };
 		F7305B211AF21EFF001F362A /* OutgoingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B201AF21EFF001F362A /* OutgoingViewController.m */; };
 		F7305B251AF22AF8001F362A /* OutgoingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */; };
 		F7305B281AF22B1C001F362A /* OutgoingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7305B271AF22B1C001F362A /* OutgoingTableCell.m */; };
@@ -105,6 +110,16 @@
 		F718CDF81AEA3951009A8B5B /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		F718CDF91AEA3951009A8B5B /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		F718CDFC1AEA3B29009A8B5B /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		F72C331A1AFB9586006ACD0B /* ParentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentTableViewCell.h; sourceTree = "<group>"; };
+		F72C331B1AFB9586006ACD0B /* ParentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentTableViewCell.m; sourceTree = "<group>"; };
+		F72C331C1AFB9586006ACD0B /* ParentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentTableView.h; sourceTree = "<group>"; };
+		F72C331D1AFB9586006ACD0B /* ParentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentTableView.m; sourceTree = "<group>"; };
+		F72C33201AFB9586006ACD0B /* SubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTableViewCell.h; sourceTree = "<group>"; };
+		F72C33211AFB9586006ACD0B /* SubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTableViewCell.m; sourceTree = "<group>"; };
+		F72C33221AFB9586006ACD0B /* ExpandedContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandedContainer.h; sourceTree = "<group>"; };
+		F72C33231AFB9586006ACD0B /* ExpandedContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandedContainer.m; sourceTree = "<group>"; };
+		F72C33241AFB9586006ACD0B /* SubTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTableView.h; sourceTree = "<group>"; };
+		F72C33251AFB9586006ACD0B /* SubTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTableView.m; sourceTree = "<group>"; };
 		F7305B1F1AF21EFF001F362A /* OutgoingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingViewController.h; sourceTree = "<group>"; };
 		F7305B201AF21EFF001F362A /* OutgoingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingViewController.m; sourceTree = "<group>"; };
 		F7305B241AF22AF8001F362A /* OutgoingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutgoingTableCell.xib; sourceTree = "<group>"; };
@@ -231,6 +246,7 @@
 		F718CDC51AE8F738009A8B5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F72C33181AFB9586006ACD0B /* SubTable */,
 				F718CDC61AE8F78D009A8B5B /* AFNetworking */,
 			);
 			name = Frameworks;
@@ -282,6 +298,48 @@
 				F718CDFC1AEA3B29009A8B5B /* test.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		F72C33181AFB9586006ACD0B /* SubTable */ = {
+			isa = PBXGroup;
+			children = (
+				F72C33191AFB9586006ACD0B /* ParentCell */,
+				F72C331C1AFB9586006ACD0B /* ParentTableView.h */,
+				F72C331D1AFB9586006ACD0B /* ParentTableView.m */,
+				F72C331E1AFB9586006ACD0B /* SubRow */,
+			);
+			name = SubTable;
+			path = AFNetworking/SubTable;
+			sourceTree = "<group>";
+		};
+		F72C33191AFB9586006ACD0B /* ParentCell */ = {
+			isa = PBXGroup;
+			children = (
+				F72C331A1AFB9586006ACD0B /* ParentTableViewCell.h */,
+				F72C331B1AFB9586006ACD0B /* ParentTableViewCell.m */,
+			);
+			path = ParentCell;
+			sourceTree = "<group>";
+		};
+		F72C331E1AFB9586006ACD0B /* SubRow */ = {
+			isa = PBXGroup;
+			children = (
+				F72C331F1AFB9586006ACD0B /* ChildCell */,
+				F72C33221AFB9586006ACD0B /* ExpandedContainer.h */,
+				F72C33231AFB9586006ACD0B /* ExpandedContainer.m */,
+				F72C33241AFB9586006ACD0B /* SubTableView.h */,
+				F72C33251AFB9586006ACD0B /* SubTableView.m */,
+			);
+			path = SubRow;
+			sourceTree = "<group>";
+		};
+		F72C331F1AFB9586006ACD0B /* ChildCell */ = {
+			isa = PBXGroup;
+			children = (
+				F72C33201AFB9586006ACD0B /* SubTableViewCell.h */,
+				F72C33211AFB9586006ACD0B /* SubTableViewCell.m */,
+			);
+			path = ChildCell;
 			sourceTree = "<group>";
 		};
 		F7305B221AF21F11001F362A /* Home */ = {
@@ -460,7 +518,9 @@
 				F73A71D11AEFA82400DF5BF9 /* GroupsTableCell.m in Sources */,
 				F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */,
 				F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */,
+				F72C33261AFB9586006ACD0B /* ParentTableViewCell.m in Sources */,
 				F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */,
+				F72C33281AFB9586006ACD0B /* SubTableViewCell.m in Sources */,
 				F718CDE21AE8F78D009A8B5B /* AFURLSessionManager.m in Sources */,
 				F718CDE51AE8F7B4009A8B5B /* LoginViewController.m in Sources */,
 				F718CDE81AE90615009A8B5B /* UserUtils.m in Sources */,
@@ -470,6 +530,8 @@
 				F718CDE11AE8F78D009A8B5B /* AFURLResponseSerialization.m in Sources */,
 				F718CD9F1AE8F686009A8B5B /* AppDelegate.m in Sources */,
 				F718CDA21AE8F686009A8B5B /* Snappvote.xcdatamodeld in Sources */,
+				F72C33271AFB9586006ACD0B /* ParentTableView.m in Sources */,
+				F72C332A1AFB9586006ACD0B /* SubTableView.m in Sources */,
 				F7305B281AF22B1C001F362A /* OutgoingTableCell.m in Sources */,
 				F73A71BA1AEE221F00DF5BF9 /* NewSnappvoteViewController.m in Sources */,
 				F7305B2D1AF240B4001F362A /* IncomingTableCell.m in Sources */,
@@ -479,6 +541,7 @@
 				F761C6D01AF7B6BD00B98915 /* VotingViewController.m in Sources */,
 				F718CDDE1AE8F78D009A8B5B /* AFSecurityPolicy.m in Sources */,
 				F718CD9C1AE8F686009A8B5B /* main.m in Sources */,
+				F72C33291AFB9586006ACD0B /* ExpandedContainer.m in Sources */,
 				F718CDDC1AE8F78D009A8B5B /* AFHTTPSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
