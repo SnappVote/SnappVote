@@ -21,10 +21,23 @@
 
 @implementation OutgoingViewController{
     NSArray *data;
+    NSMutableArray* users;
+    NSMutableArray *isExpanded;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    users = [[NSMutableArray alloc] init];
+    isExpanded = [[NSMutableArray alloc] init];
+
+    for (int i = 0; i < 2; i++) {
+        NSArray* test = @[@"ASD", @"ASDF", @"ASDFF"];
+        [users addObject:test];
+        
+        [isExpanded addObject:[NSNumber numberWithBool:0]];
+        
+
+    }
     
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     SVModelParser* parser = [[SVModelParser alloc] init];
@@ -36,6 +49,8 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +77,7 @@
         for (id eachObject in nib) {
             if ([eachObject isKindOfClass:[UITableViewCell class]]) {
                 cell = eachObject;
+               
                 break;
             }
         }
@@ -77,17 +93,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Snappvote *snappvote = [data objectAtIndex:indexPath.row];
+    [self.tableView beginUpdates];
     
-    VotingViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"VotingViewController"];
+    [isExpanded replaceObjectAtIndex:indexPath.row withObject:@YES];
     
-    controller.snappvote = snappvote;
-    [self.navigationController pushViewController:controller animated:YES];
+    NSArray* arr = [users objectAtIndex:indexPath.row];
+    for (int i = 0; i < arr.count; i++) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect frame = CGRectMake(0, 90 +(i*20), 160, 50);
+        UILabel *label = [[UILabel alloc] initWithFrame:frame];
+        label.text = @"ASDF";
+        label.tag = 1;
+        [cell.contentView addSubview:label];
+    }
+    
+    [self.tableView endUpdates];
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    BOOL flagValue = [[isExpanded objectAtIndex:indexPath.row] boolValue];
+    if(flagValue)
+    {
+    NSArray* arr = [users objectAtIndex:indexPath.row];
+    return 100 + (20* [arr count]);
+    }
+    else{
+        return 100;
+    }
 }
 
 /*

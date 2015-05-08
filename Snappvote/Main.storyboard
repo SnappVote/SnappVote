@@ -15,6 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eCh-Rp-k3k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Ti-km-5z9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spq-fV-hKQ">
@@ -163,8 +164,18 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mQu-jW-auD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="i4Y-v8-1V0"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="i4Y-v8-1V0"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="i4Y-v8-1V0"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="bq1-Jh-cjl" id="ZI0-OX-vhj"/>
@@ -173,6 +184,25 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mQu-jW-auD" firstAttribute="leading" secondItem="FSZ-g2-vxU" secondAttribute="leading" id="Ljl-da-dck"/>
+                            <constraint firstItem="eJx-F9-RZA" firstAttribute="top" secondItem="mQu-jW-auD" secondAttribute="bottom" constant="87" id="lLH-E5-2Vi"/>
+                            <constraint firstItem="mQu-jW-auD" firstAttribute="top" secondItem="C8P-eI-JQk" secondAttribute="bottom" id="pbA-F6-OOc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ljl-da-dck"/>
+                                <exclude reference="pbA-F6-OOc"/>
+                                <exclude reference="lLH-E5-2Vi"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Ljl-da-dck"/>
+                                <include reference="pbA-F6-OOc"/>
+                                <include reference="lLH-E5-2Vi"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="9Jl-NT-Ncx"/>
                     <connections>
@@ -302,8 +332,18 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="a7l-kM-8cB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="687"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="SMu-H8-h8H"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SMu-H8-h8H"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="SMu-H8-h8H"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="d05-54-4LE" id="4oT-bM-NaB"/>
@@ -312,6 +352,25 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a7l-kM-8cB" firstAttribute="bottom" secondItem="Abx-7m-mCr" secondAttribute="top" id="6oG-4a-vSd"/>
+                            <constraint firstItem="a7l-kM-8cB" firstAttribute="top" secondItem="xU4-ot-rBP" secondAttribute="bottom" id="RB0-BQ-SJm"/>
+                            <constraint firstItem="a7l-kM-8cB" firstAttribute="leading" secondItem="DTU-T5-ehD" secondAttribute="leading" id="uyT-sp-KmL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6oG-4a-vSd"/>
+                                <exclude reference="RB0-BQ-SJm"/>
+                                <exclude reference="uyT-sp-KmL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="6oG-4a-vSd"/>
+                                <include reference="RB0-BQ-SJm"/>
+                                <include reference="uyT-sp-KmL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="JHA-Bk-fJc"/>
                     <connections>
