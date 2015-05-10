@@ -37,7 +37,7 @@
     NSString* url = [NSString stringWithFormat:@"%@/users/%i/groups", [Utils getBaseUrl], [UserUtils getUserId]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     SVModelParser* parser = [[SVModelParser alloc] init];
-
+    
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = [parser parseGroups:responseObject];
         [self.tableView reloadData];
@@ -49,31 +49,24 @@
 -(void)okTapped{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl],[UserUtils getUserId]];
+    NSArray* contactsIdsArr = [contactsIds allObjects];
+    NSLog(@"%@",contactsIdsArr);
+    
     NSDictionary *parameters = @{@"title": self.snappvote.title,
                                  @"img_1": @"test",
                                  @"img_2" :@"test",
                                  @"answer_1": self.snappvote.answer1,
                                  @"answer_2" : self.snappvote.answer2,
-                                 @"expire_date": self.snappvote.expireDate};
+                                 @"expire_date": self.snappvote.expireDate,
+                                 @"contacts_ids": contactsIdsArr};
     
     [manager POST:url parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              for (NSNumber* contactId in contactsIds) {
-                  NSNumber* snapvoteId = responseObject[@"id"];
-                  NSDictionary *parameters = @{@"voter_id": contactId,
-                                               @"answer_id": [NSNumber numberWithInt:-1]};
-                  NSString* url = [NSString stringWithFormat:@"%@/snappvotes/answers/%ld", [Utils getBaseUrl], [snapvoteId integerValue]];
-                  [manager POST:url parameters:parameters
-                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            NSLog(@"JSON: %@", responseObject);
-                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            NSLog(@"%@",[error localizedDescription]);
-                        }];
-              }
               NSLog(@"JSON: %@", responseObject);
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);
           }];
+    
 }
 
 -(void)test{
@@ -111,7 +104,7 @@
     
     cell.switchSelectGroup.tag = indexPath.row;
     [cell.switchSelectGroup addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     Group* group =[data objectAtIndex:indexPath.row];
     cell.labelName.text = group.name;
     
@@ -120,7 +113,6 @@
 
 -(void)switchClicked:(UISwitch*)sender
 {
-    if(!sender.isOn){
     Group* group =[data objectAtIndex:sender.tag];
     NSInteger groupId = group.id;
     NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", [Utils getBaseUrl], groupId];
@@ -133,31 +125,15 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
+    for(NSNumber* number in contactsIds) {
+        NSLog(@"%ld", [number integerValue]);
     }
-    else{
-        Group* group =[data objectAtIndex:sender.tag];
-        NSInteger groupId = group.id;
-        NSString* url = [NSString stringWithFormat:@"%@/groups/%ld/users", [Utils getBaseUrl], groupId];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            for (NSDictionary *dictionary in responseObject) {
-                NSNumber *identifier = dictionary[@"id"];
-                [contactsIds removeObject:identifier];
-            }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
-    }
-    NSLog(@"%ld", [contactsIds count]);
-   // for(NSNumber* number in contactsIds) {
-   //     NSLog(@"%ld", [number integerValue]);
-    //}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    
 }
 
 
