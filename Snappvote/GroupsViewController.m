@@ -35,6 +35,10 @@
     [self fetchGroups];
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Groups"];
+}
 -(void)fetchGroups{
     NSString* url = [NSString stringWithFormat:@"%@/users/%i/groups", [Utils getBaseUrl], [UserUtils getUserId]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -163,6 +167,7 @@
     
     NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
 }
+
 /*
  #pragma mark - Navigation
  

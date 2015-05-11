@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "Utils.h"
 @interface LoginViewController ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Login"];
     // Do any additional setup after loading the view.
 }
 

@@ -29,7 +29,6 @@
     [super viewDidLoad];
     [self initNavItems];
 
-
     usernames = [[NSMutableArray alloc] init];
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/in/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     SVModelParser* parser = [[SVModelParser alloc] init];
@@ -45,7 +44,9 @@
         NSLog(@"Error: %@", error);
     }];
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Incoming"];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

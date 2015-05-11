@@ -7,6 +7,7 @@
 //
 
 #import "NewSnappvoteViewController.h"
+#import "Utils.h"
 #import "UserUtils.h"
 #import "Snappvote.h"
 #import "ContactsTabViewController.h"
@@ -27,6 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavItems];
+    self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"New"];
+
     // Do any additional setup after loading the view.
 }
 
@@ -51,6 +54,8 @@
 {
     answer1 = [self.answer1Button titleForState:UIControlStateNormal];
     answer2 = [self.answer2Button titleForState:UIControlStateNormal];
+    [self.answer1Button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.answer2Button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
 -(void)goToContacts{

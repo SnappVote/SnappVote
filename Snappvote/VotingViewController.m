@@ -30,7 +30,7 @@
     [super viewDidLoad];
     answerIndex = -1;
     [self.labelTitle setText:self.snappvote.title];
-    
+    self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Vote"];
 
 }
 

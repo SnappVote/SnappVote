@@ -7,7 +7,7 @@
 //
 
 #import "ContactsViewController.h"
-
+#import "Utils.h"
 @interface ContactsViewController ()
 
 @end
@@ -24,7 +24,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Contacts"];
+}
 /*
 #pragma mark - Navigation
 

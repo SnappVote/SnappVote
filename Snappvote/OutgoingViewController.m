@@ -31,7 +31,7 @@
     usernames = [[NSMutableArray alloc] init];
     asd = [[NSMutableArray alloc] init];
     isExpanded = [[NSMutableArray alloc] init];
-    
+
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -70,6 +70,10 @@
     }];
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Outgoing"];
 }
 
 - (void)didReceiveMemoryWarning {
