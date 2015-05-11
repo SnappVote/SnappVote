@@ -22,14 +22,16 @@
 
 @implementation VotingViewController{
     int answerIndex;
+    NSString* answer1;
+    NSString* answer2;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     answerIndex = -1;
     [self.labelTitle setText:self.snappvote.title];
-    [self.btnAnswer1 setTitle: self.snappvote.answer1 forState: UIControlStateNormal];
-    [self.btnAnswer2 setTitle: self.snappvote.answer2 forState: UIControlStateNormal];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +58,7 @@
                  HomeTabBarController *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeTabBarController"];
                  [self.navigationController pushViewController:newView animated:YES];
              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 [Utils showAlert:@"Error" withMessage:@"Could not connect to server"];
                      NSLog(@"%@",[error localizedDescription]);
                  }];
     }

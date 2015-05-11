@@ -13,6 +13,8 @@
 #import "Group.h"
 #import "SVModelParser.h"
 #import "GroupsTableCell.h"
+#import "HomeTabBarController.h"
+#import "OutgoingViewController.h"
 
 @interface GroupsViewController ()
 
@@ -62,8 +64,9 @@
     
     [manager POST:url parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"JSON: %@", responseObject);
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [Utils showAlert:@"Success" withMessage:@"Snappvote creteated"];
+              OutgoingViewController *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"OutgoingViewController"];
+              [self.navigationController pushViewController:newView animated:YES];          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"%@",[error localizedDescription]);
           }];
     

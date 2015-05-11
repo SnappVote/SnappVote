@@ -15,9 +15,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *editTextTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *img1ImageView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *expireDatePicker;
+@property (weak, nonatomic) IBOutlet UIButton *answer1Button;
+@property (weak, nonatomic) IBOutlet UIButton *answer2Button;
 @end
 
-@implementation NewSnappvoteViewController
+@implementation NewSnappvoteViewController{
+    NSString* answer1;
+    NSString* answer2;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +38,19 @@
 -(void)initNavItems{
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(goToContacts)];
     self.navigationItem.rightBarButtonItem = anotherButton;
+    
+    [self.answer1Button setTitle: @"Yes" forState: UIControlStateNormal];
+    [self.answer2Button setTitle: @"No" forState: UIControlStateNormal];
+    [self.answer1Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.answer2Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+
+-(void)switchClicked:(UIButton*)sender
+{
+    answer1 = [self.answer1Button titleForState:UIControlStateNormal];
+    answer2 = [self.answer2Button titleForState:UIControlStateNormal];
 }
 
 -(void)goToContacts{
@@ -46,10 +64,11 @@
     snappvote.authorId = [UserUtils getUserId];
     snappvote.isSingle = TRUE;
     snappvote.image1 = self.img1ImageView.image;
-    snappvote.answer1 = @"YES";
-    snappvote.answer2= @"NO";
+    snappvote.answer1 = answer1;
+    snappvote.answer2= answer2;
     snappvote.expireDate = self.expireDatePicker.date;
-    
+    NSLog(snappvote.answer1);
+    NSLog(snappvote.answer2);
     if ([[segue identifier] isEqualToString:@"toContacts"])
     {
         ContactsTabViewController *vc = [segue destinationViewController];
