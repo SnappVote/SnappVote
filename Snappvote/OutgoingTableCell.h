@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelAnswer2;
 @property (weak, nonatomic) IBOutlet UILabel *labelAnswer1Count;
 @property (weak, nonatomic) IBOutlet UILabel *labelAnswer2Count;
+@property (weak, nonatomic) IBOutlet UILabel *labelTimeRemaining;
 @end

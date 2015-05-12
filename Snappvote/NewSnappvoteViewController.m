@@ -46,7 +46,10 @@
     [self.answer2Button setTitle: @"No" forState: UIControlStateNormal];
     [self.answer1Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.answer2Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close.png"]]];
 
+    self.navigationItem.rightBarButtonItem = item;
 }
 
 
@@ -72,6 +75,8 @@
     snappvote.answer1 = answer1;
     snappvote.answer2= answer2;
     snappvote.expireDate = self.expireDatePicker.date;
+    NSString *className = NSStringFromClass([snappvote.expireDate class]);
+    NSLog(@"%@", className);
     if ([[segue identifier] isEqualToString:@"toContacts"])
     {
         ContactsTabViewController *vc = [segue destinationViewController];

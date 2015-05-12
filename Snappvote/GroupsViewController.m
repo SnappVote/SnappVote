@@ -70,9 +70,10 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [Utils showAlert:@"Success" withMessage:@"Snappvote creteated"];
               OutgoingViewController *newView = [self.storyboard instantiateViewControllerWithIdentifier:@"OutgoingViewController"];
-              [self.navigationController pushViewController:newView animated:YES];          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"%@",[error localizedDescription]);
-          }];
+              [self.navigationController pushViewController:newView animated:YES];
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  NSLog(@"%@",[error localizedDescription]);
+              }];
     
 }
 

@@ -9,6 +9,7 @@
 #import "SVModelParser.h"
 
 @implementation SVModelParser
+
 -(NSArray*)parseGroups:(id)responseObject{
     NSMutableArray* groups = [[NSMutableArray alloc] init];
     for (NSDictionary *dictionary in responseObject) {
@@ -23,6 +24,7 @@
     }
     return [NSArray arrayWithArray:groups];
 }
+
 -(NSArray*)parseSnappvotes:(id)responseObject{
     NSMutableArray* snappvotes = [[NSMutableArray alloc] init];
     for (NSDictionary *dictionary in responseObject) {
@@ -50,7 +52,8 @@
         NSString *title = dictionary[@"title"];
         NSString* answer1 = dictionary[@"answer_1"];
         NSString* answer2 = dictionary[@"answer_2"];
-        NSDate* expireDate = dictionary[@"expire_date"];
+        NSString* expireDateStr = dictionary[@"expire_date"];
+        NSDate* expireDate = [self getDateFromString:expireDateStr];
         Snappvote* snappvote = [[Snappvote alloc] init];
         snappvote.id = [identifier integerValue];
         snappvote.authorId = [author_id integerValue];
@@ -60,4 +63,13 @@
         snappvote.expireDate = expireDate;
         return snappvote;
 }
+
+-(NSDate*)getDateFromString:(NSString *)pstrDate
+{
+    NSDateFormatter *df1 = [[NSDateFormatter alloc] init];
+    [df1 setDateFormat:@"yyyy-MM-dd"];
+    NSDate *dtPostDate = [df1 dateFromString:pstrDate];
+    return dtPostDate;
+}
+
 @end

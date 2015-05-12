@@ -37,7 +37,6 @@
     
     NSString* url = [NSString stringWithFormat:@"%@/snappvotes/out/%i", [Utils getBaseUrl], [UserUtils getUserId]];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
         NSMutableArray* snappvotes = [[NSMutableArray alloc] init];
         NSMutableArray* usernamesMT = [[NSMutableArray alloc] init];
         NSMutableArray* answerIdsMT = [[NSMutableArray alloc] init];
@@ -100,6 +99,9 @@
     cell.labelAnswer2.text = snappvote.answer2;
     cell.labelAnswer1Count.text =  [NSString stringWithFormat: @"%i", [self getAnswersCountAtIndex:indexPath.row forAnswer:0]];
     cell.labelAnswer2Count.text = [NSString stringWithFormat: @"%i", [self getAnswersCountAtIndex:indexPath.row forAnswer:1]];
+    cell.labelTimeRemaining.text = [Utils getFriendlyDateString:snappvote.expireDate];
+    NSString *className = NSStringFromClass([snappvote.expireDate class]);
+    NSLog(@"%@", className);
     return cell;
 }
 
@@ -123,13 +125,13 @@
     else{
         [isExpanded replaceObjectAtIndex:indexPath.row withObject:@YES];
         for (int i = 0; i < usersArr.count; i++) {
-            CGRect frame = CGRectMake(0, 90 +(i*30), 160, 50);
+            CGRect frame = CGRectMake(0, 70 +(i*30), 160, 50);
             UILabel *usernameLabel = [[UILabel alloc] initWithFrame:frame];
             usernameLabel.text = [usersArr objectAtIndex:i];
             usernameLabel.tag = 10;
             [cell.contentView addSubview:usernameLabel];
             
-            CGRect frame2 = CGRectMake(200, 90 +(i*30), 160, 50);
+            CGRect frame2 = CGRectMake(200, 70 +(i*30), 160, 50);
             
             UILabel *oherasda = [[UILabel alloc] initWithFrame:frame2];
             oherasda.text = [self getAnswerFromAnswerId:[answersArr objectAtIndex:i] snappvoteId:indexPath.row];// [usersArr objectAtIndex:i];
@@ -148,10 +150,10 @@
     if(flagValue)
     {
         NSArray* arr = [usernames objectAtIndex:indexPath.row];
-        return  120 + (30* arr.count);
+        return  80 + (30* arr.count);
     }
     else{
-        return 100;
+        return 70;
     }
 }
 
@@ -170,7 +172,6 @@
 
 -(int)getAnswersCountAtIndex: (NSInteger*)index forAnswer:(int)answerId{
     NSArray* answersArr = [asd objectAtIndex:index];
-    NSLog(@"%@",answersArr);
     int count = 0;
     for (int i = 0; i < answersArr.count; i++) {
         if([answersArr[i] integerValue] == answerId){

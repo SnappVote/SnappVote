@@ -23,6 +23,33 @@
     return [UIImage imageWithData:data];
 }
 +(NSString*)getFriendlyDateString:(NSDate *)date{
+    
+    NSDate *now = [NSDate date];
+    NSDate *expireDate = date;
+    // profit
+    NSTimeInterval ti = [now timeIntervalSinceDate:expireDate];
+    NSInteger minutes = (NSInteger)(ti / 60) % 60;
+    NSInteger hours = (ti / 3600);
+    NSInteger days = (ti / (3600*24));
+    NSInteger years = (ti / (3600*24*365));
+    if(years == 0){
+        if(days == 0){
+            if(hours == 0){
+                return [NSString stringWithFormat:@"%tu%@", minutes, @"m"];
+                
+            }
+            else{
+                return [NSString stringWithFormat:@"%tu%@", hours, @"h"];
+            }
+        }
+        else {
+            return [NSString stringWithFormat:@"%tu%@", days, @"d"];
+        }
+    }
+    else{
+        return [NSString stringWithFormat:@"%tu%@", years, @"yr"];
+        
+    }
     NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
     [dateformate setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateStr = [dateformate stringFromDate:[NSDate date]];
@@ -42,14 +69,14 @@
 + (UIView*) getTitleViewWithSubtitle:(NSString*)subtitle{
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.text = @"Snappvote";
     [titleLabel sizeToFit];
     
     UILabel *subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 22, 0, 0)];
     subTitleLabel.backgroundColor = [UIColor clearColor];
-    subTitleLabel.textColor = [UIColor blackColor];
+    subTitleLabel.textColor = [UIColor whiteColor];
     subTitleLabel.font = [UIFont systemFontOfSize:12];
     subTitleLabel.text = subtitle;
     [subTitleLabel sizeToFit];

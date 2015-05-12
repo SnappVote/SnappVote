@@ -12,5 +12,4 @@
 +(void)createUser: (NSString*)username phone:(NSString*)phone email:(NSString*)email country:(NSString*)country;
 +(int)getUserId;
 +(BOOL)userExists;
-
 @end
