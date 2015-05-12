@@ -766,6 +766,45 @@
             </objects>
             <point key="canvasLocation" x="2021" y="-483"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="An5-jF-RQH">
+            <objects>
+                <viewController id="svF-QD-1Cc" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ahO-yF-Lk0"/>
+                        <viewControllerLayoutGuide type="bottom" id="RIn-Ab-y6Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GJI-CD-gjF">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-Yj-29Y">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-16" y="0.0" width="416" height="800"/>
+                                </variation>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="aNT-Yj-29Y"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="aNT-Yj-29Y"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="rearTableView" destination="aNT-Yj-29Y" id="kRj-f7-PNR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kzX-L6-3zm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="-426"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="SRJ-rM-xAe">
             <objects>

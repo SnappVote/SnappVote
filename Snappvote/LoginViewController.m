@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Utils.h"
+#import "SWRevealViewController.h"
 @interface LoginViewController ()
 
 @end
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Login"];
+    SWRevealViewController *revealController = [self revealViewController];
+    
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
+                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    
+    self.navigationItem.leftBarButtonItem = revealButtonItem;
     // Do any additional setup after loading the view.
 }
 

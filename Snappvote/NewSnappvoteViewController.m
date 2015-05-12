@@ -47,9 +47,9 @@
     [self.answer1Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.answer2Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close.png"]]];
-
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close.png"] style: UIBarButtonItemStylePlain target:self action:@selector(goToContacts)]; //[[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close.png"]]];
     self.navigationItem.rightBarButtonItem = item;
+
 }
 
 

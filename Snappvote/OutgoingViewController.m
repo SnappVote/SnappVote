@@ -48,7 +48,6 @@
             [snappvotes addObject:snappvote];
             [usernamesMT addObject:test];
             [answerIdsMT addObject:test2];
-            
         }
         
         data = [NSArray arrayWithArray:snappvotes];

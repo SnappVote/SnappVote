@@ -58,6 +58,9 @@
 		F753B6131AF11D270017E34A /* HomeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6121AF11D270017E34A /* HomeTabBarController.m */; };
 		F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6151AF11DAB0017E34A /* IncomingViewController.m */; };
 		F761C6D01AF7B6BD00B98915 /* VotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */; };
+		F76A96521B022AC300DF07A8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76A96511B022AC300DF07A8 /* SWRevealViewController.m */; };
+		F76A96541B022C1100DF07A8 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F76A96531B022C1100DF07A8 /* reveal-icon@2x.png */; };
+		F76A96571B022F9C00DF07A8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76A96561B022F9C00DF07A8 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +165,11 @@
 		F753B6151AF11DAB0017E34A /* IncomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingViewController.m; sourceTree = "<group>"; };
 		F761C6CE1AF7B6BD00B98915 /* VotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotingViewController.h; sourceTree = "<group>"; };
 		F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotingViewController.m; sourceTree = "<group>"; };
+		F76A96501B022AC300DF07A8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		F76A96511B022AC300DF07A8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		F76A96531B022C1100DF07A8 /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		F76A96551B022F9C00DF07A8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		F76A96561B022F9C00DF07A8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +230,11 @@
 				F718CDA01AE8F686009A8B5B /* Snappvote.xcdatamodeld */,
 				F73A71C61AEF943B00DF5BF9 /* TestViewController.h */,
 				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
+				F76A96501B022AC300DF07A8 /* SWRevealViewController.h */,
+				F76A96511B022AC300DF07A8 /* SWRevealViewController.m */,
 				F718CD991AE8F686009A8B5B /* Supporting Files */,
+				F76A96551B022F9C00DF07A8 /* SettingsViewController.h */,
+				F76A96561B022F9C00DF07A8 /* SettingsViewController.m */,
 			);
 			path = Snappvote;
 			sourceTree = "<group>";
@@ -304,6 +316,7 @@
 		F718CDFB1AEA3B12009A8B5B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F76A96531B022C1100DF07A8 /* reveal-icon@2x.png */,
 				F72C332E1AFBA166006ACD0B /* close.png */,
 				F72C33361AFBA1BF006ACD0B /* open.png */,
 				F72C33301AFBA1AD006ACD0B /* gray_bar_520X88_selected.png */,
@@ -498,6 +511,7 @@
 			files = (
 				F72C33351AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png in Resources */,
 				F72C332F1AFBA166006ACD0B /* close.png in Resources */,
+				F76A96541B022C1100DF07A8 /* reveal-icon@2x.png in Resources */,
 				F72C33331AFBA1AD006ACD0B /* gray_bar_520X88.png in Resources */,
 				F72C33371AFBA1BF006ACD0B /* open.png in Resources */,
 				F7305B2A1AF240A2001F362A /* IncomingTableCell.xib in Resources */,
@@ -527,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
+				F76A96521B022AC300DF07A8 /* SWRevealViewController.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
 				F7305B211AF21EFF001F362A /* OutgoingViewController.m in Sources */,
 				F718CDF41AE920DA009A8B5B /* User.m in Sources */,
@@ -537,6 +552,7 @@
 				F73A71CB1AEFA5FD00DF5BF9 /* ContactsViewController.m in Sources */,
 				F73A71D11AEFA82400DF5BF9 /* GroupsTableCell.m in Sources */,
 				F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */,
+				F76A96571B022F9C00DF07A8 /* SettingsViewController.m in Sources */,
 				F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */,
 				F72C33261AFB9586006ACD0B /* ParentTableViewCell.m in Sources */,
 				F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */,
