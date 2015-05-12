@@ -295,7 +295,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mQu-jW-auD" firstAttribute="leading" secondItem="FSZ-g2-vxU" secondAttribute="leading" id="Ljl-da-dck"/>
-                            <constraint firstItem="eJx-F9-RZA" firstAttribute="top" secondItem="mQu-jW-auD" secondAttribute="bottom" constant="87" id="lLH-E5-2Vi"/>
+                            <constraint firstItem="eJx-F9-RZA" firstAttribute="top" secondItem="mQu-jW-auD" secondAttribute="bottom" constant="87" id="lLH-E5-2Vi">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-13"/>
+                            </constraint>
                             <constraint firstItem="mQu-jW-auD" firstAttribute="top" secondItem="C8P-eI-JQk" secondAttribute="bottom" id="pbA-F6-OOc"/>
                         </constraints>
                         <variation key="default">

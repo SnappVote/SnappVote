@@ -21,8 +21,8 @@
 
 @implementation OutgoingViewController{
     NSArray *data;
-    NSMutableArray* usernames;
-    NSMutableArray* asd;
+    NSArray* usernames;
+    NSArray* asd;
     NSMutableArray *isExpanded;
 }
 
@@ -31,7 +31,7 @@
     usernames = [[NSMutableArray alloc] init];
     asd = [[NSMutableArray alloc] init];
     isExpanded = [[NSMutableArray alloc] init];
-
+    
     SVModelParser* parser = [[SVModelParser alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -39,37 +39,27 @@
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSMutableArray* snappvotes = [[NSMutableArray alloc] init];
-        
+        NSMutableArray* usernamesMT = [[NSMutableArray alloc] init];
+        NSMutableArray* answerIdsMT = [[NSMutableArray alloc] init];
         for (NSDictionary *dictionary in responseObject) {
             Snappvote* snappvote = [parser parseSnappvote:dictionary];
-            [snappvotes addObject:snappvote];
             [isExpanded addObject:[NSNumber numberWithBool:0]];
+            NSArray* test = dictionary[@"usernames"];
+            NSArray* test2 = dictionary[@"answers_ids"];
+            [snappvotes addObject:snappvote];
+            [usernamesMT addObject:test];
+            [answerIdsMT addObject:test2];
             
-            NSString* url =[NSString stringWithFormat:@"%@/snappvotes/out/answers/%ld", [Utils getBaseUrl], snappvote.id];
-            [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSMutableArray* names = [[NSMutableArray alloc] init];
-                NSMutableArray* answers = [[NSMutableArray alloc] init];
-                for (NSDictionary *dictionary in responseObject) {
-                    NSString *username = dictionary[@"username"];
-                    NSNumber *answerId = dictionary[@"answer_id"];
-
-                    [names addObject:username];
-                    [answers addObject:answerId];
-                }
-                [usernames addObject:names];
-                [asd addObject:answers];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-            }];
         }
         
         data = [NSArray arrayWithArray:snappvotes];
+        usernames = [NSArray arrayWithArray:usernamesMT];
+        asd = [NSArray arrayWithArray:answerIdsMT];
+
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -80,7 +70,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -90,7 +79,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *cellIdentifier = @"OutgoingTableCell";
     
     OutgoingTableCell *cell = (OutgoingTableCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -110,7 +98,8 @@
     cell.labelTitle.text = snappvote.title;
     cell.labelAnswer1.text = snappvote.answer1;
     cell.labelAnswer2.text = snappvote.answer2;
-    
+    cell.labelAnswer1Count.text =  [NSString stringWithFormat: @"%i", [self getAnswersCountAtIndex:indexPath.row forAnswer:0]];
+    cell.labelAnswer2Count.text = [NSString stringWithFormat: @"%i", [self getAnswersCountAtIndex:indexPath.row forAnswer:1]];
     return cell;
 }
 
@@ -120,7 +109,7 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSArray* usersArr = [usernames objectAtIndex:indexPath.row];
     NSArray* answersArr = [asd objectAtIndex:indexPath.row];
-
+    
     BOOL flag = [[isExpanded objectAtIndex:indexPath.row] boolValue];
     
     if(flag){
@@ -128,7 +117,7 @@
         for (int i = 0; i < usersArr.count; i++) {
             [[cell.contentView viewWithTag:10]removeFromSuperview] ;
             [[cell.contentView viewWithTag:11]removeFromSuperview] ;
-
+            
         }
     }
     else{
@@ -141,7 +130,7 @@
             [cell.contentView addSubview:usernameLabel];
             
             CGRect frame2 = CGRectMake(200, 90 +(i*30), 160, 50);
-
+            
             UILabel *oherasda = [[UILabel alloc] initWithFrame:frame2];
             oherasda.text = [self getAnswerFromAnswerId:[answersArr objectAtIndex:i] snappvoteId:indexPath.row];// [usersArr objectAtIndex:i];
             oherasda.tag = 11;
@@ -179,6 +168,17 @@
     }
 }
 
+-(int)getAnswersCountAtIndex: (NSInteger*)index forAnswer:(int)answerId{
+    NSArray* answersArr = [asd objectAtIndex:index];
+    NSLog(@"%@",answersArr);
+    int count = 0;
+    for (int i = 0; i < answersArr.count; i++) {
+        if([answersArr[i] integerValue] == answerId){
+            count ++;
+        }
+    }
+    return count;
+}
 /*
  #pragma mark - Navigation
  

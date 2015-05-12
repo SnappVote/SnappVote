@@ -72,8 +72,6 @@
     snappvote.answer1 = answer1;
     snappvote.answer2= answer2;
     snappvote.expireDate = self.expireDatePicker.date;
-    NSLog(snappvote.answer1);
-    NSLog(snappvote.answer2);
     if ([[segue identifier] isEqualToString:@"toContacts"])
     {
         ContactsTabViewController *vc = [segue destinationViewController];
