@@ -33,8 +33,8 @@
         NSString *title = dictionary[@"title"];
         NSString* answer1 = dictionary[@"answer_1"];
         NSString* answer2 = dictionary[@"answer_2"];
-        NSDate* expireDate = dictionary[@"expire_date"];
-        Snappvote* snappvote = [[Snappvote alloc] init];
+        NSString* expireDateStr = dictionary[@"expire_date"];
+        NSDate* expireDate = [self getDateFromString:expireDateStr];        Snappvote* snappvote = [[Snappvote alloc] init];
         snappvote.id = [identifier integerValue];
         snappvote.authorId = [author_id integerValue];
         snappvote.title = title;

@@ -58,6 +58,7 @@
 		F753B6131AF11D270017E34A /* HomeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6121AF11D270017E34A /* HomeTabBarController.m */; };
 		F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6151AF11DAB0017E34A /* IncomingViewController.m */; };
 		F761C6D01AF7B6BD00B98915 /* VotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */; };
+		F76A965A1B02353200DF07A8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76A96591B02353200DF07A8 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,8 @@
 		F753B6151AF11DAB0017E34A /* IncomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingViewController.m; sourceTree = "<group>"; };
 		F761C6CE1AF7B6BD00B98915 /* VotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotingViewController.h; sourceTree = "<group>"; };
 		F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotingViewController.m; sourceTree = "<group>"; };
+		F76A96581B02353200DF07A8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		F76A96591B02353200DF07A8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +225,8 @@
 				F718CDA01AE8F686009A8B5B /* Snappvote.xcdatamodeld */,
 				F73A71C61AEF943B00DF5BF9 /* TestViewController.h */,
 				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
+				F76A96581B02353200DF07A8 /* SWRevealViewController.h */,
+				F76A96591B02353200DF07A8 /* SWRevealViewController.m */,
 				F718CD991AE8F686009A8B5B /* Supporting Files */,
 			);
 			path = Snappvote;
@@ -527,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
+				F76A965A1B02353200DF07A8 /* SWRevealViewController.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
 				F7305B211AF21EFF001F362A /* OutgoingViewController.m in Sources */,
 				F718CDF41AE920DA009A8B5B /* User.m in Sources */,
