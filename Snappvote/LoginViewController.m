@@ -20,6 +20,7 @@
     self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Login"];
     
     SWRevealViewController *revealViewController = self.revealViewController;
+
     if ( revealViewController )
     {
         [self.sidebarButton setTarget: self.revealViewController];

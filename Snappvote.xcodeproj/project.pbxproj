@@ -59,6 +59,10 @@
 		F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F753B6151AF11DAB0017E34A /* IncomingViewController.m */; };
 		F761C6D01AF7B6BD00B98915 /* VotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */; };
 		F76A965A1B02353200DF07A8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76A96591B02353200DF07A8 /* SWRevealViewController.m */; };
+		F7CD68A61B02408C00BB9B55 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CD68A51B02408C00BB9B55 /* reveal-icon@2x.png */; };
+		F7CD68A91B02428100BB9B55 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD68A81B02428100BB9B55 /* SettingsViewController.m */; };
+		F7CD68AC1B02493C00BB9B55 /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD68AB1B02493C00BB9B55 /* SidebarTableViewController.m */; };
+		F7CD68AF1B024BA500BB9B55 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD68AE1B024BA500BB9B55 /* SettingsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +169,13 @@
 		F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotingViewController.m; sourceTree = "<group>"; };
 		F76A96581B02353200DF07A8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		F76A96591B02353200DF07A8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		F7CD68A51B02408C00BB9B55 /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		F7CD68A71B02428100BB9B55 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		F7CD68A81B02428100BB9B55 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		F7CD68AA1B02493C00BB9B55 /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
+		F7CD68AB1B02493C00BB9B55 /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
+		F7CD68AD1B024BA500BB9B55 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		F7CD68AE1B024BA500BB9B55 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +325,7 @@
 				F72C33301AFBA1AD006ACD0B /* gray_bar_520X88_selected.png */,
 				F72C33311AFBA1AD006ACD0B /* gray_bar_520X88.png */,
 				F72C33341AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png */,
+				F7CD68A51B02408C00BB9B55 /* reveal-icon@2x.png */,
 				F73A71BB1AEE399E00DF5BF9 /* paris.jpeg */,
 				F718CDFC1AEA3B29009A8B5B /* test.png */,
 			);
@@ -417,6 +429,12 @@
 				F73A71B91AEE221F00DF5BF9 /* NewSnappvoteViewController.m */,
 				F761C6CE1AF7B6BD00B98915 /* VotingViewController.h */,
 				F761C6CF1AF7B6BD00B98915 /* VotingViewController.m */,
+				F7CD68A71B02428100BB9B55 /* SettingsViewController.h */,
+				F7CD68A81B02428100BB9B55 /* SettingsViewController.m */,
+				F7CD68AA1B02493C00BB9B55 /* SidebarTableViewController.h */,
+				F7CD68AB1B02493C00BB9B55 /* SidebarTableViewController.m */,
+				F7CD68AD1B024BA500BB9B55 /* SettingsTableViewController.h */,
+				F7CD68AE1B024BA500BB9B55 /* SettingsTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -503,6 +521,7 @@
 			files = (
 				F72C33351AFBA1B6006ACD0B /* light_gray_bar_with_blue_stripe.png in Resources */,
 				F72C332F1AFBA166006ACD0B /* close.png in Resources */,
+				F7CD68A61B02408C00BB9B55 /* reveal-icon@2x.png in Resources */,
 				F72C33331AFBA1AD006ACD0B /* gray_bar_520X88.png in Resources */,
 				F72C33371AFBA1BF006ACD0B /* open.png in Resources */,
 				F7305B2A1AF240A2001F362A /* IncomingTableCell.xib in Resources */,
@@ -531,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CD68AC1B02493C00BB9B55 /* SidebarTableViewController.m in Sources */,
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
 				F76A965A1B02353200DF07A8 /* SWRevealViewController.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
@@ -543,6 +563,7 @@
 				F73A71CB1AEFA5FD00DF5BF9 /* ContactsViewController.m in Sources */,
 				F73A71D11AEFA82400DF5BF9 /* GroupsTableCell.m in Sources */,
 				F73A71BF1AEE4BE600DF5BF9 /* ContactsTabViewController.m in Sources */,
+				F7CD68A91B02428100BB9B55 /* SettingsViewController.m in Sources */,
 				F718CDF71AE923E6009A8B5B /* Snappvote.m in Sources */,
 				F72C33261AFB9586006ACD0B /* ParentTableViewCell.m in Sources */,
 				F753B6161AF11DAC0017E34A /* IncomingViewController.m in Sources */,
@@ -553,6 +574,7 @@
 				F7305B301AF26F84001F362A /* SVModelParser.m in Sources */,
 				F718CDE01AE8F78D009A8B5B /* AFURLRequestSerialization.m in Sources */,
 				F718CDC41AE8F6B3009A8B5B /* RegisterViewController.m in Sources */,
+				F7CD68AF1B024BA500BB9B55 /* SettingsTableViewController.m in Sources */,
 				F718CDE11AE8F78D009A8B5B /* AFURLResponseSerialization.m in Sources */,
 				F718CD9F1AE8F686009A8B5B /* AppDelegate.m in Sources */,
 				F718CDA21AE8F686009A8B5B /* Snappvote.xcdatamodeld in Sources */,
