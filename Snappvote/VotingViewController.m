@@ -30,6 +30,8 @@
     [super viewDidLoad];
     answerIndex = -1;
     [self.labelTitle setText:self.snappvote.title];
+    [self.btnAnswer1 setTitle:self.snappvote.answer1 forState:UIControlStateNormal];
+    [self.btnAnswer2 setTitle:self.snappvote.answer2 forState:UIControlStateNormal];
     self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"Vote"];
 
 }

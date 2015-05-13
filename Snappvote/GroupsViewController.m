@@ -28,8 +28,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
-    self.parentViewController.navigationItem.rightBarButtonItem = anotherButton;
+    UIImage* icon = [Utils imageWithImage:[UIImage imageNamed:@"okIcon"] scaledToSize:CGSizeMake(35, 35)];
+    UIBarButtonItem * rightBarButton = [[UIBarButtonItem alloc] initWithImage:icon style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
+    
+    self.parentViewController.navigationItem.rightBarButtonItem = rightBarButton;
     
     contactsIds = [[NSMutableSet alloc] init];
     [self fetchGroups];

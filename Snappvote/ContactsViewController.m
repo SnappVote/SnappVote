@@ -16,8 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Contacts");
-    // Do any additional setup after loading the view.
+    UIImage* icon = [Utils imageWithImage:[UIImage imageNamed:@"okTapped.png"] scaledToSize:CGSizeMake(35, 35)];
+    UIBarButtonItem * rightBarButton = [[UIBarButtonItem alloc] initWithImage:icon style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
+    
+    self.parentViewController.navigationItem.rightBarButtonItem = rightBarButton;    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

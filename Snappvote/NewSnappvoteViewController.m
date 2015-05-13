@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [self initNavItems];
     self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"New"];
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -39,17 +39,17 @@
 }
 
 -(void)initNavItems{
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(goToContacts)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
+
+    
+    UIImage* icon = [Utils imageWithImage:[UIImage imageNamed:@"okIcon.png"] scaledToSize:CGSizeMake(35, 35)];
+    UIBarButtonItem * rightBarButton = [[UIBarButtonItem alloc] initWithImage:icon style:UIBarButtonItemStylePlain target:self action:@selector(goToContacts)];
+    
+    self.navigationItem.rightBarButtonItem = rightBarButton;
     
     [self.answer1Button setTitle: @"Yes" forState: UIControlStateNormal];
     [self.answer2Button setTitle: @"No" forState: UIControlStateNormal];
     [self.answer1Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.answer2Button addTarget:self action:@selector(switchClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close.png"]]];
-
-    self.navigationItem.rightBarButtonItem = item;
 }
 
 

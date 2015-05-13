@@ -7,7 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
-
+#import "Utils.h"
 @interface SettingsTableViewController ()
 
 @end
@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"WAT");
+    [self.tableView setBackgroundColor: [UIColor clearColor]];
+    [self.tableView setOpaque: NO];
+    self.tableView.backgroundColor =[Utils colorWithHexString:@"3fbbed"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -31,16 +34,45 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSInteger row = indexPath.row;
+    
+    if (nil == cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+    }
+    
+    NSString *text = nil;
+    if (row == 0)
+    {
+        text = @"Contacts";
+    }
+    else if (row == 1)
+    {
+        text = @"Edit profile";
+    }
+    else if (row == 2)
+    {
+        text = @"Invite friends";
+    }
+    else if (row == 3)
+    {
+        text = @"Logout";
+    }
+    
+    cell.textLabel.text = NSLocalizedString( text,nil );
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [Utils colorWithHexString:@"3fbbed"];
+    return cell;
 }
 
 /*

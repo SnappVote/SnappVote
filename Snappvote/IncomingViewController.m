@@ -99,8 +99,10 @@
 }
 
 -(void) initNavItems{
-    UIBarButtonItem *okButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
-    self.parentViewController.navigationItem.rightBarButtonItem = okButton;
+    UIImage* icon = [Utils imageWithImage:[UIImage imageNamed:@"newIcon.png"] scaledToSize:CGSizeMake(35, 35)];
+    UIBarButtonItem * rightBarButton = [[UIBarButtonItem alloc] initWithImage:icon style:UIBarButtonItemStylePlain target:self action:@selector(okTapped)];
+    
+    self.parentViewController.navigationItem.rightBarButtonItem = rightBarButton;
 }
 -(void)okTapped{
     NewSnappvoteViewController *vc2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"NewSnappvoteViewController"];

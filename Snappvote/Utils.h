@@ -16,4 +16,6 @@
 +(NSString*)getFriendlyDateString:(NSDate *)date;
 + (void) showAlert: (NSString *) title withMessage: (NSString*) message;
 + (UIView*) getTitleViewWithSubtitle:(NSString*)subtitle;
++(UIColor*)colorWithHexString:(NSString*)hex;
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface UserUtils : NSObject
 +(void)createUser: (NSString*)username phone:(NSString*)phone email:(NSString*)email country:(NSString*)country;

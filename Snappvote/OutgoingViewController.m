@@ -101,7 +101,6 @@
     cell.labelAnswer2Count.text = [NSString stringWithFormat: @"%i", [self getAnswersCountAtIndex:indexPath.row forAnswer:1]];
     cell.labelTimeRemaining.text = [Utils getFriendlyDateString:snappvote.expireDate];
     NSString *className = NSStringFromClass([snappvote.expireDate class]);
-    NSLog(@"%@", className);
     return cell;
 }
 
