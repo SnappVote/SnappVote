@@ -67,6 +67,7 @@
 		F7DBAD901B033BD500F5F3DC /* okIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7DBAD8F1B033BD500F5F3DC /* okIcon.png */; };
 		F7DBAD951B03524200F5F3DC /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DBAD921B03524200F5F3DC /* UUDatePicker_DateModel.m */; };
 		F7DBAD961B03524200F5F3DC /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DBAD941B03524200F5F3DC /* UUDatePicker.m */; };
+		F7DBAD991B03886A00F5F3DC /* VSDropdown.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DBAD981B03886A00F5F3DC /* VSDropdown.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,8 @@
 		F7DBAD921B03524200F5F3DC /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
 		F7DBAD931B03524200F5F3DC /* UUDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker.h; sourceTree = "<group>"; };
 		F7DBAD941B03524200F5F3DC /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
+		F7DBAD971B03886A00F5F3DC /* VSDropdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSDropdown.h; sourceTree = "<group>"; };
+		F7DBAD981B03886A00F5F3DC /* VSDropdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSDropdown.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +255,8 @@
 				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
 				F76A96581B02353200DF07A8 /* SWRevealViewController.h */,
 				F76A96591B02353200DF07A8 /* SWRevealViewController.m */,
+				F7DBAD971B03886A00F5F3DC /* VSDropdown.h */,
+				F7DBAD981B03886A00F5F3DC /* VSDropdown.m */,
 				F718CD991AE8F686009A8B5B /* Supporting Files */,
 			);
 			path = Snappvote;
@@ -597,6 +602,7 @@
 				F718CDE11AE8F78D009A8B5B /* AFURLResponseSerialization.m in Sources */,
 				F718CD9F1AE8F686009A8B5B /* AppDelegate.m in Sources */,
 				F7DBAD951B03524200F5F3DC /* UUDatePicker_DateModel.m in Sources */,
+				F7DBAD991B03886A00F5F3DC /* VSDropdown.m in Sources */,
 				F718CDA21AE8F686009A8B5B /* Snappvote.xcdatamodeld in Sources */,
 				F72C33271AFB9586006ACD0B /* ParentTableView.m in Sources */,
 				F72C332A1AFB9586006ACD0B /* SubTableView.m in Sources */,

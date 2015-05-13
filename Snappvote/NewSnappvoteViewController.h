@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewSnappvoteViewController : UIViewController
+@interface NewSnappvoteViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
