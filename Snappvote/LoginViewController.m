@@ -13,6 +13,7 @@
 
 @interface LoginViewController (){
     NSArray *_pickerData;
+    UIPickerView* pickerView;
 
 }
 @property (weak, nonatomic) IBOutlet UITextField *field;
@@ -34,14 +35,13 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    _pickerData = @[ @[@"1", @"2", @"3", @"4"],
-                     @[@"a", @"b", @"c", @"d"],
-                     @[@"!", @"#", @"$", @"%"] ];
+    _pickerData = @[ @[@"1", @"2", @"3", @"4", @"5"],
+                     @[@"a", @"b", @"c", @"d", @"e", @"f"],
+                     @[@"5", @"10", @"15", @"20", @"25"] ];
     
-    // Connect data
+    
     self.picker.dataSource = self;
     self.picker.delegate = self;
-
     // Do any additional setup after loading the view.
 }
 
@@ -58,9 +58,12 @@
 // The number of rows of data
 - (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return _pickerData.count;
+    return ((NSArray*)_pickerData[component]).count;;
 }
-
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return (80.0);
+}
 // The data to return for the row and component (column) that's being passed in
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
