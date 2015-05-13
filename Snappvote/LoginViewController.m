@@ -9,7 +9,13 @@
 #import "LoginViewController.h"
 #import "Utils.h"
 #import "SWRevealViewController.h"
-@interface LoginViewController ()
+#import "UUDatePicker.h"
+
+@interface LoginViewController (){
+    NSArray *_pickerData;
+
+}
+@property (weak, nonatomic) IBOutlet UITextField *field;
 
 @end
 
@@ -27,12 +33,39 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    
+    _pickerData = @[ @[@"1", @"2", @"3", @"4"],
+                     @[@"a", @"b", @"c", @"d"],
+                     @[@"!", @"#", @"$", @"%"] ];
+    
+    // Connect data
+    self.picker.dataSource = self;
+    self.picker.delegate = self;
+
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+// The number of columns of data
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 3;
+}
+
+// The number of rows of data
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[component][row];
 }
 - (IBAction)testTapped:(id)sender {
     //UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This is an example alert!" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles:nil];

@@ -65,6 +65,8 @@
 		F7CD68AF1B024BA500BB9B55 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD68AE1B024BA500BB9B55 /* SettingsTableViewController.m */; };
 		F7DBAD8E1B03332D00F5F3DC /* newIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7DBAD8D1B03332D00F5F3DC /* newIcon.png */; };
 		F7DBAD901B033BD500F5F3DC /* okIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7DBAD8F1B033BD500F5F3DC /* okIcon.png */; };
+		F7DBAD951B03524200F5F3DC /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DBAD921B03524200F5F3DC /* UUDatePicker_DateModel.m */; };
+		F7DBAD961B03524200F5F3DC /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DBAD941B03524200F5F3DC /* UUDatePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +182,10 @@
 		F7CD68AE1B024BA500BB9B55 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		F7DBAD8D1B03332D00F5F3DC /* newIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newIcon.png; sourceTree = "<group>"; };
 		F7DBAD8F1B033BD500F5F3DC /* okIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = okIcon.png; sourceTree = "<group>"; };
+		F7DBAD911B03524200F5F3DC /* UUDatePicker_DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker_DateModel.h; sourceTree = "<group>"; };
+		F7DBAD921B03524200F5F3DC /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
+		F7DBAD931B03524200F5F3DC /* UUDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker.h; sourceTree = "<group>"; };
+		F7DBAD941B03524200F5F3DC /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +244,10 @@
 				F718CDA91AE8F686009A8B5B /* Images.xcassets */,
 				F718CDAB1AE8F686009A8B5B /* LaunchScreen.xib */,
 				F718CDA01AE8F686009A8B5B /* Snappvote.xcdatamodeld */,
+				F7DBAD911B03524200F5F3DC /* UUDatePicker_DateModel.h */,
+				F7DBAD921B03524200F5F3DC /* UUDatePicker_DateModel.m */,
+				F7DBAD931B03524200F5F3DC /* UUDatePicker.h */,
+				F7DBAD941B03524200F5F3DC /* UUDatePicker.m */,
 				F73A71C61AEF943B00DF5BF9 /* TestViewController.h */,
 				F73A71C71AEF943B00DF5BF9 /* TestViewController.m */,
 				F76A96581B02353200DF07A8 /* SWRevealViewController.h */,
@@ -561,6 +571,7 @@
 				F7CD68AC1B02493C00BB9B55 /* SidebarTableViewController.m in Sources */,
 				F718CDDF1AE8F78D009A8B5B /* AFURLConnectionOperation.m in Sources */,
 				F76A965A1B02353200DF07A8 /* SWRevealViewController.m in Sources */,
+				F7DBAD961B03524200F5F3DC /* UUDatePicker.m in Sources */,
 				F718CDDA1AE8F78D009A8B5B /* AFHTTPRequestOperation.m in Sources */,
 				F7305B211AF21EFF001F362A /* OutgoingViewController.m in Sources */,
 				F718CDF41AE920DA009A8B5B /* User.m in Sources */,
@@ -585,6 +596,7 @@
 				F7CD68AF1B024BA500BB9B55 /* SettingsTableViewController.m in Sources */,
 				F718CDE11AE8F78D009A8B5B /* AFURLResponseSerialization.m in Sources */,
 				F718CD9F1AE8F686009A8B5B /* AppDelegate.m in Sources */,
+				F7DBAD951B03524200F5F3DC /* UUDatePicker_DateModel.m in Sources */,
 				F718CDA21AE8F686009A8B5B /* Snappvote.xcdatamodeld in Sources */,
 				F72C33271AFB9586006ACD0B /* ParentTableView.m in Sources */,
 				F72C332A1AFB9586006ACD0B /* SubTableView.m in Sources */,
