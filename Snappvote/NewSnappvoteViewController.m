@@ -33,20 +33,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavItems];
-    _dropdown = [[VSDropdown alloc]initWithDelegate:self];
-    [_dropdown setAdoptParentTheme:NO];
-    [_dropdown setShouldSortItems:NO];
-    [self.answer1Button.layer setCornerRadius:1.0];
-    [self.answer1Button.layer setBorderWidth:1.0];
-    [self.answer1Button.layer setBorderColor:[self.answer1Button.titleLabel.textColor CGColor]];
-    [_dropdown setupDropdownForView:self.answer1Button];
-    
+    [self setupDropdowns];
    
     self.navigationItem.titleView = [Utils getTitleViewWithSubtitle:@"New"];
     
     // Do any additional setup after loading the view.
 }
 
+-(void)setupDropdowns{
+    _dropdown = [[VSDropdown alloc]initWithDelegate:self];
+    [_dropdown setAdoptParentTheme:NO];
+    [_dropdown setShouldSortItems:NO];
+    [_dropdown setupDropdownForView:self.answer1Button];
+    [_dropdown setupDropdownForView:self.answer2Button];
+}
 #pragma mark -
 #pragma mark - VSDropdown Delegate methods.
 - (void)dropdown:(VSDropdown *)dropDown didChangeSelectionForValue:(NSString *)str atIndex:(NSUInteger)index selected:(BOOL)selected
@@ -54,7 +54,6 @@
     UIButton *btn = (UIButton *)dropDown.dropDownView;
     NSString *allSelectedItems = [dropDown.selectedItems componentsJoinedByString:@";"];
     [btn setTitle:allSelectedItems forState:UIControlStateNormal];
-    
 }
 
 - (UIColor *)outlineColorForDropdown:(VSDropdown *)dropdown
@@ -116,9 +115,9 @@
 -(void)switchClicked:(UIButton*)sender
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  
+    
     [button setTitle:@"Show View" forState:UIControlStateNormal];
-    [button setHidden:YES];
+    [button setHidden:NO];
     button.frame = CGRectMake(sender.frame.origin.x + sender.frame.size.width, sender.frame.origin.y + sender.frame.size.height, 160.0, 40.0);
     [self.view addSubview:button];
         [self showDropDownForButton:button adContents:@[@"answer1",@"long answer", @"longer answer",] multipleSelection:NO];
@@ -126,13 +125,15 @@
    // answer2 = [self.answer2Button titleForState:UIControlStateNormal];
    // [self.answer1Button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
    // [self.answer2Button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [sender setTitle:button.titleLabel.text forState:UIControlStateNormal];
 }
 -(void)showDropDownForButton:(UIButton *)sender adContents:(NSArray *)contents multipleSelection:(BOOL)multipleSelection
 {
+
+    
     [_dropdown setDrodownAnimation:rand()%2];
     
     [_dropdown setAllowMultipleSelection:multipleSelection];
-    [_dropdown setupDropdownForView:sender];
     [_dropdown setupDropdownForView:sender direction:(VSDropdownDirection_Up) withTopColor:[UIColor blueColor] bottomColor:[UIColor blueColor]scale:1];
     [_dropdown setSeparatorColor:sender.titleLabel.textColor];
     
@@ -143,8 +144,9 @@
     }
     else
     {
+       // [sender setTitle:button.titleLabel.text forState:UIControlStateNormal];
+
         [_dropdown reloadDropdownWithContents:contents andSelectedItems:@[sender.titleLabel.text]];
-        
     }
     
 }

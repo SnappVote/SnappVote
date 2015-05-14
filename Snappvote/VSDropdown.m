@@ -354,7 +354,8 @@ static const NSTimeInterval kDefaultDuration = 0.25;
         [self addSubview:self.backGroundImageView];
     }
     [self setBackgroundColor:[UIColor clearColor]];
-    self.tableView = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStylePlain];
+    CGRect test = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width + 300, self.bounds.size.height);
+    self.tableView = [[UITableView alloc]initWithFrame:test style:UITableViewStylePlain];
     [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleRightMargin];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
