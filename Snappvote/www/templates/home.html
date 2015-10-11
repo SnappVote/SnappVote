@@ -1,0 +1,9 @@
+<ion-view view-title="Chats">
+  <ion-content>
+      <div ng-click='test()' style='background-color:yellow; height:100px'>GET CONTACTS</div>
+      <div ng-repeat="contact in contacts">
+          <div>{{contact.displayName}}</div>
+          <div>{{contact.phoneNumbers[0].normalizedNumber}}</div>
+      </div>
+  </ion-content>
+</ion-view>
