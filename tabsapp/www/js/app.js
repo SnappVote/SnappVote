@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,103 +25,77 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
-  $stateProvider
-  .state("login", {
-      url:"/login",
-      templateUrl: "templates/login.html",
-      controller: "LoginCtrl"
-  })
-  .state("register", {
-      url:"/register",
-      templateUrl: "templates/register.html",
-      controller: "RegisterCtrl"
-  })
-  .state("choose-type", {
-      url:"/choose-type",
-      templateUrl: "templates/choose-type.html",
-      controller: "RegisterCtrl"
-  })
-  .state("new-sv", {
-      url:"/new-sv",
-      templateUrl: "templates/new-sv.html",
-      controller: "RegisterCtrl"
-  })
-
-  // setup an abstract state jufor the tabs directive
+    $stateProvider
+    .state("login", {
+        url:"/login",
+        templateUrl: "templates/login.html",
+        controller: "LoginCtrl"
+    })
+    .state("register", {
+        url:"/register",
+        templateUrl: "templates/register.html",
+        controller: "RegisterCtrl"
+    })
     .state('home', {
-    url: '/home',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-  .state('contacts', {
-  url: '/contacts',
-  abstract: true,
-  templateUrl: 'templates/contacts.html'
-  })
-  .state('contacts.all', {
-    url: '/contacts-all',
-    views: {
-      'all': {
-        templateUrl: 'templates/contacts-all.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-  .state('contacts.groups', {
-    url: '/contacts-groups',
-    views: {
-      'groups': {
-        templateUrl: 'templates/contacts-groups.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  // Each tab has its own nav history stack:
-
-  .state('home.outgoing', {
-    url: '/outgoing',
-    views: {
-      'outgoing': {
-        templateUrl: 'templates/outgoing.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('home.incoming', {
-      url: '/incoming',
-      views: {
-        'incoming': {
-          templateUrl: 'templates/incoming.html',
-          controller: 'ChatsCtrl'
-        }
-      }
+        url: '/home',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+    .state('home.outgoing', {
+        url: '/outgoing',
+        views: {
+            'outgoing': {
+                templateUrl: 'templates/outgoing.html',
+                controller: 'OutgoingCtrl'
+            }
         }
-      }
     })
+    .state('home.incoming', {
+        url: '/incoming',
+        views: {
+            'incoming': {
+                templateUrl: 'templates/incoming.html',
+                controller: 'IncomingCtrl'
+            }
+        }
+    })
+    .state("choose-type", {
+        url:"/choose-type",
+        templateUrl: "templates/choose-type.html",
+        controller: "RegisterCtrl"
+    })
+    .state("new-sv", {
+        url:"/new-sv",
+        templateUrl: "templates/new-sv.html",
+        controller: "NewSnappvoteCtrl"
+    })
+    .state('contacts', {
+        url: '/contacts',
+        abstract: true,
+        templateUrl: 'templates/contacts.html'
+    })
+    .state('contacts.all', {
+        url: '/all',
+        views: {
+            'all': {
+                templateUrl: 'templates/contacts-all.html',
+                controller: 'AllContactsCtrl'
+            }
+        }
+    })
+    .state('contacts.groups', {
+        url: '/groups',
+        views: {
+            'groups': {
+                templateUrl: 'templates/contacts-groups.html',
+                controller: 'GroupsCtrl'
+            }
+        }
+    });
 
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
-  $ionicConfigProvider.navBar.alignTitle('center');
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
+    $urlRouterProvider.otherwise('/login');
+    $ionicConfigProvider.navBar.alignTitle('center');
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
 
 
 });

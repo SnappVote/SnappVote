@@ -1,39 +1,45 @@
 angular.module('starter.controllers', [])
-
-.controller('DashCtrl', function($scope) {})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
 .controller('LoginCtrl', function($scope, $http, $location) {
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     }
     $scope.test = function(){
-        $location.path("/contacts/contacts-groups");
+        $location.path("/contacts/all");
     }
-   // err.status will contain the status code
  })
-.controller('RegisterCtrl', function($scope,$http) {
+ .controller('OutgoingCtrl', function($scope) {
 
-})
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+ })
+ .controller('IncomingCtrl', function($scope) {
+
+ })
+ .controller('NewSnappvoteCtrl', function($scope) {
+
+ })
+ .controller('AllContactsCtrl', function($scope, $cordovaContacts) {
+     $scope.contacts = [];
+     getContacts();
+     function getContacts(){
+         //cordova contacts plugins
+         //https://github.com/dbaq/cordova-plugin-contacts-phone-numbers
+         navigator.contactsPhoneNumbers.list(function(contacts) {
+             $scope.contacts = contacts;
+             $scope.$digest();
+            //  for(var i = 0; i < contacts.length; i++) {
+            //      console.log(contacts[i].id + " - " + contacts[i].displayName);
+            //      for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
+            //          var phone = contacts[i].phoneNumbers[j];
+            //          console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
+            //      }
+            //  }
+         }, function(error) {
+             console.error(error);
+         });
+     }
+ })
+ .controller('GroupsCtrl', function($scope) {
+
+ })
+.controller('RegisterCtrl', function($scope) {
+
 });

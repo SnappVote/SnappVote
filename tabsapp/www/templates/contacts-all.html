@@ -1,10 +1,11 @@
-<ion-view view-title="Incoming">
+<ion-view view-title="All Contacts">
   <ion-content>
-      <button class="button button-full button-positive">
-        Incoming
-      </button>
-      <button class="button button-full button-assertive" ui-sref="choose-type">
-        New
-      </button>
+      <!-- <button class="button button-full button-assertive" ng-click='test()'>
+          Test
+      </button> -->
+      <div ng-repeat="contact in contacts">
+      <div>{{contact.displayName}}</div>
+      <!-- <div>{{contact.phoneNumbers[0].normalizedNumber}}</div> -->
+  </div>
   </ion-content>
 </ion-view>
