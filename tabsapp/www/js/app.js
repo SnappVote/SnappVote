@@ -26,41 +26,74 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
   $stateProvider
-  .state("home", {
-      url:"/home",
-      templateUrl: "templates/home.html",
-      controller: "HomeCtrl"
+  .state("login", {
+      url:"/login",
+      templateUrl: "templates/login.html",
+      controller: "LoginCtrl"
   })
   .state("register", {
       url:"/register",
       templateUrl: "templates/register.html",
       controller: "RegisterCtrl"
   })
+  .state("choose-type", {
+      url:"/choose-type",
+      templateUrl: "templates/choose-type.html",
+      controller: "RegisterCtrl"
+  })
+  .state("new-sv", {
+      url:"/new-sv",
+      templateUrl: "templates/new-sv.html",
+      controller: "RegisterCtrl"
+  })
 
   // setup an abstract state jufor the tabs directive
-    .state('tab', {
-    url: '/tab',
+    .state('home', {
+    url: '/home',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
-
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
+  .state('contacts', {
+  url: '/contacts',
+  abstract: true,
+  templateUrl: 'templates/contacts.html'
+  })
+  .state('contacts.all', {
+    url: '/contacts-all',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+      'all': {
+        templateUrl: 'templates/contacts-all.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })
+  .state('contacts.groups', {
+    url: '/contacts-groups',
+    views: {
+      'groups': {
+        templateUrl: 'templates/contacts-groups.html',
         controller: 'DashCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  // Each tab has its own nav history stack:
+
+  .state('home.outgoing', {
+    url: '/outgoing',
+    views: {
+      'outgoing': {
+        templateUrl: 'templates/outgoing.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })
+
+  .state('home.incoming', {
+      url: '/incoming',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
+        'incoming': {
+          templateUrl: 'templates/incoming.html',
           controller: 'ChatsCtrl'
         }
       }
@@ -86,7 +119,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login');
   $ionicConfigProvider.navBar.alignTitle('center');
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
 

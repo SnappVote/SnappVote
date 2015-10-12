@@ -20,20 +20,15 @@ angular.module('starter.controllers', [])
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
-.controller('HomeCtrl', function($scope, $http, $location) {
+.controller('LoginCtrl', function($scope, $http, $location) {
     $scope.goHome = function(){
-        $location.path("/tab/dash");
+        $location.path("/home/outgoing");
     }
     $scope.test = function(){
-        var url = "http://localhost/api/v1/users";
-
-        $http.post(url, {}).then(function(resp) {
-console.log(resp); }, function(err) {
-   console.error('ERR', err);
+        $location.path("/contacts/contacts-groups");
+    }
    // err.status will contain the status code
  })
-    }
-})
 .controller('RegisterCtrl', function($scope,$http) {
 
 })
