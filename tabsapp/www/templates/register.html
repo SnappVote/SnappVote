@@ -2,32 +2,27 @@
     <ion-content>
         <label class="item item-input">
             <span class="input-label">Name</span>
-            <input type="text">
+            <input type="text" ng-model="form.name">
         </label>
         <label class="item item-input">
             <span class="input-label">E-mail</span>
-            <input type="text">
+            <input type="text" ng-model="form.email">
         </label>
         <label class="item item-input">
             <span class="input-label">Phone</span>
-            <input type="text">
-        </label>
-        <label class="item item-input">
-            <span class="input-label">Username</span>
-            <input type="text">
+            <input type="text" ng-model="form.phone">
         </label>
         <label class="item item-input item-select">
             <div class="input-label">
                 Country
             </div>
-            <select>
-                <option>Blue</option>
-                <option>Green</option>
-                <option>Red</option>
+            <select ng-model="form.country">
+                <option ng-repeat="country in countries">{{country.name}}</option>
             </select>
         </label>
-        <button class="button button-full button-positive">
+        <button class="button button-full button-positive" ng-click="register()">
             OK
         </button>
+        <div>{{response}}</div>
     </ion-content>
 </ion-view>

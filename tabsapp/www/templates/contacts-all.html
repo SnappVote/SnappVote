@@ -1,11 +1,16 @@
 <ion-view view-title="All Contacts">
-  <ion-content>
-      <!-- <button class="button button-full button-assertive" ng-click='test()'>
-          Test
-      </button> -->
-      <div ng-repeat="contact in contacts">
-      <div>{{contact.displayName}}</div>
-      <!-- <div>{{contact.phoneNumbers[0].normalizedNumber}}</div> -->
-  </div>
-  </ion-content>
+    <ion-content>
+        <!-- <button class="button button-full button-assertive" ng-click='test()'>
+        Test
+    </button> -->
+    <div ng-repeat="contact in contacts">
+        <li class="item item-checkbox">
+            <label class="checkbox">
+                <input type="checkbox">
+            </label>
+            {{contact.displayName}}
+        </li>
+        <!-- <div>{{contact.phoneNumbers[0].normalizedNumber}}</div> -->
+    </div>
+</ion-content>
 </ion-view>

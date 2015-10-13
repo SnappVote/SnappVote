@@ -4,8 +4,8 @@ angular.module('starter.controllers', [])
         $location.path("/home/outgoing");
     }
     $scope.test = function(){
-        $location.path("/contacts/all");
-    }
+
+      }
  })
  .controller('OutgoingCtrl', function($scope) {
 
@@ -40,6 +40,19 @@ angular.module('starter.controllers', [])
  .controller('GroupsCtrl', function($scope) {
 
  })
-.controller('RegisterCtrl', function($scope) {
-
+.controller('RegisterCtrl', function($scope, $http) {
+    $scope.form = {};
+    $scope.countries = countriesJson;
+    $scope.register = function(){
+        var dataJson={};
+        for(var key in $scope.form) dataJson[key]=$scope.form[key];
+        $http.post('http://localhost/api/v1/users', dataJson).then(function(resp) {
+            $scope.response = resp;
+            console.log('Success', resp);
+            // For JSON responses, resp.data contains the result
+          }, function(err) {
+            console.error('ERR', err);
+            // err.status will contain the status code
+          })
+    }
 });
