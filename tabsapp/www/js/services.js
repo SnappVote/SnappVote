@@ -1,5 +1,32 @@
 angular.module('starter.services', [])
-
+.factory('UserUtils', function(){
+    return{
+        getCurrUserId: function(){
+            return 1;
+        }
+    }
+})
+.factory('Snappvote', function(){
+    var snappvote = {};
+    return{
+        createSnappvote: function(title, img1, img2, answer1, answer2, expireDate){
+            snappvote ={
+                title: title,
+                img_1: img1,
+                img_2: img2,
+                answer_1: answer1,
+                answer_2: answer2,
+                expire_date: expireDate
+            }
+        },
+        setContacts: function(contactIds){
+            snappvote['contacts_ids'] = contactIds;
+        },
+        getSnappvote: function(){
+            return snappvote;
+        }
+    };
+})
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

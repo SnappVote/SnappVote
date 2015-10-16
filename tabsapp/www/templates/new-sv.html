@@ -2,12 +2,20 @@
   <ion-content>
       <label class="item item-input">
           <span class="input-label">Question</span>
-          <input type="text">
+          <input type="text" ng-model="form.question">
       </label>
       <button class="button button-full button-assertive">
         Take picture
       </button>
-      <button class="button button-full button-assertive" ui-sref="contacts.all">
+      <div class="padding">
+          <button class="button button-assertive">{{answer1}}</button>
+          <button class="button button-assertive">{{answer2}}</button>
+      </div>
+      <div ng-repeat="answerPair in answers track by $index" class="padding" ng-click="updateAnswers($index)">
+          <button class="button button-stable">{{answerPair[0]}}</button>
+          <button class="button button-stable">{{answerPair[1]}}</button>
+      </div>
+      <button class="button button-full button-assertive" ng-click="createSnappvote()" ui-sref="contacts.all">
         Choose contacts
       </button>
   </ion-content>
