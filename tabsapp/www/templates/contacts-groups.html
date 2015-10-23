@@ -1,4 +1,7 @@
 <ion-view view-title="Groups">
+    <ion-nav-buttons side="left">
+        <button class="button ion-chevron-left" ng-click="goBack()"></button>
+    </ion-nav-buttons>
   <ion-content>
       <div ng-repeat="group in groups">
           <li class="item item-checkbox">
@@ -14,6 +17,6 @@
       <button class="button button-full button-assertive" ng-click="sendSV()">
         Send
       </button>
-      <div>{{response}}</div>
+      <!-- <div>{{response}}</div> -->
   </ion-content>
 </ion-view>

@@ -72,7 +72,7 @@ angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starte
     .state("choose-type", {
         url:"/choose-type",
         templateUrl: "templates/choose-type.html",
-        controller: "RegisterCtrl"
+        controller: "ChooseTypeCtrl"
     })
     .state("new-sv", {
         url:"/new-sv",

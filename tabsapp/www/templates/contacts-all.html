@@ -1,8 +1,8 @@
 <ion-view view-title="All Contacts">
+    <ion-nav-buttons side="left">
+        <button class="button ion-chevron-left" ng-click="goBack()"></button>
+    </ion-nav-buttons>
     <ion-content>
-        <!-- <button class="button button-full button-assertive" ng-click='test()'>
-        Test
-    </button> -->
     <div ng-repeat="contact in contacts">
         <li class="item item-checkbox">
             <label class="checkbox">
@@ -14,6 +14,6 @@
     <button class="button button-full button-assertive" ng-click="sendSV()">
       Send
     </button>
-    <div>{{response}}</div>
+    <!-- <div>{{response}}</div> -->
 </ion-content>
 </ion-view>

@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
     $scope.test = function(){
     }
 })
-.controller('OutgoingCtrl', function($scope, $http, Utils) {
+.controller('OutgoingCtrl', function($scope, $http, $ionicHistory, Utils) {
     $scope.snappvotes = [];
     var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
     $http.get(url).then(function(resp) {
@@ -22,16 +22,22 @@ angular.module('starter.controllers', [])
     }, function(err) {
         $scope.response = err;
     })
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
+    }
 })
- .controller('IncomingCtrl', function($scope, $http, Utils) {
+ .controller('IncomingCtrl', function($scope, $http, $ionicHistory, Utils) {
      $scope.snappvotes = [];
-     var url = 'http://localhost/api/v1/snappvotes/in/' + Utils.getSVUserId();
+     var url = Utils.getBaseURL() + '/snappvotes/in/' + Utils.getSVUserId();
      $http.get(url).then(function(resp) {
          $scope.snappvotes = resp.data;
          $scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
  })
  .controller('NewSnappvoteCtrl', function($scope, $ionicPopup, Snappvote) {
      $scope.form = {};
@@ -60,6 +66,11 @@ angular.module('starter.controllers', [])
      };
 
  })
+ .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $ionicHistory, Snappvote) {
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
+ })
  .controller('SvDetailCtrl', function($scope, $http, $stateParams, Utils) {
      $scope.selected = -1;
      var svId = $stateParams.svId;
@@ -68,21 +79,29 @@ angular.module('starter.controllers', [])
          $scope.response = resp;
          snappvote = resp.data[0];
          $scope.snappvote = snappvote;
-         console.log('Success', resp);
-         // For JSON responses, resp.data contains the result
      }, function(err) {
          $scope.response = err;
-         console.error('ERR', err);
-         // err.status will contain the status code
      })
      $scope.answer1Clicked = function(){
-         $scope.selected = 1;
+         $scope.selected = 0;
      };
      $scope.answer2Clicked = function(){
-         $scope.selected = 2;
+         $scope.selected = 1;
+     }
+     $scope.submitAnswer = function(){
+         var dataJson={};
+         dataJson["voter_id"] = Utils.getSVUserId();
+         dataJson["answer_id"] = $scope.selected;
+
+         var url = Utils.getBaseURL() + "/snappvotes/answers/" + $scope.snappvote.id;
+         $http.put(url, dataJson).then(function(resp) {
+             $scope.response = resp;
+         }, function(err) {
+             $scope.response = err;
+         })
      }
  })
- .controller('AllContactsCtrl', function($scope, $http, $cordovaContacts, Snappvote, Utils) {
+ .controller('AllContactsCtrl', function($scope, $http, $cordovaContacts, $ionicPopup, $ionicHistory, Snappvote, Utils) {
      var selectedContactsIds = [];
      $scope.contacts = [];
      getContacts();
@@ -101,13 +120,10 @@ angular.module('starter.controllers', [])
      $scope.sendSV = function(){
          Snappvote.setContacts(selectedContactsIds);
          var dataJson = Snappvote.getSnappvote();
-         console.log(dataJson['title']);
-         console.log(dataJson);
-         console.log('---');
          for (var i = 0; i < selectedContactsIds.length; i++) {
              console.log(selectedContactsIds[i]);
          }
-         var url = 'http://localhost/api/v1/snappvotes/out/' + Utils.getSVUserId();
+         var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
              $scope.response = resp;
              $ionicPopup.alert({
@@ -122,15 +138,15 @@ angular.module('starter.controllers', [])
              });
          })
      }
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
      function getContacts(){
-         var url = 'http://localhost/api/v1/users';
+         var url = Utils.getBaseURL() + '/users';
          $http.get(url).then(function(resp) {
              $scope.contacts = resp.data;
-             console.log('Success', resp);
-             // For JSON responses, resp.data contains the result
          }, function(err) {
-             console.error('ERR', err);
-             // err.status will contain the status code
+             $scope.response = err;
          })
          //cordova contacts plugins
          //https://github.com/dbaq/cordova-plugin-contacts-phone-numbers
@@ -149,47 +165,55 @@ angular.module('starter.controllers', [])
          //  });
      }
  })
- .controller('GroupsCtrl', function($scope, $http, $ionicPopup) {
+ .controller('GroupsCtrl', function($scope, $http, $ionicPopup, $ionicHistory, Utils) {
      $scope.groups = [];
      $scope.data = {};
+     getGroups();
+     function getGroups(){
+         var url = Utils.getBaseURL() + "/users/" + Utils.getSVUserId() +"/groups";
+         $http.get(url).then(function(resp) {
+             $scope.groups = resp.data;
+             $scope.response = resp;
+         }, function(err) {
+             $scope.response = err;
+         })
+     }
 
-     var url = "http://localhost/api/v1/users/1/groups";
-     $http.get(url).then(function(resp) {
-         $scope.groups = resp.data;
-         $scope.response = resp.data;
-         console.log('Success', resp);
-         // For JSON responses, resp.data contains the result
-     }, function(err) {
-         console.error('ERR', err);
-         // err.status will contain the status code
-     })
      $scope.addGroup = function(){
          var myPopup = $ionicPopup.show({
-             template: '<input type="password" ng-model="data.wifi">',
-             title: 'Enter Wi-Fi Password',
-             subTitle: 'Please use normal things',
+             template: '<input type="text" ng-model="data.wifi">',
+             title: 'Enter Group Name',
              scope: $scope,
              buttons: [
                  { text: 'Cancel' },
                  {
-                     text: '<b>Save</b>',
+                     text: 'OK',
                      type: 'button-positive',
                      onTap: function(e) {
-                         if (!$scope.data.wifi) {
-                             //don't allow the user to close unless he enters wifi password
-                             e.preventDefault();
-                         } else {
-                             return $scope.data.wifi;
-                         }
+                         return $scope.data.wifi;
                      }
                  }
              ]
          });
          myPopup.then(function(res) {
-             console.log(res);});
-         }
-     })
- .controller('RegisterCtrl', function($scope, $http, $ionicPopup) {
+             if(res){
+                 var dataJson={};
+                 dataJson["name"] = $scope.data.wifi;
+                 var url = Utils.getBaseURL() + "/groups/" + Utils.getSVUserId();
+                 $http.post(url, dataJson).then(function(resp) {
+                     $scope.response = resp;
+                     getGroups();
+                 }, function(err) {
+                     $scope.response = err;
+                 })
+             }
+         })
+     }
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
+})
+ .controller('RegisterCtrl', function($scope, $http, $ionicPopup, Utils) {
      $scope.selectedCountry = "Zimbabwe";
      $scope.form = {};
      $scope.form.country = "asd";
@@ -197,7 +221,7 @@ angular.module('starter.controllers', [])
      $scope.register = function(){
          var dataJson={};
          for(var key in $scope.form) dataJson[key]=$scope.form[key];
-         var url = 'http://localhost/api/v1/users';
+         var url = Utils.getBaseURL() + '/users';
          $http.post(url, dataJson).then(function(resp) {
              $ionicPopup.alert({
                  title: 'Success',
