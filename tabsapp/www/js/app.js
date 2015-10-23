@@ -26,6 +26,11 @@ angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starte
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
     $stateProvider
+    .state("devlogin", {
+        url:"/devlogin",
+        templateUrl: "templates/devlogin.html",
+        controller: "DevLoginCtrl"
+    })
     .state("login", {
         url:"/login",
         templateUrl: "templates/login.html",
@@ -40,6 +45,11 @@ angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starte
         url: '/home',
         abstract: true,
         templateUrl: 'templates/tabs.html'
+    })
+    .state("sv-detail", {
+        url:"/sv-detail/:svId",
+        templateUrl: "templates/sv-detail.html",
+        controller: "SvDetailCtrl"
     })
     .state('home.outgoing', {
         url: '/outgoing',

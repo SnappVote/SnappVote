@@ -17,7 +17,7 @@
                 Country
             </div>
             <select ng-model="form.country">
-                <option ng-repeat="country in countries">{{country.name}}</option>
+                <option  ng-repeat="country in countries track by $index" ng-selected="{{country.name === selectedCountry}}">{{country.name}}</option>
             </select>
         </label>
         <button class="button button-full button-positive" ng-click="register()">

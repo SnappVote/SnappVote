@@ -1,8 +1,14 @@
 angular.module('starter.services', [])
-.factory('UserUtils', function(){
+.factory('Utils', function(){
     return{
-        getCurrUserId: function(){
-            return 1;
+        setSVUserId: function(userId){
+            window.localStorage['svUserId'] = userId;
+        },
+        getSVUserId: function(){
+            return window.localStorage['svUserId'];
+        },
+        getBaseURL: function(){
+            return 'http://localhost/test/v1';
         }
     }
 })

@@ -1,7 +1,21 @@
 <ion-view view-title="Outgoing">
   <ion-content>
+      <div class="item" style="margin-bottom: 25px; padding-left:110px;">Logged in as {{userId}}</div>
+      <div ng-repeat="snappvote in snappvotes">
+          <li class="item">
+              {{snappvote.title}}
+              <div>
+                  {{snappvote.answer_1}}  {{snappvote.answer_1_count}}
+              </div>
+              <div>
+                  {{snappvote.answer_2}}  {{snappvote.answer_2_count}}
+              </div>
+          </li>
+
+      </div>
       <button class="button button-full button-assertive" ui-sref="choose-type">
         New
       </button>
+      <div>{{response}}</div>
   </ion-content>
 </ion-view>

@@ -2,20 +2,38 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($scope, $http, $location, Snappvote) {
     $scope.goHome = function(){
         $location.path("/home/outgoing");
-    }
+    };
     $scope.test = function(){
-        Snappvote.createSnappvote('title', 'img1', 'img2', 'answer1', 'answer2', 'expireDate');
-        var dataJson = Snappvote.getSnappvote();
-
-      }
+    }
+})
+.controller('OutgoingCtrl', function($scope, $http, Utils) {
+    $scope.snappvotes = [];
+    var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
+    $http.get(url).then(function(resp) {
+        $scope.userId = resp.data[0].username;
+    }, function(err) {
+        $scope.response = err;
+    })
+    var url = Utils.getBaseURL() + '/snappvotes/out/'+ Utils.getSVUserId();
+    $http.get(url).then(function(resp) {
+        $scope.response = resp;
+        var snappvotes = resp.data;
+        $scope.snappvotes = snappvotes;
+    }, function(err) {
+        $scope.response = err;
+    })
+})
+ .controller('IncomingCtrl', function($scope, $http, Utils) {
+     $scope.snappvotes = [];
+     var url = 'http://localhost/api/v1/snappvotes/in/' + Utils.getSVUserId();
+     $http.get(url).then(function(resp) {
+         $scope.snappvotes = resp.data;
+         $scope.response = resp;
+     }, function(err) {
+         $scope.response = err;
+     })
  })
- .controller('OutgoingCtrl', function($scope) {
-
- })
- .controller('IncomingCtrl', function($scope) {
-
- })
- .controller('NewSnappvoteCtrl', function($scope, Snappvote) {
+ .controller('NewSnappvoteCtrl', function($scope, $ionicPopup, Snappvote) {
      $scope.form = {};
      $scope.answer1 = "...";
      $scope.answer2 = "...";
@@ -42,7 +60,29 @@ angular.module('starter.controllers', [])
      };
 
  })
- .controller('AllContactsCtrl', function($scope, $http, $cordovaContacts, Snappvote) {
+ .controller('SvDetailCtrl', function($scope, $http, $stateParams, Utils) {
+     $scope.selected = -1;
+     var svId = $stateParams.svId;
+     var url = Utils.getBaseURL() + "/snapvotes/" + svId;
+     $http.get(url).then(function(resp) {
+         $scope.response = resp;
+         snappvote = resp.data[0];
+         $scope.snappvote = snappvote;
+         console.log('Success', resp);
+         // For JSON responses, resp.data contains the result
+     }, function(err) {
+         $scope.response = err;
+         console.error('ERR', err);
+         // err.status will contain the status code
+     })
+     $scope.answer1Clicked = function(){
+         $scope.selected = 1;
+     };
+     $scope.answer2Clicked = function(){
+         $scope.selected = 2;
+     }
+ })
+ .controller('AllContactsCtrl', function($scope, $http, $cordovaContacts, Snappvote, Utils) {
      var selectedContactsIds = [];
      $scope.contacts = [];
      getContacts();
@@ -61,22 +101,25 @@ angular.module('starter.controllers', [])
      $scope.sendSV = function(){
          Snappvote.setContacts(selectedContactsIds);
          var dataJson = Snappvote.getSnappvote();
-        console.log(dataJson['title']);
+         console.log(dataJson['title']);
          console.log(dataJson);
          console.log('---');
          for (var i = 0; i < selectedContactsIds.length; i++) {
              console.log(selectedContactsIds[i]);
          }
-         var url = 'http://localhost/api/v1/snappvotes/out/1';
+         var url = 'http://localhost/api/v1/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
              $scope.response = resp;
-             console.log('Success', resp.data);
-             // For JSON responses, resp.data contains the result
+             $ionicPopup.alert({
+                 title: 'Success',
+                 template: 'Snappvote sent.'
+             });
          }, function(err) {
              $scope.response = err;
-
-             console.error('ERR', err);
-             // err.status will contain the status code
+             $ionicPopup.alert({
+                 title: 'Error',
+                 template: 'Something went wrong.'
+             });
          })
      }
      function getContacts(){
@@ -85,25 +128,25 @@ angular.module('starter.controllers', [])
              $scope.contacts = resp.data;
              console.log('Success', resp);
              // For JSON responses, resp.data contains the result
-           }, function(err) {
+         }, function(err) {
              console.error('ERR', err);
              // err.status will contain the status code
-           })
+         })
          //cordova contacts plugins
          //https://github.com/dbaq/cordova-plugin-contacts-phone-numbers
-        //  navigator.contactsPhoneNumbers.list(function(contacts) {
-        //      $scope.contacts = contacts;
-        //      $scope.$digest();
-        //      for(var i = 0; i < contacts.length; i++) {
-        //          console.log(contacts[i].id + " - " + contacts[i].displayName);
-        //          for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-        //              var phone = contacts[i].phoneNumbers[j];
-        //              console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
-        //          }
-        //      }
-        //  }, function(error) {
-        //      console.error(error);
-        //  });
+         //  navigator.contactsPhoneNumbers.list(function(contacts) {
+         //      $scope.contacts = contacts;
+         //      $scope.$digest();
+         //      for(var i = 0; i < contacts.length; i++) {
+         //          console.log(contacts[i].id + " - " + contacts[i].displayName);
+         //          for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
+         //              var phone = contacts[i].phoneNumbers[j];
+         //              console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
+         //          }
+         //      }
+         //  }, function(error) {
+         //      console.error(error);
+         //  });
      }
  })
  .controller('GroupsCtrl', function($scope, $http, $ionicPopup) {
@@ -143,11 +186,13 @@ angular.module('starter.controllers', [])
              ]
          });
          myPopup.then(function(res) {
-console.log(res);});
-     }
- })
+             console.log(res);});
+         }
+     })
  .controller('RegisterCtrl', function($scope, $http, $ionicPopup) {
+     $scope.selectedCountry = "Zimbabwe";
      $scope.form = {};
+     $scope.form.country = "asd";
      $scope.countries = countriesJson;
      $scope.register = function(){
          var dataJson={};
@@ -155,21 +200,28 @@ console.log(res);});
          var url = 'http://localhost/api/v1/users';
          $http.post(url, dataJson).then(function(resp) {
              $ionicPopup.alert({
-     title: 'Success',
-     template: 'User created successfully'
-   });
+                 title: 'Success',
+                 template: 'User registered.'
+             });
              $scope.response = resp;
-             console.log('Success', resp);
-             // For JSON responses, resp.data contains the result
          }, function(err) {
              $ionicPopup.alert({
-     title: 'Error',
-     template: 'Something went wrong '
-   });
+                 title: 'Error',
+                 template: 'Something went wrong '
+             });
              $scope.response = err;
-
-             console.error('ERR', err);
-             // err.status will contain the status code
          })
+     }
+ })
+ .controller('DevLoginCtrl', function($scope, $http, $ionicPopup, $location, Utils) {
+     $scope.contacts = [];
+     var url = Utils.getBaseURL() +  '/users';
+     $http.get(url).then(function(resp) {
+         $scope.contacts = resp.data;
+     }, function(err) {
+     })
+     $scope.login = function(userId){
+         Utils.setSVUserId(userId);
+         $location.path("/home/outgoing");
      }
  });
