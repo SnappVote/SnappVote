@@ -4,14 +4,14 @@
     </ion-nav-buttons>
   <ion-content>
       <div class="item" style="margin-bottom: 25px; padding-left:110px;">Logged in as {{userId}}</div>
-      <div ng-repeat="snappvote in snappvotes">
+      <div ng-repeat="snapvote in snapvotes">
           <li class="item">
-              {{snappvote.title}}
+              {{snapvote.title}}
               <div>
-                  {{snappvote.answer_1}}  {{snappvote.answer_1_count}}
+                  {{snapvote.answer_1}}  {{snapvote.answer_1_count}}
               </div>
               <div>
-                  {{snappvote.answer_2}}  {{snappvote.answer_2_count}}
+                  {{snapvote.answer_2}}  {{snapvote.answer_2_count}}
               </div>
           </li>
 
@@ -19,6 +19,6 @@
       <button class="button button-full button-assertive" ui-sref="choose-type">
         New
       </button>
-      <!-- <div>{{response}}</div> -->
+      <div>{{response}}</div>
   </ion-content>
 </ion-view>

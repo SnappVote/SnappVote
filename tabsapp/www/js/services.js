@@ -8,15 +8,29 @@ angular.module('starter.services', [])
             return window.localStorage['svUserId'];
         },
         getBaseURL: function(){
-            return 'http://creative2thoughts.com/test/v1';
-            // return 'http://localhost/test/v1';
+            // return 'http://creative2thoughts.com/test/v1';
+            return 'http://localhost/test/v1';
         }
     }
 })
-.factory('Snappvote', function(){
+.factory('Users', function(Utils){
+    return{
+        setSVUserId: function(userId){
+            window.localStorage['svUserId'] = userId;
+        },
+        getSVUserId: function(){
+            return window.localStorage['svUserId'];
+        },
+        getBaseURL: function(){
+            // return 'http://creative2thoughts.com/test/v1';
+            return 'http://localhost/test/v1';
+        }
+    }
+})
+.factory('Snapvotes', function(Utils, $http){
     var snappvote = {};
     return{
-        createSnappvote: function(title, img1, img2, answer1, answer2, expireDate){
+        saveSnapvote: function(title, img1, img2, answer1, answer2, expireDate){
             snappvote ={
                 title: title,
                 img_1: img1,
@@ -31,6 +45,14 @@ angular.module('starter.services', [])
         },
         getSnappvote: function(){
             return snappvote;
+        },
+        getOutgoing: function(){
+            var url = Utils.getBaseURL() + '/snappvotes/out/'+ Utils.getSVUserId();
+            return $http.get(url);
+        },
+        getIncoming: function(){
+            var url = Utils.getBaseURL() + '/snappvotes/in/' + Utils.getSVUserId();
+            return $http.get(url);
         }
     };
 })

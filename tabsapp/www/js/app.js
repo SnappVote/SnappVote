@@ -36,6 +36,11 @@ angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starte
         templateUrl: "templates/login.html",
         controller: "LoginCtrl"
     })
+    .state("group-edit", {
+        url:"/group-edit/:id",
+        templateUrl: "templates/group-edit.html",
+        controller: "GroupEditCtrl"
+    })
     .state("register", {
         url:"/register",
         templateUrl: "templates/register.html",
@@ -77,7 +82,7 @@ angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starte
     .state("new-sv", {
         url:"/new-sv",
         templateUrl: "templates/new-sv.html",
-        controller: "NewSnappvoteCtrl"
+        controller: "NewSnapvoteCtrl"
     })
     .state('contacts', {
         url: '/contacts',

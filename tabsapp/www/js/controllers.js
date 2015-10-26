@@ -1,36 +1,36 @@
 angular.module('starter.controllers', [])
-.controller('LoginCtrl', function($scope, $http, $location, Snappvote) {
+.controller('LoginCtrl', function($scope, $http, $location) {
+    console.log('hello');
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     };
     $scope.test = function(){
     }
 })
-.controller('OutgoingCtrl', function($scope, $http, $ionicHistory, Utils) {
-    $scope.snappvotes = [];
+.controller('OutgoingCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes) {
+
     var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
     $http.get(url).then(function(resp) {
         $scope.userId = resp.data[0].username;
     }, function(err) {
         $scope.response = err;
     })
-    var url = Utils.getBaseURL() + '/snappvotes/out/'+ Utils.getSVUserId();
-    $http.get(url).then(function(resp) {
+
+    Snapvotes.getOutgoing().then(function(resp) {
         $scope.response = resp;
-        var snappvotes = resp.data;
-        $scope.snappvotes = snappvotes;
+        var snapvotes = resp.data;
+        $scope.snapvotes = snapvotes;
     }, function(err) {
         $scope.response = err;
     })
+
     $scope.goBack = function() {
         $ionicHistory.goBack();
     }
 })
- .controller('IncomingCtrl', function($scope, $http, $ionicHistory, Utils) {
-     $scope.snappvotes = [];
-     var url = Utils.getBaseURL() + '/snappvotes/in/' + Utils.getSVUserId();
-     $http.get(url).then(function(resp) {
-         $scope.snappvotes = resp.data;
+ .controller('IncomingCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes) {
+     Snapvotes.getIncoming().then(function(resp) {
+         $scope.snapvotes = resp.data;
          $scope.response = resp;
      }, function(err) {
          $scope.response = err;
@@ -39,7 +39,12 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('NewSnappvoteCtrl', function($scope, $ionicPopup, Snappvote) {
+ .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $http, $ionicHistory) {
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
+ })
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, Snapvotes) {
      $scope.form = {};
      $scope.answer1 = "...";
      $scope.answer2 = "...";
@@ -50,14 +55,8 @@ angular.module('starter.controllers', [])
          ['Left', 'Right']
      ];
 
-     $scope.createSnappvote = function(){
-         Snappvote.createSnappvote($scope.form.question, 'img1', 'img2', $scope.answer1, $scope.answer2, 'expireDate');
-         var sv = Snappvote.getSnappvote();
-         for (var vari in sv) {
-             if (sv.hasOwnProperty(vari)) {
-                 console.log(vari + " -> " + sv[vari]);
-             }
-         }
+     $scope.createSnapvote = function(){
+         Snapvotes.saveSnapvote($scope.form.question, 'img1', 'img2', $scope.answer1, $scope.answer2, 'expireDate');
      };
 
      $scope.updateAnswers = function(index){
@@ -66,42 +65,7 @@ angular.module('starter.controllers', [])
      };
 
  })
- .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $ionicHistory, Snappvote) {
-     $scope.goBack = function() {
-         $ionicHistory.goBack();
-     }
- })
- .controller('SvDetailCtrl', function($scope, $http, $stateParams, Utils) {
-     $scope.selected = -1;
-     var svId = $stateParams.svId;
-     var url = Utils.getBaseURL() + "/snapvotes/" + svId;
-     $http.get(url).then(function(resp) {
-         $scope.response = resp;
-         snappvote = resp.data[0];
-         $scope.snappvote = snappvote;
-     }, function(err) {
-         $scope.response = err;
-     })
-     $scope.answer1Clicked = function(){
-         $scope.selected = 0;
-     };
-     $scope.answer2Clicked = function(){
-         $scope.selected = 1;
-     }
-     $scope.submitAnswer = function(){
-         var dataJson={};
-         dataJson["voter_id"] = Utils.getSVUserId();
-         dataJson["answer_id"] = $scope.selected;
-
-         var url = Utils.getBaseURL() + "/snappvotes/answers/" + $scope.snappvote.id;
-         $http.put(url, dataJson).then(function(resp) {
-             $scope.response = resp;
-         }, function(err) {
-             $scope.response = err;
-         })
-     }
- })
- .controller('AllContactsCtrl', function($scope, $http, $cordovaContacts, $ionicPopup, $ionicHistory, Snappvote, Utils) {
+ .controller('AllContactsCtrl', function($scope, $http, $cordovaContacts, $ionicPopup, $ionicHistory, Snapvotes, Utils) {
      var selectedContactsIds = [];
      $scope.contacts = [];
      getContacts();
@@ -118,7 +82,7 @@ angular.module('starter.controllers', [])
          }
      }
      $scope.sendSV = function(){
-         Snappvote.setContacts(selectedContactsIds);
+         Snapvotes.setContacts(selectedContactsIds);
          var dataJson = Snappvote.getSnappvote();
          for (var i = 0; i < selectedContactsIds.length; i++) {
              console.log(selectedContactsIds[i]);
@@ -213,6 +177,76 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
 })
+ .controller('SvDetailCtrl', function($scope, $http, $stateParams, Utils) {
+     $scope.selected = -1;
+     var svId = $stateParams.svId;
+     var url = Utils.getBaseURL() + "/snapvotes/" + svId;
+     $http.get(url).then(function(resp) {
+         $scope.response = resp;
+         snappvote = resp.data[0];
+         $scope.snappvote = snappvote;
+     }, function(err) {
+         $scope.response = err;
+     })
+     $scope.answer1Clicked = function(){
+         $scope.selected = 0;
+     };
+     $scope.answer2Clicked = function(){
+         $scope.selected = 1;
+     }
+     $scope.submitAnswer = function(){
+         var dataJson={};
+         dataJson["voter_id"] = Utils.getSVUserId();
+         dataJson["answer_id"] = $scope.selected;
+
+         var url = Utils.getBaseURL() + "/snappvotes/answers/" + $scope.snappvote.id;
+         $http.put(url, dataJson).then(function(resp) {
+             $scope.response = resp;
+         }, function(err) {
+             $scope.response = err;
+         })
+     }
+ })
+ .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, Utils) {
+     var groupId = $stateParams.id;
+     var selectedContactsIds = [];
+     $scope.contacts = [];
+     getContacts();
+     $scope.toggleContact = function(userId){
+         var flag = false;
+         for (var i = 0; i < selectedContactsIds.length; i++) {
+             if(userId === selectedContactsIds[i]){
+                 selectedContactsIds.splice(i, 1);
+                 flag = true;
+             }
+         }
+         if(!flag){
+             selectedContactsIds.push(userId);
+         }
+     }
+
+     function getContacts(){
+         var url = Utils.getBaseURL() + '/users';
+         $http.get(url).then(function(resp) {
+             $scope.contacts = resp.data;
+         }, function(err) {
+             $scope.response = err;
+         })
+     }
+
+     $scope.addContacts = function(){
+         var dataJson = {};
+         dataJson['contacts_ids'] = selectedContactsIds;
+
+         var url = Utils.getBaseURL() + '/groups/1/contacts';
+         $http.post(url, dataJson).then(function(resp) {
+             $scope.response = resp;
+         }, function(err) {
+             $scope.response = err;
+         })
+     }
+
+ })
  .controller('RegisterCtrl', function($scope, $http, $ionicPopup, Utils) {
      $scope.selectedCountry = "Zimbabwe";
      $scope.form = {};
