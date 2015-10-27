@@ -83,7 +83,7 @@ angular.module('starter.controllers', [])
      }
      $scope.sendSV = function(){
          Snapvotes.setContacts(selectedContactsIds);
-         var dataJson = Snappvote.getSnappvote();
+         var dataJson = Snapvotes.getSnappvote();
          for (var i = 0; i < selectedContactsIds.length; i++) {
              console.log(selectedContactsIds[i]);
          }
@@ -207,44 +207,104 @@ angular.module('starter.controllers', [])
          })
      }
  })
- .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, Utils) {
+ .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, Snapvotes, Utils) {
      var groupId = $stateParams.id;
-     var selectedContactsIds = [];
+    //  console.log(groupId);
      $scope.contacts = [];
+     $scope.groupContacts = [];
+
      getContacts();
-     $scope.toggleContact = function(userId){
-         var flag = false;
-         for (var i = 0; i < selectedContactsIds.length; i++) {
-             if(userId === selectedContactsIds[i]){
-                 selectedContactsIds.splice(i, 1);
-                 flag = true;
-             }
-         }
-         if(!flag){
-             selectedContactsIds.push(userId);
-         }
+    //  getContactsForGroup();
+
+     $scope.toggleContact = function(contact){
+         contact.toggled = !contact.toggled;
      }
 
      function getContacts(){
          var url = Utils.getBaseURL() + '/users';
          $http.get(url).then(function(resp) {
              $scope.contacts = resp.data;
+             var url = Utils.getBaseURL() + '/groups/' + groupId;
+             $http.get(url).then(function(resp) {
+                 $scope.groupContacts = resp.data;
+                 $scope.response = resp;
+                 for (var i = 0; i < $scope.contacts.length; i++) {
+                     for (var j = 0; j < $scope.groupContacts.length; j++) {
+                         if($scope.contacts[i].id === $scope.groupContacts[j].id){
+                             $scope.contacts[i].toggled = true;
+                         }
+                     }
+                 }
+             }, function(err) {
+                 $scope.response = err;
+             })
+         }, function(err) {
+             $scope.response = err;
+         })
+     }
+
+     function getContactsForGroup(){
+         var url = Utils.getBaseURL() + '/groups/' + groupId;
+         $http.get(url).then(function(resp) {
+             $scope.groupContacts = resp.data;
+             $scope.response = resp;
          }, function(err) {
              $scope.response = err;
          })
      }
 
      $scope.addContacts = function(){
-         var dataJson = {};
-         dataJson['contacts_ids'] = selectedContactsIds;
+         var selectedContactsId = [];
+         for (var i = 0; i < $scope.contacts.length; i++) {
+             if($scope.contacts[i].toggled === true){
+                 selectedContactsId.push($scope.contacts[i].id);
+             }
+         }
+         var snappvote = {};
+         snappvote['contacts_ids'] = selectedContactsId;
+          var url = Utils.getBaseURL() + '/groups/' + groupId + '/contacts';
+          $http.post(url, snappvote).then(function(resp) {
+              $scope.response = resp;
+          }, function(err) {
+              $scope.response = err;
+          })
+        //  var url = Utils.getBaseURL() + '/groups/' + groupId + '/contacts';
+         //
+        //  $http.post(url, snappvote).then(function(resp) {
+        //      $scope.response = resp;
+        //      $ionicPopup.alert({
+        //          title: 'Success',
+        //          template: 'Snappvote sent.'
+        //      });
+        //  }, function(err) {
+        //      $scope.response = err;
+        //      $ionicPopup.alert({
+        //          title: 'Error',
+        //          template: 'Something went wrong.'
+        //      });
+        //  })
+        //     var asd = [1, 2, 3];         var dataJson = {
+        //      contacts_ids: asd
+        //  };
+        //  dataJson["contacts_ids"] = selectedContactsIds;
 
-         var url = Utils.getBaseURL() + '/groups/1/contacts';
-         $http.post(url, dataJson).then(function(resp) {
-             $scope.response = resp;
-         }, function(err) {
-             $scope.response = err;
-         })
+        //  var url = Utils.getBaseURL() + '/groups/' + groupId + '/contacts';
+        //  $http.post(url, dataJson).then(function(resp) {
+        //      $scope.response = resp;
+        //  }, function(err) {
+        //      $scope.response = err;
+        //  })
+        //  getContactsForGroup();
      }
+     $scope.getCheckedFalse = function(asd){
+         if(asd.username === "Gandalf"){
+             return true;
+         }
+         else{
+             return false;
+         }
+     }
+
 
  })
  .controller('RegisterCtrl', function($scope, $http, $ionicPopup, Utils) {
