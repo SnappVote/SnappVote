@@ -5,9 +5,10 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
+// angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova']);
 
-.run(function($ionicPlatform) {
+app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -114,3 +115,16 @@ angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starte
 
 
 });
+app.filter('test', [function() {
+    return function(input, answer1, answer2) {
+        if(input === 0){
+            return answer1;
+        }
+        else if(input === 1){
+            return answer2;
+        }
+        else{
+            return "Pending";
+        }
+    };
+}]);

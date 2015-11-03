@@ -6,7 +6,7 @@
     <div ng-repeat="contact in contacts">
         <li class="item item-checkbox">
             <label class="checkbox">
-                <input type="checkbox" ng-click="toggleContact({{contact.id}})">
+                <input type="checkbox" ng-click="toggleContact(contact)">
             </label>
             {{contact.username}}
         </li>

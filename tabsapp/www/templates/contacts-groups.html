@@ -6,7 +6,7 @@
       <div ng-repeat="group in groups">
           <li class="item item-checkbox">
               <label class="checkbox">
-                  <input type="checkbox">
+                  <input type="checkbox" ng-click="toggleContact(group)">
               </label>
               {{group.name}}
 
@@ -14,15 +14,12 @@
           <a class="button button-assertive" href="#/group-edit/{{group.id}}">
             Edit</a>
       </div>
-      <a class="button button-full button-assertive" href="#/group-edit/1">
-        Edit Group
-        </a>
       <button class="button button-full button-assertive" ng-click="addGroup()">
         New Group
       </button>
       <button class="button button-full button-assertive" ng-click="sendSV()">
         Send
       </button>
-      <!-- <div>{{response}}</div> -->
+      <div>{{response}}</div>
   </ion-content>
 </ion-view>

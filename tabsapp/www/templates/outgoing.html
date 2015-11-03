@@ -14,7 +14,7 @@
                   {{snapvote.answer_2}}  {{snapvote.answer_2_count}}
               </div>
           </li>
-
+          <div ng-repeat="user in snapvote.voters">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div>
       </div>
       <button class="button button-full button-assertive" ui-sref="choose-type">
         New
