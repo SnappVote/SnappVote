@@ -1,0 +1,13 @@
+.hidden{
+    display: none;
+}
+.picImg{
+    width: 100%;
+    height: auto;
+}
+
+.picImg2{
+    display: inline;
+    width: 40%;
+    height: auto;
+}

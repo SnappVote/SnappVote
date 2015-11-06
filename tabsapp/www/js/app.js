@@ -81,7 +81,7 @@ app.run(function($ionicPlatform) {
         controller: "ChooseTypeCtrl"
     })
     .state("new-sv", {
-        url:"/new-sv",
+        url:"/new-sv/:id",
         templateUrl: "templates/new-sv.html",
         controller: "NewSnapvoteCtrl"
     })

@@ -44,10 +44,22 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, Snapvotes) {
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $stateParams, Camera, Snapvotes) {
+     var type = $stateParams.id;
+     $scope.type = type;
+     console.log(type);
+     $scope.items = [];
      $scope.form = {};
      $scope.answer1 = "...";
      $scope.answer2 = "...";
+
+     $scope.addPhoto = function(){
+         Camera.getPicture().then(function(imageURI) {
+             $scope.items.push("data:image/jpeg;base64," + imageURI);
+         }, function(err) {
+             console.log(err);
+         });
+     };
 
      $scope.answers = [
          ['Yes', 'No'],

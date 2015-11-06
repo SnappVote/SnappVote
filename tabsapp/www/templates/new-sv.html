@@ -4,9 +4,19 @@
           <span class="input-label">Question</span>
           <input type="text" ng-model="form.question">
       </label>
-      <button class="button button-full button-assertive">
-        Take picture
-      </button>
+
+      <button class="button button-full" ng-click="addPhoto()">
+          Take picture
+        </button>
+
+      <div ng-class="{'hidden' : type == 2}">
+          <img class="picImg" ng-src="{{items[0]}}"/>
+      </div>
+      <div ng-class="{'hidden' : type == 1}">
+          <img class="picImg2" ng-src="{{items[0]}}"/>
+          <img class="picImg2" ng-src="{{items[1]}}"/>
+      </div>
+
       <div class="padding">
           <button class="button button-assertive">{{answer1}}</button>
           <button class="button button-assertive">{{answer2}}</button>

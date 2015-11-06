@@ -8,8 +8,8 @@ angular.module('starter.services', [])
             return window.localStorage['svUserId'];
         },
         getBaseURL: function(){
-            // return 'http://creative2thoughts.com/test/v1';
-            return 'http://localhost/test/v1';
+            return 'http://creative2thoughts.com/test/v1';
+            // return 'http://localhost/test/v1';
         }
     }
 })
@@ -85,4 +85,25 @@ angular.module('starter.services', [])
             return $http.get(url);
         }
     };
-});
+})
+.factory('Camera', ['$q', function($q) {
+  return {
+    getPicture: function(options) {
+        options = {
+            quality:50,
+            targetWidth: 1000,
+            targetHeight:1400,
+    saveToPhotoAlbum: false,
+    destinationType: Camera.DestinationType.DATA_URL
+};
+      var q = $q.defer();
+      navigator.camera.getPicture(function(result) {
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+
+      return q.promise;
+    }
+  }
+}]);
