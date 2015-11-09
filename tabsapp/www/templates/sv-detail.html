@@ -3,6 +3,8 @@
     <a class="item">
         {{snappvote.title}}
     </a>
+    <img class="picImg" ng-src="data:image/jpeg;base64,{{img1}}"/>
+    <!-- ng-src="data:image/jpeg;base64,{{items[0]}}" -->
     <div class="padding">
         <button class="button" ng-class="{'button-assertive': selected==0}" ng-click="answer1Clicked()">{{snappvote.answer_1}}</button>
         <button class="button" ng-class="{'button-assertive': selected==1}" ng-click="answer2Clicked()">{{snappvote.answer_2}}</button>
@@ -10,6 +12,6 @@
     <button class="button button-full button-assertive" ng-click="submitAnswer()">
       Send
     </button>
-    <div>{{response}}</div>
+    <!-- <div>{{response}}</div> -->
 </ion-content>
 </ion-view>

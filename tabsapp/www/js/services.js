@@ -8,8 +8,8 @@ angular.module('starter.services', [])
             return window.localStorage['svUserId'];
         },
         getBaseURL: function(){
-            return 'http://creative2thoughts.com/test/v1';
-            // return 'http://localhost/test/v1';
+            // return 'http://creative2thoughts.com/test/v1';
+            return 'http://localhost/test/v1';
         }
     }
 })
@@ -41,7 +41,9 @@ angular.module('starter.services', [])
                 img_2: img2,
                 answer_1: answer1,
                 answer_2: answer2,
-                expire_date: expireDate
+                expire_date: expireDate,
+                contacts_ids: "",
+                groups_ids: ""
             }
         },
         setContacts: function(contactIds){

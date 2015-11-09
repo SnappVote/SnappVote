@@ -10,7 +10,8 @@
         </button>
 
       <div ng-class="{'hidden' : type == 2}">
-          <img class="picImg" ng-src="{{items[0]}}"/>
+          <img class="picImg" src="../img/ionic.png"/>
+          <!-- ng-src="data:image/jpeg;base64,{{items[0]}}" -->
       </div>
       <div ng-class="{'hidden' : type == 1}">
           <img class="picImg2" ng-src="{{items[0]}}"/>
@@ -28,5 +29,7 @@
       <button class="button button-full button-assertive" ng-click="createSnapvote()" ui-sref="contacts.all">
         Choose contacts
       </button>
+      <div>{{response}}</div>
+
   </ion-content>
 </ion-view>
