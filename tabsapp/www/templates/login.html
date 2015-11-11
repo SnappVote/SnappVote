@@ -1,27 +1,26 @@
 <ion-view view-title="Login">
-<ion-content>
-    <button class="button button-full button-balanced" ui-sref="register">
-      Register Manually
+<ion-content class="test">
+    <button class="button button button-login" href="register">
+      use Facebook
     </button>
-
-    <button class="button button-full button-positive" href="register">
-      Facebook Login
+    <button class="button button button-login">
+      use Google+
     </button>
-    <button class="button button-full button-assertive">
-      G+ Login
+    <button class="button button button-login" ui-sref="register">
+        create new
     </button>
-    <button class="button button-full button-stable" ng-click="goHome()">
+    <!-- <button class="button button button-login" ng-click="goHome()">
       Home
-    </button>
-    <button class="button button-full button-stable"  ui-sref="contacts.all">
+    </button> -->
+    <!-- <button class="button button button-login"  ui-sref="contacts.all">
       Groups
-    </button>
-    <button class="button button-full button-stable" ui-sref="devlogin">
+    </button> -->
+    <button class="button button-login" ui-sref="devlogin">
       DevLogin
     </button>
-    <button class="button button-full button-stable" ng-click="openDatePicker()">
-      Open Datepicker
-    </button>
+    <!-- <button class="button button-login" ng-click="openDatePicker()">
+      Test
+    </button> -->
     <div>{{response}}</div>
 </ion-content>
 </ion-view>

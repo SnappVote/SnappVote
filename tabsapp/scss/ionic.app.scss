@@ -15,9 +15,47 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+// @font-face {
+//   font-family: 'Gotham';
+//   src: url('../fonts/GothamRoundedBook_21018.ttf')  format('truetype');
+// }
+
+$sv-green-light: #A5D46C;
+$sv-green-medium: #84B461;
+$sv-green-dark: #637F41;
+$sv-red: #EC5F65;
+.bar-header{
+    background-color: $sv-green-light !important;
+}
+.test{
+    background-color: $sv-green-light;
+}
+
+.button-basic{
+    border: none !important;
+    border-radius: 7px !important;
+    border-bottom: 3px solid $sv-green-dark !important;
+    font-family: 'Gotham', sans-serif;
+}
+.button-login{
+    @extend .button-basic;
+    width: 80% !important;
+    margin-left: 10% !important;
+    margin-top: 10px !important;
+    color: $sv-red !important;
+}
+
+.sv-input{
+    border: none !important;
+    border-radius: 7px !important;
+    border-top: 3px solid $sv-green-medium !important;
+    font-family: 'Gotham', sans-serif;
+    width: 80%;
+    margin-left: 10% !important;
+    margin-top: 10px !important;
+}
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-

@@ -25,7 +25,7 @@ body {
  * Use ionic icons instead of bootstrap's glyphicons
  * for arrows in the datetimepicker.
  */
-.glyphicon {
+/*.glyphicon {
   vertical-align: top;
   display: inline-block;
   font-family: "Ionicons";
@@ -53,4 +53,4 @@ body {
 }
 .glyphicon-arrow-left:before{
   content: "\f107";
-}
+}*/

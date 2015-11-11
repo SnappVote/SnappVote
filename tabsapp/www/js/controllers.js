@@ -7,24 +7,27 @@ angular.module('starter.controllers', [])
     $scope.test = function(){
     }
     $scope.openDatePicker = function() {
-       $scope.tmp = {};
-       $scope.tmp.newDate = {};
-
-       var birthDatePopup = $ionicPopup.show({
-        template: '<datetimepicker ng-model=""></datetimepicker>',
-        title: "Birth date",
-        scope: $scope,
-        buttons: [
-          { text: 'Cancel' },
-          {
-            text: '<b>Save</b>',
-            type: 'button-positive',
-            onTap: function(e) {
-            }
-          }
-        ]
-       });
-     }
+        // $ionicPopup.alert({
+        //     title: 'Success',
+        //     template: 'Snappvote sent.'
+        // });
+      $scope.tmp = {};
+      var birthDatePopup = $ionicPopup.show({
+       template: '<datetimepicker ng-model="tmp.newDate"></datetimepicker>',
+       title: "Pick Date",
+       scope: $scope,
+       buttons: [
+         { text: 'Cancel' },
+         {
+           text: '<b>Save</b>',
+           type: 'button-positive',
+           onTap: function(e) {
+             $scope.date = $filter('date')($scope.tmp.newDate, 'dd/MM/yyyy HH:mm');
+           }
+         }
+       ]
+      });
+    }
 })
 .controller('OutgoingCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes) {
 

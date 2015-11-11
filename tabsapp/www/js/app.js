@@ -24,7 +24,7 @@ app.run(function($ionicPlatform) {
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider) {
 
     $stateProvider
     .state("devlogin", {
@@ -110,7 +110,7 @@ app.run(function($ionicPlatform) {
     });
 
     $urlRouterProvider.otherwise('/login');
-    $ionicConfigProvider.navBar.alignTitle('center');
+    // $ionicConfigProvider.navBar.alignTitle('center');
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
 
 
