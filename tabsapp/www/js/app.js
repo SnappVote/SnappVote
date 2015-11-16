@@ -27,58 +27,35 @@ app.run(function($ionicPlatform) {
 .config(function($stateProvider, $urlRouterProvider, $compileProvider) {
 
     $stateProvider
-    .state("devlogin", {
-        url:"/devlogin",
-        templateUrl: "templates/devlogin.html",
-        controller: "DevLoginCtrl"
-    })
     .state("login", {
         url:"/login",
         templateUrl: "templates/login.html",
         controller: "LoginCtrl"
     })
-    .state("group-edit", {
-        url:"/group-edit/:id",
-        templateUrl: "templates/group-edit.html",
-        controller: "GroupEditCtrl"
+    .state("devlogin", {
+        url:"/devlogin",
+        templateUrl: "templates/devlogin.html",
+        controller: "DevLoginCtrl"
     })
     .state("register", {
         url:"/register",
         templateUrl: "templates/register.html",
         controller: "RegisterCtrl"
     })
-    .state("home2", {
-        url:"/home2",
+    .state("home", {
+        url:"/home",
         templateUrl: "templates/home.html",
         controller: "HomeCtrl"
     })
-    .state('home', {
-        url: '/home',
-        abstract: true,
-        templateUrl: 'templates/tabs.html'
+    .state("group-edit", {
+        url:"/group-edit/:id",
+        templateUrl: "templates/group-edit.html",
+        controller: "GroupEditCtrl"
     })
     .state("sv-detail", {
         url:"/sv-detail/:svId",
         templateUrl: "templates/sv-detail.html",
         controller: "SvDetailCtrl"
-    })
-    .state('home.outgoing', {
-        url: '/outgoing',
-        views: {
-            'outgoing': {
-                templateUrl: 'templates/outgoing.html',
-                controller: 'OutgoingCtrl'
-            }
-        }
-    })
-    .state('home.incoming', {
-        url: '/incoming',
-        views: {
-            'incoming': {
-                templateUrl: 'templates/incoming.html',
-                controller: 'IncomingCtrl'
-            }
-        }
     })
     .state("choose-type", {
         url:"/choose-type",
@@ -90,33 +67,10 @@ app.run(function($ionicPlatform) {
         templateUrl: "templates/new-sv.html",
         controller: "NewSnapvoteCtrl"
     })
-    .state("contacts2", {
-        url:"/contacts2",
-        templateUrl: "templates/contacts2.html",
+    .state("contacts", {
+        url:"/contacts",
+        templateUrl: "templates/contacts.html",
         controller: "ContactsCtrl"
-    })
-    .state('contacts', {
-        url: '/contacts',
-        abstract: true,
-        templateUrl: 'templates/contacts.html'
-    })
-    .state('contacts.all', {
-        url: '/all',
-        views: {
-            'all': {
-                templateUrl: 'templates/contacts-all.html',
-                controller: 'AllContactsCtrl'
-            }
-        }
-    })
-    .state('contacts.groups', {
-        url: '/groups',
-        views: {
-            'groups': {
-                templateUrl: 'templates/contacts-groups.html',
-                controller: 'GroupsCtrl'
-            }
-        }
     });
 
     $urlRouterProvider.otherwise('/login');
