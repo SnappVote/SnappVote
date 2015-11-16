@@ -9,12 +9,12 @@
         <label class="item item-input sv-input">
             <input type="text" ng-model="form.phone" placeholder="your phonenumber">
         </label>
-        <label class="item item-input item-select sv-input">
-            <div class="input-label">
-                country
-            </div>
+        <label class="item item-select sv-input ">
+            <!-- <div class="input-label">
+                {{selectedCountry}}
+            </div> -->
             <select ng-model="form.country">
-                <option  ng-repeat="country in countries track by $index" ng-selected="{{country.name === selectedCountry}}">{{country.name}}</option>
+                <option ng-repeat="country in countries track by $index" ng-selected="{{country.name === selectedCountry}}">{{country.name}}</option>
             </select>
         </label>
         <button class="button button-login" ng-click="register()">

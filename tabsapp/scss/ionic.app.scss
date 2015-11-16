@@ -24,6 +24,31 @@ $sv-green-light: #A5D46C;
 $sv-green-medium: #84B461;
 $sv-green-dark: #637F41;
 $sv-red: #EC5F65;
+.select-custom{
+    text-align: left !important;
+}
+.center-basic{
+    width: 80%;
+    margin-left: 10%;
+}
+.login-logo{
+    width: 80%;
+    margin-left: 10%;
+}
+.message{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    opacity: 0.6;
+}
+.message-big{
+    @extend .message;
+    font-size: 18px;
+}
+.message-small{
+    @extend .message;
+}
 .bar-header{
     background-color: $sv-green-light !important;
 }
@@ -37,12 +62,78 @@ $sv-red: #EC5F65;
     border-bottom: 3px solid $sv-green-dark !important;
     font-family: 'Gotham', sans-serif;
 }
+.button-center{
+    width: 80% !important;
+    margin-left: 10% !important;
+}
+
 .button-login{
+    @extend .button-basic;
+    @extend .button-center;
+    margin-top: 10px !important;
+    color: $sv-red !important;
+}
+.button-login-text{
+    text-align: left !important;
+    padding-left: 15%;
+}
+.button-standard{
     @extend .button-basic;
     width: 80% !important;
     margin-left: 10% !important;
     margin-top: 10px !important;
-    color: $sv-red !important;
+}
+.button-answer{
+    @extend .button-basic;
+    width: 30%;
+    margin-left:12% !important;
+    // padding: 0px 40px 0px 40px !important;
+}
+
+.contacts-list-container{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 15px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.contacts-item{
+    border: none !important;
+}
+.contacts-item-toggled{
+    background-color: red !important;
+    color: white !important;
+}
+.home-list-container{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.home-list-item-basic{
+    background-color: $sv-green-dark !important;
+    border: 2px solid $sv-green-light !important;
+    color: white !important;
+}
+.home-list-tf{
+    @extend .home-list-item-basic;
+    text-align: center;
+    color: white !important;
+}
+.home-list-title{
+    @extend .home-list-tf;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.home-list-footer{
+    @extend .home-list-tf;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.home-list-item{
+    @extend .home-list-item-basic;
 }
 
 .sv-input{
@@ -53,6 +144,59 @@ $sv-red: #EC5F65;
     width: 80%;
     margin-left: 10% !important;
     margin-top: 10px !important;
+}
+.sv-input-2{
+    width: 70%;
+    margin-left: 15% !important;
+    margin-top: 10px !important;
+    opacity: 0.6 !important;
+    background-color: $sv-green-dark !important;
+    border: none !important;
+}
+.img-custom-big{
+    background-color: white;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 15px;
+    height:250px;
+}
+.img-custom-small{
+    background-color: white;
+    width: 35%;
+    margin-left: 10%;
+    margin-top: 15px;
+    height: 200px;
+}
+.img-container{
+    background-color: white;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 15px;
+    height:200px;
+}
+.center-container{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display:table;
+}
+.text-center {
+    padding-left: 5%;
+    text-align: left;
+    vertical-align:middle;
+    height:100%;
+    display:table-cell;
+}
+.img-center{
+    display: inline-block;
+    height: 50%;
+    width: auto;
+    background-color: white;
+    position: absolute;
+    left: 0%;
+    top:50%;
+    margin-top: -10px;
+    margin-left: 5%;
 }
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

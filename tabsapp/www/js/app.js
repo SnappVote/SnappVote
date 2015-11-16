@@ -47,6 +47,11 @@ app.run(function($ionicPlatform) {
         templateUrl: "templates/register.html",
         controller: "RegisterCtrl"
     })
+    .state("home2", {
+        url:"/home2",
+        templateUrl: "templates/home.html",
+        controller: "HomeCtrl"
+    })
     .state('home', {
         url: '/home',
         abstract: true,
@@ -84,6 +89,11 @@ app.run(function($ionicPlatform) {
         url:"/new-sv/:id",
         templateUrl: "templates/new-sv.html",
         controller: "NewSnapvoteCtrl"
+    })
+    .state("contacts2", {
+        url:"/contacts2",
+        templateUrl: "templates/contacts2.html",
+        controller: "ContactsCtrl"
     })
     .state('contacts', {
         url: '/contacts',
