@@ -6,8 +6,7 @@
         <div class="item" style="margin-bottom: 25px; padding-left:110px;">Logged in as {{userId}}</div>
         <div class="home-list-container">
             <div class="item home-list-title">Outgoing</div>
-            <div ng-repeat="snapvote in outgoing">
-                <div class="item home-list-item">
+            <div ng-repeat="snapvote in outgoing" class="item home-list-item">
                     <b>{{snapvote.title}}</b>
                     <div>
                     <span>
@@ -17,8 +16,7 @@
                         {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
                     </span>
                     </div>
-                </div>
-                <!-- <div ng-repeat="user in snapvote.voters">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div> -->
+                <div ng-repeat="user in snapvote.voters" class="home-user-item" style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div>
             </div>
             <div class="item home-list-footer">More</div>
         </div>

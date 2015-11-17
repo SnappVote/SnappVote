@@ -135,6 +135,10 @@ $sv-red: #EC5F65;
 .home-list-item{
     @extend .home-list-item-basic;
 }
+.home-user-item{
+    @extend .home-list-item-basic;
+    border: none !important;
+}
 
 .sv-input{
     border: none !important;

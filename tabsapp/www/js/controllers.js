@@ -1,5 +1,7 @@
 angular.module('starter.controllers', [])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup) {
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout) {
+    var domElement = $document.find('#asd');
+        angular.element(domElement).triggerHandler('click');
     console.log('hello');
     $scope.goHome = function(){
         $location.path("/home/outgoing");
@@ -8,6 +10,56 @@ angular.module('starter.controllers', [])
     }
     $scope.openDatePicker = function() {
     }
+    var datePickerCallback = function (val) {
+  if (typeof(val) === 'undefined') {
+    console.log('No date selected');
+  } else {
+    console.log('Selected date is : ', val)
+  }
+};
+    $scope.datepickerObject = {
+  titleLabel: 'Title',  //Optional
+  todayLabel: 'Today',  //Optional
+  closeLabel: 'Close',  //Optional
+  setLabel: 'Set',  //Optional
+  setButtonType : 'button-assertive',  //Optional
+  todayButtonType : 'button-assertive',  //Optional
+  closeButtonType : 'button-assertive',  //Optional
+  inputDate: new Date(),  //Optional
+  mondayFirst: true,  //Optional
+  templateType: 'popup', //Optional
+  showTodayButton: 'true', //Optional
+  modalHeaderColor: 'bar-positive', //Optional
+  modalFooterColor: 'bar-positive', //Optional
+  from: new Date(2012, 8, 2), //Optional
+  to: new Date(2018, 8, 25),  //Optional
+  callback: function (val) {  //Mandatory
+    datePickerCallback(val);
+    },
+  dateFormat: 'dd-MM-yyyy', //Optional
+  closeOnSelect: false, //Optional
+};
+$scope.timePickerObject = {
+  inputEpochTime: ((new Date()).getHours() * 60 * 60),  //Optional
+  step: 15,  //Optional
+  format: 12,  //Optional
+  titleLabel: '12-hour Format',  //Optional
+  setLabel: 'Set',  //Optional
+  closeLabel: 'Close',  //Optional
+  setButtonType: 'button-positive',  //Optional
+  closeButtonType: 'button-stable',  //Optional
+  callback: function (val) {    //Mandatory
+    timePickerCallback(val);
+  }
+};
+function timePickerCallback(val) {
+  if (typeof (val) === 'undefined') {
+    console.log('Time not selected');
+  } else {
+    var selectedTime = new Date(val * 1000);
+    console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), ':', selectedTime.getUTCMinutes(), 'in UTC');
+  }
+}
 })
  .controller('HomeCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes) {
 
@@ -88,6 +140,9 @@ angular.module('starter.controllers', [])
      $scope.contacts = [];
      getContacts();
 
+     $scope.isToggled = function(contact){
+         return true;
+     }
      $scope.switchTabs = function(type){
          $scope.type = type;
      };
@@ -151,7 +206,7 @@ angular.module('starter.controllers', [])
      $scope.groups = [];
      $scope.data = {};
 
-     $scope.toggleContact = function(contact){
+     $scope.toggleContact2 = function(contact){
          contact.toggled = !contact.toggled;
      }
 
@@ -196,6 +251,17 @@ angular.module('starter.controllers', [])
                  })
              }
          })
+     }
+     $scope.editGroup = function(){
+         var selectedContactsIds = [];
+         for (var i = 0; i < $scope.groups.length; i++) {
+             if($scope.groups[i].toggled === true){
+                 selectedContactsIds.push($scope.groups[i].id);
+             }
+         }
+         if(selectedContactsIds.length === 1){
+             $location.path("/group-edit/" + selectedContactsIds[0]);
+         }
      }
      $scope.sendSV2 = function(){
          var selectedContactsIds = [];
@@ -256,7 +322,7 @@ angular.module('starter.controllers', [])
          dataJson["answer_id"] = $scope.selected;
 
          var url = Utils.getBaseURL() + "/snappvotes/answers/" + $scope.snappvote.id;
-         $http.put(url, dataJson).then(function(resp) {
+         $http.post(url, dataJson).then(function(resp) {
              $scope.response = resp;
          }, function(err) {
              $scope.response = err;

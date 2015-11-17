@@ -89,7 +89,7 @@ $dark:                            #444 !default;
   margin-left: 10%;
   margin-top: 10px; }
 
-.home-list-item-basic, .home-list-tf, .home-list-title, .home-list-footer, .home-list-item {
+.home-list-item-basic, .home-list-tf, .home-list-title, .home-list-footer, .home-list-item, .home-user-item {
   background-color: #637F41 !important;
   border: 2px solid #A5D46C !important;
   color: white !important; }
@@ -105,6 +105,9 @@ $dark:                            #444 !default;
 .home-list-footer {
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px; }
+
+.home-user-item {
+  border: none !important; }
 
 .sv-input {
   border: none !important;
