@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 // angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ui.bootstrap.datetimepicker']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

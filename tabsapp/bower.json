@@ -6,7 +6,6 @@
   },
   "dependencies": {
     "ionic-datepicker": "~0.9.0",
-    "ionic-timepicker": "~0.4.0",
-    "angular-bootstrap-datetimepicker": "latest"
+    "ionic-timepicker": "~0.4.0"
   }
 }
