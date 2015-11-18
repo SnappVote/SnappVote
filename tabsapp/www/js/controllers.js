@@ -137,6 +137,7 @@ function timePickerCallback(val) {
  })
  .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, Users, Groups, Utils, Snapvotes) {
      $scope.type = 1;
+     $scope.selected = 0;
      $scope.contacts = [];
      getContacts();
 

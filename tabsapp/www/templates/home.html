@@ -5,34 +5,35 @@
     <ion-content class="test">
         <div class="item" style="margin-bottom: 25px; padding-left:110px;">Logged in as {{userId}}</div>
         <div class="home-list-container">
-            <div class="item home-list-title">Outgoing</div>
-            <div ng-repeat="snapvote in outgoing" class="item home-list-item">
-                    <b>{{snapvote.title}}</b>
+            <div class="home-list-title">OUTGOING</div>
+            <div ng-repeat="snapvote in outgoing" class="home-list-item">
+                    <span class="outgoing-title">{{snapvote.title}}</span>
                     <div>
-                    <span>
+                    <span class="outgoing-text">
                         {{snapvote.answer_1}}:  {{snapvote.answer_1_count}}
                     </span>
+                    &#x25cf;
                     <span>
                         {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
                     </span>
                     </div>
-                <div ng-repeat="user in snapvote.voters" class="home-user-item" style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div>
+                <!-- <div ng-repeat="user in snapvote.voters" class="home-user-item" style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div> -->
             </div>
-            <div class="item home-list-footer">More</div>
+            <div class="home-list-footer">MORE</div>
         </div>
 
         <div class="home-list-container">
-            <div class="item home-list-title">Incoming</div>
+            <div class="home-list-title">INCOMING</div>
             <div ng-repeat="snapvote in incoming">
-                <a class="item home-list-item" href="#/sv-detail/{{snapvote.id}}">
+                <a class="home-list-item" href="#/sv-detail/{{snapvote.id}}">
                     <div>
-                        <b>{{snapvote.author_username}}</b>
-                    </div>
+                        <span class="outgoing-title">{{snapvote.author_username}}</span>
+                    </br>
                     {{snapvote.title}}
+                    </div>
                 </a>
-
             </div>
-            <div class="item home-list-footer">More</div>
+            <div class="home-list-footer">MORE</div>
         </div>
         <button class="button button-login" ui-sref="choose-type">
             New

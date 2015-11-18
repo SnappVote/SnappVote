@@ -1,14 +1,8 @@
 <ion-view view-title="Register">
     <ion-content class="test">
-        <label class="item item-input sv-input">
-            <input type="text" ng-model="form.name" placeholder="enter your name">
-        </label>
-        <label class="item item-input sv-input">
-            <input type="text" ng-model="form.email" placeholder="enter your email">
-        </label>
-        <label class="item item-input sv-input">
-            <input type="text" ng-model="form.phone" placeholder="your phonenumber">
-        </label>
+            <input class="sv-input" type="text" ng-model="form.name" placeholder="Name">
+            <input class="sv-input" type="text" ng-model="form.email" placeholder="Email">
+            <input class="sv-input" type="text" ng-model="form.phone" placeholder="Telephone">
         <label class="item item-select sv-input ">
             <!-- <div class="input-label">
                 {{selectedCountry}}
@@ -17,7 +11,7 @@
                 <option ng-repeat="country in countries track by $index" ng-selected="{{country.name === selectedCountry}}">{{country.name}}</option>
             </select>
         </label>
-        <button class="button button-login" ng-click="register()">
+        <button class="button-standard-red" ng-click="register()">
           CONFIRM
         </button>
         <div>{{response}}</div>
