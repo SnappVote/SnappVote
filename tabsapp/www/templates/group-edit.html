@@ -1,19 +1,28 @@
 <ion-view view-title="Group Edit">
-    <ion-nav-buttons side="left">
+    <!-- <ion-nav-buttons side="left">
         <button class="button ion-chevron-left" ng-click="goBack()"></button>
-    </ion-nav-buttons>
-    <ion-content>
-    <div ng-repeat="contact in contacts track by $index">
-        <li class="item item-checkbox">
-            <label class="checkbox">
-                <input type="checkbox" ng-checked="contact.toggled" ng-click="toggleContact(contact)">
-            </label>
+    </ion-nav-buttons> -->
+    <ion-content class="test">
+        <div class="item groups-edit-title">ADD CONTACTS TO GROUP</div>
+        <div class="groups-edit-list-container">
+
+    <div ng-repeat="contact in contacts track by $index"
+    class="item contacts-item"
+    ng-class="{'contacts-item-toggled': contact.toggled}"
+    ng-click="toggleContact(contact)">
             {{contact.username}}
-        </li>
     </div>
-    <button class="button button-full button-assertive" ng-click="addContacts()">
-      Add
-    </button>
+
+</div>
+<div class="item groups-edit-footer">
+    <div class="button-edit-group" style="float:left;">
+      CANCEL
+  </div>
+    <div class="button-edit-group" style="float:right;" ng-click="addContacts()">
+      OK
+  </div>
+</div>
+
     <div>{{response}}</div>
 </ion-content>
 </ion-view>

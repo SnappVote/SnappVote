@@ -330,7 +330,7 @@ function timePickerCallback(val) {
          })
      }
  })
- .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, Snapvotes, Utils) {
+ .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, Snapvotes, Utils, $location) {
      var groupId = $stateParams.id;
      $scope.contacts = [];
      $scope.groupContacts = [];
@@ -387,6 +387,8 @@ function timePickerCallback(val) {
           var url = Utils.getBaseURL() + '/groups/' + groupId + '/contacts';
           $http.post(url, snappvote).then(function(resp) {
               $scope.response = resp;
+              $location.path("/contacts");
+
           }, function(err) {
               $scope.response = err;
           })

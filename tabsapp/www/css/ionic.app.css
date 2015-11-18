@@ -68,7 +68,6 @@ $dark:                            #444 !default;
   width: 74% !important;
   height: 40px !important;
   margin-left: 13% !important;
-  margin-top: 50px !important;
   color: #EC5F65 !important;
   font-family: 'Varela Round', sans-serif !important;
   font-size: 16px;
@@ -94,6 +93,7 @@ $dark:                            #444 !default;
   border-radius: 7px; }
 
 .contacts-item {
+  margin: 1px !important;
   border-radius: 5px !important;
   height: 40px !important;
   padding-top: 10px !important;
@@ -189,6 +189,54 @@ $dark:                            #444 !default;
   height: 40px !important;
   padding-top: 10px !important;
   display: inline-block !important; }
+
+.groups-edit-title, .groups-edit-footer {
+  width: 74% !important;
+  height: 50px !important;
+  margin-left: 13% !important;
+  background-color: white !important;
+  padding: 10px;
+  font-family: 'Varela Round', sans-serif !important;
+  text-align: center;
+  font-size: 16px !important;
+  border-top-left-radius: 7px !important;
+  border-top-right-radius: 7px !important; }
+
+.groups-edit-footer {
+  border: none !important;
+  border-radius: 0px !important;
+  margin-top: 2px !important;
+  border-bottom-right-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-bottom: 2px solid #637F41 !important; }
+
+.groups-edit-list-container {
+  width: 74%;
+  margin-left: 13%;
+  background-color: white;
+  padding: 5px;
+  margin-top: 2px; }
+
+.button-edit-group {
+  display: inline-block !important;
+  border: none !important;
+  background-color: red;
+  color: white;
+  font-family: 'Varela Round', sans-serif !important;
+  font-weight: 600;
+  font-size: 17px !important;
+  padding: 5px 15px 5px 15px;
+  margin-top: -7px !important;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px; }
+
+.snap-it-btn-img {
+  display: block;
+  height: 10px;
+  margin-left: 49%;
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 .sv-input {
   width: 80%;
