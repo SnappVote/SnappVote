@@ -7,6 +7,10 @@ angular.module('starter.controllers', [])
         $location.path("/home/outgoing");
     };
     $scope.test = function(){
+        $ionicPopup.alert({
+            title: 'Success',
+            template: 'Snappvote sent.'
+        });
     }
     $scope.openDatePicker = function() {
     }

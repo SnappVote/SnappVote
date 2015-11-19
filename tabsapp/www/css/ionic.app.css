@@ -299,6 +299,19 @@ $dark:                            #444 !default;
   float: right;
   margin-right: 13%; }
 
+.popup-body, .popup-head, .popup-title {
+  font-family: 'Varela Round', sans-serif !important;
+  color: rgba(0, 0, 0, 0.7); }
+
+.popup-body, .popup-head, .popup-buttons {
+  background-color: white; }
+
+.popup-buttons .button {
+  border: none !important;
+  background-color: #A5D46C !important;
+  font-weight: 600;
+  color: white; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

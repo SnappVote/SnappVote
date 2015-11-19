@@ -350,6 +350,22 @@ $center-margin: 13%;
     float:right;
     margin-right: 13%;
 }
+
+.popup-body, .popup-head, .popup-title{
+    font-family: $sv-font !important;
+    color:rgba(0, 0, 0, 0.7);
+}
+
+.popup-body, .popup-head, .popup-buttons{
+    background-color : white;
+}
+
+.popup-buttons .button{
+    border: none !important;
+    background-color : $sv-green-light !important;
+    font-weight: 600;
+    color: white;
+}
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

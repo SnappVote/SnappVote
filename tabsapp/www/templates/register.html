@@ -5,20 +5,20 @@
             <img class="navbar-button" src="../img/b2.png"></img>
             <img class="navbar-button" src="../img/b3.png"></img>
         </div>
-            <input class="sv-input" type="text" ng-model="form.name" placeholder="Name">
-            <input class="sv-input" type="text" ng-model="form.email" placeholder="Email">
-            <input class="sv-input" type="text" ng-model="form.phone" placeholder="Telephone">
+        <input class="sv-input" type="text" ng-model="form.name" placeholder="Name">
+        <input class="sv-input" type="text" ng-model="form.email" placeholder="Email">
+        <input class="sv-input" type="text" ng-model="form.phone" placeholder="Telephone">
         <label class="item item-select sv-input ">
             <!-- <div class="input-label">
-                {{selectedCountry}}
-            </div> -->
-            <select ng-model="form.country">
-                <option ng-repeat="country in countries track by $index" ng-selected="{{country.name === selectedCountry}}">{{country.name}}</option>
-            </select>
-        </label>
-        <button class="button-standard-red" ng-click="register()">
-          CONFIRM
-        </button>
-        <div>{{response}}</div>
-    </ion-content>
+            {{selectedCountry}}
+        </div> -->
+        <select ng-model="form.country">
+            <option ng-repeat="country in countries track by $index" ng-selected="{{country.name === selectedCountry}}">{{country.name}}</option>
+        </select>
+    </label>
+    <button class="button-standard-red" ng-click="register()">
+        CONFIRM
+    </button>
+    <!-- <div>{{response}}</div> -->
+</ion-content>
 </ion-view>

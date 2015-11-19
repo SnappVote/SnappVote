@@ -10,8 +10,8 @@
         <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
             <div ng-repeat="snapvote in outgoing" class="home-list-item" ng-click="toggleSV(snapvote)">
-                    <span class="outgoing-title">{{snapvote.title}}</span>
-                    <div>
+                <span class="outgoing-title">{{snapvote.title}}</span>
+                <div>
                     <span class="outgoing-text">
                         {{snapvote.answer_1}}:  {{snapvote.answer_1_count}}
                     </span>
@@ -19,11 +19,11 @@
                     <span>
                         {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
                     </span>
-                    </div>
+                </div>
                 <div ng-repeat="user in snapvote.voters"
                 class="home-user-item"
                 ng-class="{'hidden' : !snapvote.toggled}"
-                 style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div>
+                style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div>
             </div>
             <div class="home-list-footer">MORE</div>
         </div>
@@ -36,11 +36,16 @@
                         <span class="outgoing-title">{{snapvote.author_username}}</span>
                     </br>
                     {{snapvote.title}}
-                    </div>
-                </a>
-            </div>
-            <div class="home-list-footer">MORE</div>
+                </div>
+            </a>
         </div>
-        <div>{{response}}</div>
-    </ion-content>
+        <div class="home-list-footer">MORE</div>
+    </div>
+    <!-- <div>{{response}}</div> -->
+</ion-content>
+<div class="fixed-outside">
+    <div class="sv-footer">
+        <img class="footer-button" src="../img/options.png" ng-click="openOptions()"></img>
+    </div>
+</div>
 </ion-view>

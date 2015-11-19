@@ -9,8 +9,8 @@
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==1}" ng-click="switchTabs(1)">Groups</div>
         </div>
-            <div ng-class="{'hidden' : type == 1}">
-                <div class="contacts-list-container">
+        <div ng-class="{'hidden' : type == 1}">
+            <div class="contacts-list-container">
                 <div ng-repeat="contact in contacts"
                 class="item contacts-item"
                 ng-class="{'contacts-item-toggled': contact.toggled}"
@@ -20,47 +20,47 @@
                 <!-- <img class="img-center" ng-src="{{isToggled(contact) && '../img/icon1.png' || '../img/fb_logo.png'}}"></img> -->
 
                 <div class="button-login-text">{{contact.username}}</div>
-                </div>
-                </div>
-                <img class="snap-it-btn-img" src="../img/icon5.png"></img>
-                <button class="button-standard-red" ng-click="sendSV1()">
-                  SNAP IT!
-                </button>
-                <img class="snap-it-btn-img" src="../img/icon6.png"></img>
             </div>
-            <div ng-class="{'hidden' : type == 0}">
-                <div class="contacts-list-container">
-                <div ng-repeat="group in groups"
-                     class="item contacts-item"
-                     ng-class="{'contacts-item-toggled': group.toggled}"
-                     ng-click="toggleContact2(group)">
-                        {{group.name}}
-                </div>
-                </div>
-                <div class="groups-button-container">
-                <div class="item button-groups" ng-click="editGroup()">
-                  Edit Group
-              </div>
-                <div class="item button-groups" style="float:right;" ng-click="addGroup()">
-                  New Group
-              </div>
-                </div>
-                <img class="snap-it-btn-img" src="../img/icon5.png"></img>
-                <button class="button-standard-red" ng-click="sendSV2()">
-                  SNAP IT!
-                </button>
-                <img class="snap-it-btn-img" src="../img/icon6.png"></img>
-            </div>
-
-            <!-- <div>{{response}}</div> -->
-
-
-        <!-- <div ng-class="{'hidden' : type == 2}">
-        <img class="img-custom-big" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+        </div>
+        <img class="snap-it-btn-img" src="../img/icon5.png"></img>
+        <button class="button-standard-red" ng-click="sendSV1()">
+            SNAP IT!
+        </button>
+        <img class="snap-it-btn-img" src="../img/icon6.png"></img>
     </div>
-    <div ng-class="{'hidden' : type == 1}">
-    <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-    <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
+    <div ng-class="{'hidden' : type == 0}">
+        <div class="contacts-list-container">
+            <div ng-repeat="group in groups"
+            class="item contacts-item"
+            ng-class="{'contacts-item-toggled': group.toggled}"
+            ng-click="toggleContact2(group)">
+            {{group.name}}
+        </div>
+    </div>
+    <div class="groups-button-container">
+        <div class="item button-groups" ng-click="editGroup()">
+            Edit Group
+        </div>
+        <div class="item button-groups" style="float:right;" ng-click="addGroup()">
+            New Group
+        </div>
+    </div>
+    <img class="snap-it-btn-img" src="../img/icon5.png"></img>
+    <button class="button-standard-red" ng-click="sendSV2()">
+        SNAP IT!
+    </button>
+    <img class="snap-it-btn-img" src="../img/icon6.png"></img>
+</div>
+
+<!-- <div>{{response}}</div> -->
+
+
+<!-- <div ng-class="{'hidden' : type == 2}">
+<img class="img-custom-big" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+</div>
+<div ng-class="{'hidden' : type == 1}">
+<img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+<img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
 </div>
 
 <div class="padding" ng-click="toggleAnswers()">
@@ -82,7 +82,6 @@ Choose contacts
 <div class="fixed-outside">
     <div class="sv-footer">
         <img class="footer-button" src="../img/options.png" ng-click="openOptions()"></img>
-</div>
-</div>
+    </div>
 </div>
 </ion-view>
