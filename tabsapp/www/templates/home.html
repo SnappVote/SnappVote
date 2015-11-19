@@ -1,12 +1,15 @@
 <ion-view view-title="Home">
-    <!-- <ion-nav-buttons side="left">
-        <button class="button ion-chevron-left" ng-click="goBack()"></button>
-    </ion-nav-buttons> -->
     <ion-content class="test">
+        <div class="sv-navbar">
+            <img class="navbar-button" src="../img/c5.png" ng-click="goBack()"></img>
+            <img class="navbar-button" src="../img/c6.png"></img>
+            <img class="navbar-button" src="../img/c7.png" ui-sref="choose-type"></img>
+        </div>
+
         <div class="item" style="margin-bottom: 25px; padding-left:110px;">Logged in as {{userId}}</div>
         <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
-            <div ng-repeat="snapvote in outgoing" class="home-list-item">
+            <div ng-repeat="snapvote in outgoing" class="home-list-item" ng-click="toggleSV(snapvote)">
                     <span class="outgoing-title">{{snapvote.title}}</span>
                     <div>
                     <span class="outgoing-text">
@@ -17,7 +20,10 @@
                         {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
                     </span>
                     </div>
-                <!-- <div ng-repeat="user in snapvote.voters" class="home-user-item" style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div> -->
+                <div ng-repeat="user in snapvote.voters"
+                class="home-user-item"
+                ng-class="{'hidden' : !snapvote.toggled}"
+                 style="border: none !important;">{{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}</div>
             </div>
             <div class="home-list-footer">MORE</div>
         </div>
@@ -35,9 +41,6 @@
             </div>
             <div class="home-list-footer">MORE</div>
         </div>
-        <button class="button button-login" ui-sref="choose-type">
-            New
-        </button>
         <div>{{response}}</div>
     </ion-content>
 </ion-view>

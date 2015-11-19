@@ -1,5 +1,10 @@
 <ion-view view-title="New">
     <ion-content class="test">
+        <div class="sv-navbar">
+            <img class="navbar-button" src="../img/b1.png" ng-click="goBack()"></img>
+            <img class="navbar-button" src="../img/b2.png"></img>
+            <img class="navbar-button" src="../img/b3.png"></img>
+        </div>
         <div class="contacts-tabs-container">
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==1}" ng-click="switchTabs(1)">Groups</div>
@@ -46,7 +51,9 @@
                 </button>
                 <img class="snap-it-btn-img" src="../img/icon6.png"></img>
             </div>
-            <div>{{response}}</div>
+
+            <!-- <div>{{response}}</div> -->
+
 
         <!-- <div ng-class="{'hidden' : type == 2}">
         <img class="img-custom-big" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
@@ -72,4 +79,10 @@ Choose contacts
 <div>{{response}}</div> -->
 
 </ion-content>
+<div class="fixed-outside">
+    <div class="sv-footer">
+        <img class="footer-button" src="../img/options.png" ng-click="openOptions()"></img>
+</div>
+</div>
+</div>
 </ion-view>

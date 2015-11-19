@@ -84,12 +84,9 @@ function timePickerCallback(val) {
      }, function(err) {
          $scope.response = err;
      })
-     $scope.goBack = function() {
-         $ionicHistory.goBack();
-     }
 
-     $scope.goBack = function() {
-         $ionicHistory.goBack();
+     $scope.toggleSV = function(snapvote){
+         snapvote.toggled = !snapvote.toggled;
      }
  })
  .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $http, $ionicHistory) {
@@ -97,7 +94,7 @@ function timePickerCallback(val) {
          $ionicHistory.goBack();
      }
  })
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $stateParams, Camera, Snapvotes) {
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, Camera, Snapvotes) {
      var type = $stateParams.id;
      $scope.type = type;
      $scope.items = [];
@@ -133,9 +130,12 @@ function timePickerCallback(val) {
          $scope.answer1 = $scope.answers[index][0];
          $scope.answer2 = $scope.answers[index][1];
      };
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
 
  })
- .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, Users, Groups, Utils, Snapvotes) {
+ .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, Users, Groups, Utils, Snapvotes) {
      $scope.type = 1;
      $scope.selected = 0;
      $scope.contacts = [];
@@ -293,12 +293,8 @@ function timePickerCallback(val) {
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
-
-     $scope.goBack = function() {
-         $ionicHistory.goBack();
-     }
  })
- .controller('SvDetailCtrl', function($scope, $http, $stateParams, Utils, Snapvotes) {
+ .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, Utils, Snapvotes) {
      $scope.selected = -1;
      var svId = $stateParams.svId;
      Snapvotes.getSnappvoteById(svId).then(function(resp) {
@@ -329,8 +325,11 @@ function timePickerCallback(val) {
              $scope.response = err;
          })
      }
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
  })
- .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, Snapvotes, Utils, $location) {
+ .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, $ionicHistory, Snapvotes, Utils, $location) {
      var groupId = $stateParams.id;
      $scope.contacts = [];
      $scope.groupContacts = [];
@@ -429,9 +428,11 @@ function timePickerCallback(val) {
          }
      }
 
-
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
+     }
  })
- .controller('RegisterCtrl', function($scope, $http, $ionicPopup, Utils) {
+ .controller('RegisterCtrl', function($scope, $http, $ionicPopup, $ionicHistory, Utils) {
      $scope.selectedCountry = "Zimbabwe";
      $scope.form = {};
      $scope.form.country = "asd";
@@ -453,6 +454,9 @@ function timePickerCallback(val) {
              });
              $scope.response = err;
          })
+     }
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
      }
  })
  .controller('DevLoginCtrl', function($scope, $http, $ionicPopup, $location, Utils) {
