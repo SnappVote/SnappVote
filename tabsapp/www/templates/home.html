@@ -1,12 +1,12 @@
 <ion-view view-title="Home">
     <ion-content class="test">
         <div class="sv-navbar">
-            <img class="navbar-button" src="../img/c5.png" ng-click="goBack()"></img>
-            <img class="navbar-button" src="../img/c6.png"></img>
-            <img class="navbar-button" src="../img/c7.png" ui-sref="choose-type"></img>
+            <img class="navbar-button" src="../img/z1.png"></img>
+            <img class="navbar-button" src="../img/z2.png"></img>
+            <img class="navbar-button" src="../img/z3.png" ui-sref="choose-type"></img>
         </div>
 
-        <div class="item" style="margin-bottom: 25px; padding-left:110px;">Logged in as {{userId}}</div>
+        <div style="text-align:center;">Logged in as: {{userId}}</div>
         <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
             <div ng-repeat="snapvote in outgoing" class="home-list-item" ng-click="toggleSV(snapvote)">
@@ -19,6 +19,9 @@
                     <span>
                         {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
                     </span>
+                    <div class="home-list-date-2">
+                        <div>pending</div>
+                    </div>
                 </div>
                 <div ng-repeat="user in snapvote.voters"
                 class="home-user-item"
@@ -36,12 +39,16 @@
                         <span class="outgoing-title">{{snapvote.author_username}}</span>
                     </br>
                     {{snapvote.title}}
-                </div>
+                    </div>
+                    <div class="home-list-date">
+                        <div>expires</div>
+                        <div>in {{snapvote.expire_date | svdate2}}</div>
+                    </div>
             </a>
         </div>
         <div class="home-list-footer">MORE</div>
     </div>
-    <!-- <div>{{response}}</div> -->
+    <div>{{response}}</div>
 </ion-content>
 <div class="fixed-outside">
     <div class="sv-footer">

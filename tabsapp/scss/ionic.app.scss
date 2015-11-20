@@ -111,7 +111,7 @@ $center-margin: 13%;
 .button-answer{
     @extend .button-basic;
     width: 30%;
-    margin-left:12% !important;
+    margin-left:13% !important;
 }
 
 .contacts-list-container{
@@ -173,6 +173,20 @@ $center-margin: 13%;
     display: block;
     border-left: none;
     border-right: none;
+}
+.home-list-date{
+    display: inline;
+    position: absolute;
+    margin-left: 55%;
+    margin-top: -40px;
+    font-weight: $sv-font;
+}
+.home-list-date-2{
+    display: inline;
+    position: absolute;
+    margin-left: 25%;
+    margin-top: -10px;
+    font-weight: $sv-font;
 }
 .home-user-item{
     @extend .home-list-item-basic;
@@ -289,10 +303,14 @@ $center-margin: 13%;
 
 .sv-input-2{
     width: 70%;
+    height: 35px !important;
     margin-left: 15% !important;
     margin-top: 10px !important;
-    opacity: 0.6 !important;
-    background-color: $sv-green-dark !important;
+    padding-left: 15px !important;
+    padding-top: 5px !important;
+    font-size: 16px !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.2);
     border: none !important;
 }
 .img-custom-big{
@@ -338,6 +356,8 @@ $center-margin: 13%;
   text-align:center;
 }
 .sv-footer{
+    padding-top: 30px;
+    padding-bottom: 10px;
 }
 .navbar-logo{
     width: 30%;
@@ -365,6 +385,42 @@ $center-margin: 13%;
     background-color : $sv-green-light !important;
     font-weight: 600;
     color: white;
+}
+.take-pic-photo{
+    position: absolute;
+    bottom: 5px;
+    left: 90px;
+    font-size: 50px;
+}
+.take-pic-gallery{
+    position: absolute;
+    bottom: 5px;
+    right: 90px;
+    font-size: 50px;
+}
+.take-pic-photo2{
+    position: absolute;
+    bottom: 5px;
+    left: 50px;
+    font-size: 45px;
+}
+.take-pic-gallery2{
+    position: absolute;
+    bottom: 10px;
+    right: 215px;
+    font-size: 40px;
+}
+.take-pic-photo3{
+    position: absolute;
+    bottom: 5px;
+    left: 220px;
+    font-size: 45px;
+}
+.take-pic-gallery3{
+    position: absolute;
+    bottom: 10px;
+    right: 45px;
+    font-size: 40px;
 }
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

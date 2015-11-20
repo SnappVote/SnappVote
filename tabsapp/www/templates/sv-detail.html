@@ -10,20 +10,23 @@
         </div>
         <img class="picImg" ng-src="data:image/jpeg;base64,{{img1}}"/>
         <!-- ng-src="data:image/jpeg;base64,{{items[0]}}" -->
-        <div class="padding">
+        <div class="padding" ng-click="updateAnswers($index)">
+            <button class="button button-answer" ng-click="answer1Clicked()">{{snappvote.answer_1}}</button>
+            <button class="button button-answer" ng-click="answer2Clicked()">{{snappvote.answer_2}}</button>
+        </div>
+        <!-- <div class="padding">
             <button class="button" ng-class="{'button-assertive': selected==0}" ng-click="answer1Clicked()">{{snappvote.answer_1}}</button>
             <button class="button" ng-class="{'button-assertive': selected==1}" ng-click="answer2Clicked()">{{snappvote.answer_2}}</button>
-        </div>
+        </div> -->
         <img class="snap-it-btn-img" src="../img/icon5.png"></img>
         <button class="button-standard-red" ng-click="submitAnswer()">
             SEND
         </button>
         <img class="snap-it-btn-img" src="../img/icon6.png"></img>
-        <!-- <div>{{response}}</div> -->
-    </ion-content>
-    <div class="fixed-outside">
+
         <div class="sv-footer">
             <img class="footer-button" src="../img/options.png" ng-click="openOptions()"></img>
         </div>
-    </div>
+        <!-- <div>{{response}}</div> -->
+    </ion-content>
 </ion-view>

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 // angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -93,3 +93,29 @@ app.filter('test', [function() {
         }
     };
 }]);
+app.filter('svdate', [function() {
+    return function(input) {
+        if(!input){
+            return 0 + " days";
+        }
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        var firstDate = input;
+        var secondDate = new Date(Date.now());
+
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+        return diffDays + " days";
+    };
+}])
+app.filter('svdate2', [function() {
+    return function(input) {
+        if(!input){
+            return 0 + " days";
+        }
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        var firstDate = new Date(input);
+        var secondDate = new Date(Date.now());
+
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+        return diffDays + " days";
+    };
+}])
