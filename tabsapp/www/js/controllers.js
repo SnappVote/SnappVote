@@ -100,7 +100,12 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, Camera, Snapvotes) {
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, Camera, Snapvotes) {
+     $scope.$on('$stateChangeSuccess', function(e, toState) {
+   if(toState.name === 'new-sv') {
+       $ionicScrollDelegate.scrollTop();
+   }
+});
      var type = $stateParams.id;
      $scope.type = type;
      $scope.items = [];
@@ -172,7 +177,7 @@ angular.module('starter.controllers', [])
 
  })
  .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, Users, Groups, Utils, Snapvotes) {
-     $scope.type = 1;
+     $scope.type = 0;
      $scope.selected = 0;
      $scope.contacts = [];
      getContacts();
@@ -330,7 +335,7 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, Utils, Snapvotes) {
+ .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, $ionicPopup, Utils, Snapvotes) {
      $scope.selected = -1;
      var svId = $stateParams.svId;
      Snapvotes.getSnappvoteById(svId).then(function(resp) {
@@ -357,8 +362,16 @@ angular.module('starter.controllers', [])
          var url = Utils.getBaseURL() + "/snappvotes/answers/" + $scope.snappvote.id;
          $http.post(url, dataJson).then(function(resp) {
              $scope.response = resp;
+             $ionicPopup.alert({
+                      title: 'Success',
+                      template: 'Snappvote sent.'
+                  });
          }, function(err) {
              $scope.response = err;
+             $ionicPopup.alert({
+                      title: 'Error',
+                      template: 'Something went wrong.'
+                  });
          })
      }
      $scope.goBack = function() {
@@ -495,7 +508,7 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('DevLoginCtrl', function($scope, $http, $ionicPopup, $location, Utils) {
+ .controller('DevLoginCtrl', function($scope, $http, $ionicPopup, $location, $ionicHistory, Utils) {
      $scope.contacts = [];
      var url = Utils.getBaseURL() +  '/users';
      $http.get(url).then(function(resp) {
@@ -505,5 +518,8 @@ angular.module('starter.controllers', [])
      $scope.login = function(userId){
          Utils.setSVUserId(userId);
          $location.path("/home");
+     }
+     $scope.goBack = function() {
+         $ionicHistory.goBack();
      }
  });

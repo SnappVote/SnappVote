@@ -1,9 +1,9 @@
 <ion-view view-title="New">
     <ion-content class="test">
         <div class="sv-navbar">
-            <img class="navbar-button" src="../img/b1.png" ng-click="goBack()"></img>
-            <img class="navbar-button" src="../img/b2.png"></img>
-            <img class="navbar-button" src="../img/b3.png"></img>
+            <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
+            <img class="navbar-button" src="./img/b2.png"></img>
+            <img class="navbar-button" src="./img/b3.png"></img>
         </div>
         <div class="contacts-tabs-container">
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
@@ -15,18 +15,18 @@
                 class="item contacts-item"
                 ng-class="{'contacts-item-toggled': contact.toggled}"
                 ng-click="toggleContact(contact)">
-                <!-- <img class="img-center" src='../img/icon1.png'></img> -->
+                <!-- <img class="img-center" src='./img/icon1.png'></img> -->
 
-                <!-- <img class="img-center" ng-src="{{isToggled(contact) && '../img/icon1.png' || '../img/fb_logo.png'}}"></img> -->
+                <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
 
                 <div class="button-login-text">{{contact.username}}</div>
             </div>
         </div>
-        <img class="snap-it-btn-img" src="../img/icon5.png"></img>
+        <img class="snap-it-btn-img" src="./img/icon5.png"></img>
         <button class="button-standard-red" ng-click="sendSV1()">
             SNAP IT!
         </button>
-        <img class="snap-it-btn-img" src="../img/icon6.png"></img>
+        <img class="snap-it-btn-img" src="./img/icon6.png"></img>
     </div>
     <div ng-class="{'hidden' : type == 0}">
         <div class="contacts-list-container">
@@ -45,14 +45,14 @@
             New Group
         </div>
     </div>
-    <img class="snap-it-btn-img" src="../img/icon5.png"></img>
+    <img class="snap-it-btn-img" src="./img/icon5.png"></img>
     <button class="button-standard-red" ng-click="sendSV2()">
         SNAP IT!
     </button>
-    <img class="snap-it-btn-img" src="../img/icon6.png"></img>
+    <img class="snap-it-btn-img" src="./img/icon6.png"></img>
 </div>
 
-<div>{{response}}</div>
+<!-- <div>{{response}}</div> -->
 
 
 <!-- <div ng-class="{'hidden' : type == 2}">
@@ -81,7 +81,7 @@ Choose contacts
 </ion-content>
 <div class="fixed-outside">
     <div class="sv-footer">
-        <img class="footer-button" src="../img/options.png" ng-click="openOptions()"></img>
+        <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
     </div>
 </div>
 </ion-view>

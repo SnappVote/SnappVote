@@ -145,7 +145,7 @@ $dark:                            #444 !default;
 .home-list-date-2 {
   display: inline;
   position: absolute;
-  margin-left: 25%;
+  right: 55px;
   margin-top: -10px;
   font-weight: 'Varela Round', sans-serif; }
 
@@ -314,7 +314,8 @@ $dark:                            #444 !default;
   width: 30%; }
 
 .navbar-button {
-  width: 32.6%; }
+  width: 32.6%;
+  border: none; }
 
 .footer-button {
   width: 95px;

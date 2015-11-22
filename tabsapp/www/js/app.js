@@ -46,7 +46,8 @@ app.run(function($ionicPlatform) {
     .state("home", {
         url:"/home",
         templateUrl: "templates/home.html",
-        controller: "HomeCtrl"
+        controller: "HomeCtrl",
+        cache:false
     })
     .state("group-edit", {
         url:"/group-edit/:id",
