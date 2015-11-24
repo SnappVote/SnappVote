@@ -9,6 +9,8 @@
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==1}" ng-click="switchTabs(1)">Groups</div>
         </div>
+        <div class="message-small" style="margin-top:15px; text-align:center;">{{selectedContacts.length}} selected contacts</div>
+
         <div ng-class="{'hidden' : type == 1}">
             <div class="contacts-list-container">
                 <div ng-repeat="contact in contacts"
@@ -52,7 +54,7 @@
     <img class="snap-it-btn-img" src="./img/icon6.png"></img>
 </div>
 
-<!-- <div>{{response}}</div> -->
+<div>{{response}}</div>
 
 
 <!-- <div ng-class="{'hidden' : type == 2}">

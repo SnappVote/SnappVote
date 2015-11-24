@@ -7,10 +7,13 @@ angular.module('starter.controllers', [])
         $location.path("/home/outgoing");
     };
     $scope.test = function(){
-        $ionicPopup.alert({
+        var popup = $ionicPopup.alert({
             title: 'Success',
             template: 'Snappvote sent.'
         });
+        $timeout(function(){
+            popup.close();
+        }, 1000);
     }
     $scope.openDatePicker = function() {
     }
@@ -107,6 +110,8 @@ angular.module('starter.controllers', [])
    }
 });
      var type = $stateParams.id;
+     $scope.data = {};
+
      $scope.type = type;
      $scope.items = [];
      $scope.form = {};
@@ -115,6 +120,7 @@ angular.module('starter.controllers', [])
      $scope.answersHidden = true;
 
      $scope.addPhoto = function(){
+         $scope.response = 'lolol';
          Camera.getPicture().then(function(imageURI) {
              $scope.items.push(imageURI);
          }, function(err) {
@@ -125,7 +131,8 @@ angular.module('starter.controllers', [])
      $scope.answers = [
          ['Yes', 'No'],
          ['Cool', 'Nope'],
-         ['Left', 'Right']
+         ['Left', 'Right'],
+         ['Add..', 'Add..']
      ];
 
      $scope.createSnapvote = function(){
@@ -136,10 +143,35 @@ angular.module('starter.controllers', [])
          $scope.answersHidden = !$scope.answersHidden;
      }
      $scope.updateAnswers = function(index){
-         $scope.answersHidden = !$scope.answersHidden;
+         if(index === $scope.answers.length-1){
+             var myPopup = $ionicPopup.show({
+                 template: '<input type="text" ng-model="data.wifi"><input type="text" ng-model="data.wifi2">',
+                 title: 'Enter Group Name',
+                 scope: $scope,
+                 buttons: [
+                     { text: 'Cancel' },
+                     {
+                         text: 'OK',
+                         type: 'button-positive',
+                         onTap: function(e) {
+                             return $scope.data.wifi;
+                         }
+                     }
+                 ]
+             });
+             myPopup.then(function(res) {
+                 if(res){
+                     var asd = [$scope.data.wifi, $scope.data.wifi2];
+                     $scope.answers.splice(1,0,asd);
+                 }
+             })
+         }
+         else{
+             $scope.answersHidden = !$scope.answersHidden;
 
-         $scope.answer1 = $scope.answers[index][0];
-         $scope.answer2 = $scope.answers[index][1];
+             $scope.answer1 = $scope.answers[index][0];
+             $scope.answer2 = $scope.answers[index][1];
+         }
      };
      $scope.goBack = function() {
          $ionicHistory.goBack();
@@ -180,6 +212,7 @@ angular.module('starter.controllers', [])
      $scope.type = 0;
      $scope.selected = 0;
      $scope.contacts = [];
+     $scope.selectedContacts = [];
      getContacts();
 
      $scope.isToggled = function(contact){
@@ -191,6 +224,12 @@ angular.module('starter.controllers', [])
 
      $scope.toggleContact = function(contact){
          contact.toggled = !contact.toggled;
+         if(contact.toggled){
+             pushUnique($scope.selectedContacts, contact.id);
+         }
+         else{
+             removeFromArr($scope.selectedContacts, contact.id);
+         }
      }
 
      $scope.sendSV1 = function(){
@@ -208,8 +247,7 @@ angular.module('starter.controllers', [])
          }
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
-             // $scope.response = "asdasd";
-             $scope.response = resp;
+            //  $scope.response = resp;
              $ionicPopup.alert({
                  title: 'Success',
                  template: 'Snappvote sent.'
@@ -221,6 +259,37 @@ angular.module('starter.controllers', [])
                  template: 'Something went wrong.'
              });
          })
+     }
+     function pushUnique(arr1, arr2){
+         if(isin(arr1, arr2)){
+             console.log('dup found');
+         }
+         else{
+             arr1.push(arr2);
+         }
+        //  for (var i = 0; i < arr2.length; i++) {
+        //      if(isin(arr1, arr2[i])){
+        //          console.log('dup found');
+        //      }
+        //      else{
+        //          arr1.push(arr2[i]);
+        //      }
+        //  }
+     }
+     function removeFromArr(arr, value) {
+         for (var i = 0; i < arr.length; i++) {
+             if(value === arr[i]){
+                 arr.splice(i, 1);
+             }
+         }
+     }
+     function isin(arr, value){
+         for (var i = 0; i < arr.length; i++) {
+             if(value === arr[i]){
+                 return true;
+             }
+         }
+         return false;
      }
      function getContacts(){
          Users.getAllUsers().then(function(resp) {
@@ -247,14 +316,43 @@ angular.module('starter.controllers', [])
 
      $scope.groups = [];
      $scope.data = {};
+     $scope.test = function(){
+         pushUnique($scope.selectedContacts, [1,2]);
+         pushUnique($scope.selectedContacts, [2,3]);
+     }
 
-     $scope.toggleContact2 = function(contact){
-         contact.toggled = !contact.toggled;
+     $scope.toggleContact2 = function(group){
+         group.toggled = !group.toggled;
+         var contactsIds = [];
+          var url = Utils.getBaseURL() + "/groups/" + group.id;
+          $http.get(url).then(function(resp) {
+              $scope.response = resp;
+              if(group.toggled){
+                  for (var i = 0; i < resp.data.length; i++) {
+                      pushUnique($scope.selectedContacts, resp.data[i].id);
+                  }
+              }
+              else{
+                  for (var i = 0; i < resp.data.length; i++) {
+                      removeFromArr($scope.selectedContacts, resp.data[i].id);
+                  }
+                  for (var i = 0; i < $scope.contacts.length; i++) {
+                      if($scope.contacts[i].toggled){
+                          pushUnique($scope.selectedContacts, $scope.contacts[i].id);
+
+                      }
+                  }
+              }
+
+          }, function(err) {
+              $scope.response = err;
+          })
+
      }
 
      Groups.getGroups().then(function(resp) {
+        //  $scope.response = resp;
          $scope.groups = resp.data;
-         $scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
@@ -318,7 +416,7 @@ angular.module('starter.controllers', [])
          var dataJson = Snapvotes.getSnappvote();
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
-             $scope.response = resp;
+            //  $scope.response = resp;
              $ionicPopup.alert({
                  title: 'Success',
                  template: 'Snappvote sent.'
@@ -481,28 +579,48 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('RegisterCtrl', function($scope, $http, $ionicPopup, $ionicHistory, Utils) {
-     $scope.selectedCountry = "Zimbabwe";
+ .controller('RegisterCtrl', function($scope, $http, $ionicPopup, $ionicHistory, $location, $timeout, Utils) {
+     $scope.selectedCountry = "";
      $scope.form = {};
-     $scope.form.country = "asd";
      $scope.countries = countriesJson;
      $scope.register = function(){
-         var dataJson={};
-         for(var key in $scope.form) dataJson[key]=$scope.form[key];
-         var url = Utils.getBaseURL() + '/users';
-         $http.post(url, dataJson).then(function(resp) {
-             $ionicPopup.alert({
-                 title: 'Success',
-                 template: 'User registered.'
-             });
-             $scope.response = resp;
-         }, function(err) {
+         var counter = 0;
+         for (var key in $scope.form) {
+             if ($scope.form.hasOwnProperty(key)) {
+                     counter++;
+             }
+         }
+         if(counter != 4){
+             $scope.isDisabled =false;
              $ionicPopup.alert({
                  title: 'Error',
-                 template: 'Something went wrong '
+                 template: 'All fields are mandatory.'
              });
-             $scope.response = err;
-         })
+         }
+         else{
+             var dataJson={};
+             for(var key in $scope.form) dataJson[key]=$scope.form[key];
+             var url = Utils.getBaseURL() + '/users';
+             $http.post(url, dataJson).then(function(resp) {
+                 Utils.setSVUserId(resp.data.id);
+                 var popup = $ionicPopup.alert({
+                     title: 'Success',
+                     template: 'User registered.'
+                 });
+                 $timeout(function(){
+                     popup.close();
+                     $location.path('/home');
+                 }, 2000);
+                 $scope.response = resp;
+             }, function(err) {
+                 $ionicPopup.alert({
+                     title: 'Error',
+                     template: 'Something went wrong '
+                 });
+                 $scope.response = err;
+             })
+         }
+
      }
      $scope.goBack = function() {
          $ionicHistory.goBack();
