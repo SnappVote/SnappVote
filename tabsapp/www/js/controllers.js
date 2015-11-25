@@ -208,9 +208,8 @@ angular.module('starter.controllers', [])
      };
 
  })
- .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, Users, Groups, Utils, Snapvotes) {
+ .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes) {
      $scope.type = 0;
-     $scope.selected = 0;
      $scope.contacts = [];
      $scope.selectedContacts = [];
      getContacts();
@@ -218,6 +217,7 @@ angular.module('starter.controllers', [])
      $scope.isToggled = function(contact){
          return true;
      }
+
      $scope.switchTabs = function(type){
          $scope.type = type;
      };
@@ -236,22 +236,23 @@ angular.module('starter.controllers', [])
          var selectedContactsIds = [];
          for (var i = 0; i < $scope.contacts.length; i++) {
              if($scope.contacts[i].toggled === true){
-                 selectedContactsIds.push($scope.contacts[i].id);
+                 pushUnique($scope.selectedContacts, $scope.contacts[i].id);
              }
          }
-         Snapvotes.setContacts(selectedContactsIds);
+         Snapvotes.setContacts($scope.selectedContacts);
          var dataJson = Snapvotes.getSnappvote();
 
-         for (var i = 0; i < selectedContactsIds.length; i++) {
-             console.log(selectedContactsIds[i]);
-         }
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
             //  $scope.response = resp;
-             $ionicPopup.alert({
-                 title: 'Success',
-                 template: 'Snappvote sent.'
+             var popup = $ionicPopup.alert({
+                 title: 'SnapVote sent',
+                 template: 'Awesome ! Your SnapVote is sent successfully !'
              });
+             $timeout(function(){
+                 popup.close();
+                 $location.path('/home');
+             }, 2000);
          }, function(err) {
              $scope.response = err;
              $ionicPopup.alert({
@@ -262,19 +263,10 @@ angular.module('starter.controllers', [])
      }
      function pushUnique(arr1, arr2){
          if(isin(arr1, arr2)){
-             console.log('dup found');
          }
          else{
              arr1.push(arr2);
          }
-        //  for (var i = 0; i < arr2.length; i++) {
-        //      if(isin(arr1, arr2[i])){
-        //          console.log('dup found');
-        //      }
-        //      else{
-        //          arr1.push(arr2[i]);
-        //      }
-        //  }
      }
      function removeFromArr(arr, value) {
          for (var i = 0; i < arr.length; i++) {
@@ -433,7 +425,7 @@ angular.module('starter.controllers', [])
          $ionicHistory.goBack();
      }
  })
- .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, $ionicPopup, Utils, Snapvotes) {
+ .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, $ionicPopup, $timeout, $location, Utils, Snapvotes) {
      $scope.selected = -1;
      var svId = $stateParams.svId;
      Snapvotes.getSnappvoteById(svId).then(function(resp) {
@@ -441,6 +433,7 @@ angular.module('starter.controllers', [])
          snappvote = resp.data[0];
          $scope.selected = snappvote.voter_answer;
          $scope.img1 = snappvote.img_1;
+         $scope.img2 = snappvote.img_2;
          $scope.snappvote = snappvote;
      }, function(err) {
          $scope.response = err;
@@ -460,10 +453,14 @@ angular.module('starter.controllers', [])
          var url = Utils.getBaseURL() + "/snappvotes/answers/" + $scope.snappvote.id;
          $http.post(url, dataJson).then(function(resp) {
              $scope.response = resp;
-             $ionicPopup.alert({
+             var popup = $ionicPopup.alert({
                       title: 'Success',
-                      template: 'Snappvote sent.'
+                      template: 'Answer sent.'
                   });
+                  $timeout(function(){
+                      popup.close();
+                      $location.path('/home');
+                  }, 2000);
          }, function(err) {
              $scope.response = err;
              $ionicPopup.alert({
