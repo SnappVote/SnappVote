@@ -7,13 +7,20 @@ angular.module('starter.controllers', [])
         $location.path("/home/outgoing");
     };
     $scope.test = function(){
-        var popup = $ionicPopup.alert({
-            title: 'Success',
-            template: 'Snappvote sent.'
+        var myPopup = $ionicPopup.show({
+            template: '<div class="options-item">Home</div><div class="options-item">Contacts</div><div class="options-item">Edit Profile</div><div class="options-item">Invite Friends</div><div class="options-item">Logout</div>',
+            title: 'OPTIONS',
+            scope: $scope,
+            buttons: [
+                {
+                    text: 'Cancel',
+                    type: 'button-edit-group',
+                    onTap: function(e) {
+                        myPopup.close();
+                    }
+                }
+            ]
         });
-        $timeout(function(){
-            popup.close();
-        }, 1000);
     }
     $scope.openDatePicker = function() {
     }
@@ -69,7 +76,16 @@ angular.module('starter.controllers', [])
     }
 })
  .controller('HomeCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes) {
-
+     $scope.listCanSwipe = true;
+     $scope.items = [1,2,3,4];
+     $scope.test = function(){
+         console.log('asdf');
+     }
+     $scope.reportEvent = function (event) {
+         alert("hi");
+         console.log('Reporting : ' + event.type);
+         event.preventDefault();
+     };
      var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
      $http.get(url).then(function(resp) {
 
@@ -210,13 +226,21 @@ angular.module('starter.controllers', [])
  })
  .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes) {
      $scope.type = 0;
-     $scope.contacts = [];
+     $scope.data = {};
      $scope.selectedContacts = [];
-     getContacts();
 
-     $scope.isToggled = function(contact){
-         return true;
-     }
+     Users.getAllUsers().then(function(resp) {
+         $scope.contacts = resp.data;
+     }, function(err) {
+         $scope.response = err;
+     })
+
+     Groups.getGroups().then(function(resp) {
+         //  $scope.response = resp;
+         $scope.groups = resp.data;
+     }, function(err) {
+         $scope.response = err;
+     })
 
      $scope.switchTabs = function(type){
          $scope.type = type;
@@ -232,19 +256,44 @@ angular.module('starter.controllers', [])
          }
      }
 
-     $scope.sendSV1 = function(){
-         var selectedContactsIds = [];
-         for (var i = 0; i < $scope.contacts.length; i++) {
-             if($scope.contacts[i].toggled === true){
-                 pushUnique($scope.selectedContacts, $scope.contacts[i].id);
+     $scope.toggleGroup = function(group){
+         group.toggled = !group.toggled;
+         var url = Utils.getBaseURL() + "/groups/" + group.id;
+         $http.get(url).then(function(resp) {
+             $scope.response = resp;
+             if(group.toggled){
+                 for (var i = 0; i < resp.data.length; i++) {
+                     pushUnique($scope.selectedContacts, resp.data[i].id);
+                 }
              }
-         }
+             else{
+                 for (var i = 0; i < resp.data.length; i++) {
+                     removeFromArr($scope.selectedContacts, resp.data[i].id);
+                 }
+                 for (var i = 0; i < $scope.contacts.length; i++) {
+                     if($scope.contacts[i].toggled){
+                         pushUnique($scope.selectedContacts, $scope.contacts[i].id);
+
+                     }
+                 }
+             }
+         }, function(err) {
+             $scope.response = err;
+         })
+     }
+
+     $scope.isToggled = function(contact){
+         return true;
+     }
+
+
+     $scope.sendSV1 = function(){
          Snapvotes.setContacts($scope.selectedContacts);
          var dataJson = Snapvotes.getSnappvote();
 
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
-            //  $scope.response = resp;
+             //  $scope.response = resp;
              var popup = $ionicPopup.alert({
                  title: 'SnapVote sent',
                  template: 'Awesome ! Your SnapVote is sent successfully !'
@@ -284,70 +333,23 @@ angular.module('starter.controllers', [])
          return false;
      }
      function getContacts(){
-         Users.getAllUsers().then(function(resp) {
-             $scope.contacts = resp.data;
-         }, function(err) {
-             $scope.response = err;
-         })
          //cordova contacts plugins
          //https://github.com/dbaq/cordova-plugin-contacts-phone-numbers
-         //  navigator.contactsPhoneNumbers.list(function(contacts) {
-         //      $scope.contacts = contacts;
-         //      $scope.$digest();
-         //      for(var i = 0; i < contacts.length; i++) {
-         //          console.log(contacts[i].id + " - " + contacts[i].displayName);
-         //          for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-         //              var phone = contacts[i].phoneNumbers[j];
-         //              console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
-         //          }
-         //      }
-         //  }, function(error) {
-         //      console.error(error);
-         //  });
+        //  navigator.contactsPhoneNumbers.list(function(contacts) {
+        //      $scope.contacts = contacts;
+        //      $scope.$digest();
+        //      for(var i = 0; i < contacts.length; i++) {
+        //          console.log(contacts[i].id + " - " + contacts[i].displayName);
+        //          for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
+        //              var phone = contacts[i].phoneNumbers[j];
+        //              console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
+        //          }
+        //      }
+        //  }, function(error) {
+        //      console.error(error);
+        //  });
      }
 
-     $scope.groups = [];
-     $scope.data = {};
-     $scope.test = function(){
-         pushUnique($scope.selectedContacts, [1,2]);
-         pushUnique($scope.selectedContacts, [2,3]);
-     }
-
-     $scope.toggleContact2 = function(group){
-         group.toggled = !group.toggled;
-         var contactsIds = [];
-          var url = Utils.getBaseURL() + "/groups/" + group.id;
-          $http.get(url).then(function(resp) {
-              $scope.response = resp;
-              if(group.toggled){
-                  for (var i = 0; i < resp.data.length; i++) {
-                      pushUnique($scope.selectedContacts, resp.data[i].id);
-                  }
-              }
-              else{
-                  for (var i = 0; i < resp.data.length; i++) {
-                      removeFromArr($scope.selectedContacts, resp.data[i].id);
-                  }
-                  for (var i = 0; i < $scope.contacts.length; i++) {
-                      if($scope.contacts[i].toggled){
-                          pushUnique($scope.selectedContacts, $scope.contacts[i].id);
-
-                      }
-                  }
-              }
-
-          }, function(err) {
-              $scope.response = err;
-          })
-
-     }
-
-     Groups.getGroups().then(function(resp) {
-        //  $scope.response = resp;
-         $scope.groups = resp.data;
-     }, function(err) {
-         $scope.response = err;
-     })
 
      $scope.addGroup = function(){
          var myPopup = $ionicPopup.show({
@@ -367,6 +369,10 @@ angular.module('starter.controllers', [])
          });
          myPopup.then(function(res) {
              if(res){
+                 $ionicPopup.alert({
+                     title: $scope.data.wifi,
+                     template: 'Something went wrong.'
+                 });
                  var dataJson={};
                  dataJson["name"] = $scope.data.wifi;
                  var url = Utils.getBaseURL() + "/groups/" + Utils.getSVUserId();
@@ -385,41 +391,21 @@ angular.module('starter.controllers', [])
          })
      }
      $scope.editGroup = function(){
-         var selectedContactsIds = [];
+         var toggledGroups = [];
          for (var i = 0; i < $scope.groups.length; i++) {
              if($scope.groups[i].toggled === true){
-                 selectedContactsIds.push($scope.groups[i].id);
+                 toggledGroups.push($scope.groups[i].id);
              }
          }
-         if(selectedContactsIds.length === 1){
-             $location.path("/group-edit/" + selectedContactsIds[0]);
+         if(toggledGroups.length === 1){
+             $location.path("/group-edit/" + toggledGroups[0]);
          }
-     }
-     $scope.sendSV2 = function(){
-         var selectedContactsIds = [];
-         for (var i = 0; i < $scope.groups.length; i++) {
-             if($scope.groups[i].toggled === true){
-                 selectedContactsIds.push($scope.groups[i].id);
-             }
-         }
-         Snapvotes.setContacts([]);
-         Snapvotes.setGroups(selectedContactsIds);
-
-         var dataJson = Snapvotes.getSnappvote();
-         var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
-         $http.post(url, dataJson).then(function(resp) {
-            //  $scope.response = resp;
-             $ionicPopup.alert({
-                 title: 'Success',
-                 template: 'Snappvote sent.'
-             });
-         }, function(err) {
-             $scope.response = err;
+         else{
              $ionicPopup.alert({
                  title: 'Error',
                  template: 'Something went wrong.'
              });
-         })
+         }
      }
      $scope.goBack = function() {
          $ionicHistory.goBack();
@@ -624,11 +610,14 @@ angular.module('starter.controllers', [])
      }
  })
  .controller('DevLoginCtrl', function($scope, $http, $ionicPopup, $location, $ionicHistory, Utils) {
+     $scope.response = "HELLO";
      $scope.contacts = [];
-     var url = Utils.getBaseURL() +  '/users';
+     var url = Utils.getBaseURL() + '/users';
      $http.get(url).then(function(resp) {
+         $scope.response = resp;
          $scope.contacts = resp.data;
      }, function(err) {
+         $scope.response = err;
      })
      $scope.login = function(userId){
          Utils.setSVUserId(userId);

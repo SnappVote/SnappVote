@@ -350,10 +350,25 @@ $center-margin: 13%;
 }
 .fixed-outside{
   position: absolute;
-  bottom: 30px;
+  bottom: 0px;
   color:white;
   width: 100%;
-  text-align:center;
+}
+.footer1{
+
+}
+
+.Frame {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.Row {
+    display: table-row;
+    height: 1px;
+}
+.Row.Expand {
+    height: auto;
 }
 .sv-footer{
     padding-top: 30px;
@@ -422,6 +437,17 @@ $center-margin: 13%;
     bottom: 10px;
     right: 45px;
     font-size: 40px;
+}
+.options-item{
+    $font-family: $sv-font;
+    height: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);;
+    font-size: 16px;
+    padding: 10px 0px 5px 10px;
+    color:rgba(0, 0, 0, 0.5);
+}
+.popup-custom{
+    
 }
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
