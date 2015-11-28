@@ -301,7 +301,7 @@ $dark:                            #444 !default;
 
 .fixed-outside {
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   color: white;
   width: 100%; }
 

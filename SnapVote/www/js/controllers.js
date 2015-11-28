@@ -1,111 +1,41 @@
 angular.module('starter.controllers', [])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout) {
-    var domElement = $document.find('#asd');
-    angular.element(domElement).triggerHandler('click');
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout, Options) {
     console.log('hello');
+
+    if(Options.isShown()){
+        Options.close();
+    }
+
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     };
+
     $scope.test = function(){
-        var myPopup = $ionicPopup.show({
-            title: 'OPTIONS',
-            template: '<div class="options-item" ui-sref="home">Home<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="contacts">Contacts<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Invite Friends<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Logout<a class="ion-chevron-right options-arrow"></a></div>',
-            cssClass: 'popup-custom',
-            scope: $scope,
-            buttons: [
-                {
-                    text: 'Cancel',
-                    onTap: function(e) {
-                        myPopup.close();
-                    }
-                }
-            ]
-        });
-    }
-    $scope.openDatePicker = function() {
-    }
-    var datePickerCallback = function (val) {
-        if (typeof(val) === 'undefined') {
-            console.log('No date selected');
-        } else {
-            console.log('Selected date is : ', val)
-        }
-    };
-    $scope.datepickerObject = {
-        titleLabel: 'Title',  //Optional
-        todayLabel: 'Today',  //Optional
-        closeLabel: 'Close',  //Optional
-        setLabel: 'Set',  //Optional
-        setButtonType : 'button-assertive',  //Optional
-        todayButtonType : 'button-assertive',  //Optional
-        closeButtonType : 'button-assertive',  //Optional
-        inputDate: new Date(),  //Optional
-        mondayFirst: true,  //Optional
-        templateType: 'popup', //Optional
-        showTodayButton: 'true', //Optional
-        modalHeaderColor: 'bar-positive', //Optional
-        modalFooterColor: 'bar-positive', //Optional
-        from: new Date(2012, 8, 2), //Optional
-        to: new Date(2018, 8, 25),  //Optional
-        callback: function (val) {  //Mandatory
-            datePickerCallback(val);
-        },
-        dateFormat: 'dd-MM-yyyy', //Optional
-        closeOnSelect: false, //Optional
-    };
-    $scope.timePickerObject = {
-        inputEpochTime: ((new Date()).getHours() * 60 * 60),  //Optional
-        step: 15,  //Optional
-        format: 12,  //Optional
-        titleLabel: '12-hour Format',  //Optional
-        setLabel: 'Set',  //Optional
-        closeLabel: 'Close',  //Optional
-        setButtonType: 'button-positive',  //Optional
-        closeButtonType: 'button-stable',  //Optional
-        callback: function (val) {    //Mandatory
-            timePickerCallback(val);
-        }
-    };
-    function timePickerCallback(val) {
-        if (typeof (val) === 'undefined') {
-            console.log('Time not selected');
-        } else {
-            var selectedTime = new Date(val * 1000);
-            console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), ':', selectedTime.getUTCMinutes(), 'in UTC');
-        }
+        Options.show();
     }
 })
- .controller('HomeCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes) {
-     $scope.listCanSwipe = true;
-     $scope.items = [1,2,3,4];
-     $scope.test = function(){
-         console.log('asdf');
+ .controller('HomeCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes, Options) {
+     if(Options.isShown()){
+         Options.close();
      }
-     $scope.reportEvent = function (event) {
-         alert("hi");
-         console.log('Reporting : ' + event.type);
-         event.preventDefault();
-     };
+
      var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
      $http.get(url).then(function(resp) {
-
          $scope.userId = resp.data[0].username;
      }, function(err) {
          $scope.response = err;
      })
 
      Snapvotes.getOutgoing().then(function(resp) {
-         var snapvotes = resp.data;
-         $scope.outgoing = snapvotes;
+         $scope.outgoing = resp.data;
+         //$scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
 
      Snapvotes.getIncoming().then(function(resp) {
          $scope.incoming = resp.data;
-         $scope.response = resp;
-
-        //  $scope.response = resp;
+         //$scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
@@ -113,37 +43,32 @@ angular.module('starter.controllers', [])
      $scope.toggleSV = function(snapvote){
          snapvote.toggled = !snapvote.toggled;
      }
+     $scope.openOptions = function(){
+         Options.show();
+     }
  })
- .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $http, $ionicHistory) {
+ .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $http, $ionicHistory, Options) {
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
+     $scope.openOptions = function(){
+         Options.show();
+     }
  })
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, Camera, Snapvotes) {
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, Camera, Snapvotes, Options) {
      $scope.$on('$stateChangeSuccess', function(e, toState) {
-   if(toState.name === 'new-sv') {
-       $ionicScrollDelegate.scrollTop();
-   }
-});
-     var type = $stateParams.id;
-     $scope.data = {};
+         if(toState.name === 'new-sv') {
+             $ionicScrollDelegate.scrollTop();
+         }
+     });
 
+     var type = $stateParams.id;
      $scope.type = type;
+     $scope.inputs = {};
      $scope.items = [];
-     $scope.form = {};
      $scope.answer1 = "...";
      $scope.answer2 = "...";
      $scope.answersHidden = true;
-
-     $scope.addPhoto = function(){
-         $scope.response = 'lolol';
-         Camera.getPicture().then(function(imageURI) {
-             $scope.items.push(imageURI);
-         }, function(err) {
-             console.log(err);
-         });
-     };
-
      $scope.answers = [
          ['Yes', 'No'],
          ['Cool', 'Nope'],
@@ -151,17 +76,26 @@ angular.module('starter.controllers', [])
          ['Add..', 'Add..']
      ];
 
+     $scope.addPhoto = function(){
+         Camera.getPicture().then(function(imageURI) {
+             $scope.items.push(imageURI);
+         }, function(err) {
+             console.log(err);
+         });
+     };
+
      $scope.createSnapvote = function(){
          Snapvotes.saveSnapvote($scope.form.question, "img1", 'img2', $scope.answer1, $scope.answer2, $scope.selectedDate);
      };
 
      $scope.toggleAnswers = function(){
          $scope.answersHidden = !$scope.answersHidden;
-     }
+     };
+
      $scope.updateAnswers = function(index){
          if(index === $scope.answers.length-1){
              var myPopup = $ionicPopup.show({
-                 template: '<input type="text" ng-model="data.wifi"><input type="text" ng-model="data.wifi2">',
+                 template: '<input type="text" ng-model="inputs.answer_1"><input type="text" ng-model="inputs.answer_2">',
                  title: 'Enter Group Name',
                  scope: $scope,
                  buttons: [
@@ -170,21 +104,20 @@ angular.module('starter.controllers', [])
                          text: 'OK',
                          type: 'button-positive',
                          onTap: function(e) {
-                             return $scope.data.wifi;
+                             return $scope.inputs;
                          }
                      }
                  ]
              });
              myPopup.then(function(res) {
                  if(res){
-                     var asd = [$scope.data.wifi, $scope.data.wifi2];
-                     $scope.answers.splice(1,0,asd);
+                     var asd = [$scope.inputs.answer_1, $scope.inputs.answer_2];
+                     $scope.answers.splice(0,0,asd);
                  }
              })
          }
          else{
              $scope.answersHidden = !$scope.answersHidden;
-
              $scope.answer1 = $scope.answers[index][0];
              $scope.answer2 = $scope.answers[index][1];
          }
@@ -222,22 +155,31 @@ angular.module('starter.controllers', [])
          dateFormat: 'dd-MM-yyyy', //Optional
          closeOnSelect: false, //Optional
      };
-
+     $scope.openOptions = function(){
+         Options.show();
+     }
  })
- .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes) {
+ .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes, Options) {
      $scope.type = 0;
-     $scope.data = {};
      $scope.selectedContacts = [];
+     $scope.data = {};
+     $scope.sendSV = true;
+
+     if(Options.isShown()){
+         $scope.sendSV = false;
+         Options.close();
+     }
 
      Users.getAllUsers().then(function(resp) {
          $scope.contacts = resp.data;
+         //  $scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
 
      Groups.getGroups().then(function(resp) {
-         //  $scope.response = resp;
          $scope.groups = resp.data;
+         //  $scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
@@ -410,8 +352,11 @@ angular.module('starter.controllers', [])
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
+     $scope.openOptions = function(){
+         Options.show();
+     }
  })
- .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, $ionicPopup, $timeout, $location, Utils, Snapvotes) {
+ .controller('SvDetailCtrl', function($scope, $http, $stateParams, $ionicHistory, $ionicPopup, $timeout, $location, Utils, Snapvotes, Options) {
      $scope.selected = -1;
      var svId = $stateParams.svId;
      Snapvotes.getSnappvoteById(svId).then(function(resp) {
@@ -458,8 +403,11 @@ angular.module('starter.controllers', [])
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
+     $scope.openOptions = function(){
+         Options.show();
+     }
  })
- .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, $ionicHistory, Snapvotes, Utils, $location) {
+ .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, $ionicHistory, Snapvotes, Utils, $location, Options) {
      var groupId = $stateParams.id;
      $scope.contacts = [];
      $scope.groupContacts = [];
@@ -560,6 +508,9 @@ angular.module('starter.controllers', [])
 
      $scope.goBack = function() {
          $ionicHistory.goBack();
+     }
+     $scope.openOptions = function(){
+         Options.show();
      }
  })
  .controller('RegisterCtrl', function($scope, $http, $ionicPopup, $ionicHistory, $location, $timeout, Utils) {

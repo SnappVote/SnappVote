@@ -31,7 +31,8 @@ app.run(function($ionicPlatform) {
     .state("login", {
         url:"/login",
         templateUrl: "templates/login.html",
-        controller: "LoginCtrl"
+        controller: "LoginCtrl",
+        cache:false
     })
     .state("devlogin", {
         url:"/devlogin",

@@ -24,11 +24,13 @@
                 <div class="button-login-text">{{contact.username}}</div>
             </div>
         </div>
+        <div ng-class="{'hidden' : sendSV === false}">
         <img class="snap-it-btn-img" src="./img/icon5.png"></img>
         <button class="button-standard-red" ng-click="sendSV1()">
             SNAP IT!
         </button>
         <img class="snap-it-btn-img" src="./img/icon6.png"></img>
+    </div>
     </div>
     <div ng-class="{'hidden' : type == 0}">
         <div class="contacts-list-container">
@@ -47,11 +49,13 @@
             New Group
         </div>
     </div>
+    <div ng-class="{'hidden' : sendSV === false}">
     <img class="snap-it-btn-img" src="./img/icon5.png"></img>
     <button class="button-standard-red" ng-click="sendSV1()">
         SNAP IT!
     </button>
     <img class="snap-it-btn-img" src="./img/icon6.png"></img>
+</div>
 </div>
 
 <div>{{response}}</div>
@@ -81,6 +85,11 @@ Choose contacts
 <div>{{response}}</div> -->
 
 </ion-content>
+<div class="fixed-outside">
+    <div class="sv-footer">
+        <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+    </div>
+</div>
 <!-- <div class="fixed-outside">
     <div class="sv-footer">
         <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>

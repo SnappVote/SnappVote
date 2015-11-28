@@ -1,15 +1,30 @@
 angular.module('starter.services', [])
-.factory('Options', function(){
+.factory('Options', function($ionicPopup){
+    var popup;
+    var shown = false;
     return{
-        setSVUserId: function(userId){
-            window.localStorage['svUserId'] = userId;
+        show: function(){
+            shown = true;
+            popup = $ionicPopup.show({
+                title: 'OPTIONS',
+                template: '<div class="options-item" ui-sref="home">Home<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="contacts">Contacts<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Invite Friends<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
+                cssClass: 'popup-custom',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        onTap: function(e) {
+                            popup.close();
+                        }
+                    }
+                ]
+            });
         },
-        getSVUserId: function(){
-            return window.localStorage['svUserId'];
+        close: function(){
+            shown = false;
+            popup.close();
         },
-        getBaseURL: function(){
-            // return 'http://creative2thoughts.com/test/v1';
-            return 'http://localhost/test/v1';
+        isShown:function(){
+            return shown;
         }
     }
 })
@@ -32,16 +47,6 @@ angular.module('starter.services', [])
         getAllUsers: function(){
             var url = Utils.getBaseURL() + '/users';
             return $http.get(url);
-        },
-        setSVUserId: function(userId){
-            window.localStorage['svUserId'] = userId;
-        },
-        getSVUserId: function(){
-            return window.localStorage['svUserId'];
-        },
-        getBaseURL: function(){
-            // return 'http://creative2thoughts.com/test/v1';
-            return 'http://localhost/test/v1';
         }
     }
 })
@@ -103,23 +108,23 @@ angular.module('starter.services', [])
     };
 })
 .factory('Camera', ['$q', function($q) {
-  return {
-    getPicture: function(options) {
-        options = {
-            quality:50,
-            targetWidth: 1000,
-            targetHeight:1400,
-    saveToPhotoAlbum: false,
-    destinationType: Camera.DestinationType.DATA_URL
-};
-      var q = $q.defer();
-      navigator.camera.getPicture(function(result) {
-        q.resolve(result);
-      }, function(err) {
-        q.reject(err);
-      }, options);
+    return {
+        getPicture: function(options) {
+            options = {
+                quality:50,
+                targetWidth: 1000,
+                targetHeight:1400,
+                saveToPhotoAlbum: false,
+                destinationType: Camera.DestinationType.DATA_URL
+            };
+            var q = $q.defer();
+            navigator.camera.getPicture(function(result) {
+                q.resolve(result);
+            }, function(err) {
+                q.reject(err);
+            }, options);
 
-      return q.promise;
+            return q.promise;
+        }
     }
-  }
 }]);
