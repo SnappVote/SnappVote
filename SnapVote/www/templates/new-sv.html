@@ -5,18 +5,18 @@
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
-        <input class="sv-input-2" type="text" ng-model="form.question">
+        <input class="sv-input-2" type="text" ng-model="inputs.question">
 
         <div ng-class="{'hidden' : type == 2}" style="position:relative;">
-            <img class="img-custom-big" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+            <img class="img-custom-big" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
             <div class="take-pic-photo ion-ios-camera-outline" ng-click="addPhoto()"></div>
             <div class="take-pic-gallery ion-ios-photos-outline"></div>
         </div>
 
         <div ng-class="{'hidden' : type == 1}" style="position:relative;">
+            <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
             <div class="take-pic-photo2 ion-ios-camera-outline" ng-click="addPhoto()"></div>
             <div class="take-pic-gallery2 ion-ios-photos-outline"></div>
-            <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
             <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
             <div class="take-pic-photo3 ion-ios-camera-outline" ng-click="addPhoto()"></div>
             <div class="take-pic-gallery3 ion-ios-photos-outline"></div>
@@ -26,10 +26,18 @@
             <button class="button button-answer">{{answer1}}</button>
             <button class="button button-answer">{{answer2}}</button>
         </div>
-        <div ng-class="{'hidden' : answersHidden}" ng-repeat="answerPair in answers track by $index" class="padding" ng-click="updateAnswers($index)">
-            <button class="button button-answer">{{answerPair[0]}}</button>
-            <button class="button button-answer">{{answerPair[1]}}</button>
+        <div class="answer-container-2"ng-class="{'hidden' : answersHidden}">
+        <div class="answer-container">
+        <div ng-repeat="answerPair in answers track by $index" ng-click="updateAnswers($index, 0)">
+            <button class="button-answer-2-left">{{answerPair[0]}}</button>
         </div>
+        </div>
+        <div class="answer-container" style="float:right;">
+        <div ng-repeat="answerPair in answers track by $index" ng-click="updateAnswers($index, 1)">
+            <button class="button-answer-2-left">{{answerPair[1]}}</button>
+        </div>
+       </div>
+       </div>
         <div class="message-small" style="text-align:center;">voting period</div>
         <ionic-datepicker input-obj="datepickerObject">
             <div class="button button-standard">{{selectedDate | svdate}}</div>

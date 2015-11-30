@@ -28,6 +28,11 @@ $sv-font: 'Varela Round', sans-serif;
 $center-width: 74%;
 $center-margin: 13%;
 
+.sv-detail-img{
+    width: 76%;
+    margin-left: 12%;
+    margin-top:15px;
+}
 .bar-header{
     background-color: $sv-green-light !important;
 }
@@ -110,8 +115,24 @@ $center-margin: 13%;
 
 .button-answer{
     @extend .button-basic;
+    background-color: white;
     width: 30%;
     margin-left:13% !important;
+}
+
+.button-answer-2-left{
+    font-size: 17px !important;
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-family: $sv-font;
+    border: none;
+    padding: 7px 0 7px 0 !important;
+    width: 100%;
+    text-align: center;
+    margin-left: 2%;
+}
+.button-answer-2-right{
+    @extend .button-answer-2-left;
+    margin-left: 2%;
 }
 
 .contacts-list-container{
@@ -315,10 +336,10 @@ $center-margin: 13%;
 }
 .img-custom-big{
     background-color: white;
-    width: 60%;
-    margin-left: 20%;
+    width: 70%;
+    height: 300px;
+    margin-left: 15%;
     margin-top: 15px;
-    height:250px;
 }
 .img-custom-small{
     background-color: white;
@@ -403,6 +424,13 @@ $center-margin: 13%;
     color: white;
 }
 .popup-custom{
+    .popup-body{
+        border: none;
+    }
+    .popup-title{
+        color: rgba(0, 0, 0, 0.5) !important;
+        font-size: 18px !important;
+    }
     .popup-buttons{
         .button{
             border: none !important;
@@ -456,18 +484,55 @@ $center-margin: 13%;
 .options-item{
     $font-family: $sv-font;
     height: 50px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 16px;
     padding: 15px 0px 5px 10px;
     color:rgba(0, 0, 0, 0.4);
 }
+.options-item-bottom{
+    @extend .options-item;
+    border: none;
+}
 .hidden{
     display: none;
+}
+.shown{
+    display: block;
 }
 .options-arrow{
     float: right !important;
     margin-right: 15px
 }
+.answer-container{
+    // width: 70%;
+    // margin-left: 15%;
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+    width: 40%;
+}
+.answer-container-2{
+    width: 70%;
+    margin-left: 15%;
+}
+.popup-body{
+    border-top: 2px solid $sv-green-light;
+}
+.popup-content{
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+    font-family: $sv-font !important;
+    line-height: 50px;
+}
+.popup-content-2{
+    height: 75px;
+    text-align: center;
+    font-size: 16px;
+    font-family: $sv-font !important;
+    line-height: 35px;
+}
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

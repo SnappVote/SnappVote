@@ -7,16 +7,8 @@ angular.module('starter.services', [])
             shown = true;
             popup = $ionicPopup.show({
                 title: 'OPTIONS',
-                template: '<div class="options-item" ui-sref="home">Home<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="contacts">Contacts<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Invite Friends<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
-                cssClass: 'popup-custom',
-                buttons: [
-                    {
-                        text: 'Cancel',
-                        onTap: function(e) {
-                            popup.close();
-                        }
-                    }
-                ]
+                template: '<div class="options-item" ui-sref="home">Home<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="contacts">Contacts<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><div class="options-item">Invite Friends<a class="ion-chevron-right options-arrow"></a></div><div class="options-item-bottom" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
+                cssClass: 'popup-custom'
             });
         },
         close: function(){
@@ -84,6 +76,7 @@ angular.module('starter.services', [])
         },
         getSnappvoteById: function(id){
             var url = Utils.getBaseURL() + "/snapvotes/" + id + "/" + Utils.getSVUserId();
+            console.log(url);
             return $http.get(url);
         }
     };

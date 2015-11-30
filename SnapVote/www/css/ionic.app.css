@@ -15,6 +15,11 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.sv-detail-img {
+  width: 76%;
+  margin-left: 12%;
+  margin-top: 15px; }
+
 .bar-header {
   background-color: #A5D46C !important; }
 
@@ -77,8 +82,22 @@ $dark:                            #444 !default;
   font-weight: 600; }
 
 .button-answer {
+  background-color: white;
   width: 30%;
   margin-left: 13% !important; }
+
+.button-answer-2-left, .button-answer-2-right {
+  font-size: 17px !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  font-family: "Varela Round", sans-serif;
+  border: none;
+  padding: 7px 0 7px 0 !important;
+  width: 100%;
+  text-align: center;
+  margin-left: 2%; }
+
+.button-answer-2-right {
+  margin-left: 2%; }
 
 .contacts-list-container {
   margin-top: 15px;
@@ -266,10 +285,10 @@ $dark:                            #444 !default;
 
 .img-custom-big {
   background-color: white;
-  width: 60%;
-  margin-left: 20%;
-  margin-top: 15px;
-  height: 250px; }
+  width: 70%;
+  height: 300px;
+  margin-left: 15%;
+  margin-top: 15px; }
 
 .img-custom-small {
   background-color: white;
@@ -346,6 +365,13 @@ $dark:                            #444 !default;
   font-weight: 600;
   color: white; }
 
+.popup-custom .popup-body {
+  border: none; }
+
+.popup-custom .popup-title {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-size: 18px !important; }
+
 .popup-custom .popup-buttons .button {
   border: none !important;
   background-color: red !important;
@@ -392,19 +418,52 @@ $dark:                            #444 !default;
   right: 45px;
   font-size: 40px; }
 
-.options-item {
+.options-item, .options-item-bottom {
   height: 50px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 16px;
   padding: 15px 0px 5px 10px;
   color: rgba(0, 0, 0, 0.4); }
 
+.options-item-bottom {
+  border: none; }
+
 .hidden {
   display: none; }
+
+.shown {
+  display: block; }
 
 .options-arrow {
   float: right !important;
   margin-right: 15px; }
+
+.answer-container {
+  background-color: white;
+  border-radius: 5px;
+  display: inline-block;
+  width: 40%; }
+
+.answer-container-2 {
+  width: 70%;
+  margin-left: 15%; }
+
+.popup-body {
+  border-top: 2px solid #A5D46C; }
+
+.popup-content {
+  height: 50px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Varela Round", sans-serif !important;
+  line-height: 50px; }
+
+.popup-content-2 {
+  height: 75px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Varela Round", sans-serif !important;
+  line-height: 35px; }
 
 /*!
   Ionicons, v2.0.1
