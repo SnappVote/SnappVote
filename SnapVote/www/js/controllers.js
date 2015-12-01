@@ -527,6 +527,7 @@ angular.module('starter.controllers', [])
      $scope.selectedCountry = "";
      $scope.form = {};
      $scope.countries = countriesJson;
+     $scope.dial_code = 0;
      $scope.register = function(){
          var counter = 0;
          for (var key in $scope.form) {
@@ -566,6 +567,24 @@ angular.module('starter.controllers', [])
              })
          }
 
+     }
+     $scope.$watch('form.country.dial_code', function(newValue, oldValue){
+         console.log($scope.form.phone);
+             if($scope.form.phone){
+                 if(!oldValue){
+                     $scope.form.phone = newValue + $scope.form.phone;//.replace(oldValue, newValue);
+                 }
+                 else {
+                      $scope.form.phone = $scope.form.phone.replace(oldValue, newValue);
+
+                 }
+             }
+    });
+     $scope.update = function(asd){
+        //  $scope.dial_code = $scope.form.country.dial_code;
+        //  if($scope.form.phone && $scope.form.country){
+        //     $scope.form.phone = $scope.form.country.dial_code + $scope.form.phone;
+        //  }
      }
      $scope.goBack = function() {
          $ionicHistory.goBack();
