@@ -1,38 +1,39 @@
 <ion-view view-title="New">
-    <ion-content class="test">
+    <ion-content>
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
-        <input class="sv-input-2" type="text" ng-model="inputs.question">
+
+        <input class="sv-input-2" type="text" ng-model="inputs.question" placeholder="Subject">
 
         <div ng-class="{'hidden' : type == 2}" style="position:relative;">
-            <img class="img-custom-big" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-            <div class="take-pic-photo ion-ios-camera-outline" ng-click="addPhoto()"></div>
-            <div class="take-pic-gallery ion-ios-photos-outline"></div>
+            <img class="img-new-sv-big" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+            <div class="take-pic-photo ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
+            <div class="take-pic-gallery ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
         </div>
 
         <div ng-class="{'hidden' : type == 1}" style="position:relative;">
-            <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-            <div class="take-pic-photo2 ion-ios-camera-outline" ng-click="addPhoto()"></div>
-            <div class="take-pic-gallery2 ion-ios-photos-outline"></div>
-            <img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
-            <div class="take-pic-photo3 ion-ios-camera-outline" ng-click="addPhoto()"></div>
-            <div class="take-pic-gallery3 ion-ios-photos-outline"></div>
+            <img class="img-new-sv-small" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+            <div class="take-pic-photo2 ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
+            <div class="take-pic-gallery2 ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
+            <img class="img-new-sv-small" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
+            <div class="take-pic-photo3 ion-ios-camera-outline" ng-click="addPhoto(1)"></div>
+            <div class="take-pic-gallery3 ion-ios-photos-outline" ng-click="addPhotoGallery(1)"></div>
         </div>
 
         <div class="padding" ng-click="toggleAnswers()">
             <button class="button button-answer">{{answer1}}</button>
             <button class="button button-answer">{{answer2}}</button>
         </div>
-        <div class="answer-container-2"ng-class="{'hidden' : answersHidden}">
+        <div class="answer-dropdown-container"ng-class="{'hidden' : answersHidden}">
         <div class="answer-container">
         <div ng-repeat="answerPair in answers track by $index" ng-click="updateAnswers($index, 0)">
             <button class="button-answer-2-left">{{answerPair[0]}}</button>
         </div>
         </div>
-        <div class="answer-container" style="float:right;">
+        <div class="answer-container" id="answer-container-right">
         <div ng-repeat="answerPair in answers track by $index" ng-click="updateAnswers($index, 1)">
             <button class="button-answer-2-left">{{answerPair[1]}}</button>
         </div>

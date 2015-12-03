@@ -9,14 +9,15 @@
         <img class="navbar-button" src="./img/b3.png"></img>
     </div>
     <div class="item groups-edit-title">ADD CONTACTS TO GROUP</div>
-    <div class="groups-edit-list-container">
-
+    <div class="groups-edit-list-container" style="max-height:370px;">
+        <ion-scroll zooming="true" direction="y" style="max-height: 360px">
         <div ng-repeat="contact in contacts track by $index"
         class="item contacts-item"
         ng-class="{'contacts-item-toggled': contact.toggled}"
         ng-click="toggleContact(contact)">
         {{contact.username}}
     </div>
+</ion-scroll>
 
 </div>
 <div class="item groups-edit-footer">

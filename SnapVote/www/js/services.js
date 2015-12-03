@@ -100,15 +100,16 @@ angular.module('starter.services', [])
         }
     };
 })
-.factory('Camera', ['$q', function($q) {
+.factory('Camera2', ['$q', function($q) {
     return {
-        getPicture: function(options) {
+        getPicture: function(sourceType) {
             options = {
                 quality:50,
                 targetWidth: 1000,
                 targetHeight:1400,
                 saveToPhotoAlbum: false,
-                destinationType: Camera.DestinationType.DATA_URL
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: sourceType
             };
             var q = $q.defer();
             navigator.camera.getPicture(function(result) {
@@ -118,6 +119,6 @@ angular.module('starter.services', [])
             }, options);
 
             return q.promise;
-        }
+        },
     }
 }]);

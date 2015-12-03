@@ -1,5 +1,5 @@
 angular.module('starter.controllers', [])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout, Options) {
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout, Options, Camera2) {
     console.log('hello');
 
     if(Options.isShown()){
@@ -11,14 +11,30 @@ angular.module('starter.controllers', [])
     };
 
     $scope.test = function(){
-        var popup = $ionicPopup.show({
-            title: 'SnapVote sent',
-            template: '<div class="popup-content-2">Awesome ! Your SnapVote is sent successfully !</div>'
+        Camera2.getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM).then(function(imageURI) {
+            $scope.items.push(imageURI);
+        }, function(err) {
+            console.log(err);
         });
+//         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+//    destinationType: Camera.DestinationType.DATA_URL,
+//    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM });
+// //         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+// //    destinationType: Camera.DestinationType.DATA_URL
+// // });
+//
+// function onSuccess(imageData) {
+//     console.log(imageData);
+// }
+//
+// function onFail(message) {
+//    console.log('Failed because: ' + message);
+// }
     }
 
 })
- .controller('HomeCtrl', function($scope, $http, $ionicHistory, Utils, Snapvotes, Options) {
+
+ .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, Utils, Snapvotes, Options) {
      if(Options.isShown()){
          Options.close();
      }
@@ -34,6 +50,14 @@ angular.module('starter.controllers', [])
          $scope.outgoing = resp.data;
          //$scope.response = resp;
      }, function(err) {
+         var popup = $ionicPopup.show({
+             title: 'Oops !',
+             template: 'There was an error fetching your outgoing SnapVotes.',
+             cssClass: 'popup-error',
+             buttons: [
+                 { text: 'OK' }
+             ]
+         });
          $scope.response = err;
      })
 
@@ -41,6 +65,14 @@ angular.module('starter.controllers', [])
          $scope.incoming = resp.data;
          //$scope.response = resp;
      }, function(err) {
+         var popup = $ionicPopup.show({
+             title: 'Oops !',
+             template: 'There was an error fetching your incoming SnapVotes.',
+             cssClass: 'popup-error',
+             buttons: [
+                 { text: 'OK' }
+             ]
+         });
          $scope.response = err;
      })
 
@@ -51,6 +83,7 @@ angular.module('starter.controllers', [])
          Options.show();
      }
  })
+
  .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $http, $ionicHistory, Options) {
      $scope.goBack = function() {
          $ionicHistory.goBack();
@@ -59,16 +92,9 @@ angular.module('starter.controllers', [])
          Options.show();
      }
  })
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, Camera, Snapvotes, Options) {
-     $scope.$on('$stateChangeSuccess', function(e, toState) {
-         if(toState.name === 'new-sv') {
-             $ionicScrollDelegate.scrollTop();
-         }
-     });
 
-     var type = $stateParams.id;
-     $scope.type = type;
-     console.log($scope.type);
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, Camera2, Snapvotes, Options) {
+     $scope.type = $stateParams.id;
      $scope.inputs = {};
      $scope.items = [];
      $scope.answer1 = "...";
@@ -80,6 +106,12 @@ angular.module('starter.controllers', [])
          ['Left', 'Right'],
          ['Add..', 'Add..']
      ];
+
+     $scope.$on('$stateChangeSuccess', function(e, toState) {
+         if(toState.name === 'new-sv') {
+             $ionicScrollDelegate.scrollTop();
+         }
+     });
 
      function convertFileToBase64viaFileReader(url, callback){
          var xhr = new XMLHttpRequest();
@@ -97,17 +129,25 @@ angular.module('starter.controllers', [])
 
      convertFileToBase64viaFileReader('https://i.imgur.com/IWAoX21.jpg', function(base64Img){
          var res = base64Img.substring(23, base64Img.length);
-
-         $scope.items.push(res);
-         $scope.items.push(res);
+        //  //
+        //  $scope.items.push(res);
+        //  $scope.items.push(res);
      });
-     $scope.addPhoto = function(){
-         Camera.getPicture().then(function(imageURI) {
-             $scope.items.push(imageURI);
+
+     $scope.addPhoto = function(position){
+         Camera2.getPicture(Camera.PictureSourceType.CAMERA).then(function(imageURI) {
+             $scope.items[position] = imageURI;
          }, function(err) {
              console.log(err);
          });
      };
+     $scope.addPhotoGallery = function(position){
+         Camera2.getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM).then(function(imageURI) {
+             $scope.items[position] = imageURI;
+         }, function(err) {
+             console.log(err);
+         });
+     }
 
      $scope.createSnapvote = function(){
          console.log($scope.type);
@@ -116,7 +156,6 @@ angular.module('starter.controllers', [])
          }
          else{
              Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], "...", $scope.answer1, $scope.answer2, $scope.selectedDate);
-
          }
      };
 
@@ -128,7 +167,7 @@ angular.module('starter.controllers', [])
          if(index === $scope.answers.length-1){
              var myPopup = $ionicPopup.show({
                  template: '<input type="text" ng-model="inputs.answer_1"><input type="text" ng-model="inputs.answer_2">',
-                 title: 'Enter Group Name',
+                 title: 'Add answers',
                  scope: $scope,
                  buttons: [
                      { text: 'Cancel' },
@@ -171,8 +210,7 @@ angular.module('starter.controllers', [])
          }
      };
      $scope.datepickerObject = {
-         titleLabel: 'Title',  //Optional
-         todayLabel: 'Today',  //Optional
+         titleLabel: 'Voting Period',  //Optional
          closeLabel: 'Close',  //Optional
          setLabel: 'Set',  //Optional
          setButtonType : 'button-assertive',  //Optional
@@ -196,12 +234,14 @@ angular.module('starter.controllers', [])
          Options.show();
      }
  })
+
  .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes, Options) {
      $scope.$on('$stateChangeSuccess', function(e, toState) {
          if(toState.name === 'contacts') {
 
          }
      });
+
      $scope.type = 0;
      $scope.selectedContacts = [];
      $scope.contacts = [];
@@ -295,9 +335,13 @@ angular.module('starter.controllers', [])
              }, 2000);
          }, function(err) {
              $scope.response = err;
-             $ionicPopup.alert({
-                 title: 'Error',
-                 template: 'Something went wrong.'
+             var popup = $ionicPopup.show({
+                 title: 'Oops !',
+                 template: 'Could not connect to server.',
+                 cssClass: 'popup-error',
+                 buttons: [
+                     { text: 'OK' }
+                 ]
              });
          })
      }
@@ -361,9 +405,9 @@ angular.module('starter.controllers', [])
          });
          myPopup.then(function(res) {
              if(res){
-
                  var dataJson={};
                  dataJson["name"] = $scope.data.wifi;
+                 $scope.data.wifi = "";
                  var url = Utils.getBaseURL() + "/groups/" + Utils.getSVUserId();
                  $http.post(url, dataJson).then(function(resp) {
                      $scope.response = resp;
@@ -390,9 +434,13 @@ angular.module('starter.controllers', [])
              $location.path("/group-edit/" + toggledGroups[0]);
          }
          else{
-             $ionicPopup.alert({
-                 title: 'Error',
-                 template: 'Something went wrong.'
+             var popup = $ionicPopup.show({
+                 title: 'Oops !',
+                 template: 'Can\'t edit multiple groups.',
+                 cssClass: 'popup-error',
+                 buttons: [
+                     { text: 'OK' }
+                 ]
              });
          }
      }
@@ -449,10 +497,14 @@ angular.module('starter.controllers', [])
                   }, 1500);
          }, function(err) {
              $scope.response = err;
-             $ionicPopup.alert({
-                      title: 'Error',
-                      template: 'Something went wrong.'
-                  });
+             var popup = $ionicPopup.show({
+                 title: 'Oops !',
+                 template: 'Could not connect to server.',
+                 cssClass: 'popup-error',
+                 buttons: [
+                     { text: 'OK' }
+                 ]
+             });
          })
      }
      $scope.goBack = function() {
@@ -462,7 +514,7 @@ angular.module('starter.controllers', [])
          Options.show();
      }
  })
- .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, $ionicHistory, Snapvotes, Utils, $location, Options) {
+ .controller('GroupEditCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $http, $ionicHistory, Snapvotes, Utils, $location, $timeout, Options) {
      var groupId = $stateParams.id;
      $scope.contacts = [];
      $scope.groupContacts = [];
@@ -509,9 +561,23 @@ angular.module('starter.controllers', [])
           var url = Utils.getBaseURL() + '/groups/' + groupId + '/contacts';
           $http.post(url, snappvote).then(function(resp) {
               $scope.response = resp;
-              $location.path("/contacts");
-
+              var popup = $ionicPopup.show({
+                  title: 'Succes.',
+                  template: '<div class="popup-content-2">Group edited.</div>'
+              });
+              $timeout(function(){
+                  popup.close();
+                  $location.path('/contacts');
+              }, 1500);
           }, function(err) {
+              var popup = $ionicPopup.show({
+                  title: 'Oops !',
+                  template: 'Could not connect to server.',
+                  cssClass: 'popup-error',
+                  buttons: [
+                      { text: 'OK' }
+                  ]
+              });
               $scope.response = err;
           })
      }
@@ -524,7 +590,7 @@ angular.module('starter.controllers', [])
      }
  })
  .controller('RegisterCtrl', function($scope, $http, $ionicPopup, $ionicHistory, $location, $timeout, Utils) {
-     $scope.selectedCountry = "";
+     $scope.selectedCountry = "Afghanistan";
      $scope.form = {};
      $scope.countries = countriesJson;
      $scope.dial_code = 0;
@@ -537,20 +603,25 @@ angular.module('starter.controllers', [])
          }
          if(counter != 4){
              $scope.isDisabled =false;
-             $ionicPopup.alert({
-                 title: 'Error',
-                 template: 'All fields are mandatory.'
+             var popup = $ionicPopup.show({
+                 title: 'Oops !',
+                 template: 'You have not anwered all registration questions !',
+                 cssClass: 'popup-error',
+                 buttons: [
+                     { text: 'OK' }
+                 ]
              });
          }
          else{
              var dataJson={};
+             $scope.form.country = $scope.form.country.name;
              for(var key in $scope.form) dataJson[key]=$scope.form[key];
              var url = Utils.getBaseURL() + '/users';
              $http.post(url, dataJson).then(function(resp) {
                  Utils.setSVUserId(resp.data.id);
                  var popup = $ionicPopup.show({
-                     title: 'Success',
-                     template: '<div class="popup-content">User registered.</div>'
+                     title: 'Registration successfull.',
+                     template: '<div class="popup-content">Enjoy SnapVote !</div>'
                  });
 
                  $timeout(function(){
@@ -559,9 +630,13 @@ angular.module('starter.controllers', [])
                  }, 2000);
                  $scope.response = resp;
              }, function(err) {
-                 $ionicPopup.alert({
-                     title: 'Error',
-                     template: 'Something went wrong '
+                 var popup = $ionicPopup.show({
+                     title: 'Oops !',
+                     template: 'Could not connect to server.',
+                     cssClass: 'popup-error',
+                     buttons: [
+                         { text: 'OK' }
+                     ]
                  });
                  $scope.response = err;
              })
@@ -580,12 +655,6 @@ angular.module('starter.controllers', [])
                  }
              }
     });
-     $scope.update = function(asd){
-        //  $scope.dial_code = $scope.form.country.dial_code;
-        //  if($scope.form.phone && $scope.form.country){
-        //     $scope.form.phone = $scope.form.country.dial_code + $scope.form.phone;
-        //  }
-     }
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }

@@ -1,5 +1,5 @@
 <ion-view view-title="New">
-    <ion-content class="test">
+    <ion-content class="test" scroll="false">
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
@@ -12,11 +12,14 @@
         <div class="message-small" style="margin-top:15px; text-align:center;">{{selectedContacts.length}} selected contacts</div>
 
         <div ng-class="{'hidden' : type == 1}">
-            <div class="contacts-list-container">
+            <div class="contacts-list-container" style="height:270px;">
+            <ion-scroll zooming="true" direction="y" style="max-height: 260px">
                 <div ng-repeat="contact in contacts"
                 class="item contacts-item"
                 ng-class="{'contacts-item-toggled': contact.toggled}"
                 ng-click="toggleContact(contact)">
+            </ion-scroll>
+
                 <!-- <img class="img-center" src='./img/icon1.png'></img> -->
 
                 <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
@@ -33,13 +36,16 @@
     </div>
     </div>
     <div ng-class="{'hidden' : type == 0}">
-        <div class="contacts-list-container">
+        <div ng-class="{'hidden' : groups.length === 0}" class="contacts-list-container" style="max-height:270px;" >
+            <ion-scroll zooming="true" direction="y" style="max-height: 260px">
             <div ng-repeat="group in groups"
             class="item contacts-item"
             ng-class="{'contacts-item-toggled': group.toggled}"
             ng-click="toggleGroup(group)">
             {{group.name}}
         </div>
+    </ion-scroll>
+
     </div>
     <div class="groups-button-container">
         <div class="item button-groups" ng-click="editGroup()">
@@ -58,31 +64,7 @@
 </div>
 </div>
 
-<div>{{response}}</div>
-
-
-<!-- <div ng-class="{'hidden' : type == 2}">
-<img class="img-custom-big" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-</div>
-<div ng-class="{'hidden' : type == 1}">
-<img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-<img class="img-custom-small" class="picImg2" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
-</div>
-
-<div class="padding" ng-click="toggleAnswers()">
-<button class="button button-answer">{{answer1}}</button>
-<button class="button button-answer">{{answer2}}</button>
-</div>
-<div ng-class="{'hidden' : answersHidden}" ng-repeat="answerPair in answers track by $index" class="padding" ng-click="updateAnswers($index)">
-<button class="button button-answer">{{answerPair[0]}}</button>
-<button class="button button-answer">{{answerPair[1]}}</button>
-</div>
-<div class="message-big" style="text-align:center;">voting period</div>
-<div class="button button-standard">2 days 8 hours</div>
-<button class="button button-standard" ng-click="createSnapvote()" ui-sref="contacts.all">
-Choose contacts
-</button>
-<div>{{response}}</div> -->
+<!-- <div>{{response}}</div> -->
 
 </ion-content>
 <div class="fixed-outside">

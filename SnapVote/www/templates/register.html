@@ -1,10 +1,11 @@
 <ion-view view-title="Register">
-    <ion-content class="test">
+    <ion-content scroll="false">
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
+
         <input class="sv-input" type="text" ng-model="form.name" placeholder="Name">
         <input class="sv-input" type="text" ng-model="form.email" placeholder="Email">
         <input class="sv-input" type="text" ng-model="form.phone" ng-change="update()" placeholder="Telephone">
@@ -12,12 +13,19 @@
             <!-- <div class="input-label">
             {{selectedCountry}}
         </div> -->
-        <select ng-model="form.country" ng-options="country.name for country in countries" ng-change="update({{country.name}})">
+        <!-- <label>Check me to select: <input type="checkbox" ng-model="selected"></label><br/> -->
+
+        <select ng-model="form.country" >
+            <!-- <option id="greet" ng-selected="selected">Country</option> -->
+            <option ng-repeat="country in countries" ng-selected="{{country.name == selectedCountry.name}}">{{country.name}}</option>
         </select>
+        <!-- <select ng-model="form.country" ng-options="country.name for country in countries" class="options-custom" ng-change="update({{country.name}})">
+        </select> -->
     </label>
-    <button class="button-standard-red" ng-click="register()">
+    <button id="confirm-register" class="button-standard-red" ng-click="register()">
         CONFIRM
     </button>
     <div>{{response}}</div>
+
 </ion-content>
 </ion-view>

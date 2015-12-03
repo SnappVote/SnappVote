@@ -28,29 +28,26 @@ $sv-font: 'Varela Round', sans-serif;
 $center-width: 74%;
 $center-margin: 13%;
 
-.sv-detail-img{
-    width: 76%;
-    margin-left: 12%;
-    margin-top:15px;
-}
-.bar-header{
-    background-color: $sv-green-light !important;
-}
 
-.test{
+ion-content{
     background-color: $sv-green-light !important;
-}
-.bar-footer2 {
-    border: 0px !important;
-    border-top-color: transparent !important;
-    background-image: none;
-    border-top: none;
 }
 
 .login-logo{
     width: 82%;
     margin-left: 9%;
 }
+
+.sv-navbar{
+    margin-top: 25px;
+    padding-bottom: 40px;
+}
+
+.navbar-button{
+    width: 32.6%;
+    border: none;
+}
+
 .message{
     width: 74%;
     margin-left: 13%;
@@ -69,20 +66,26 @@ $center-margin: 13%;
 
 }
 
-.home-button-container{
-    margin-top: 15px;
-}
-
-.button-basic{
+.sv-input{
+    width: 80%;
+    height: 35px !important;
+    margin-left: 10% !important;
+    margin-top: 10px !important;
     border: none !important;
     border-radius: 5px !important;
-    border-bottom: 2px solid $sv-green-dark !important;
-    font-family: $sv-font;
-    font-size: 17px !important;
+    border-top: 3px solid $sv-green-medium !important;
+    font-family: $sv-font !important;
+    font-size: 16px !important;
+    padding-left: 15px !important;
+    padding-top: 10px !important;
 }
-.sv-center{
-    width: $center-width !important;
-    margin-left: $center-margin !important;
+
+#confirm-register{
+    margin-top:30px !important;
+}
+
+.home-button-container{
+    margin-top: 15px;
 }
 
 .button-login{
@@ -97,6 +100,147 @@ $center-margin: 13%;
     img{
         @extend .img-center;
     }
+}
+
+.home-list-container{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.home-list-item-basic{
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid $sv-green-light !important;
+    font-family:$sv-font !important;
+    color: white !important;
+}
+
+.home-list-tf{
+    @extend .home-list-item-basic;
+    text-align: center;
+    color: white !important;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.home-list-title{
+    @extend .home-list-tf;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.home-list-footer{
+    @extend .home-list-tf;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    font-size: 16px;
+}
+
+.home-list-item{
+    @extend .home-list-item-basic;
+    text-decoration: none;
+    padding: 5px 0 5px 15px;
+    display: block;
+    border-left: none;
+    border-right: none;
+    position: relative;
+}
+
+.outgoing-title{
+    font-weight: 600;
+    font-size: 15px;
+    width: 70%;
+}
+
+.outgoing-text{
+    font-size: 15px;
+}
+
+.incoming-title{
+    width: 70%;
+}
+
+.home-list-date-incoming{
+    display: inline;
+    position: absolute;
+    right: 15px;
+    top:5px;
+    font-weight: $sv-font;
+}
+
+.home-list-date-outgoing{
+    display: inline;
+    position: absolute;
+    right: 15px;
+    top:15px;
+    font-weight: $sv-font;
+}
+
+.home-user-item{
+    @extend .home-list-item-basic;
+    background-color: rgba(0, 0, 0, 0);
+    border: none !important;
+}
+
+#choose-type-message{
+     margin-top:20px;
+      margin-bottom:40px;
+      font-size:20px;
+}
+#choose-type-img-2{
+    margin-top: 10px;
+}
+
+.sv-input-2{
+    width: 70%;
+    height: 35px !important;
+    margin-left: 15% !important;
+    margin-top: 10px !important;
+    padding-left: 15px !important;
+    padding-top: 5px !important;
+    font-size: 16px !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none !important;
+}
+
+.options-custom{
+    position: absolute;
+    left:0;
+    width: 100%;
+}
+
+
+.sv-detail-img{
+    width: 76%;
+    margin-left: 12%;
+    margin-top:15px;
+}
+.bar-header{
+    background-color: $sv-green-light !important;
+}
+
+
+.bar-footer2 {
+    border: 0px !important;
+    border-top-color: transparent !important;
+    background-image: none;
+    border-top: none;
+}
+
+
+.button-basic{
+    border: none !important;
+    border-radius: 5px !important;
+    border-bottom: 2px solid $sv-green-dark !important;
+    font-family: $sv-font;
+    font-size: 17px !important;
+}
+.sv-center{
+    width: $center-width !important;
+    margin-left: $center-margin !important;
 }
 
 .button-standard{
@@ -156,71 +300,7 @@ $center-margin: 13%;
     font-weight: 600;
     color: white !important;
 }
-.home-list-container{
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 10px;
-}
-.home-list-item-basic{
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid $sv-green-light !important;
-    font-family:$sv-font !important;
-    color: white !important;
-}
-.home-list-tf{
-    @extend .home-list-item-basic;
-    text-align: center;
-    color: white !important;
-    height: 40px;
-    padding-top:9px;
-    font-weight: 600;
-    font-size: 17px;
-}
-.home-list-title{
-    @extend .home-list-tf;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-}
-.home-list-footer{
-    @extend .home-list-tf;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    font-size: 16px;
-}
-.home-list-item{
-    @extend .home-list-item-basic;
-    text-decoration: none;
-    padding: 5px 0 5px 15px;
-    display: block;
-    border-left: none;
-    border-right: none;
-}
-.home-list-date{
-    display: inline;
-    position: absolute;
-    margin-left: 55%;
-    margin-top: -40px;
-    font-weight: $sv-font;
-}
-.home-list-date-2{
-    display: inline;
-    position: absolute;
-    right: 55px;
-    margin-top: -10px;
-    font-weight: $sv-font;
-}
-.home-user-item{
-    @extend .home-list-item-basic;
-    background-color: rgba(0, 0, 0, 0);
-    border: none !important;
-}
-.outgoing-title{
-    font-weight: 600;
-    font-size: 15px;
-}
-.outgoing-text{
-    font-size: 15px;
-}
+
 .contacts-tabs-container{
     @extend .sv-center;
     background: white;
@@ -308,45 +388,34 @@ $center-margin: 13%;
     margin-left: 49%;
     margin-top: 10px;
 }
-.sv-input{
-    width: 80%;
-    height: 35px !important;
-    margin-left: 10% !important;
-    margin-top: 10px !important;
-    border: none !important;
-    border-radius: 5px !important;
-    border-top: 3px solid $sv-green-medium !important;
-    font-family: $sv-font !important;
-    font-size: 16px !important;
-    padding-left: 15px !important;
-    padding-top: 10px !important;
-}
 
-.sv-input-2{
-    width: 70%;
-    height: 35px !important;
-    margin-left: 15% !important;
-    margin-top: 10px !important;
-    padding-left: 15px !important;
-    padding-top: 5px !important;
-    font-size: 16px !important;
-    color: rgba(0, 0, 0, 0.6) !important;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: none !important;
-}
-.img-custom-big{
+.img-new-sv-big{
     background-color: white;
     width: 70%;
     height: 300px;
     margin-left: 15%;
     margin-top: 15px;
 }
-.img-custom-small{
+.img-new-sv-small{
     background-color: white;
     width: 35%;
     margin-left: 10%;
     margin-top: 15px;
     height: 200px;
+}
+
+.answer-dropdown-container{
+    width: 70%;
+    margin-left: 15%;
+}
+.answer-container{
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+    width: 40%;
+}
+#answer-container-right{
+    float:right;
 }
 .img-container{
     background-color: white;
@@ -365,9 +434,14 @@ $center-margin: 13%;
     margin-top: -10px;
     margin-left: 5%;
 }
-.sv-navbar{
-    margin-top: 30px;
-    padding-bottom: 40px;
+*::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+*:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color: rgba(0, 0, 0, 0.6) !important;
 }
 .fixed-outside{
   position: absolute;
@@ -398,10 +472,7 @@ $center-margin: 13%;
 .navbar-logo{
     width: 30%;
 }
-.navbar-button{
-    width: 32.6%;
-    border: none;
-}
+
 .footer-button{
     width: 95px;
     float:right;
@@ -443,6 +514,29 @@ $center-margin: 13%;
             border-radius: 5px;
         }
 
+    }
+}
+.popup-error{
+    .popup-body{
+        border-top: 2px solid $sv-red;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.5) !important;
+    }
+    .popup-title{
+        color: rgba(0, 0, 0, 0.5) !important;
+        font-size: 18px !important;
+    }
+    .popup-buttons{
+        background-color: $sv-red !important;
+        .button{
+            border: none !important;
+            width: 100% !important;
+            background-color: $sv-red !important;
+            color: white;
+            font-family: $sv-font !important;
+            font-weight: 600;
+            font-size: 17px !important;
+        }
     }
 }
 .take-pic-photo{
@@ -503,18 +597,8 @@ $center-margin: 13%;
     float: right !important;
     margin-right: 15px
 }
-.answer-container{
-    // width: 70%;
-    // margin-left: 15%;
-    background-color: white;
-    border-radius: 5px;
-    display: inline-block;
-    width: 40%;
-}
-.answer-container-2{
-    width: 70%;
-    margin-left: 15%;
-}
+
+
 .popup-body{
     border-top: 2px solid $sv-green-light;
 }
