@@ -5,7 +5,7 @@
             <img class="navbar-button" src="./img/z2.png"></img>
             <img class="navbar-button" src="./img/z3.png" ui-sref="choose-type"></img>
         </div>
-
+        <div style="position:relative;">
         <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
             <div ng-repeat="snapvote in outgoing"
@@ -48,11 +48,10 @@
             </div>
             <div class="home-list-footer">MORE</div>
         </div>
+        <div class="sv-footer">
+            <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+        </div>
+        </div>
     <!-- <div>{{response}}</div> -->
 </ion-content>
-<div class="fixed-outside">
-    <div class="sv-footer">
-        <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
-    </div>
-</div>
 </ion-view>

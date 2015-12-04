@@ -1,5 +1,5 @@
 <ion-view view-title="New">
-    <ion-content class="test" scroll="false">
+    <ion-content scroll="false">
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
@@ -9,22 +9,19 @@
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==1}" ng-click="switchTabs(1)">Groups</div>
         </div>
-        <div class="message-small" style="margin-top:15px; text-align:center;">{{selectedContacts.length}} selected contacts</div>
+        <div class="message-small" id="contacts-counter">{{selectedContacts.length}} selected contacts</div>
 
         <div ng-class="{'hidden' : type == 1}">
-            <div class="contacts-list-container" style="height:270px;">
-            <ion-scroll zooming="true" direction="y" style="max-height: 260px">
+            <div class="contacts-list-container">
+            <ion-scroll zooming="true" direction="y">
                 <div ng-repeat="contact in contacts"
                 class="item contacts-item"
                 ng-class="{'contacts-item-toggled': contact.toggled}"
                 ng-click="toggleContact(contact)">
             </ion-scroll>
-
-                <!-- <img class="img-center" src='./img/icon1.png'></img> -->
-
-                <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
-
-                <div class="button-login-text">{{contact.username}}</div>
+            {{contact.username}}
+            <!-- <img class="img-center" src='./img/icon1.png'></img> -->
+            <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
             </div>
         </div>
         <div ng-class="{'hidden' : sendSV === false}">
@@ -36,8 +33,8 @@
     </div>
     </div>
     <div ng-class="{'hidden' : type == 0}">
-        <div ng-class="{'hidden' : groups.length === 0}" class="contacts-list-container" style="max-height:270px;" >
-            <ion-scroll zooming="true" direction="y" style="max-height: 260px">
+        <div ng-class="{'hidden' : groups.length === 0}" class="contacts-list-container">
+            <ion-scroll zooming="true" direction="y">
             <div ng-repeat="group in groups"
             class="item contacts-item"
             ng-class="{'contacts-item-toggled': group.toggled}"
