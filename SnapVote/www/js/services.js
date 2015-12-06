@@ -29,8 +29,8 @@ angular.module('starter.services', [])
             return window.localStorage['svUserId'];
         },
         getBaseURL: function(){
-            return 'http://creative2thoghts.com/test/v1';
-            // return 'http://localhost/test/v1';
+            // return 'http://creative2thoghts.com/test/v1';
+            return 'http://localhost/test/v1';
         }
     }
 })
@@ -56,6 +56,7 @@ angular.module('starter.services', [])
                 contacts_ids: "",
                 groups_ids: ""
             }
+            snappvote['date_created'] = new Date();
         },
         setContacts: function(contactIds){
             snappvote['contacts_ids'] = contactIds;

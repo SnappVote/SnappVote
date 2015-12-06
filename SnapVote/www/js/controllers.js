@@ -47,8 +47,16 @@ angular.module('starter.controllers', [])
     //  })
 
      Snapvotes.getOutgoing().then(function(resp) {
+
          $scope.outgoing = resp.data;
-         //$scope.response = resp;
+         for (var i = 0; i < resp.data.length; i++) {
+                 var svdate = new Date(resp.data[i].expire_date);
+                 var isExpired = svdate < new Date();
+                 $scope.outgoing[i].expired = isExpired;
+
+         }
+
+         $scope.response = resp;
      }, function(err) {
          var popup = $ionicPopup.show({
              title: 'Oops !',
@@ -63,6 +71,11 @@ angular.module('starter.controllers', [])
 
      Snapvotes.getIncoming().then(function(resp) {
          $scope.incoming = resp.data;
+         for (var i = 0; i < resp.data.length; i++) {
+                 var svdate = new Date(resp.data[i].expire_date);
+                 var isExpired = svdate < new Date();
+                 $scope.incoming[i].expired = isExpired;
+         }
          //$scope.response = resp;
      }, function(err) {
          var popup = $ionicPopup.show({
@@ -129,9 +142,8 @@ angular.module('starter.controllers', [])
 
      convertFileToBase64viaFileReader('https://i.imgur.com/IWAoX21.jpg', function(base64Img){
          var res = base64Img.substring(23, base64Img.length);
-        //  //
-        //  $scope.items.push(res);
-        //  $scope.items.push(res);
+         $scope.items.push(res);
+         $scope.items.push(res);
      });
 
      $scope.addPhoto = function(position){
@@ -150,7 +162,7 @@ angular.module('starter.controllers', [])
      }
 
      $scope.createSnapvote = function(){
-         console.log($scope.type);
+         console.log($scope.inputs.question);
          if($scope.type == 2){
              Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], $scope.items[1], $scope.answer1, $scope.answer2, $scope.selectedDate);
          }
@@ -321,10 +333,10 @@ angular.module('starter.controllers', [])
      $scope.sendSV1 = function(){
          Snapvotes.setContacts($scope.selectedContacts);
          var dataJson = Snapvotes.getSnappvote();
-
+         dataJson['date_created'] = new Date();
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
-             //  $scope.response = resp;
+              $scope.response = resp;
              var popup = $ionicPopup.show({
                  title: 'SnapVote sent',
                  template: '<div class="popup-content-2">Awesome ! Your SnapVote is sent successfully !</div>'

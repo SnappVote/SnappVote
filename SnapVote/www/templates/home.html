@@ -9,6 +9,7 @@
         <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
             <div ng-repeat="snapvote in outgoing"
+            ng-class="{'sv-expired': snapvote.expired}"
             class="home-list-item"
             ng-click="toggleSV(snapvote)"
             can-swipe="listCanSwipe">
@@ -22,7 +23,7 @@
                         {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
                     </span>
                     <div class="home-list-date-outgoing">
-                        <div>pending</div>
+                        <div>{{snapvote.expire_date | outgoingDateFilter}}</div>
                     </div>
                 </div>
                 <div ng-repeat="user in snapvote.voters"
@@ -37,12 +38,12 @@
         <div class="home-list-container">
             <div class="home-list-title">INCOMING</div>
             <div ng-repeat="snapvote in incoming">
-                <a class="home-list-item" href="#/sv-detail/{{snapvote.id}}">
+                <a class="home-list-item" ng-class="{'sv-expired': snapvote.expired}"href="#/sv-detail/{{snapvote.id}}">
                     <div class="outgoing-title">{{snapvote.author_username}}</div>
                     <div class="incoming-title">{{snapvote.title}}</div>
                     <div class="home-list-date-incoming">
-                        <div>expires</div>
-                        <div>in {{snapvote.expire_date | svdate2}}</div>
+                        <span ng-show="!snapvote.expired">expires</br> in</span>
+                        <span>{{snapvote.expire_date | incomingDateFilter}}</span>
                     </div>
                 </a>
             </div>
@@ -52,6 +53,6 @@
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
         </div>
         </div>
-    <!-- <div>{{response}}</div> -->
+    <div>{{response}}</div>
 </ion-content>
 </ion-view>

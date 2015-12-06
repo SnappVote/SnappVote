@@ -121,24 +121,65 @@ app.filter('test', [function() {
         }
     };
 }]);
+app.filter('outgoingDateFilter', [function() {
+    return function(input) {
+        var svdate = new Date(input);
+        if(svdate < new Date()){
+            return "expired";
+        }
+        else{
+            return "pending";
+        }
+    };
+}])
+app.filter('incomingDateFilter', [function() {
+    return function(input) {
+        var svdate = new Date(input);
+        if(svdate < new Date()){
+            return "expired";
+        }
+        else{
+            var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+            var firstDate = new Date(input);
+            var secondDate = new Date(Date.now());
+
+            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+            var label = "";
+            console.log(diffDays);
+            if(diffDays == 1){
+                label = " day";
+            }
+            else{
+                label = " days";
+            }
+            return diffDays + label;        }
+    };
+}])
 app.filter('svdate', [function() {
     return function(input) {
         if(!input){
-            return 0 + " days";
+            return "select date";
         }
         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
         var firstDate = input;
         var secondDate = new Date(Date.now());
 
         var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-        return diffDays + " days";
+        var label = "";
+        console.log(diffDays);
+        if(diffDays == 1){
+            label = "day";
+        }
+        else{
+            label = "days";
+        }
+        return diffDays + label;
     };
 }])
 app.filter('svdate2', [function() {
     return function(input) {
-        if(!input){
-            return 0 + " days";
-        }
+        return "<div>expired in </br> date</div>";
+
         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
         var firstDate = new Date(input);
         var secondDate = new Date(Date.now());
