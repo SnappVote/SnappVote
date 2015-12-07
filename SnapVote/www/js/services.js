@@ -21,6 +21,7 @@ angular.module('starter.services', [])
     }
 })
 .factory('Utils', function(){
+    var invite = false;
     return{
         setSVUserId: function(userId){
             window.localStorage['svUserId'] = userId;

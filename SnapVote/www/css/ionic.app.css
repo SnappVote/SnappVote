@@ -37,6 +37,9 @@ ion-scroll {
 .shown {
   display: block; }
 
+.shown {
+  display: block; }
+
 .img-center, .button-login img {
   display: inline-block;
   height: 50%;

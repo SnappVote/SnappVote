@@ -14,11 +14,7 @@
             {{selectedCountry}}
         </div> -->
         <!-- <label>Check me to select: <input type="checkbox" ng-model="selected"></label><br/> -->
-
-        <select ng-model="form.country" >
-            <!-- <option id="greet" ng-selected="selected">Country</option> -->
-            <option ng-repeat="country in countries" ng-selected="{{country.name == selectedCountry.name}}">{{country.name}}</option>
-        </select>
+        <select ng-model="form.country" ng-options="country.name for country in countries" ng-change="update({{country.name}})"></select>
     </label>
     <button id="confirm-register" class="button-standard-red" ng-click="register()">
         CONFIRM

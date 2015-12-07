@@ -34,10 +34,10 @@ angular.module('starter.controllers', [])
 
 })
 
- .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, Utils, Snapvotes, Options) {
-     if(Options.isShown()){
-         Options.close();
-     }
+.controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, Utils, Snapvotes, Options) {
+    if(Options.isShown()){
+        Options.close();
+    }
 
     //  var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
     //  $http.get(url).then(function(resp) {
@@ -46,56 +46,114 @@ angular.module('starter.controllers', [])
     //      $scope.response = err;
     //  })
 
-     Snapvotes.getOutgoing().then(function(resp) {
+    Snapvotes.getOutgoing().then(function(resp) {
+        var pending = [];
+        var expired = [];
 
-         $scope.outgoing = resp.data;
-         for (var i = 0; i < resp.data.length; i++) {
-                 var svdate = new Date(resp.data[i].expire_date);
-                 var isExpired = svdate < new Date();
-                 $scope.outgoing[i].expired = isExpired;
+        for (var i = 0; i < resp.data.length; i++) {
+            var snapvote = resp.data[i];
 
-         }
+            var svdate = new Date(snapvote.expire_date);
+            var createdDate = new Date(snapvote.date_created);
+            var test = Date.parse(snapvote.date_created);
+            var arr = snapvote.date_created.split(/-|\s|:/);// split string and create array.
+            var newDate = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); // decrease month value by 1
+            // console.log(snapvote.date_created);
+            // console.log(test);
+            // console.log(snapvote.title + " " + snapvote.date_created + " " + snapvote.expire_date);
 
-         $scope.response = resp;
-     }, function(err) {
-         var popup = $ionicPopup.show({
-             title: 'Oops !',
-             template: 'There was an error fetching your outgoing SnapVotes.',
-             cssClass: 'popup-error',
-             buttons: [
-                 { text: 'OK' }
-             ]
-         });
-         $scope.response = err;
-     })
+            var isExpired = svdate < new Date();
+            snapvote.expired = isExpired;
+            //  $scope.outgoing[i].expired = isExpired;
+            if(!isExpired){
+                pending.push(snapvote);
+            }
+            else{
+                expired.push(snapvote);
+            }
+        }
 
-     Snapvotes.getIncoming().then(function(resp) {
-         $scope.incoming = resp.data;
-         for (var i = 0; i < resp.data.length; i++) {
-                 var svdate = new Date(resp.data[i].expire_date);
-                 var isExpired = svdate < new Date();
-                 $scope.incoming[i].expired = isExpired;
-         }
-         //$scope.response = resp;
-     }, function(err) {
-         var popup = $ionicPopup.show({
-             title: 'Oops !',
-             template: 'There was an error fetching your incoming SnapVotes.',
-             cssClass: 'popup-error',
-             buttons: [
-                 { text: 'OK' }
-             ]
-         });
-         $scope.response = err;
-     })
+        pending.sort(function(a, b){
+            var arr = a.date_created.split(/-|\s|:/);// split string and create array.
+            var a = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
+             arr = b.date_created.split(/-|\s|:/);// split string and create array.
+             var b = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
+             return a>b ? -1 : a<b ? 1 : 0;
+        });
 
-     $scope.toggleSV = function(snapvote){
-         snapvote.toggled = !snapvote.toggled;
-     }
-     $scope.openOptions = function(){
-         Options.show();
-     }
- })
+        var snapvotes = pending.concat(expired);
+        $scope.outgoing = snapvotes;
+
+        $scope.response = resp;
+    }, function(err) {
+        var popup = $ionicPopup.show({
+            title: 'Oops !',
+            template: 'There was an error fetching your outgoing SnapVotes.',
+            cssClass: 'popup-error',
+            buttons: [
+                { text: 'OK' }
+            ]
+        });
+        $scope.response = err;
+    })
+
+    Snapvotes.getIncoming().then(function(resp) {
+        var pending = [];
+        var expired = [];
+
+        for (var i = 0; i < resp.data.length; i++) {
+            var snapvote = resp.data[i];
+
+            var svdate = new Date(snapvote.expire_date);
+            var createdDate = new Date(snapvote.date_created);
+            var test = Date.parse(snapvote.date_created);
+            var arr = snapvote.date_created.split(/-|\s|:/);// split string and create array.
+            var newDate = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); // decrease month value by 1
+            // console.log(snapvote.date_created);
+            // console.log(test);
+            // console.log(snapvote.title + " " + snapvote.date_created + " " + snapvote.expire_date);
+
+            var isExpired = svdate < new Date();
+            snapvote.expired = isExpired;
+            //  $scope.outgoing[i].expired = isExpired;
+            if(!isExpired){
+                pending.push(snapvote);
+            }
+            else{
+                expired.push(snapvote);
+            }
+        }
+
+        pending.sort(function(a, b){
+            var arr = a.date_created.split(/-|\s|:/);// split string and create array.
+            var a = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
+             arr = b.date_created.split(/-|\s|:/);// split string and create array.
+             var b = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
+             return a>b ? -1 : a<b ? 1 : 0;
+        });
+
+        var snapvotes = pending.concat(expired);
+        $scope.incoming = snapvotes;
+        //$scope.response = resp;
+    }, function(err) {
+        var popup = $ionicPopup.show({
+            title: 'Oops !',
+            template: 'There was an error fetching your incoming SnapVotes.',
+            cssClass: 'popup-error',
+            buttons: [
+                { text: 'OK' }
+            ]
+        });
+        $scope.response = err;
+    })
+
+    $scope.toggleSV = function(snapvote){
+        snapvote.toggled = !snapvote.toggled;
+    }
+    $scope.openOptions = function(){
+        Options.show();
+    }
+})
 
  .controller('ChooseTypeCtrl', function($scope, $ionicPopup, $http, $ionicHistory, Options) {
      $scope.goBack = function() {
@@ -333,7 +391,6 @@ angular.module('starter.controllers', [])
      $scope.sendSV1 = function(){
          Snapvotes.setContacts($scope.selectedContacts);
          var dataJson = Snapvotes.getSnappvote();
-         dataJson['date_created'] = new Date();
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
          $http.post(url, dataJson).then(function(resp) {
               $scope.response = resp;
@@ -343,8 +400,8 @@ angular.module('starter.controllers', [])
              });
              $timeout(function(){
                  popup.close();
-                 $location.path('/home');
-             }, 2000);
+                //  $location.path('/home');
+            }, 1000);
          }, function(err) {
              $scope.response = err;
              var popup = $ionicPopup.show({
@@ -655,18 +712,18 @@ angular.module('starter.controllers', [])
          }
 
      }
-     $scope.$watch('form.country.dial_code', function(newValue, oldValue){
-         console.log($scope.form.phone);
-             if($scope.form.phone){
-                 if(!oldValue){
-                     $scope.form.phone = newValue + $scope.form.phone;//.replace(oldValue, newValue);
-                 }
-                 else {
-                      $scope.form.phone = $scope.form.phone.replace(oldValue, newValue);
-
-                 }
-             }
-    });
+    //  $scope.$watch('form.country.dial_code', function(newValue, oldValue){
+    //      console.log($scope.form.phone);
+    //          if($scope.form.phone){
+    //              if(!oldValue){
+    //                  $scope.form.phone = newValue + $scope.form.phone;//.replace(oldValue, newValue);
+    //              }
+    //              else {
+    //                   $scope.form.phone = $scope.form.phone.replace(oldValue, newValue);
+    //
+    //              }
+    //          }
+    // });
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }

@@ -11,7 +11,29 @@
         </div>
         <div class="message-small" id="contacts-counter">{{selectedContacts.length}} selected contacts</div>
 
-        <div ng-class="{'hidden' : type == 1}">
+        <div class='hidden' ng-class="{'shown' : type == 3}">
+            <div class="contacts-list-container">
+            <ion-scroll zooming="true" direction="y">
+                <div ng-repeat="contact in contacts"
+                class="item contacts-item"
+                ng-class="{'contacts-item-toggled': contact.toggled}"
+                ng-click="toggleContact(contact)">
+            </ion-scroll>
+            {{contact.username}}
+            <!-- <img class="img-center" src='./img/icon1.png'></img> -->
+            <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
+            </div>
+        </div>
+        <div ng-class="{'hidden' : sendSV === false}">
+        <img class="snap-it-btn-img" src="./img/icon5.png"></img>
+        <button class="button-standard-red" ng-click="sendSV1()">
+            INVITE
+        </button>
+        <img class="snap-it-btn-img" src="./img/icon6.png"></img>
+        </div>
+        </div>
+
+        <div class='hidden' ng-class="{'shown' : type == 0}">
             <div class="contacts-list-container">
             <ion-scroll zooming="true" direction="y">
                 <div ng-repeat="contact in contacts"
@@ -30,9 +52,9 @@
             SNAP IT!
         </button>
         <img class="snap-it-btn-img" src="./img/icon6.png"></img>
-    </div>
-    </div>
-    <div ng-class="{'hidden' : type == 0}">
+        </div>
+        </div>
+    <div class='hidden' ng-class="{'shown' : type == 1}">
         <div ng-class="{'hidden' : groups.length === 0}" class="contacts-list-container">
             <ion-scroll zooming="true" direction="y">
             <div ng-repeat="group in groups"
