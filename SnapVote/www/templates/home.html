@@ -32,13 +32,13 @@
                     {{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}
                 </div>
             </div>
-            <div class="home-list-footer">MORE</div>
+            <div class="home-list-footer" ng-click="loadOutgoing()">MORE</div>
         </div>
 
         <div class="home-list-container">
             <div class="home-list-title">INCOMING</div>
             <div ng-repeat="snapvote in incoming">
-                <a class="home-list-item" ng-class="{'sv-expired': snapvote.expired}"href="#/sv-detail/{{snapvote.id}}">
+                <a class="home-list-item" ng-class="{'sv-expired': snapvote.expired}" href="#/sv-detail/{{snapvote.id}}">
                     <div class="outgoing-title">{{snapvote.author_username}}</div>
                     <div class="incoming-title">{{snapvote.title}}</div>
                     <div class="home-list-date-incoming">
@@ -53,6 +53,6 @@
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
         </div>
         </div>
-    <div>{{response}}</div>
+    <!-- <div>{{response}}</div> -->
 </ion-content>
 </ion-view>

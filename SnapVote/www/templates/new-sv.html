@@ -44,9 +44,9 @@
             <div class="button button-standard">{{selectedDate | svdate}}</div>
         <!-- <button class="button button-block button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button> -->
         </ionic-datepicker>
-        <button class="button button-standard" id="button-select-contacts" ng-click="createSnapvote()" ui-sref="contacts">
+        <a class="button button-standard" id="button-select-contacts" ng-click="createSnapvote()" href="#/contacts/{{1}}">
             select contacts
-        </button>
+        </a>
         <div class="sv-footer">
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
         </div>

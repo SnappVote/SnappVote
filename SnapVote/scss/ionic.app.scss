@@ -46,10 +46,10 @@ ion-scroll{
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 .shown{
-    display: block;
+    display: block !important;
 }
 .shown{
     display: block;
@@ -477,6 +477,11 @@ ion-scroll{
     bottom: -50px;
     right: 20px;
 }
+.sv-footer-bttom{
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
 .navbar-logo{
     width: 30%;
 }
@@ -585,11 +590,15 @@ ion-scroll{
 }
 .options-item{
     $font-family: $sv-font;
+    display: block !important;
     height: 50px;
+    line-height: 50px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 16px;
-    padding: 15px 0px 5px 10px;
-    color:rgba(0, 0, 0, 0.4);
+    text-decoration: none !important;
+    color:rgba(0, 0, 0, 0.4) !important;
+    padding-left: 15px;
+    position: relative;
 }
 .options-item-bottom{
     @extend .options-item;
@@ -597,8 +606,8 @@ ion-scroll{
 }
 
 .options-arrow{
-    float: right !important;
-    margin-right: 15px
+    float: right;
+    margin-right: 15px;
 }
 
 .popup-body{

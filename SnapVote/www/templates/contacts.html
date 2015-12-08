@@ -1,69 +1,62 @@
 <ion-view view-title="New">
-    <ion-content>
+    <ion-content scroll="false">
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
+        <div class="hidden" ng-class="{'shown' : type2 != 3}">
         <div class="contacts-tabs-container">
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==1}" ng-click="switchTabs(1)">Groups</div>
         </div>
         <div class="message-small" id="contacts-counter">{{selectedContacts.length}} selected contacts</div>
+    </div>
+    <div class="hidden" ng-class="{'shown' : type2 == 3}">
 
-        <div class='hidden' ng-class="{'shown' : type == 3}">
-            <div class="contacts-list-container">
-            <ion-scroll zooming="true" direction="y">
-                <div ng-repeat="contact in contacts"
-                class="item contacts-item"
-                ng-class="{'contacts-item-toggled': contact.toggled}"
-                ng-click="toggleContact(contact)">
-            </ion-scroll>
-            {{contact.username}}
-            <!-- <img class="img-center" src='./img/icon1.png'></img> -->
-            <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
-            </div>
-        </div>
-        <div ng-class="{'hidden' : sendSV === false}">
-        <img class="snap-it-btn-img" src="./img/icon5.png"></img>
-        <button class="button-standard-red" ng-click="sendSV1()">
-            INVITE
-        </button>
-        <img class="snap-it-btn-img" src="./img/icon6.png"></img>
-        </div>
-        </div>
+    <div class="message-small" id="contacts-counter">SELECT CONTACTS</div>
+    </div>
+
 
         <div class='hidden' ng-class="{'shown' : type == 0}">
             <div class="contacts-list-container">
-            <ion-scroll zooming="true" direction="y">
-                <div ng-repeat="contact in contacts"
-                class="item contacts-item"
-                ng-class="{'contacts-item-toggled': contact.toggled}"
-                ng-click="toggleContact(contact)">
-            </ion-scroll>
-            {{contact.username}}
-            <!-- <img class="img-center" src='./img/icon1.png'></img> -->
-            <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
+                <ion-scroll zooming="true" direction="y">
+                    <div ng-repeat="contact in contacts"
+                    class="item contacts-item"
+                    ng-class="{'contacts-item-toggled': contact.toggled}"
+                    ng-click="toggleContact(contact)">
+                </ion-scroll>
+                {{contact.username}}
+                <!-- <img class="img-center" src='./img/icon1.png'></img> -->
+                <!-- <img class="img-center" ng-src="{{isToggled(contact) && './img/icon1.png' || './img/fb_logo.png'}}"></img> -->
             </div>
         </div>
-        <div ng-class="{'hidden' : sendSV === false}">
-        <img class="snap-it-btn-img" src="./img/icon5.png"></img>
-        <button class="button-standard-red" ng-click="sendSV1()">
-            SNAP IT!
-        </button>
-        <img class="snap-it-btn-img" src="./img/icon6.png"></img>
+        <div  class='hidden' ng-class="{'shown' : type2 == 1}">
+            <img class="snap-it-btn-img" src="./img/icon5.png"></img>
+            <button class="button-standard-red" ng-click="sendSV1()">
+                SNAP IT!
+            </button>
+            <img class="snap-it-btn-img" src="./img/icon6.png"></img>
         </div>
+        <div class='hidden' ng-class="{'shown' : type2 == 3}" style="margin-top:30px;">
+            <img class="snap-it-btn-img" src="./img/icon5.png"></img>
+            <button class="button-standard-red" ng-click="sendSV1()">
+                INVITE !
+            </button>
+            <img class="snap-it-btn-img" src="./img/icon6.png"></img>
         </div>
+    </div>
+
     <div class='hidden' ng-class="{'shown' : type == 1}">
         <div ng-class="{'hidden' : groups.length === 0}" class="contacts-list-container">
             <ion-scroll zooming="true" direction="y">
-            <div ng-repeat="group in groups"
-            class="item contacts-item"
-            ng-class="{'contacts-item-toggled': group.toggled}"
-            ng-click="toggleGroup(group)">
-            {{group.name}}
-        </div>
-    </ion-scroll>
+                <div ng-repeat="group in groups"
+                class="item contacts-item"
+                ng-class="{'contacts-item-toggled': group.toggled}"
+                ng-click="toggleGroup(group)">
+                {{group.name}}
+            </div>
+        </ion-scroll>
 
     </div>
     <div class="groups-button-container">
@@ -74,26 +67,18 @@
             New Group
         </div>
     </div>
-    <div ng-class="{'hidden' : sendSV === false}">
-    <img class="snap-it-btn-img" src="./img/icon5.png"></img>
-    <button class="button-standard-red" ng-click="sendSV1()">
-        SNAP IT!
-    </button>
-    <img class="snap-it-btn-img" src="./img/icon6.png"></img>
+    <div class='hidden' ng-class="{'shown' : type2 == 1}">
+        <img class="snap-it-btn-img" src="./img/icon5.png"></img>
+        <button class="button-standard-red" ng-click="sendSV1()">
+            SNAP IT!
+        </button>
+        <img class="snap-it-btn-img" src="./img/icon6.png"></img>
+    </div>
 </div>
+<div class="sv-footer-bttom">
+    <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
 </div>
-
 <div>{{response}}</div>
 
 </ion-content>
-<div class="fixed-outside">
-    <div class="sv-footer">
-        <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
-    </div>
-</div>
-<!-- <div class="fixed-outside">
-    <div class="sv-footer">
-        <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
-    </div>
-</div> -->
 </ion-view>

@@ -35,6 +35,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, Utils, Snapvotes, Options) {
+    var outgoingSV = [];
     if(Options.isShown()){
         Options.close();
     }
@@ -47,7 +48,6 @@ angular.module('starter.controllers', [])
     //  })
 
     Snapvotes.getOutgoing().then(function(resp) {
-        var pending = [];
         var expired = [];
 
         for (var i = 0; i < resp.data.length; i++) {
@@ -66,14 +66,14 @@ angular.module('starter.controllers', [])
             snapvote.expired = isExpired;
             //  $scope.outgoing[i].expired = isExpired;
             if(!isExpired){
-                pending.push(snapvote);
+                outgoingSV.push(snapvote);
             }
             else{
                 expired.push(snapvote);
             }
         }
 
-        pending.sort(function(a, b){
+        outgoingSV.sort(function(a, b){
             var arr = a.date_created.split(/-|\s|:/);// split string and create array.
             var a = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
              arr = b.date_created.split(/-|\s|:/);// split string and create array.
@@ -81,8 +81,8 @@ angular.module('starter.controllers', [])
              return a>b ? -1 : a<b ? 1 : 0;
         });
 
-        var snapvotes = pending.concat(expired);
-        $scope.outgoing = snapvotes;
+        outgoingSV = outgoingSV.concat(expired);
+        $scope.outgoing = outgoingSV.slice(0,3);
 
         $scope.response = resp;
     }, function(err) {
@@ -146,7 +146,9 @@ angular.module('starter.controllers', [])
         });
         $scope.response = err;
     })
-
+    $scope.loadOutgoing = function(){
+        $scope.outgoing = outgoingSV.slice(0, $scope.outgoing.length + 3);
+    }
     $scope.toggleSV = function(snapvote){
         snapvote.toggled = !snapvote.toggled;
     }
@@ -305,13 +307,15 @@ angular.module('starter.controllers', [])
      }
  })
 
- .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes, Options) {
+ .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $stateParams, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes, Options) {
      $scope.$on('$stateChangeSuccess', function(e, toState) {
          if(toState.name === 'contacts') {
 
          }
      });
-
+     var asd = $stateParams.type;
+     $scope.type2 = asd;
+     console.log(asd);
      $scope.type = 0;
      $scope.selectedContacts = [];
      $scope.contacts = [];

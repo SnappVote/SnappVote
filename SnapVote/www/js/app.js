@@ -71,7 +71,7 @@ app.run(function($ionicPlatform) {
         controller: "NewSnapvoteCtrl"
     })
     .state("contacts", {
-        url:"/contacts",
+        url:"/contacts/:type",
         templateUrl: "templates/contacts.html",
         controller: "ContactsCtrl"
     });
