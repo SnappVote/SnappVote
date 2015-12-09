@@ -4,7 +4,35 @@
 
         <div class="message-big">WELCOME!</div>
         <div class="message-small">Log in with Facebook, Google+ or create a new account.</div>
+        <!-- <ion-content   class=" padding"
+                  direction="x"
+                	on-swipe-left="swipeLeftPage(currentPage)"
+                	on-swipe-right="swipeRightPage(currentPage)">
+                	{{text[currentPage]}}
 
+
+              </ion-content> -->
+
+              <!-- <ion-list
+          can-swipe="listCanSwipe">
+  <ion-item ng-repeat="item in items"
+            class="item-thumbnail-left">
+    <img ng-src="{{item.img}}">
+    <h2>{{item}}</h2>
+    <p>{{item}}</p>
+    <ion-option-button>
+    </ion-option-button>
+    <ion-option-button>
+    </ion-option-button>
+  </ion-item>
+</ion-list> -->
+<div ng-click="myValue=true" >LEFT</div>
+    <div  ng-click="myValue=false">RIGHT</div>
+        <div id="one" class='animate-hide'  ng-hide="myValue">
+            this is just a sample div
+        </div>
+    {{myValue}}
+</div>
         <div class="home-button-container">
             <button class="button button-login">
                 <img src="./img/fb_logo.png"></img>
