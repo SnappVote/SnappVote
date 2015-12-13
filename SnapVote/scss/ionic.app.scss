@@ -36,7 +36,9 @@ $center-margin: 13%;
   position: absolute;
   left: 0;
 }
-
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 .animate-hide.ng-hide {
   left: -100%;
 }
@@ -660,12 +662,20 @@ ion-item{
     font-family: $sv-font !important;
     line-height: 35px;
 }
+.img-contact{
+    height: 18px;
+    display: inline;
+}
+.contact-text{
+    position: absolute;
+    top: 12px;
+    left: 50px;
+}
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px)
 and (orientation : portrait) {
     .button-login{
-    background-color: black !important;
 }
     .button-groups{
         font-size: 13px !important;

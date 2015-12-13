@@ -26,15 +26,9 @@
     </ion-option-button>
   </ion-item>
 </ion-list> -->
-<div ng-click="myValue=true" >LEFT</div>
-    <div  ng-click="myValue=false">RIGHT</div>
-        <div id="one" class='animate-hide'  ng-hide="myValue">
-            this is just a sample div
-        </div>
-    {{myValue}}
-</div>
+
         <div class="home-button-container">
-            <button class="button button-login">
+            <button ng-click="fbLogin()" class="button button-login">
                 <img src="./img/fb_logo.png"></img>
                 <div>use Facebook</div>
             </div>
@@ -47,6 +41,7 @@
                 <div>create new</div>
             </button>
         </div>
+    
         <button class="button button-login" ui-sref="devlogin">
             DevLogin
         </button>

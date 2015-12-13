@@ -1,6 +1,18 @@
-angular.module('starter.controllers', [])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout, Options, Camera2) {
+angular.module('starter.controllers', ['ngOpenFB'])
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout, Options, Camera2, ngFB) {
     console.log('hello');
+
+    $scope.fbLogin = function () {
+    ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+        function (response) {
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                $scope.closeLogin();
+            } else {
+                alert('Facebook login failed');
+            }
+        });
+    };
     $scope.currentPage=0;
     $scope.shouldShowDelete = false;
  $scope.shouldShowReorder = false;
@@ -68,13 +80,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, Utils, Snapvotes, Options) {
-    $scope.listCanSwipe = true;
-
+.controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, $timeout, Utils, Snapvotes, Options) {
     var outgoingSV = [];
+
     if(Options.isShown()){
         Options.close();
     }
+
     $scope.onSwipeLeft = function(snapvote, index){
         snapvote.deleted = !snapvote.deleted;
         console.log(outgoingSV.length);
@@ -93,20 +105,10 @@ angular.module('starter.controllers', [])
 
         for (var i = 0; i < resp.data.length; i++) {
             var snapvote = resp.data[i];
-
-            var svdate = new Date(snapvote.expire_date);
-            var createdDate = new Date(snapvote.date_created);
-            var test = Date.parse(snapvote.date_created);
-            var arr = snapvote.date_created.split(/-|\s|:/);// split string and create array.
-            var newDate = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); // decrease month value by 1
-            // console.log(snapvote.date_created);
-            // console.log(test);
-            // console.log(snapvote.title + " " + snapvote.date_created + " " + snapvote.expire_date);
-
-            var isExpired = svdate < new Date();
-            snapvote.expired = isExpired;
+            var expireDate = new Date(snapvote.expire_date);
+            snapvote.expired = expireDate < new Date();
             //  $scope.outgoing[i].expired = isExpired;
-            if(!isExpired){
+            if(!snapvote.expired){
                 outgoingSV.push(snapvote);
             }
             else{
@@ -117,14 +119,13 @@ angular.module('starter.controllers', [])
         outgoingSV.sort(function(a, b){
             var arr = a.date_created.split(/-|\s|:/);// split string and create array.
             var a = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
-             arr = b.date_created.split(/-|\s|:/);// split string and create array.
-             var b = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
-             return a>b ? -1 : a<b ? 1 : 0;
+            arr = b.date_created.split(/-|\s|:/);// split string and create array.
+            var b = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
+            return a>b ? -1 : a<b ? 1 : 0;
         });
 
         outgoingSV = outgoingSV.concat(expired);
         $scope.outgoing = outgoingSV.slice(0,3);
-
         $scope.response = resp;
     }, function(err) {
         var popup = $ionicPopup.show({
@@ -354,6 +355,10 @@ angular.module('starter.controllers', [])
 
          }
      });
+     $scope.isGroupShown = function(){
+         return true;
+     }
+     $scope.mysrc = "./img/icon1.png";
      var asd = $stateParams.type;
      $scope.type2 = asd;
      console.log(asd);

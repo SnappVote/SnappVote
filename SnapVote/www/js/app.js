@@ -7,10 +7,12 @@
 // 'starter.controllers' is found in controllers.js
 // angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ngOpenFB', 'ionic-datepicker']);
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, ngFB) {
   $ionicPlatform.ready(function() {
+      ngFB.init({appId: '859661667482325'});
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -79,11 +81,6 @@ app.run(function($ionicPlatform) {
     $urlRouterProvider.otherwise('/login');
     // $ionicConfigProvider.navBar.alignTitle('center');
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
-    $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-$httpProvider.defaults.useXDomain = true;
-delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-
 });
 app.directive('onSwipeRight', function($ionicGesture) {
   return {
