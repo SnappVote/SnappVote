@@ -1,24 +1,3 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
-
-// @font-face {
-//   font-family: 'Gotham';
-//   src: url('../fonts/GothamRoundedBook_21018.ttf')  format('truetype');
-// }
 
 $sv-green-light: #A5D46C;
 $sv-green-medium: #84B461;
@@ -28,24 +7,10 @@ $sv-font: 'Varela Round', sans-serif;
 $center-width: 74%;
 $center-margin: 13%;
 
-.animate-hide {
- -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  position: absolute;
-  left: 0;
-}
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-.animate-hide.ng-hide {
-  left: -100%;
-}
-
 ion-content{
     background-color: $sv-green-light !important;
 }
+
 ion-scroll{
     max-height: 260px;
 }
@@ -63,11 +28,37 @@ ion-scroll{
 .hidden{
     display: none !important;
 }
+
 .shown{
     display: block !important;
 }
-.shown{
-    display: block;
+
+.sv-center{
+    width: $center-width !important;
+    margin-left: $center-margin !important;
+}
+
+.animate-hide {
+ -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  position: absolute;
+  left: 0;
+}
+
+.animate-hide.ng-hide {
+  left: -100%;
+}
+
+.sv-navbar{
+    margin-top: 25px;
+    padding-bottom: 35px;
+}
+
+.navbar-button{
+    width: 32.5%;
+    border: none;
 }
 
 .img-center{
@@ -79,10 +70,6 @@ ion-scroll{
     top:50%;
     margin-top: -10px;
     margin-left: 5%;
-}
-.sv-center{
-    width: $center-width !important;
-    margin-left: $center-margin !important;
 }
 
 .button-basic{
@@ -120,27 +107,19 @@ ion-scroll{
     margin-left: 9%;
 }
 
-.sv-navbar{
-    margin-top: 25px;
-    padding-bottom: 40px;
-}
-
-.navbar-button{
-    width: 32.5%;
-    border: none;
-}
-
 .message{
     width: 74%;
     margin-left: 13%;
     opacity: 0.6;
     font-family: $sv-font;
 }
+
 .message-big{
     @extend .message;
     margin-top: 10px;
     font-size: 19px;
 }
+
 .message-small{
     @extend .message;
     margin-top: 15px;
@@ -190,26 +169,7 @@ ion-scroll{
     margin-top: 10px;
 }
 
-.my-slide-animation.ng-enter, .my-slide-animation.ng-leave {
-}
 
-.my-slide-animation.ng-enter {
-
-}
-.my-slide-animation.ng-enter.ng-enter-active {
-}
-
-.my-slide-animation.ng-leave {
-
-}
-.my-slide-animation.ng-leave.ng-leave-active {
-
-}
-
-
-ion-item{
-    @extend .home-list-item-basic;
-}
 .home-list-item-basic{
     background-color: rgba(0, 0, 0, 0.2) !important;
     border: 1px solid $sv-green-light !important;
@@ -240,6 +200,14 @@ ion-item{
     font-size: 16px;
 }
 
+.home-no-items{
+    @extend .home-list-item-basic;
+    height: 140px;
+    line-height: 140px;
+    font-size: 16px;
+    text-align: center;
+}
+
 .home-list-item{
     @extend .home-list-item-basic;
     text-decoration: none;
@@ -253,18 +221,18 @@ ion-item{
 .sv-expired{
     color: rgba(30, 30, 30, 0.4) !important;
 }
+
 .outgoing-title{
     font-weight: 600;
     font-size: 15px;
     width: 70%;
 }
+.incoming-title{
+    width: 70%;
+}
 
 .outgoing-text{
     font-size: 15px;
-}
-
-.incoming-title{
-    width: 70%;
 }
 
 .home-list-date-incoming{
@@ -285,14 +253,16 @@ ion-item{
 
 .home-user-item{
     @extend .home-list-item-basic;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent !important;
+    padding-top: 3px;
+    padding-bottom: 3px;
     border: none !important;
 }
 
 #choose-type-message{
-     margin-top:20px;
-      margin-bottom:40px;
-      font-size:20px;
+    margin-top:20px;
+    margin-bottom:40px;
+    font-size:20px;
 }
 #choose-type-img-2{
     margin-top: 10px;
@@ -482,43 +452,17 @@ ion-item{
 }
 
 
-
-
-
 .fixed-outside{
   position: absolute;
   bottom: 20px;
   color:white;
   width: 100%;
 }
-.footer1{
 
-}
-
-.Frame {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-.Row {
-    display: table-row;
-    height: 1px;
-}
-.Row.Expand {
-    height: auto;
-}
 .sv-footer{
     position: absolute;
     bottom: -50px;
     right: 20px;
-}
-.sv-footer-bttom{
-    position: absolute;
-    bottom: 15px;
-    right: 20px;
-}
-.navbar-logo{
-    width: 30%;
 }
 
 .footer-button{

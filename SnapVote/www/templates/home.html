@@ -5,36 +5,10 @@
             <img class="navbar-button" src="./img/z2.png"></img>
             <img class="navbar-button" src="./img/z3.png" ui-sref="choose-type"></img>
         </div>
-        <div style="position:relative;">
-            <!-- <ion-list
-            can-swipe="listCanSwipe">
-            <ion-item ng-repeat="snapvote in outgoing track by $index">
-                <div class="outgoing-title">{{snapvote.title}}</div>
-                <div>
-                    <span>
-                        {{snapvote.answer_1}}:  {{snapvote.answer_1_count}}
-                    </span>
-                    &#x25cf;
-                    <span>
-                        {{snapvote.answer_2}}:  {{snapvote.answer_2_count}}
-                    </span>
-                    <div class="home-list-date-outgoing">
-                        <div>{{snapvote.expire_date | outgoingDateFilter}}</div>
-                    </div>
-                </div>
-                <div ng-repeat="user in snapvote.voters"
-                class="home-user-item"
-                ng-class="{'hidden' : !snapvote.toggled}">
-                {{user.id}} {{user.answer_id | test: snapvote.answer_1 :snapvote.answer_2}}
-            </div>
-            <ion-option-button>
-            </ion-option-button>
-            <ion-option-button>
-            </ion-option-button>
-            </ion-item>
-        </ion-list> -->
+        <div style="position:relative; margin-top:-30px;">
         <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
+            <div class="home-no-items hidden" ng-class="{'shown': outgoing.length === 0}">You have no outgoing SnapVotes.</div>
             <div ng-repeat="snapvote in outgoing track by $index"
             ng-class="{'sv-expired': snapvote.expired}"
             class="home-list-item animate-hide"
@@ -67,6 +41,7 @@
 
         <div class="home-list-container">
             <div class="home-list-title">INCOMING</div>
+            <div class="home-no-items hidden" ng-class="{'shown': incoming.length === 0}">You have no outgoing SnapVotes.</div>
             <div ng-repeat="snapvote in incoming">
                 <a class="home-list-item" ng-class="{'sv-expired': snapvote.expired}" href="#/sv-detail/{{snapvote.id}}">
                     <div class="outgoing-title">{{snapvote.author_username}}</div>
@@ -77,7 +52,7 @@
                     </div>
                 </a>
             </div>
-            <div class="home-list-footer">MORE</div>
+            <div class="home-list-footer" ng-click="loadIncoming()">MORE</div>
         </div>
         <div class="sv-footer">
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>

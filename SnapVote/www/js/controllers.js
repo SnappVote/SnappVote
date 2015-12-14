@@ -82,7 +82,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
 .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, $timeout, Utils, Snapvotes, Options) {
     var outgoingSV = [];
-
+    var incomingSV = [];
     if(Options.isShown()){
         Options.close();
     }
@@ -107,7 +107,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
             var snapvote = resp.data[i];
             var expireDate = new Date(snapvote.expire_date);
             snapvote.expired = expireDate < new Date();
-            //  $scope.outgoing[i].expired = isExpired;
+            snapvote.date_created = Utils.parseDateTime(snapvote.date_created);
             if(!snapvote.expired){
                 outgoingSV.push(snapvote);
             }
@@ -117,15 +117,12 @@ angular.module('starter.controllers', ['ngOpenFB'])
         }
 
         outgoingSV.sort(function(a, b){
-            var arr = a.date_created.split(/-|\s|:/);// split string and create array.
-            var a = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
-            arr = b.date_created.split(/-|\s|:/);// split string and create array.
-            var b = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
-            return a>b ? -1 : a<b ? 1 : 0;
+            return a.date_created>b.date_created ? -1 : a.date_created<b.date_created ? 1 : 0;
         });
 
         outgoingSV = outgoingSV.concat(expired);
         $scope.outgoing = outgoingSV.slice(0,3);
+
         $scope.response = resp;
     }, function(err) {
         var popup = $ionicPopup.show({
@@ -140,43 +137,30 @@ angular.module('starter.controllers', ['ngOpenFB'])
     })
 
     Snapvotes.getIncoming().then(function(resp) {
-        var pending = [];
         var expired = [];
-
+        console.log(resp.data.length);
         for (var i = 0; i < resp.data.length; i++) {
             var snapvote = resp.data[i];
-
-            var svdate = new Date(snapvote.expire_date);
-            var createdDate = new Date(snapvote.date_created);
-            var test = Date.parse(snapvote.date_created);
-            var arr = snapvote.date_created.split(/-|\s|:/);// split string and create array.
-            var newDate = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); // decrease month value by 1
-            // console.log(snapvote.date_created);
-            // console.log(test);
-            // console.log(snapvote.title + " " + snapvote.date_created + " " + snapvote.expire_date);
-
-            var isExpired = svdate < new Date();
-            snapvote.expired = isExpired;
-            //  $scope.outgoing[i].expired = isExpired;
-            if(!isExpired){
-                pending.push(snapvote);
+            var expireDate = new Date(snapvote.expire_date);
+            snapvote.expired = expireDate < new Date();
+            snapvote.date_created = Utils.parseDateTime(snapvote.date_created);
+            if(!snapvote.expired){
+                incomingSV.push(snapvote);
             }
             else{
                 expired.push(snapvote);
             }
         }
 
-        pending.sort(function(a, b){
-            var arr = a.date_created.split(/-|\s|:/);// split string and create array.
-            var a = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
-             arr = b.date_created.split(/-|\s|:/);// split string and create array.
-             var b = new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]); //
-             return a>b ? -1 : a<b ? 1 : 0;
+        incomingSV.sort(function(a, b){
+            return a.date_created>b.date_created ? -1 : a.date_created<b.date_created ? 1 : 0;
         });
 
-        var snapvotes = pending.concat(expired);
-        $scope.incoming = snapvotes;
-        //$scope.response = resp;
+        incomingSV = incomingSV.concat(expired);
+        $scope.incoming = incomingSV.slice(0,3);
+
+        $scope.response = resp;
+
     }, function(err) {
         var popup = $ionicPopup.show({
             title: 'Oops !',
@@ -190,6 +174,9 @@ angular.module('starter.controllers', ['ngOpenFB'])
     })
     $scope.loadOutgoing = function(){
         $scope.outgoing = outgoingSV.slice(0, $scope.outgoing.length + 3);
+    }
+    $scope.loadIncoming = function(){
+        $scope.incoming = incomingSV.slice(0, $scope.incoming.length + 3);
     }
     $scope.toggleSV = function(snapvote){
         snapvote.toggled = !snapvote.toggled;

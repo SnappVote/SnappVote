@@ -1,34 +1,4 @@
 @charset "UTF-8";
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
-.animate-hide {
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  position: absolute;
-  left: 0; }
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important; }
-
-.animate-hide.ng-hide {
-  left: -100%; }
-
 ion-content {
   background-color: #A5D46C !important; }
 
@@ -51,8 +21,28 @@ ion-scroll {
 .shown {
   display: block !important; }
 
-.shown {
-  display: block; }
+.sv-center, .button-standard, .button-standard-red, .button-login, .contacts-tabs-container, .contacts-list-container, .groups-button-container, .groups-edit-title, .groups-edit-footer, .groups-edit-list-container {
+  width: 74% !important;
+  margin-left: 13% !important; }
+
+.animate-hide {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  position: absolute;
+  left: 0; }
+
+.animate-hide.ng-hide {
+  left: -100%; }
+
+.sv-navbar {
+  margin-top: 25px;
+  padding-bottom: 35px; }
+
+.navbar-button {
+  width: 32.5%;
+  border: none; }
 
 .img-center, .button-login img {
   display: inline-block;
@@ -63,10 +53,6 @@ ion-scroll {
   top: 50%;
   margin-top: -10px;
   margin-left: 5%; }
-
-.sv-center, .button-standard, .button-standard-red, .button-login, .contacts-tabs-container, .contacts-list-container, .groups-button-container, .groups-edit-title, .groups-edit-footer, .groups-edit-list-container {
-  width: 74% !important;
-  margin-left: 13% !important; }
 
 .button-basic, .button-standard, .button-standard-red, .button-answer, .button-login {
   border: none !important;
@@ -93,14 +79,6 @@ ion-scroll {
 .login-logo {
   width: 82%;
   margin-left: 9%; }
-
-.sv-navbar {
-  margin-top: 25px;
-  padding-bottom: 40px; }
-
-.navbar-button {
-  width: 32.5%;
-  border: none; }
 
 .message, .message-big, .message-small {
   width: 74%;
@@ -147,7 +125,7 @@ ion-scroll {
   margin-left: 10%;
   margin-top: 10px; }
 
-.home-list-item-basic, ion-item, .home-list-tf, .home-list-title, .home-list-footer, .home-list-item, .home-user-item {
+.home-list-item-basic, .home-list-tf, .home-list-title, .home-list-footer, .home-no-items, .home-list-item, .home-user-item {
   background-color: rgba(0, 0, 0, 0.2) !important;
   border: 1px solid #A5D46C !important;
   font-family: "Varela Round", sans-serif !important;
@@ -170,6 +148,12 @@ ion-scroll {
   border-bottom-right-radius: 7px;
   font-size: 16px; }
 
+.home-no-items {
+  height: 140px;
+  line-height: 140px;
+  font-size: 16px;
+  text-align: center; }
+
 .home-list-item {
   text-decoration: none;
   padding: 5px 0 5px 15px;
@@ -186,11 +170,11 @@ ion-scroll {
   font-size: 15px;
   width: 70%; }
 
-.outgoing-text {
-  font-size: 15px; }
-
 .incoming-title {
   width: 70%; }
+
+.outgoing-text {
+  font-size: 15px; }
 
 .home-list-date-incoming {
   display: inline;
@@ -207,7 +191,9 @@ ion-scroll {
   font-weight: "Varela Round", sans-serif; }
 
 .home-user-item {
-  background-color: transparent;
+  background-color: transparent !important;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border: none !important; }
 
 #choose-type-message {
@@ -386,30 +372,10 @@ ion-scroll {
   color: white;
   width: 100%; }
 
-.Frame {
-  display: table;
-  height: 100%;
-  width: 100%; }
-
-.Row {
-  display: table-row;
-  height: 1px; }
-
-.Row.Expand {
-  height: auto; }
-
 .sv-footer {
   position: absolute;
   bottom: -50px;
   right: 20px; }
-
-.sv-footer-bttom {
-  position: absolute;
-  bottom: 15px;
-  right: 20px; }
-
-.navbar-logo {
-  width: 30%; }
 
 .footer-button {
   width: 95px;
