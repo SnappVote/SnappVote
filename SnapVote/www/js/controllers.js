@@ -1,7 +1,10 @@
 angular.module('starter.controllers', ['ngOpenFB'])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout, Options, Camera2, ngFB) {
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout,$auth, Options, Camera2, ngFB) {
     console.log('hello');
-
+    $scope.authenticate = function(provider) {
+        console.log('asd');
+         $auth.authenticate(provider);
+       };
     $scope.fbLogin = function () {
     ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
         function (response) {

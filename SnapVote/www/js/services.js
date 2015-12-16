@@ -30,8 +30,8 @@ angular.module('starter.services', [])
             return window.localStorage['svUserId'];
         },
         getBaseURL: function(){
-            return 'http://creative2thoughts.com/test/v1';
-            // return 'http://localhost/test/v1';
+            // return 'http://creative2thoughts.com/test/v1';
+            return 'http://localhost/test/v1';
         },
         parseDateTime: function(date){
             var arr = date.split(/-|\s|:/);

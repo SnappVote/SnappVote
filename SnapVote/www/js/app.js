@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 // angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ngOpenFB', 'ionic-datepicker']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ngOpenFB', 'ionic-datepicker', 'satellizer']);
 
 app.run(function($ionicPlatform, ngFB) {
   $ionicPlatform.ready(function() {
@@ -27,8 +27,10 @@ app.run(function($ionicPlatform, ngFB) {
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
-
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, $authProvider) {
+    $authProvider.facebook({
+         clientId: '859661667482325'
+       });
     $stateProvider
     .state("login", {
         url:"/login",
