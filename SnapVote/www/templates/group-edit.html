@@ -15,7 +15,16 @@
         class="item contacts-item"
         ng-class="{'contacts-item-toggled': contact.toggled}"
         ng-click="toggleContact(contact)">
-        {{contact.username}}
+        <div ng-class="{'hidden': !contact.registered}">
+        <img class="img-contact" ng-class="{'hidden': contact.toggled}" src='./img/icon1.png'></img>
+        <img class="img-contact hidden" ng-class="{'shown': contact.toggled}" src='./img/icon2.png'></img>
+        </div>
+        <div ng-class="{'hidden': contact.registered}">
+            <img class="img-contact-small" ng-class="{'hidden': contact.toggled}" src='./img/icon4.png'></img>
+            <img class="img-contact-small hidden" ng-class="{'shown': contact.toggled}" src='./img/icon3.png'></img>
+    </div>
+
+        <span class="contact-text">{{contact.username}}</span>
     </div>
 </ion-scroll>
 

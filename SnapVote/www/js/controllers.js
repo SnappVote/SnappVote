@@ -614,31 +614,114 @@ angular.module('starter.controllers', ['ngOpenFB'])
     //  getContactsForGroup();
 
      $scope.toggleContact = function(contact){
-         contact.toggled = !contact.toggled;
-     }
+         if(contact.registered){
+             contact.toggled = !contact.toggled;
 
+         }
+     }
      function getContacts(){
-         var url = Utils.getBaseURL() + '/users';
-         $http.get(url).then(function(resp) {
-             $scope.contacts = resp.data;
-             var url = Utils.getBaseURL() + '/groups/' + groupId;
-             $http.get(url).then(function(resp) {
-                 $scope.groupContacts = resp.data;
-                 $scope.response = resp;
-                 for (var i = 0; i < $scope.contacts.length; i++) {
-                     for (var j = 0; j < $scope.groupContacts.length; j++) {
-                         if($scope.contacts[i].id === $scope.groupContacts[j].id){
-                             $scope.contacts[i].toggled = true;
+         var contactNumbers = [];
+         //cordova contacts plugins
+         //https://github.com/dbaq/cordova-plugin-contacts-phone-numbers
+         navigator.contactsPhoneNumbers.list(function(contacts) {
+             var contact = {};
+            //  $scope.contacts = contacts;
+             $scope.$digest();
+             console.log(contacts.length);
+             for(var i = 0; i < contacts.length; i++) {
+                //  console.log(contacts[i].id + " - " + contacts[i].displayName);
+                 var phone = contacts[i].phoneNumbers[0];
+                //  console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
+                 var contact = {};
+                 contact.username = contacts[i].displayName;
+                 contact.registered = false;
+                 phone.number = phone.number.replace('(','');
+                 phone.number = phone.number.replace(')','');
+                 phone.number = phone.number.replace('-','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace('-','');
+                 phone.number = phone.number.replace('-','');
+                 phone.number = phone.number.replace('-','');
+                 contactNumbers.push(phone.number);
+                 $scope.contacts.push(contact);
+
+                 console.log(phone.number);
+                //  for (var variable in phone) {
+                //      if (phone.hasOwnProperty(variable)) {
+                //          console.log(variable + "->" + phone[variable]);
+                //      }
+                //  }
+             }
+             var dataJson = {};//Snapvotes.getSnappvote();
+             dataJson['contacts_ids'] = contactNumbers;
+             var url = Utils.getBaseURL() + '/asd';
+             $http.post(url, dataJson).then(function(resp) {
+                 for (var i = 0; i < resp.data.length; i++) {
+                     if (resp.data[i] != "") {
+                         $scope.contacts[i].registered = true;
+                         $scope.contacts[i].id = resp.data[i].id;
+                     }
+                    //  console.log(resp.data[i]);
+                    //  if(resp.data[i] === {}){
+                    //  }
+                 }
+                 var url = Utils.getBaseURL() + '/groups/' + groupId;
+                 $http.get(url).then(function(resp) {
+                     $scope.groupContacts = resp.data;
+                     $scope.response = resp;
+                     for (var i = 0; i < $scope.contacts.length; i++) {
+                         for (var j = 0; j < $scope.groupContacts.length; j++) {
+                             if($scope.contacts[i].id === $scope.groupContacts[j].id){
+                                 $scope.contacts[i].toggled = true;
+                             }
                          }
                      }
-                 }
+                 }, function(err) {
+                     $scope.response = err;
+                 })
+                $scope.response = resp;
              }, function(err) {
                  $scope.response = err;
+                 var popup = $ionicPopup.show({
+                     title: 'Oops !',
+                     template: 'Could not connect to server.',
+                     cssClass: 'popup-error',
+                     buttons: [
+                         { text: 'OK' }
+                     ]
+                 });
              })
-         }, function(err) {
-             $scope.response = err;
-         })
+             for (var i = 0; i < contactNumbers.length; i++) {
+                //  console.log(contactNumbers[i]);
+             }
+         }, function(error) {
+             console.error(error);
+         });
+
      }
+    //  function getContacts(){
+    //      var url = Utils.getBaseURL() + '/users';
+    //      $http.get(url).then(function(resp) {
+    //          $scope.contacts = resp.data;
+            //  var url = Utils.getBaseURL() + '/groups/' + groupId;
+            //  $http.get(url).then(function(resp) {
+            //      $scope.groupContacts = resp.data;
+            //      $scope.response = resp;
+            //      for (var i = 0; i < $scope.contacts.length; i++) {
+            //          for (var j = 0; j < $scope.groupContacts.length; j++) {
+            //              if($scope.contacts[i].id === $scope.groupContacts[j].id){
+            //                  $scope.contacts[i].toggled = true;
+            //              }
+            //          }
+            //      }
+            //  }, function(err) {
+            //      $scope.response = err;
+            //  })
+    //      }, function(err) {
+    //          $scope.response = err;
+    //      })
+    //  }
 
      $scope.addContacts = function(){
          var selectedContactsIds = [];
@@ -652,14 +735,16 @@ angular.module('starter.controllers', ['ngOpenFB'])
           var url = Utils.getBaseURL() + '/groups/' + groupId + '/contacts';
           $http.post(url, snappvote).then(function(resp) {
               $scope.response = resp;
-              var popup = $ionicPopup.show({
-                  title: 'Succes.',
-                  template: '<div class="popup-content-2">Group edited.</div>'
-              });
-              $timeout(function(){
-                  popup.close();
-                  $location.path('/contacts');
-              }, 1500);
+            //   var popup = $ionicPopup.show({
+            //       title: 'Succes.',
+            //       template: '<div class="popup-content-2">Group edited.</div>'
+            //   });
+            $ionicHistory.goBack();
+            // $location.path('/contacts');
+
+            //   $timeout(function(){
+            //       popup.close();
+            //   }, 1500);
           }, function(err) {
               var popup = $ionicPopup.show({
                   title: 'Oops !',
