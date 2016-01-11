@@ -26,12 +26,53 @@
     </ion-option-button>
   </ion-item>
 </ion-list> -->
-
+<!--
         <div class="home-button-container">
+            <label class="item">
+    <button class="button button-block button-positive" ng-click="fbLogin()">
+    Login with Facebook
+    </button>
+</label>
+            <div ng-click="test()">asd</div>
+              <a ng-click="authenticate('facebook')" class="button button-block icon-left ion-social-facebook">
+                Sign in with Facebook
+            </a>
+              <button ng-click="authenticate('google')" class="button button-block icon-left ion-social-googleplus">
+                Sign in with Google
+              </button>
+              <button ng-click="authenticate('linkedin')" class="button button-block icon-left ion-social-linkedin">
+                Sign in with LinkedIn
+              </button>
+              <button ng-click="authenticate('twitter')" class="button button-block icon-left ion-social-twitter">
+                Sign in with Twitter
+              </button>
+              <button ng-click="authenticate('foursquare')" class="button button-block icon-left ion-social-foursquare-outline">
+                Sign in with Foursquare
+              </button>
+              <button ng-click="authenticate('github')" class="button button-block icon-left ion-social-github">
+                Sign in with GitHub
+              </button>
+              <button ng-click="authenticate('yahoo')" class="button button-block icon-left ion-social-yahoo">
+                Sign in with Yahoo
+              </button>
+              <button ng-click="authenticate('live')" class="button button-block icon-left ion-social-windows">
+                Sign in with Windows Live
+              </button>
+            </div>
+            <div ng-if="isAuthenticated()">
+              <div class="card">
+                <div class="item item-text-wrap">
+                  You are currently logged in.
+                </div>
+              </div>
+              <button ng-click="logout()" class="button button-block">
+                Log Out
+              </button>
+            </div> -->
             <button ng-click="authenticate('facebook')" class="button button-login">
                 <img src="./img/fb_logo.png"></img>
                 <div>use Facebook</div>
-            </div>
+            </butoon>
             <button class="button button-login">
                 <img src="./img/gplus_logo.png"></img>
                 <div> use Google+</div>
@@ -45,7 +86,7 @@
         <button class="button button-login" ui-sref="devlogin">
             DevLogin
         </button>
-         <!-- <a class="button button button-login"  href="#/contacts/{{1}}">
+          <a class="button button button-login"  href="#/contacts/{{1}}">
             Groups
         </a>
         <button class="button button button-login"  ng-click="test()">
@@ -53,8 +94,8 @@
         </button>
         <button class="button button-login" ui-sref="home">
             Home
-        </button> -->
+        </button>
 
-        <!-- <div>{{response}}</div> -->
+        <div>{{response}}</div>
     </ion-content>
 </ion-view>

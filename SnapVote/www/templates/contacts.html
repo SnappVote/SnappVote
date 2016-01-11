@@ -1,5 +1,5 @@
 <ion-view view-title="New">
-    <ion-content scroll="false">
+    <ion-content >
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
@@ -25,8 +25,14 @@
                     class="item contacts-item"
                     ng-class="{'contacts-item-toggled': contact.toggled}"
                     ng-click="toggleContact(contact)">
+                    <div ng-class="{'hidden': !contact.registered}">
                     <img class="img-contact" ng-class="{'hidden': contact.toggled}" src='./img/icon1.png'></img>
-                     <img class="img-contact hidden" ng-class="{'shown': contact.toggled}" src='./img/icon2.png'></img>
+                    <img class="img-contact hidden" ng-class="{'shown': contact.toggled}" src='./img/icon2.png'></img>
+                </div>
+                <div ng-class="{'hidden': contact.registered}">
+                    <img class="img-contact-small" ng-class="{'hidden': contact.toggled}" src='./img/icon4.png'></img>
+                    <img class="img-contact-small hidden" ng-class="{'shown': contact.toggled}" src='./img/icon3.png'></img>
+            </div>
                     <span class="contact-text">{{contact.username}}</span>
             </ion-scroll>
 

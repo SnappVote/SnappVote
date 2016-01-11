@@ -1,91 +1,16 @@
 angular.module('starter.controllers', ['ngOpenFB'])
 .controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout,$auth, Options, Camera2, ngFB) {
     console.log('hello');
-    $scope.authenticate = function(provider) {
-        console.log('asd');
-         $auth.authenticate(provider);
-       };
-    $scope.fbLogin = function () {
-    ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
-        function (response) {
-            if (response.status === 'connected') {
-                console.log('Facebook login succeeded');
-                $scope.closeLogin();
-            } else {
-                alert('Facebook login failed');
-            }
-        });
-    };
-    $scope.currentPage=0;
-    $scope.shouldShowDelete = false;
- $scope.shouldShowReorder = false;
- $scope.listCanSwipe = true;
- $scope.items = ["1", "2", "3"];
-
-    var page1= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
-    var page2= 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
-    var page3= 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?';
-    var page4= 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat';
-    $scope.text=[page1, page2, page3, page4];
-
-
-    	$scope.swipeLeftPage = function(currentPage){
-  		if(currentPage < 3){
-  			$scope.currentPage++;
-
-  		}
-  	};
-  	$scope.swipeRightPage = function(currentPage){
-  		if(currentPage > 0){
-  			$scope.currentPage--;
-
-  		}
-
-  	};
-    $scope.showActions = false;
-
-    $scope.someFunction = function () {
-       $scope.showActions = !$scope.showActions;
-    };
-
-    $scope.onSwipeLeft = function(){
-        console.log('asd');
-    }
-    if(Options.isShown()){
-        Options.close();
-    }
 
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     };
-
-    $scope.test = function(){
-        Camera2.getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM).then(function(imageURI) {
-            $scope.items.push(imageURI);
-        }, function(err) {
-            console.log(err);
-        });
-//         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-//    destinationType: Camera.DestinationType.DATA_URL,
-//    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM });
-// //         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-// //    destinationType: Camera.DestinationType.DATA_URL
-// // });
-//
-// function onSuccess(imageData) {
-//     console.log(imageData);
-// }
-//
-// function onFail(message) {
-//    console.log('Failed because: ' + message);
-// }
-    }
-
 })
 
 .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, $timeout, Utils, Snapvotes, Options) {
     var outgoingSV = [];
     var incomingSV = [];
+
     if(Options.isShown()){
         Options.close();
     }
@@ -359,15 +284,16 @@ angular.module('starter.controllers', ['ngOpenFB'])
      $scope.groups = [];
      $scope.data = {};
      $scope.sendSV = true;
-
+     getContacts();
      if(Options.isShown()){
          $scope.sendSV = false;
          Options.close();
      }
 
      Users.getAllUsers().then(function(resp) {
-         $scope.contacts = resp.data;
-         //  $scope.response = resp;
+        //  $scope.contacts = resp.data;
+
+          $scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
@@ -384,13 +310,16 @@ angular.module('starter.controllers', ['ngOpenFB'])
      };
 
      $scope.toggleContact = function(contact){
-         contact.toggled = !contact.toggled;
-         if(contact.toggled){
-             pushUnique($scope.selectedContacts, contact.id);
+         if(contact.registered){
+             contact.toggled = !contact.toggled;
+             if(contact.toggled){
+                 pushUnique($scope.selectedContacts, contact.id);
+             }
+             else{
+                 removeFromArr($scope.selectedContacts, contact.id);
+             }
          }
-         else{
-             removeFromArr($scope.selectedContacts, contact.id);
-         }
+
      }
 
      $scope.toggleGroup = function(group){
@@ -429,6 +358,9 @@ angular.module('starter.controllers', ['ngOpenFB'])
      }
 
      $scope.sendSV1 = function(){
+         for (var i = 0; i < $scope.selectedContacts.length; i++) {
+             console.log($scope.selectedContacts[i]);
+         }
          Snapvotes.setContacts($scope.selectedContacts);
          var dataJson = Snapvotes.getSnappvote();
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
@@ -478,21 +410,71 @@ angular.module('starter.controllers', ['ngOpenFB'])
          return false;
      }
      function getContacts(){
+         var contactNumbers = [];
          //cordova contacts plugins
          //https://github.com/dbaq/cordova-plugin-contacts-phone-numbers
-        //  navigator.contactsPhoneNumbers.list(function(contacts) {
-        //      $scope.contacts = contacts;
-        //      $scope.$digest();
-        //      for(var i = 0; i < contacts.length; i++) {
-        //          console.log(contacts[i].id + " - " + contacts[i].displayName);
-        //          for(var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-        //              var phone = contacts[i].phoneNumbers[j];
-        //              console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
-        //          }
-        //      }
-        //  }, function(error) {
-        //      console.error(error);
-        //  });
+         navigator.contactsPhoneNumbers.list(function(contacts) {
+             var contact = {};
+            //  $scope.contacts = contacts;
+             $scope.$digest();
+             console.log(contacts.length);
+             for(var i = 0; i < contacts.length; i++) {
+                //  console.log(contacts[i].id + " - " + contacts[i].displayName);
+                 var phone = contacts[i].phoneNumbers[0];
+                //  console.log(phone.type + "  " + phone.number + " (" + phone.normalizedNumber+ ")");
+                 var contact = {};
+                 contact.username = contacts[i].displayName;
+                 contact.registered = false;
+                 phone.number = phone.number.replace('(','');
+                 phone.number = phone.number.replace(')','');
+                 phone.number = phone.number.replace('-','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace('-','');
+                 phone.number = phone.number.replace('-','');
+                 phone.number = phone.number.replace('-','');
+                 contactNumbers.push(phone.number);
+                 $scope.contacts.push(contact);
+
+                 console.log(phone.number);
+                //  for (var variable in phone) {
+                //      if (phone.hasOwnProperty(variable)) {
+                //          console.log(variable + "->" + phone[variable]);
+                //      }
+                //  }
+             }
+             var dataJson = {};//Snapvotes.getSnappvote();
+             dataJson['contacts_ids'] = contactNumbers;
+             var url = Utils.getBaseURL() + '/asd';
+             $http.post(url, dataJson).then(function(resp) {
+                 for (var i = 0; i < resp.data.length; i++) {
+                     if (resp.data[i] != "") {
+                         $scope.contacts[i].registered = true;
+                         $scope.contacts[i].id = resp.data[i].id;
+                     }
+                    //  console.log(resp.data[i]);
+                    //  if(resp.data[i] === {}){
+                    //  }
+                 }
+                $scope.response = resp;
+             }, function(err) {
+                 $scope.response = err;
+                 var popup = $ionicPopup.show({
+                     title: 'Oops !',
+                     template: 'Could not connect to server.',
+                     cssClass: 'popup-error',
+                     buttons: [
+                         { text: 'OK' }
+                     ]
+                 });
+             })
+             for (var i = 0; i < contactNumbers.length; i++) {
+                //  console.log(contactNumbers[i]);
+             }
+         }, function(error) {
+             console.error(error);
+         });
+
      }
 
 
@@ -752,18 +734,23 @@ angular.module('starter.controllers', ['ngOpenFB'])
          }
 
      }
-    //  $scope.$watch('form.country.dial_code', function(newValue, oldValue){
-    //      console.log($scope.form.phone);
-    //          if($scope.form.phone){
-    //              if(!oldValue){
-    //                  $scope.form.phone = newValue + $scope.form.phone;//.replace(oldValue, newValue);
-    //              }
-    //              else {
-    //                   $scope.form.phone = $scope.form.phone.replace(oldValue, newValue);
-    //
-    //              }
-    //          }
-    // });
+     $scope.$watch('form.country.dial_code', function(newValue, oldValue){
+         console.log($scope.form.phone);
+             if($scope.form.phone){
+                 if(!oldValue){
+                     if($scope.form.phone[0] == "0"){
+                         $scope.form.phone = newValue + $scope.form.phone.substring(1, $scope.form.phone.length)//.replace(oldValue, newValue);
+                     }
+                     else{
+                         $scope.form.phone = newValue + $scope.form.phone;//.replace(oldValue, newValue);
+                     }
+                 }
+                 else {
+                      $scope.form.phone = $scope.form.phone.replace(oldValue, newValue);
+
+                 }
+             }
+    });
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
