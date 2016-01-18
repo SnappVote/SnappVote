@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
+  .sv-center, .button-standard-red, .button-login, .contacts-tabs-container, .contacts-list-container, .groups-button-container, .groups-edit-title, .groups-edit-footer, .groups-edit-list-container {
+    width: 74% !important;
+    margin-left: 13% !important; }
   .sv-footer-bottom {
     position: absolute;
     bottom: 15px;
@@ -22,9 +25,6 @@
     display: none !important; }
   .shown {
     display: block !important; }
-  .sv-center, .button-standard, .button-standard-red, .button-login, .contacts-tabs-container, .contacts-list-container, .groups-button-container, .groups-edit-title, .groups-edit-footer, .groups-edit-list-container {
-    width: 74% !important;
-    margin-left: 13% !important; }
   .animate-hide {
     -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
     -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
@@ -54,9 +54,12 @@
     border-radius: 5px !important;
     border-bottom: 2px solid #637F41 !important;
     font-family: "Varela Round", sans-serif;
-    font-size: 17px !important;
+    font-size: 16px !important;
     font-weight: 200;
     margin-top: 10px !important; }
+  .button-standard {
+    width: 74% !important;
+    margin-left: 13% !important; }
   .button-standard-red {
     color: #EC5F65 !important;
     background-color: white;
@@ -68,8 +71,14 @@
     background-color: white;
     width: 30%;
     margin-left: 13% !important; }
+  .button-login {
+    height: 40px !important;
+    margin-top: 10px !important;
+    color: #EC5F65 !important; }
+    .button-login div {
+      text-align: left !important;
+      padding-left: 15%; }
   .message, .message-big, .message-small {
-    color: blue !important;
     width: 74%;
     margin-left: 13%;
     opacity: 0.6;
@@ -83,13 +92,6 @@
   .login-logo {
     width: 82%;
     margin-left: 9%; }
-  .button-login {
-    height: 40px !important;
-    margin-top: 10px !important;
-    color: #EC5F65 !important; }
-    .button-login div {
-      text-align: left !important;
-      padding-left: 15%; }
   .sv-input {
     width: 80%;
     height: 35px !important;
@@ -231,7 +233,7 @@
     height: 100%;
     font-family: "Varela Round", sans-serif;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 16px;
     padding-top: 7px; }
   .contacts-tab-button-selected {
     background-color: red;
