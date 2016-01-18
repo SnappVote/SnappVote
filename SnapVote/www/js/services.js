@@ -7,7 +7,7 @@ angular.module('starter.services', [])
             shown = true;
             popup = $ionicPopup.show({
                 title: 'OPTIONS',
-                template: '<div class="options-item" ui-sref="home">Home<a class="ion-chevron-right options-arrow"></a></div><a class="options-item" href="#/contacts/{{2}}">Contacts</a><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><a class="options-item" href="#/contacts/{{3}}">Invite Friends</a><div class="options-item-bottom" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
+                template: '<a class="options-item" href="#/contacts/{{2}}">Contacts</a><a class="options-item" href="#/contacts/{{2}}">Contacts</a><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><a class="options-item" href="#/contacts/{{3}}">Invite Friends</a><div class="options-item-bottom" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
                 cssClass: 'popup-custom'
             });
         },

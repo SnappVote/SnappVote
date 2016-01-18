@@ -163,14 +163,14 @@ app.filter('svdate', [function() {
         var firstDate = input;
         var secondDate = new Date(Date.now());
 
-        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
         var label = "";
         console.log(diffDays);
         if(diffDays == 1){
-            label = "day";
+            label = " day";
         }
         else{
-            label = "days";
+            label = " days";
         }
         return diffDays + label;
     };

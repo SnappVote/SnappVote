@@ -1,7 +1,17 @@
 angular.module('starter.controllers', ['ngOpenFB'])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $document, $timeout,$auth, Options, Camera2, ngFB) {
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $cordovaFacebook, $document, $timeout,$auth, Options, Camera2, ngFB) {
     console.log('hello');
 
+      $scope.fbLogin = function(){
+          $cordovaFacebook.login(["public_profile", "email", "user_friends"])
+            .then(function(success) {
+              // { id: "634565435",
+              //   lastName: "bob"
+              //   ...
+              // }
+            }, function (error) {
+              // error
+            });      };
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     };
@@ -213,6 +223,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                  if(res){
                      var asd = [$scope.inputs.answer_1, $scope.inputs.answer_2];
                      $scope.answers.splice(0,0,asd);
+                     $scope.inputs = [];
                  }
              })
          }
@@ -372,8 +383,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
              });
              $timeout(function(){
                  popup.close();
-                //  $location.path('/home');
-            }, 1000);
+                 $location.path('/home');
+            }, 2500);
          }, function(err) {
              $scope.response = err;
              var popup = $ionicPopup.show({
