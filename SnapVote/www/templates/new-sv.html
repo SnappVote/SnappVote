@@ -8,19 +8,25 @@
 
         <input class="sv-input-2" type="text" ng-model="inputs.question" placeholder="Subject">
 
-        <div ng-class="{'hidden' : type == 2}" style="position:relative;">
-            <img class="img-new-sv-big" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-            <div class="take-pic-photo ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
-            <div class="take-pic-gallery ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
+        <div ng-class="{'hidden' : type == 2}">
+            <div class="img-new-sv-big">
+                <img class="img-new-sv" ng-src="data:image/jpeg;base64,{{items[0]}}">
+                <div class="take-pic-photo ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
+                <div class="take-pic-gallery ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
+            </div>
         </div>
 
-        <div ng-class="{'hidden' : type == 1}" style="position:relative;">
-            <img class="img-new-sv-small" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
-            <div class="take-pic-photo2 ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
-            <div class="take-pic-gallery2 ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
-            <img class="img-new-sv-small" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
-            <div class="take-pic-photo3 ion-ios-camera-outline" ng-click="addPhoto(1)"></div>
-            <div class="take-pic-gallery3 ion-ios-photos-outline" ng-click="addPhotoGallery(1)"></div>
+        <div ng-class="{'hidden' : type == 1}">
+            <div class="img-new-sv-small">
+                <img class="img-new-sv" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+                <div class="take-pic-photo-small ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
+                <div class="take-pic-gallery-small ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
+            </div>
+            <div class="img-new-sv-small">
+                <img class="img-new-sv" ng-src="data:image/jpeg;base64,{{items[1]}}"/>
+                <div class="take-pic-photo-small ion-ios-camera-outline"ng-click="addPhoto(1)"></div>
+                <div class="take-pic-gallery-small ion-ios-photos-outline" ng-click="addPhotoGallery(1)"></div>
+            </div>
         </div>
 
         <div class="padding" ng-click="toggleAnswers()">
