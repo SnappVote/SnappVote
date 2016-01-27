@@ -1,20 +1,18 @@
-angular.module('starter.controllers', ['ngOpenFB'])
-.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, $cordovaFacebook, $document, $timeout,$auth, Options, Camera2, ngFB) {
+angular.module('starter.controllers', [])
+.controller('LoginCtrl', function($scope, $http, $location, $ionicPopup, Options) {
     console.log('hello');
-
-      $scope.fbLogin = function(){
-          $cordovaFacebook.login(["public_profile", "email", "user_friends"])
-            .then(function(success) {
-              // { id: "634565435",
-              //   lastName: "bob"
-              //   ...
-              // }
-            }, function (error) {
-              // error
-            });      };
+    if(Options.isShown()){
+        Options.close();
+    }
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     };
+    $scope.openOptions = function(){
+        Options.show();
+    }
+    $scope.sendOrder = function(){
+        console.log('asd');
+    }
 })
 
 .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, $timeout, Utils, Snapvotes, Options) {
@@ -133,7 +131,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
      }
  })
 
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, Camera2, Snapvotes, Options) {
+ .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, $location, Camera2, Snapvotes, Options) {
      $scope.type = $stateParams.id;
      $scope.inputs = {};
      $scope.items = [];
@@ -196,6 +194,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
          else{
              Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], "...", $scope.answer1, $scope.answer2, $scope.selectedDate);
          }
+         $location.path('/contacts/1');
+
      };
 
      $scope.toggleAnswers = function(){

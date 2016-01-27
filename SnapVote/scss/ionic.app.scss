@@ -22,6 +22,11 @@ $center-margin: 13%;
     right: 20px;
 }
 
+.sv-footer-fixed{
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
 .sv-footer-bottom{
     position: absolute;
     bottom: 15px;
@@ -132,10 +137,14 @@ ion-scroll{
         font-size: $btn-font-size !important;
         font-weight: 200;
         margin-top: 10px !important;
+        height: $btn-standard-height !important;
     }
 
     .button-standard{
         @extend .button-basic;
+        color: rgba(0, 0, 0, 0.7) !important;
+        background-color: white;
+        font-weight: 200;
         width: $center-width !important;
         margin-left: $center-margin !important;
     }
@@ -145,7 +154,6 @@ ion-scroll{
         @extend .sv-center;
         color: $sv-red !important;
         background-color: white;
-        height: $btn-standard-height !important;
         font-weight: 600;
     }
 
@@ -293,12 +301,12 @@ ion-scroll{
     }
 }
 
-@mixin new-snapvote($input-height, $input-font-size, $new-sv-img-big-height, $new-sv-img-small-height, $btn-answer-font-size) {
+@mixin new-snapvote($input-height, $input-margin, $input-font-size, $new-sv-img-big-height,$new-sv-img-big-width, $new-sv-img-small-height, $btn-answer-font-size) {
     .sv-input-2{
         width: 70%;
         height: $input-height !important;
         margin-left: 15% !important;
-        margin-top: 10px !important;
+        margin-top: $input-margin !important;
         padding-left: 15px !important;
         padding-top: 5px !important;
         font-size: $input-font-size!important;
@@ -310,9 +318,9 @@ ion-scroll{
     .img-new-sv-big{
         position: relative !important;
         background-color: white;
-        width: 70%;
+        width: $new-sv-img-big-width;
         height: $new-sv-img-big-height;
-        margin-left: 15%;
+        margin-left: (100%-$new-sv-img-big-width)/2;
         margin-top: 15px;
     }
 
@@ -384,13 +392,14 @@ ion-scroll{
     }
 }
 
-@mixin contacts($contact-tabs-height, $contacts-tab-button-font-size, $contacts-list-container-height) {
+@mixin contacts($margin-top, $margin-top-2, $contact-tabs-height, $padding-top, $contacts-tab-button-font-size, $contacts-list-container-height, $contacts-groups-container-height, $button-groups-font-size, $button-groups-height, $button-groups-padding) {
     .contacts-tabs-container{
         @extend .sv-center;
         background: white;
         border: none;
         border-radius: 5px;
         padding: 3px;
+        margin-top: $margin-top;
         height: $contact-tabs-height !important;
     }
 
@@ -403,7 +412,7 @@ ion-scroll{
         font-family: $sv-font;
         font-weight: 100;
         font-size: $contacts-tab-button-font-size;
-        padding-top: 7px;
+        padding-top: $padding-top;
     }
 
     .contacts-tab-button-selected{
@@ -414,17 +423,32 @@ ion-scroll{
     }
 
     #contacts-counter{
-        margin-top:15px;
+        margin-top:$margin-top-2;
         text-align:center;
+    }
+
+    .scroll-container{
+        max-height: $contacts-list-container-height - 10;
+    }
+    .scroll-container-groups{
+        max-height: $contacts-groups-container-height - 10;
     }
 
     .contacts-list-container{
         @extend .sv-center;
-        margin-top: 15px;
+        margin-top: $margin-top-2;
         background-color: white;
         padding: 5px;
         border-radius: 7px;
         max-height: $contacts-list-container-height;
+    }
+    .contacts-groups-container{
+        @extend .sv-center;
+        margin-top: $margin-top-2;
+        background-color: white;
+        padding: 5px;
+        border-radius: 7px;
+        max-height: $contacts-groups-container-height;
     }
 
     .contacts-item{
@@ -447,13 +471,14 @@ ion-scroll{
         margin-top: 15px;
     }
     .button-groups{
+        text-align: center;
         font-family: $sv-font !important;
         background-color: white;
-        font-size: 16px !important;
+        font-size: $button-groups-font-size !important;
         border-radius: 5px !important;
         width: 45% !important;
-        height: 40px !important;
-        padding-top: 10px !important;
+        height: $button-groups-height !important;
+        padding-top: $button-groups-padding !important;
         display: inline-block !important;
     }
 
@@ -525,10 +550,11 @@ ion-scroll{
     }
 }
 
-@mixin choose-type($font-size) {
+@mixin choose-type($font-size, $margin-top, $margin-bottom) {
+
     #choose-type-message{
-        margin-top:20px;
-        margin-bottom:40px;
+        margin-top: $margin-top;
+        margin-bottom:$margin-bottom;
         font-size:$font-size;
     }
 
@@ -552,6 +578,9 @@ ion-scroll{
         background-color : $sv-green-light !important;
         font-weight: 600;
         color: white;
+    }
+    .popup-footer{
+        background-color: back !important;
     }
     .popup-custom{
         .popup-body{
@@ -635,7 +664,20 @@ ion-scroll{
         text-decoration: none !important;
         color:rgba(0, 0, 0, 0.4) !important;
         padding-left: 15px;
-        position: relative;
+        position: relative !important;
+    }
+    .options-item-2{
+        $font-family: $sv-font;
+        display: inline-block !important;
+        height: 50px;
+        width: 100%;
+        line-height: 50px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        text-decoration: none !important;
+        color:rgba(0, 0, 0, 0.4) !important;
+        padding-left: 15px;
+        position: relative !important;
     }
     .options-item-bottom{
         @extend .options-item;
@@ -646,35 +688,42 @@ ion-scroll{
         float: right;
         margin-right: 15px;
     }
+    .options-arrow-2{
+        display: inline-block !important;
+        position: absolute;
+        right: 25px;
+        top: 176px;
+        font-size: 17px;
+        color: rgba(0, 0, 0, 0.4) !important;
+    }
 }
 
 @media only screen
 and (min-device-width : 300px)
 and (max-device-width : 480px) {
-
     //Buttons
-    @include buttons(16px, 40px)
+    @include buttons(16px, 35px)
 
     //Text
-    @include messages(19px, 16px)
+    @include messages(18px, 15px)
 
     //Login
-    @include login(82%, 9%);
+    @include login(72%, 14%);
 
     // Register
     @include register(35px, 16px)
 
     //Home
-    @include home(40px, 17px, 140px, 16px, 15px, 15px)
+    @include home(35px, 16px, 120px, 14px, 14px, 14px)
 
     //Choose Type
-    @include choose-type(20px);
+    @include choose-type(20px, 0px, 30px);
 
     //New Snapvote
-    @include new-snapvote(35px, 16px, 300px, 200px, 17px)
+    @include new-snapvote(35px, -20px, 14px, 260px, 60%, 180px, 17px)
 
     //Contacts
-    @include contacts(40px, 16px, 270px)
+    @include contacts(-20px, 8px, 35px, 5px, 14px, 170px, 125px, 13px, 35px, 7px)
 
     //Popups
     @include popups()
@@ -686,8 +735,70 @@ and (max-device-width : 480px) {
 @media only screen
 and (min-device-width : 375px)
 and (max-device-width : 667px) {
+    //Buttons
+    @include buttons(17px, 40px)
 
+    //Text
+    @include messages(20px, 16px)
+
+    //Login
+    @include login(82%, 9%);
+
+    // Register
+    @include register(40px, 16px)
+
+    //Home
+    @include home(40px, 16px, 140px, 16px, 14px, 14px)
+
+    //Choose Type
+    @include choose-type(20px, 0px, 30px);
+
+    //New Snapvote
+    @include new-snapvote(35px, -10px, 14px, 290px, 60%, 180px, 17px)
+
+    //Contacts
+    @include contacts(0px, 15px, 40px, 7px, 15px, 250px, 220px, 15px, 35px, 7px)
+
+    //Popups
+    @include popups()
+
+    //Options
+    @include options();
 }
+
+// @media only screen
+// and (min-device-width : 375px)
+// and (max-device-width : 667px) {
+//     //Buttons
+//     @include buttons(16px, 40px)
+//
+//     //Text
+//     @include messages(19px, 16px)
+//
+//     //Login
+//     @include login(82%, 9%);
+//
+//     // Register
+//     @include register(35px, 16px)
+//
+//     //Home
+//     @include home(40px, 17px, 140px, 16px, 15px, 15px)
+//
+//     //Choose Type
+//     @include choose-type(20px);
+//
+//     //New Snapvote
+//     @include new-snapvote(35px, 16px, 300px, 200px, 17px)
+//
+//     //Contacts
+//     @include contacts(40px, 16px, 270px)
+//
+//     //Popups
+//     @include popups()
+//
+//     //Options
+//     @include options();
+// }
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css

@@ -6,8 +6,8 @@ angular.module('starter.services', [])
         show: function(){
             shown = true;
             popup = $ionicPopup.show({
-                title: 'OPTIONS',
-                template: '<a class="options-item" href="#/contacts/{{2}}">Contacts</a><a class="options-item" href="#/contacts/{{2}}">Contacts</a><div class="options-item">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><a class="options-item" href="#/contacts/{{3}}">Invite Friends</a><div class="options-item-bottom" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
+                title: 'OPTIONS <a class="ion-close-round options-arrow" ng-click="sendOrder()"></a>',
+                template: '<div class="options-item" ui-sref="contacts">Contacts<a class="ion-chevron-right options-arrow"></a></div><div class="options-item" ui-sref="login">Edit Profile<a class="ion-chevron-right options-arrow"></a></div><a class="options-item-2" href="#/contacts/{{3}}">Invite Friends <a class="ion-chevron-right options-arrow-2"></a></a><div class="options-item-bottom" ui-sref="login">Logout<a class="ion-chevron-right options-arrow"></a></div>',
                 cssClass: 'popup-custom'
             });
         },
@@ -30,8 +30,8 @@ angular.module('starter.services', [])
             return window.localStorage['svUserId'];
         },
         getBaseURL: function(){
-            // return 'http://creative2thoughts.com/test/v1';
-            return 'http://localhost/test/v1';
+            return 'http://creative2thoughts.com/test/v1';
+            // return 'http://localhost/test/v1';
         },
         parseDateTime: function(date){
             var arr = date.split(/-|\s|:/);

@@ -7,12 +7,10 @@
 // 'starter.controllers' is found in controllers.js
 // angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ngOpenFB', 'ionic-datepicker', 'satellizer']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker']);
 
-app.run(function($ionicPlatform, ngFB) {
+app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-      ngFB.init({appId: '859661667482325'});
-
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -27,10 +25,7 @@ app.run(function($ionicPlatform, ngFB) {
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, $authProvider) {
-    $authProvider.facebook({
-         clientId: '859661667482325'
-       });
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
     $stateProvider
     .state("login", {
         url:"/login",

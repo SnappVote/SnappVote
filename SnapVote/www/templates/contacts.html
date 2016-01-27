@@ -1,5 +1,5 @@
 <ion-view view-title="New">
-    <ion-content >
+    <ion-content scroll="false">
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
@@ -20,7 +20,7 @@
 
         <div class='hidden' ng-class="{'shown' : type == 0}">
             <div class="contacts-list-container">
-                <ion-scroll zooming="true" direction="y">
+                <ion-scroll zooming="true" direction="y" class="scroll-container">
                     <div ng-repeat="contact in contacts"
                     class="item contacts-item"
                     ng-class="{'contacts-item-toggled': contact.toggled}"
@@ -32,11 +32,10 @@
                 <div ng-class="{'hidden': contact.registered}">
                     <img class="img-contact-small" ng-class="{'hidden': contact.toggled}" src='./img/icon4.png'></img>
                     <img class="img-contact-small hidden" ng-class="{'shown': contact.toggled}" src='./img/icon3.png'></img>
-            </div>
+                </div>
                     <span class="contact-text">{{contact.username}}</span>
-            </div>
-        </ion-scroll>
-
+                </div>
+            </ion-scroll>
         </div>
         <div  class='hidden' ng-class="{'shown' : type2 == 1}">
             <img class="snap-it-btn-img" src="./img/icon5.png"></img>
@@ -55,8 +54,8 @@
     </div>
 
     <div class='hidden' ng-class="{'shown' : type == 1}">
-        <div ng-class="{'hidden' : groups.length === 0}" class="contacts-list-container">
-            <ion-scroll zooming="true" direction="y">
+        <div ng-class="{'hidden' : groups.length === 0}" class="contacts-groups-container">
+            <ion-scroll zooming="true" direction="y" class="scroll-container-groups">
                 <div ng-repeat="group in groups"
                 class="item contacts-item"
                 ng-class="{'contacts-item-toggled': group.toggled}"
@@ -82,10 +81,11 @@
         <img class="snap-it-btn-img" src="./img/icon6.png"></img>
     </div>
 </div>
-<div class="sv-footer-bttom">
-    <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
-</div>
-<div>{{response}}</div>
+
+<!-- <div>{{response}}</div> -->
 
 </ion-content>
+<div class="sv-footer-fixed">
+    <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+</div>
 </ion-view>
