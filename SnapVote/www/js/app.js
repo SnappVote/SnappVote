@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 // angular.module('starter', ['ionic', ,'ngCordova', 'starter.controllers', 'starter.services'])
 
-var app = angular.module('starter', ['ngSocialLogin','ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -74,10 +74,19 @@ app.run(function($ionicPlatform) {
         templateUrl: "templates/contacts.html",
         controller: "ContactsCtrl"
     });
-
     $urlRouterProvider.otherwise('/login');
+
+    // var registered = window.localStorage['registered'];
+    // if(!registered){
+    //     $urlRouterProvider.otherwise('/home');
+    // }
+    // else{
+    //     $urlRouterProvider.otherwise('/login');
+    // }
     // $ionicConfigProvider.navBar.alignTitle('center');
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+
 });
 app.directive('onSwipeRight', function($ionicGesture) {
   return {

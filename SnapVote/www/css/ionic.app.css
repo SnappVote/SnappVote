@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.countries-dropdown {
+  position: absolute;
+  top: 20%;
+  left: -5%;
+  width: 110%; }
+
 .sv-center, .button-standard-red, .button-login, .contacts-tabs-container, .contacts-list-container, .contacts-groups-container, .groups-button-container, .groups-edit-title, .groups-edit-footer, .groups-edit-list-container {
   width: 74% !important;
   margin-left: 13% !important; }

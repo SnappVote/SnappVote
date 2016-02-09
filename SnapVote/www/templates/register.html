@@ -9,13 +9,30 @@
         <input class="sv-input" type="text" ng-model="form.name" placeholder="Name">
         <input class="sv-input" type="text" ng-model="form.email" placeholder="Email">
         <input class="sv-input" type="text" ng-model="form.phone" ng-change="update()" placeholder="Telephone">
-        <label class="item item-select sv-input ">
+        <!-- <label class="item item-select sv-input "> -->
             <!-- <div class="input-label">
             {{selectedCountry}}
         </div> -->
         <!-- <label>Check me to select: <input type="checkbox" ng-model="selected"></label><br/> -->
-        <select ng-model="form.country" ng-options="country.name for country in countries" ng-change="update({{country.name}})"></select>
-    </label>
+        <!-- <select ng-model="form.country" ng-options="country.name for country in countries" ng-change="update({{country.name}})"></select> -->
+    <!-- </label> -->
+    <div class='countries-dropdown hidden' ng-class="{'shown' : type == 1}">
+        <div class="groups-edit-list-container">
+            <ion-scroll zooming="true" direction="y" style="max-height: 360px">
+            <div ng-repeat="country in countries"
+            class="item contacts-item">
+
+                <img class="img-contact-small" ng-class="{'hidden': contact.toggled}" ng-src='{{myVar}}'></img>
+
+            <span class="contact-text">{{country.flag_32}}</span>
+        </div>
+    </ion-scroll>
+
+    </div>
+    </div>
+    <button class="button-standard-red" ng-click="showCountries()">
+        COUNTRIES
+    </button>
     <button id="confirm-register" class="button-standard-red" ng-click="register()">
         CONFIRM
     </button>

@@ -849,8 +849,10 @@ angular.module('starter.controllers', [])
  .controller('RegisterCtrl', function($scope, $http, $ionicPopup, $ionicHistory, $location, $timeout, Utils) {
      $scope.selectedCountry = "Afghanistan";
      $scope.form = {};
-     $scope.countries = countriesJson;
+     $scope.countries = countriesJson2;
      $scope.dial_code = 0;
+     $scope.img_url = 'flags/AD-32.png';
+     $scope.myVar = './flags/AD-32.png';
      $scope.register = function(){
          var counter = 0;
          for (var key in $scope.form) {
@@ -881,6 +883,7 @@ angular.module('starter.controllers', [])
                      title: 'Awesome',
                      template: '<div class="popup-content-2">Registration successfull. Enjoy SnapVote !</div>'
                  });
+                 window.localStorage['registered'] = true;
                  $timeout(function(){
                      popup.close();
                      $location.path('/home');
@@ -931,6 +934,9 @@ angular.module('starter.controllers', [])
     });
      $scope.goBack = function() {
          $ionicHistory.goBack();
+     }
+     $scope.showCountries = function(){
+        $scope.type = 1;
      }
  })
  .controller('DevLoginCtrl', function($scope, $http, $ionicPopup, $location, $ionicHistory, Utils) {

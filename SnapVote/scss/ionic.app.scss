@@ -6,6 +6,12 @@ $sv-red: #EC5F65;
 $center-width: 74%;
 $center-margin: 13%;
 
+.countries-dropdown{
+    position: absolute;
+    top:20%;
+    left: -5%;
+    width: 110%;
+}
 .sv-center{
     width: $center-width !important;
     margin-left: $center-margin !important;
