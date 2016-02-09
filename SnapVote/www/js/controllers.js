@@ -13,6 +13,16 @@ angular.module('starter.controllers', [])
     $scope.sendOrder = function(){
         console.log('asd');
     }
+    $scope.test = function(){
+        var popup = $ionicPopup.show({
+            title: 'Oops !',
+            template: 'There was an error fetching your outgoing SnapVotes.',
+            cssClass: 'popup-error',
+            buttons: [
+                { text: 'OK' }
+            ]
+        });
+    }
 })
 
 .controller('HomeCtrl', function($scope, $http, $ionicHistory, $ionicPopup, $timeout, Utils, Snapvotes, Options) {
@@ -77,8 +87,10 @@ angular.module('starter.controllers', [])
         console.log(resp.data.length);
         for (var i = 0; i < resp.data.length; i++) {
             var snapvote = resp.data[i];
+            var asnwered = snapvote.answer_id === -1;
+            console.log(asnwered);
             var expireDate = new Date(snapvote.expire_date);
-            snapvote.expired = expireDate < new Date();
+            snapvote.expired = !asnwered;
             snapvote.date_created = Utils.parseDateTime(snapvote.date_created);
             if(!snapvote.expired){
                 incomingSV.push(snapvote);
@@ -138,6 +150,9 @@ angular.module('starter.controllers', [])
      $scope.answer1 = "...";
      $scope.answer2 = "...";
      $scope.answersHidden = true;
+     $scope.firstAnswers = ['Yess', 'Cool', 'Left', 'Add..'];
+     $scope.secondAnswers = ['Noo', 'Nope', 'Right', 'Add..'];
+
      $scope.answers = [
          ['Yes', 'No'],
          ['Cool', 'Nope'],
@@ -167,8 +182,8 @@ angular.module('starter.controllers', [])
 
      convertFileToBase64viaFileReader('https://i.imgur.com/IWAoX21.jpg', function(base64Img){
          var res = base64Img.substring(23, base64Img.length);
-         $scope.items.push(res);
-         $scope.items.push(res);
+         //$scope.items.push(res);
+         //$scope.items.push(res);
      });
 
      $scope.addPhoto = function(position){
@@ -188,13 +203,7 @@ angular.module('starter.controllers', [])
 
      $scope.createSnapvote = function(){
          console.log($scope.inputs.question);
-         if($scope.type == 2){
-             Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], $scope.items[1], $scope.answer1, $scope.answer2, $scope.selectedDate);
-         }
-         else{
-             Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], "...", $scope.answer1, $scope.answer2, $scope.selectedDate);
-         }
-         $location.path('/contacts/1');
+
 
      };
 
@@ -203,10 +212,12 @@ angular.module('starter.controllers', [])
      };
 
      $scope.updateAnswers = function(index, answerIndex){
-         if(index === $scope.answers.length-1){
+         if(answerIndex === 0){
+             if(index === $scope.firstAnswers.length-1){
+
              var myPopup = $ionicPopup.show({
-                 template: '<input type="text" ng-model="inputs.answer_1"><input type="text" ng-model="inputs.answer_2">',
-                 title: 'Add answers',
+                 template: '<input type="text" maxlength="6" ng-model="inputs.answer_1">',
+                 title: 'Add your answer',
                  scope: $scope,
                  buttons: [
                      { text: 'Cancel' },
@@ -221,23 +232,78 @@ angular.module('starter.controllers', [])
              });
              myPopup.then(function(res) {
                  if(res){
-                     var asd = [$scope.inputs.answer_1, $scope.inputs.answer_2];
-                     $scope.answers.splice(0,0,asd);
-                     $scope.inputs = [];
+                     $scope.firstAnswers.splice(0,0,$scope.inputs.answer_1);
                  }
+                 $scope.inputs.answer_1 = "";
+
              })
          }
          else{
              $scope.answersHidden = !$scope.answersHidden;
-             if(answerIndex === 0){
-                 $scope.answer1 = $scope.answers[index][0];
-             }
-             if(answerIndex === 1){
-                 $scope.answer2 = $scope.answers[index][1];
+             $scope.answer1 = $scope.firstAnswers[index];
 
-             }
          }
+         }
+         if(answerIndex === 1){
+             if(index === $scope.secondAnswers.length-1){
+
+             var myPopup = $ionicPopup.show({
+                 template: '<input type="text" maxlength="6" ng-model="inputs.answer_1">',
+                 title: 'Add your answer',
+                 scope: $scope,
+                 buttons: [
+                     { text: 'Cancel' },
+                     {
+                         text: 'OK',
+                         type: 'button-positive',
+                         onTap: function(e) {
+                             return $scope.inputs;
+                         }
+                     }
+                 ]
+             });
+             myPopup.then(function(res) {
+                 if(res){
+                     $scope.secondAnswers.splice(0,0,$scope.inputs.answer_1);
+                 }
+                 $scope.inputs.answer_1 = "";
+
+             })
+         }
+         else{
+             $scope.answersHidden = !$scope.answersHidden;
+             $scope.answer2 = $scope.secondAnswers[index];
+
+         }
+         }
+
+
+
+
+
      };
+     $scope.goToContacts = function(){
+         console.log($scope.items.length);
+         if($scope.items.length === 0){
+             var popup = $ionicPopup.show({
+                 title: 'Error',
+                 template: 'Take a photo or select one from your gallery.',
+                 cssClass: 'popup-error',
+                 buttons: [
+                     { text: 'OK' }
+                 ]
+             });
+         }
+         else{
+             if($scope.type == 2){
+                 Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], $scope.items[1], $scope.answer1, $scope.answer2, $scope.selectedDate);
+             }
+             else{
+                 Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], "...", $scope.answer1, $scope.answer2, $scope.selectedDate);
+             }
+             $location.path('/contacts/1');
+         }
+     }
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
@@ -287,7 +353,6 @@ angular.module('starter.controllers', [])
      $scope.mysrc = "./img/icon1.png";
      var asd = $stateParams.type;
      $scope.type2 = asd;
-     console.log(asd);
      $scope.type = 0;
      $scope.selectedContacts = [];
      $scope.contacts = [];
@@ -304,7 +369,7 @@ angular.module('starter.controllers', [])
      Users.getAllUsers().then(function(resp) {
         //  $scope.contacts = resp.data;
 
-          $scope.response = resp;
+        //   $scope.response = resp;
      }, function(err) {
          $scope.response = err;
      })
@@ -337,7 +402,7 @@ angular.module('starter.controllers', [])
          group.toggled = !group.toggled;
          var url = Utils.getBaseURL() + "/groups/" + group.id;
          $http.get(url).then(function(resp) {
-             $scope.response = resp;
+            //  $scope.response = resp;
              if(group.toggled){
                  for (var i = 0; i < resp.data.length; i++) {
                      pushUnique($scope.selectedContacts, resp.data[i].id);
@@ -369,32 +434,37 @@ angular.module('starter.controllers', [])
      }
 
      $scope.sendSV1 = function(){
-         for (var i = 0; i < $scope.selectedContacts.length; i++) {
-             console.log($scope.selectedContacts[i]);
-         }
+        //  for (var i = 0; i < $scope.selectedContacts.length; i++) {
+        //      console.log($scope.selectedContacts[i]);
+        //  }
          Snapvotes.setContacts($scope.selectedContacts);
-         var dataJson = Snapvotes.getSnappvote();
+         var dataJson2 = Snapvotes.getSnappvote();
+         for (var variable in dataJson2) {
+             if (dataJson2.hasOwnProperty(variable)) {
+                 console.log(variable + "->" + dataJson2[variable]);
+             }
+         }
          var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
-         $http.post(url, dataJson).then(function(resp) {
+         $http.post(url, dataJson2).then(function(resp) {
               $scope.response = resp;
-             var popup = $ionicPopup.show({
-                 title: 'SnapVote sent',
-                 template: '<div class="popup-content-2">Awesome ! Your SnapVote is sent successfully !</div>'
-             });
-             $timeout(function(){
-                 popup.close();
-                 $location.path('/home');
-            }, 2500);
+            //  var popup = $ionicPopup.show({
+            //      title: 'SnapVote sent',
+            //      template: '<div class="popup-content-2">Awesome ! Your SnapVote is sent successfully !</div>'
+            //  });
+            //  $timeout(function(){
+            //      popup.close();
+            //      $location.path('/home');
+            // }, 2500);
          }, function(err) {
              $scope.response = err;
-             var popup = $ionicPopup.show({
-                 title: 'Oops !',
-                 template: 'Could not connect to server.',
-                 cssClass: 'popup-error',
-                 buttons: [
-                     { text: 'OK' }
-                 ]
-             });
+            //  var popup = $ionicPopup.show({
+            //      title: 'Oops !',
+            //      template: 'Could not connect to server.',
+            //      cssClass: 'popup-error',
+            //      buttons: [
+            //          { text: 'OK' }
+            //      ]
+            //  });
          })
      }
 
@@ -428,7 +498,7 @@ angular.module('starter.controllers', [])
              var contact = {};
             //  $scope.contacts = contacts;
              $scope.$digest();
-             console.log(contacts.length);
+             //console.log(contacts.length);
              for(var i = 0; i < contacts.length; i++) {
                 //  console.log(contacts[i].id + " - " + contacts[i].displayName);
                  var phone = contacts[i].phoneNumbers[0];
@@ -447,7 +517,7 @@ angular.module('starter.controllers', [])
                  contactNumbers.push(phone.number);
                  $scope.contacts.push(contact);
 
-                 console.log(phone.number);
+                 //console.log(phone.number);
                 //  for (var variable in phone) {
                 //      if (phone.hasOwnProperty(variable)) {
                 //          console.log(variable + "->" + phone[variable]);
@@ -467,7 +537,7 @@ angular.module('starter.controllers', [])
                     //  if(resp.data[i] === {}){
                     //  }
                  }
-                $scope.response = resp;
+                // $scope.response = resp;
              }, function(err) {
                  $scope.response = err;
                  var popup = $ionicPopup.show({
@@ -538,7 +608,7 @@ angular.module('starter.controllers', [])
          else{
              var popup = $ionicPopup.show({
                  title: 'Oops !',
-                 template: 'Can\'t edit multiple groups.',
+                 template: 'Select 1 group to edit',
                  cssClass: 'popup-error',
                  buttons: [
                      { text: 'OK' }
@@ -792,7 +862,7 @@ angular.module('starter.controllers', [])
              $scope.isDisabled =false;
              var popup = $ionicPopup.show({
                  title: 'Oops !',
-                 template: 'You have not anwered all registration questions !',
+                 template: 'You have not answered all registration questions !',
                  cssClass: 'popup-error',
                  buttons: [
                      { text: 'OK' }
@@ -800,6 +870,7 @@ angular.module('starter.controllers', [])
              });
          }
          else{
+             if(Utils.validateEmail($scope.form.email)){
              var dataJson={};
              $scope.form.country = $scope.form.country.name;
              for(var key in $scope.form) dataJson[key]=$scope.form[key];
@@ -807,10 +878,9 @@ angular.module('starter.controllers', [])
              $http.post(url, dataJson).then(function(resp) {
                  Utils.setSVUserId(resp.data.id);
                  var popup = $ionicPopup.show({
-                     title: 'Registration successfull.',
-                     template: '<div class="popup-content">Enjoy SnapVote !</div>'
+                     title: 'Awesome',
+                     template: '<div class="popup-content-2">Registration successfull. Enjoy SnapVote !</div>'
                  });
-
                  $timeout(function(){
                      popup.close();
                      $location.path('/home');
@@ -829,7 +899,19 @@ angular.module('starter.controllers', [])
              })
          }
 
+     else{
+         var popup = $ionicPopup.show({
+             title: 'Oops !',
+             template: 'Invalid email !',
+             cssClass: 'popup-error',
+             buttons: [
+                 { text: 'OK' }
+             ]
+         });
      }
+
+
+ }}
      $scope.$watch('form.country.dial_code', function(newValue, oldValue){
          console.log($scope.form.phone);
              if($scope.form.phone){

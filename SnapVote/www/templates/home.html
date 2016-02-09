@@ -7,6 +7,21 @@
         </div>
         <div style="position:relative; margin-top:-30px;">
         <div class="home-list-container">
+            <div class="home-list-title">INCOMING</div>
+            <div class="home-no-items hidden" ng-class="{'shown': incoming.length === 0}">You have no incoming SnapVotes.</div>
+            <div ng-repeat="snapvote in incoming" >
+                <a class="home-list-item" ng-class="{'sv-expired': snapvote.expired}" href="#/sv-detail/{{snapvote.id}}">
+                    <div class="outgoing-title">{{snapvote.author_username}}</div>
+                    <div class="incoming-title">{{snapvote.title}}</div>
+                    <div class="home-list-date-incoming">
+                        <span>expires</br> in</span>
+                        <span class="expired-date">{{snapvote.expire_date | incomingDateFilter}}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="home-list-footer" ng-click="loadIncoming()">MORE</div>
+        </div>
+        <div class="home-list-container">
             <div class="home-list-title">OUTGOING</div>
             <div class="home-no-items hidden" ng-class="{'shown': outgoing.length === 0}">You have no outgoing SnapVotes.</div>
             <div ng-repeat="snapvote in outgoing track by $index"
@@ -38,26 +53,10 @@
             </div>
             <div class="home-list-footer" ng-click="loadOutgoing()">MORE</div>
         </div>
-
-        <div class="home-list-container">
-            <div class="home-list-title">INCOMING</div>
-            <div class="home-no-items hidden" ng-class="{'shown': incoming.length === 0}">You have no outgoing SnapVotes.</div>
-            <div ng-repeat="snapvote in incoming">
-                <a class="home-list-item" ng-class="{'sv-expired': snapvote.expired}" href="#/sv-detail/{{snapvote.id}}">
-                    <div class="outgoing-title">{{snapvote.author_username}}</div>
-                    <div class="incoming-title">{{snapvote.title}}</div>
-                    <div class="home-list-date-incoming">
-                        <span ng-show="!snapvote.expired">expires</br> in</span>
-                        <span class="expired-date">{{snapvote.expire_date | incomingDateFilter}}</span>
-                    </div>
-                </a>
-            </div>
-            <div class="home-list-footer" ng-click="loadIncoming()">MORE</div>
-        </div>
         <div class="sv-footer">
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
         </div>
         </div>
-    <!-- <div>{{response}}</div> -->
+    <div>{{response}}</div>
 </ion-content>
 </ion-view>

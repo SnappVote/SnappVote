@@ -36,6 +36,10 @@ angular.module('starter.services', [])
         parseDateTime: function(date){
             var arr = date.split(/-|\s|:/);
             return new Date(arr[0], arr[1] -1, arr[2], arr[3], arr[4], arr[5]);
+        },
+        validateEmail: function(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
         }
     }
 })

@@ -35,13 +35,13 @@
         </div>
         <div class="answer-dropdown-container"ng-class="{'hidden' : answersHidden}">
         <div class="answer-container">
-        <div ng-repeat="answerPair in answers track by $index" ng-click="updateAnswers($index, 0)">
-            <button class="button-answer-dropdown">{{answerPair[0]}}</button>
+        <div ng-repeat="answer in firstAnswers track by $index" ng-click="updateAnswers($index, 0)">
+            <button class="button-answer-dropdown">{{answer}}</button>
         </div>
         </div>
         <div class="answer-container" id="answer-container-right">
-        <div ng-repeat="answerPair in answers track by $index" ng-click="updateAnswers($index, 1)">
-            <button class="button-answer-dropdown">{{answerPair[1]}}</button>
+        <div ng-repeat="answer in secondAnswers track by $index" ng-click="updateAnswers($index, 1)">
+            <button class="button-answer-dropdown">{{answer}}</button>
         </div>
        </div>
        </div>
@@ -50,13 +50,13 @@
             <button class="button-standard">{{selectedDate | svdate}}</button>
         <!-- <button class="button button-block button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button> -->
         </ionic-datepicker>
-        <button class="button-standard" id="button-select-contacts" ng-click="createSnapvote()" href="#/contacts/{{1}}">
+        <button class="button-standard" id="button-select-contacts" ng-click="goToContacts()">
             select contacts
         </button>
-
+        <div class="sv-footer">
+            <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+        </div>
         <!-- <div>{{response}}</div> -->
     </ion-content>
-    <div class="sv-footer-fixed">
-        <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
-    </div>
+
 </ion-view>

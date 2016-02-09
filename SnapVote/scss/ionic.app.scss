@@ -253,7 +253,7 @@ ion-scroll{
     .home-list-item{
         @extend .home-list-item-basic;
         text-decoration: none;
-        padding: 5px 0 5px 15px;
+        padding: 0px 0 0px 15px;
         display: block;
         border-left: none;
         border-right: none;
@@ -268,6 +268,7 @@ ion-scroll{
         font-weight: 600;
         font-size: $home-item-title-font-size;
         width: 70%;
+
     }
     .incoming-title{
         width: 70%;
@@ -605,21 +606,30 @@ ion-scroll{
         }
     }
     .popup-error{
+        height: 90% !important;
         .popup-body{
             border-top: 2px solid $sv-red;
             text-align: center;
             color: rgba(0, 0, 0, 0.5) !important;
+            height: 50px !important;
         }
         .popup-title{
             color: rgba(0, 0, 0, 0.5) !important;
             font-size: 18px !important;
         }
         .popup-buttons{
+
+            background-color: black !important;
+        }
+        .popup-buttons{
+            padding: 0px !important;
+            border-top: 20px solid white !important;
             background-color: $sv-red !important;
+            //border: 3px solid black !important;
+
             .button{
-                border: none !important;
                 width: 100% !important;
-                background-color: $sv-red !important;
+                background-color: transparent !important;
                 color: white;
                 font-family: $sv-font !important;
                 font-weight: 600;
@@ -714,7 +724,7 @@ and (max-device-width : 480px) {
     @include register(35px, 16px)
 
     //Home
-    @include home(35px, 16px, 120px, 14px, 14px, 14px)
+    @include home(20px, 13px, 110px, 14px, 13px, 13px)
 
     //Choose Type
     @include choose-type(20px, 0px, 30px);

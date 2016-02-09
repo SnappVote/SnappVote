@@ -153,9 +153,9 @@ ion-scroll {
   .home-list-tf, .home-list-title, .home-list-footer {
     text-align: center;
     color: white !important;
-    height: 35px;
-    line-height: 35px;
-    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 13px;
     font-weight: 600; }
   .home-list-title {
     border-top-left-radius: 7px;
@@ -164,13 +164,13 @@ ion-scroll {
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px; }
   .home-no-items {
-    height: 120px;
-    line-height: 120px;
+    height: 110px;
+    line-height: 110px;
     font-size: 14px;
     text-align: center; }
   .home-list-item {
     text-decoration: none;
-    padding: 5px 0 5px 15px;
+    padding: 0px 0 0px 15px;
     display: block;
     border-left: none;
     border-right: none;
@@ -179,19 +179,19 @@ ion-scroll {
     color: rgba(30, 30, 30, 0.4) !important; }
   .outgoing-title {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     width: 70%; }
   .incoming-title {
     width: 70%; }
   .home-list-date-incoming {
-    font-size: 14px;
+    font-size: 13px;
     display: inline;
     position: absolute;
     right: 15px;
     top: 5px;
     font-weight: "Varela Round", sans-serif; }
   .home-list-date-outgoing {
-    font-size: 14px;
+    font-size: 13px;
     display: inline;
     position: absolute;
     right: 15px;
@@ -419,23 +419,29 @@ ion-scroll {
     font-size: 17px !important;
     padding: 5px 15px 5px 15px;
     border-radius: 5px; }
-  .popup-error .popup-body {
-    border-top: 2px solid #EC5F65;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.5) !important; }
-  .popup-error .popup-title {
-    color: rgba(0, 0, 0, 0.5) !important;
-    font-size: 18px !important; }
-  .popup-error .popup-buttons {
-    background-color: #EC5F65 !important; }
-    .popup-error .popup-buttons .button {
-      border: none !important;
-      width: 100% !important;
-      background-color: #EC5F65 !important;
-      color: white;
-      font-family: "Varela Round", sans-serif !important;
-      font-weight: 600;
-      font-size: 17px !important; }
+  .popup-error {
+    height: 90% !important; }
+    .popup-error .popup-body {
+      border-top: 2px solid #EC5F65;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.5) !important;
+      height: 50px !important; }
+    .popup-error .popup-title {
+      color: rgba(0, 0, 0, 0.5) !important;
+      font-size: 18px !important; }
+    .popup-error .popup-buttons {
+      background-color: black !important; }
+    .popup-error .popup-buttons {
+      padding: 0px !important;
+      border-top: 20px solid white !important;
+      background-color: #EC5F65 !important; }
+      .popup-error .popup-buttons .button {
+        width: 100% !important;
+        background-color: transparent !important;
+        color: white;
+        font-family: "Varela Round", sans-serif !important;
+        font-weight: 600;
+        font-size: 17px !important; }
   .popup-body {
     border-top: 2px solid #A5D46C; }
   .popup-content {
@@ -580,7 +586,7 @@ ion-scroll {
     text-align: center; }
   .home-list-item {
     text-decoration: none;
-    padding: 5px 0 5px 15px;
+    padding: 0px 0 0px 15px;
     display: block;
     border-left: none;
     border-right: none;
@@ -829,23 +835,29 @@ ion-scroll {
     font-size: 17px !important;
     padding: 5px 15px 5px 15px;
     border-radius: 5px; }
-  .popup-error .popup-body {
-    border-top: 2px solid #EC5F65;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.5) !important; }
-  .popup-error .popup-title {
-    color: rgba(0, 0, 0, 0.5) !important;
-    font-size: 18px !important; }
-  .popup-error .popup-buttons {
-    background-color: #EC5F65 !important; }
-    .popup-error .popup-buttons .button {
-      border: none !important;
-      width: 100% !important;
-      background-color: #EC5F65 !important;
-      color: white;
-      font-family: "Varela Round", sans-serif !important;
-      font-weight: 600;
-      font-size: 17px !important; }
+  .popup-error {
+    height: 90% !important; }
+    .popup-error .popup-body {
+      border-top: 2px solid #EC5F65;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.5) !important;
+      height: 50px !important; }
+    .popup-error .popup-title {
+      color: rgba(0, 0, 0, 0.5) !important;
+      font-size: 18px !important; }
+    .popup-error .popup-buttons {
+      background-color: black !important; }
+    .popup-error .popup-buttons {
+      padding: 0px !important;
+      border-top: 20px solid white !important;
+      background-color: #EC5F65 !important; }
+      .popup-error .popup-buttons .button {
+        width: 100% !important;
+        background-color: transparent !important;
+        color: white;
+        font-family: "Varela Round", sans-serif !important;
+        font-weight: 600;
+        font-size: 17px !important; }
   .popup-body {
     border-top: 2px solid #A5D46C; }
   .popup-content {
