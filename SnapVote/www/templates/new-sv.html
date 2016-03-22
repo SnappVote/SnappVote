@@ -56,6 +56,34 @@
         <div class="sv-footer">
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
         </div>
+        <div class="hidden options-constainer" ng-class="{'shown' : optionsShown}">
+            <div class="options-title" ui-sref="home">
+                OPTIONS
+            </div>
+            <div class="options-item">
+                <a href="#/home">Home</a>
+                <a href="#/home" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                <a href="#/contacts/{{2}}">Contacts</a>
+                <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                Edit Profile
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                <a href="#/contacts/{{3}}">Invite Friends</a>
+                <a href="#/contacts/{{3}}" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item" ui-sref="login">
+                Logout
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-button" ng-click="closeOptions()">
+                OK
+            </div>
+        </div>
         <!-- <div>{{response}}</div> -->
     </ion-content>
 

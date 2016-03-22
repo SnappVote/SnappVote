@@ -74,15 +74,15 @@ app.run(function($ionicPlatform) {
         templateUrl: "templates/contacts.html",
         controller: "ContactsCtrl"
     });
-    $urlRouterProvider.otherwise('/login');
+    // $urlRouterProvider.otherwise('/login');
 
-    // var registered = window.localStorage['registered'];
-    // if(!registered){
-    //     $urlRouterProvider.otherwise('/home');
-    // }
-    // else{
-    //     $urlRouterProvider.otherwise('/login');
-    // }
+    var registered = window.localStorage['registered'];
+    if(!registered){
+        $urlRouterProvider.otherwise('/login');///home
+    }
+    else{
+        $urlRouterProvider.otherwise('/login');//login
+    }
     // $ionicConfigProvider.navBar.alignTitle('center');
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
@@ -166,10 +166,9 @@ app.filter('svdate', [function() {
         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
         var firstDate = input;
         var secondDate = new Date(Date.now());
-
-        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) +1;
         var label = "";
-        console.log(diffDays);
+        //console.log(diffDays);
         if(diffDays == 1){
             label = " day";
         }

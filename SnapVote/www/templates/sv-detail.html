@@ -5,9 +5,12 @@
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
-        <div class="message-big" style="text-align:center;">
+        <div class="message-big" style="text-align:center; margin-top:-10px;">
             {{snappvote.title}}
         </div>
+        <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+       AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+           9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
         <div class='hidden' ng-class="{'shown' : type == 1}" style="position:relative;">
             <img class="img-new-sv-big" ng-src="data:image/jpeg;base64,{{img1}}"/>
         </div>
@@ -32,6 +35,34 @@
 
         <div class="sv-footer">
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+        </div>
+        <div class="hidden options-constainer" ng-class="{'shown' : optionsShown}">
+            <div class="options-title" ui-sref="home">
+                OPTIONS
+            </div>
+            <div class="options-item">
+                <a href="#/home">Home</a>
+                <a href="#/home" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                <a href="#/contacts/{{2}}">Contacts</a>
+                <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                Edit Profile
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                <a href="#/contacts/{{3}}">Invite Friends</a>
+                <a href="#/contacts/{{3}}" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item" ui-sref="login">
+                Logout
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-button" ng-click="closeOptions()">
+                OK
+            </div>
         </div>
         <!-- <div>{{response}}</div> -->
     </ion-content>

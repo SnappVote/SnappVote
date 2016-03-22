@@ -4,71 +4,11 @@
 
         <div class="message-big">WELCOME!</div>
         <div class="message-small">Log in with Facebook, Google+ or create a new account.</div>
-        <!-- <ion-content   class=" padding"
-                  direction="x"
-                	on-swipe-left="swipeLeftPage(currentPage)"
-                	on-swipe-right="swipeRightPage(currentPage)">
-                	{{text[currentPage]}}
-
-
-              </ion-content> -->
-
-              <!-- <ion-list
-          can-swipe="listCanSwipe">
-  <ion-item ng-repeat="item in items"
-            class="item-thumbnail-left">
-    <img ng-src="{{item.img}}">
-    <h2>{{item}}</h2>
-    <p>{{item}}</p>
-    <ion-option-button>
-    </ion-option-button>
-    <ion-option-button>
-    </ion-option-button>
-  </ion-item>
-</ion-list> -->
-<!--
-        <div class="home-button-container">
-            <label class="item">
-    <button class="button button-block button-positive" ng-click="fbLogin()">
-    Login with Facebook
-    </button>
-</label>
-            <div ng-click="test()">asd</div>
-              <a ng-click="authenticate('facebook')" class="button button-block icon-left ion-social-facebook">
-                Sign in with Facebook
-            </a>
-              <button ng-click="authenticate('google')" class="button button-block icon-left ion-social-googleplus">
-                Sign in with Google
-              </button>
-              <button ng-click="authenticate('linkedin')" class="button button-block icon-left ion-social-linkedin">
-                Sign in with LinkedIn
-              </button>
-              <button ng-click="authenticate('twitter')" class="button button-block icon-left ion-social-twitter">
-                Sign in with Twitter
-              </button>
-              <button ng-click="authenticate('foursquare')" class="button button-block icon-left ion-social-foursquare-outline">
-                Sign in with Foursquare
-              </button>
-              <button ng-click="authenticate('github')" class="button button-block icon-left ion-social-github">
-                Sign in with GitHub
-              </button>
-              <button ng-click="authenticate('yahoo')" class="button button-block icon-left ion-social-yahoo">
-                Sign in with Yahoo
-              </button>
-              <button ng-click="authenticate('live')" class="button button-block icon-left ion-social-windows">
-                Sign in with Windows Live
-              </button>
-            </div>
-            <div ng-if="isAuthenticated()">
-              <div class="card">
-                <div class="item item-text-wrap">
-                  You are currently logged in.
-                </div>
-              </div>
-              <button ng-click="logout()" class="button button-block">
-                Log Out
-              </button>
-            </div> -->
+        <!-- <div class="img-new-sv-small">
+            <img class="img-new-sv" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+            <div class="take-pic-photo-small ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
+            <div class="take-pic-gallery-small ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
+        </div> -->
             <button ng-click="fbLogin()" class="button button-login">
                 <img src="./img/fb_logo.png"></img>
                 <div>use Facebook</div>
@@ -86,19 +26,47 @@
         <button class="button button-login" ui-sref="devlogin">
             DevLogin
         </button>
-        <div class="sv-footer">
+        <!-- <div class="sv-footer">
             <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
         </div>
           <a class="button button button-login"  href="#/contacts/{{1}}">
             Groups
         </a>
-        <button class="button button button-login"  ng-click="test()">
+        <button class="button button button-login"  ng-click="openOptions()">
             Test
         </button>
         <button class="button button-login" ui-sref="home">
             Home
         </button>
-
+        <div class="hidden options-constainer" ng-class="{'shown' : optionsShown}">
+            <div class="options-title" ui-sref="home">
+                OPTIONS
+            </div>
+            <div class="options-item" ui-sref="home">
+                Home
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                <a href="#/contacts/{{2}}">Contacts</a>
+                <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item">
+                Edit Profile
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item" ui-sref="home">
+                <a href="#/contacts/{{3}}">Invite Friends</a>
+                <a href="#/contacts/{{3}}" class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-item" ui-sref="login">
+                Logout
+                <a class="ion-chevron-right options-arrow"></a>
+            </div>
+            <div class="options-button" ng-click="closeOptions()">
+                OK
+            </div>
+        </div>
+        <div>{{response}}</div> -->
         <div>{{response}}</div>
     </ion-content>
 </ion-view>

@@ -5,6 +5,11 @@
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
+        <!-- <div class="img-new-sv-small">
+            <img class="img-new-sv" ng-src="data:image/jpeg;base64,{{items[0]}}"/>
+            <div class="take-pic-photo-small ion-ios-camera-outline" ng-click="addPhoto(0)"></div>
+            <div class="take-pic-gallery-small ion-ios-photos-outline" ng-click="addPhotoGallery(0)"></div>
+        </div> -->
         <div class="hidden" ng-class="{'shown' : type2 != 3}">
         <div class="contacts-tabs-container">
             <div class="contacts-tab-button" ng-class="{'contacts-tab-button-selected': type==0}" ng-click="switchTabs(0)">All Contacts</div>
@@ -14,7 +19,7 @@
     </div>
     <div class="hidden" ng-class="{'shown' : type2 == 3}">
 
-    <div class="message-small" id="contacts-counter">SELECT CONTACTS</div>
+    <div class="message-small" id="contacts-counter" style="margin-top:-15px !important;">SELECT CONTACTS</div>
     </div>
 
 
@@ -82,10 +87,38 @@
     </div>
 </div>
 
-<!-- <div>{{response}}</div> -->
+<div>{{response}}</div>
 
 </ion-content>
 <div class="sv-footer-fixed">
     <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+</div>
+<div class="hidden options-constainer" ng-class="{'shown' : optionsShown}">
+    <div class="options-title" ui-sref="home">
+        OPTIONS
+    </div>
+    <div class="options-item">
+        <a href="#/home">Home</a>
+        <a href="#/home" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item">
+        <a href="#/contacts/{{2}}">Contacts</a>
+        <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item">
+        Edit Profile
+        <a class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item">
+        <a href="#/contacts/{{3}}">Invite Friends</a>
+        <a href="#/contacts/{{3}}" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item" ui-sref="login">
+        Logout
+        <a class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-button" ng-click="closeOptions()">
+        OK
+    </div>
 </div>
 </ion-view>
