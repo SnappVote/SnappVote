@@ -326,14 +326,14 @@ ion-scroll {
     width: 60%;
     height: 260px;
     margin-left: 20%;
-    margin-top: 15px; }
+    margin-top: 35px; }
   .img-new-sv-small {
     display: inline-block !important;
     position: relative !important;
     background-color: white;
     width: 35%;
     margin-left: 10%;
-    margin-top: 15px;
+    margin-top: 35px;
     height: 180px; }
   .img-new-sv {
     width: 100%;
@@ -766,14 +766,14 @@ ion-scroll {
     width: 5 0%;
     height: 240px;
     margin-left: 100%-"5 0%"/2;
-    margin-top: 15px; }
+    margin-top: 35px; }
   .img-new-sv-small {
     display: inline-block !important;
     position: relative !important;
     background-color: white;
     width: 35%;
     margin-left: 10%;
-    margin-top: 15px;
+    margin-top: 35px;
     height: 180px; }
   .img-new-sv {
     width: 100%;

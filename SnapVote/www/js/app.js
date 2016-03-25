@@ -14,7 +14,7 @@ app.run(function($ionicPlatform) {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-    //   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
     //   cordova.plugins.Keyboard.disableScroll(true);
 
     }
@@ -73,6 +73,11 @@ app.run(function($ionicPlatform) {
         url:"/contacts/:type",
         templateUrl: "templates/contacts.html",
         controller: "ContactsCtrl"
+    })
+    .state("editprofile", {
+        url:"/editprofile",
+        templateUrl: "templates/editprofile.html",
+        controller: "EditProfileCtrl"
     });
     // $urlRouterProvider.otherwise('/login');
 
@@ -84,8 +89,9 @@ app.run(function($ionicPlatform) {
         $urlRouterProvider.otherwise('/login');//login
     }
     // $ionicConfigProvider.navBar.alignTitle('center');
-    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//);
+
+    //$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 
 });
 app.directive('onSwipeRight', function($ionicGesture) {
@@ -146,7 +152,7 @@ app.filter('incomingDateFilter', [function() {
             var firstDate = new Date(input);
             var secondDate = new Date(Date.now());
 
-            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) +1;
             var label = "";
             console.log(diffDays);
             if(diffDays == 1){

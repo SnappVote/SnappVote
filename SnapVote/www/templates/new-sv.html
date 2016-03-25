@@ -6,8 +6,10 @@
             <img class="navbar-button" src="./img/b3.png"></img>
         </div>
 
-        <input class="sv-input-2" type="text" ng-model="inputs.question" placeholder="Subject">
-
+        <div style="position:absolute; width:100%; height: 20px; margin-bottom:30px;">
+        <input class="sv-input-2" maxlength="25" type="text" ng-model="inputs.question" placeholder="Subject" ng-change="updateCharsLeft()">
+        <div style="position:relative; left:75%; top:-27px; height: 20px; width:30px;">{{charsLeft}}</div>
+    </div>
         <div ng-class="{'hidden' : type == 2}">
             <div class="img-new-sv-big">
                 <img class="img-new-sv" ng-src="data:image/jpeg;base64,{{items[0]}}">
@@ -69,8 +71,8 @@
                 <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
             </div>
             <div class="options-item">
-                Edit Profile
-                <a class="ion-chevron-right options-arrow"></a>
+                <a href="#/editprofile">Edit Profile</a>
+                <a href="#/editprofile" class="ion-chevron-right options-arrow"></a>
             </div>
             <div class="options-item">
                 <a href="#/contacts/{{3}}">Invite Friends</a>

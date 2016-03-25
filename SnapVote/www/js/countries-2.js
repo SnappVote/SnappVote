@@ -771,7 +771,7 @@ var countriesJson2 =[
         "enabled": "1",
         "code3l": "ZAR",
         "code2l": "CD",
-        "name": "Democratic Republic of the Congo",
+        "name": "Congo",
         "name_official": "Democratic Republic of the Congo",
         "flag_32": "CD-32.png",
         "flag_128": "CD-128.png",

@@ -8,7 +8,7 @@
 
         <input class="sv-input" type="text" ng-model="form.name" placeholder="Name">
         <input class="sv-input" type="text" ng-model="form.email" placeholder="Email">
-        <input class="sv-input" type="text" ng-model="form.phone" ng-change="update()" placeholder="Telephone">
+        <input class="sv-input"type="number" pattern="\d*" ng-model="form.phone" ng-change="update()" placeholder="Telephone">
         <div class="sv-input-3" ng-class="{'asdf': countrySelected == 1}" ng-click="showCountries()">{{countryName}}</div>
         <!-- <label class="item item-select sv-input "> -->
             <!-- <div class="input-label">
@@ -42,7 +42,7 @@
     <button id="confirm-register" class="button-standard-red" ng-click="register()">
         CONFIRM
     </button>
-    <div>{{response}}</div>
+    <!-- <div>{{response}}</div> -->
 
 </ion-content>
 </ion-view>

@@ -51,7 +51,7 @@
         </div>
         <div class='hidden' ng-class="{'shown' : type2 == 3}" style="margin-top:30px;">
             <img class="snap-it-btn-img" src="./img/icon5.png"></img>
-            <button class="button-standard-red" ng-click="sendSV1()">
+            <button class="button-standard-red" ng-click="invite()">
                 INVITE !
             </button>
             <img class="snap-it-btn-img" src="./img/icon6.png"></img>
@@ -102,12 +102,8 @@
         <a href="#/home" class="ion-chevron-right options-arrow"></a>
     </div>
     <div class="options-item">
-        <a href="#/contacts/{{2}}">Contacts</a>
-        <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
-    </div>
-    <div class="options-item">
-        Edit Profile
-        <a class="ion-chevron-right options-arrow"></a>
+        <a href="#/editprofile">Edit Profile</a>
+        <a href="#/editprofile" class="ion-chevron-right options-arrow"></a>
     </div>
     <div class="options-item">
         <a href="#/contacts/{{3}}">Invite Friends</a>
