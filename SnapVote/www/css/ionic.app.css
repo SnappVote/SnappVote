@@ -181,8 +181,8 @@ ion-scroll {
     color: rgba(0, 0, 0, 0.7) !important;
     height: 40px;
     background-color: white;
-    width: 30%;
-    margin-left: 13% !important; }
+    width: 37%;
+    margin-left: 8% !important; }
   .button-login {
     height: 35px !important;
     margin-top: 10px !important;
@@ -446,7 +446,7 @@ ion-scroll {
   .snap-it-btn-img {
     display: block;
     height: 10px;
-    margin-left: 48%;
+    margin-left: 47%;
     margin-top: 10px; }
   .groups-edit-title, .groups-edit-footer {
     background-color: white !important;
@@ -587,8 +587,13 @@ ion-scroll {
   .options-item-bottom {
     border: none; }
   .options-arrow {
-    float: right;
-    margin-right: 15px; }
+    position: absolute;
+    right: 15px;
+    top: 2px; }
+  .options-link {
+    display: block;
+    width: 100%;
+    height: 100%; }
   .options-arrow-2 {
     display: inline-block !important;
     position: absolute;
@@ -621,8 +626,8 @@ ion-scroll {
     color: rgba(0, 0, 0, 0.7) !important;
     height: 40px;
     background-color: white;
-    width: 30%;
-    margin-left: 13% !important; }
+    width: 37%;
+    margin-left: 8% !important; }
   .button-login {
     height: 40px !important;
     margin-top: 10px !important;
@@ -886,7 +891,7 @@ ion-scroll {
   .snap-it-btn-img {
     display: block;
     height: 10px;
-    margin-left: 48%;
+    margin-left: 47%;
     margin-top: 10px; }
   .groups-edit-title, .groups-edit-footer {
     background-color: white !important;
@@ -1027,8 +1032,13 @@ ion-scroll {
   .options-item-bottom {
     border: none; }
   .options-arrow {
-    float: right;
-    margin-right: 15px; }
+    position: absolute;
+    right: 15px;
+    top: 2px; }
+  .options-link {
+    display: block;
+    width: 100%;
+    height: 100%; }
   .options-arrow-2 {
     display: inline-block !important;
     position: absolute;

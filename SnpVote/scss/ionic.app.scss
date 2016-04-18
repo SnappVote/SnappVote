@@ -1,0 +1,937 @@
+$sv-font: 'Varela Round', sans-serif;
+$sv-green-light: #A5D46C;
+$sv-green-medium: #84B461;
+$sv-green-dark: #637F41;
+$sv-red: #EC5F65;
+$center-width: 74%;
+$center-margin: 13%;
+
+.asdf{
+    color: black !important;
+    background-color: black !important;
+}
+
+a{
+    text-decoration: none;
+    color:rgba(0, 0, 0, 0.5) !important;
+
+}
+.options-constainer{
+    position: absolute;
+    background-color: white;
+    top:20%;
+    left: 10%;
+    width: 80%;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid $sv-green-dark;
+
+}
+.options-title{
+    $font-family: $sv-font;
+    display: block !important;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    font-size: 17px;
+    text-decoration: none !important;
+    color:rgba(0, 0, 0, 0.5) !important;
+}
+.options-button{
+    float: right;
+    background-color: red;
+    color: white;
+    font: $sv-font;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 7px 15px 7px 15px;
+    margin-top:10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.countries-dropdown{
+    position: absolute;
+    top:20%;
+    left: -5%;
+    width: 110%;
+    height: 100%;
+}
+.countries-dropdown-container{
+    @extend .sv-center;
+    background-color: white;
+    padding: 10px;
+    margin-top: 2px;
+    max-height: 400px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.countries-dropdown-button-container{
+    @extend .sv-center;
+    height: 40px;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.countries-dropdown-button{
+    background-color: red;
+    color: white;
+    font: $sv-font;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 7px 15px 7px 15px;
+    border-radius: 5px;
+    margin: 0 15px 0 15px !important;
+}
+
+.country-flag{
+    width: 30px;
+    height: 15px;
+}
+.sv-center{
+    width: $center-width !important;
+    margin-left: $center-margin !important;
+}
+
+.img-contact-small{
+    height: 10px;
+    width: 10px;
+}
+
+.sv-footer{
+    position: absolute;
+    bottom: -50px;
+    right: 20px;
+}
+
+.sv-footer-fixed{
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
+.sv-footer-bottom{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.footer-button{
+    width: 95px;
+    float:right;
+    margin-right: 13%;
+}
+
+ion-content{
+    background-color: $sv-green-light !important;
+}
+
+ion-scroll{
+    max-height: 260px;
+}
+
+*::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+*:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.shown{
+    display: block !important;
+}
+
+.animate-hide {
+    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    position: absolute;
+    left: 0;
+}
+
+.animate-hide.ng-hide {
+  left: -100%;
+}
+
+.img-center{
+    display: inline-block;
+    height: 50%;
+    width: auto;
+    position: absolute;
+    left: 0%;
+    top:50%;
+    margin-top: -10px;
+    margin-left: 5%;
+}
+
+// Navbar
+.sv-navbar{
+    margin-top: 25px;
+    padding-bottom: 35px;
+}
+
+.navbar-button{
+    width: 32.5%;
+    border: none;
+}
+
+@mixin login($logo-width, $margin) {
+    .login-logo{
+        width: $logo-width;
+        margin-left: $margin;
+    }
+}
+
+@mixin messages($font-size-big, $font-size-small) {
+    .message{
+        width: 74%;
+        margin-left: 13%;
+        opacity: 0.6;
+        font-family: $sv-font;
+    }
+
+    .message-big{
+        @extend .message;
+        margin-top: 10px;
+        font-size: $font-size-big;
+    }
+
+    .message-small{
+        @extend .message;
+        margin-top: 15px;
+        font-size: $font-size-small;
+    }
+}
+
+@mixin buttons($btn-font-size, $btn-standard-height){
+    .button-basic{
+        border: none !important;
+        border-radius: 5px !important;
+        border-bottom: 2px solid $sv-green-dark !important;
+        font-family: $sv-font;
+        font-size: $btn-font-size !important;
+        font-weight: 200;
+        margin-top: 10px !important;
+        height: $btn-standard-height !important;
+    }
+
+    .button-standard{
+        @extend .button-basic;
+        color: rgba(0, 0, 0, 0.7) !important;
+        background-color: white;
+        font-weight: 200;
+        width: $center-width !important;
+        margin-left: $center-margin !important;
+    }
+
+    .button-standard-red{
+        @extend .button-basic;
+        @extend .sv-center;
+        color: $sv-red !important;
+        background-color: white;
+        font-weight: 600;
+    }
+
+    .button-answer{
+        @extend .button-basic;
+        color: rgba(0, 0, 0, 0.7) !important;
+        height:40px;
+        background-color: white;
+        width: 37%;
+        margin-left:8% !important;
+    }
+
+    .button-login{
+        @extend .button-basic;
+        @extend .sv-center;
+        height: $btn-standard-height !important;
+        margin-top: 10px !important;
+        color: $sv-red !important;
+        div{
+            text-align: left !important;
+            padding-left: 15%;
+        }
+        img{
+            @extend .img-center;
+        }
+    }
+}
+
+@mixin register($input-height, $input-font-size) {
+    .sv-input{
+        width: 80%;
+        height: $input-height !important;
+        margin-left: 10% !important;
+        margin-top: 10px !important;
+        border: none !important;
+        border-radius: 5px !important;
+        border-top: 3px solid $sv-green-medium !important;
+        font-family: $sv-font !important;
+        font-size: $input-font-size!important;
+        padding-left: 15px !important;
+        padding-top: 10px !important;
+    }
+    .sv-input-3{
+        width: 80%;
+        height: $input-height !important;
+        margin-left: 10% !important;
+        margin-top: 10px !important;
+        border: none !important;
+        border-radius: 5px !important;
+        border-top: 3px solid $sv-green-medium !important;
+        font-family: $sv-font !important;
+        font-size: $input-font-size!important;
+        padding-left: 15px !important;
+        padding-top: 10px !important;
+        background-color: white !important;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    .sv-input-4{
+        color: rgba(0, 0, 0, 0.9) !important;
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+    #confirm-register{
+        margin-top:30px !important;
+    }
+}
+
+@mixin home($home-tf-height, $home-tf-font-size, $home-no-items-height, $home-no-items-font-size, $home-item-title-font-size, $home-item-date-font-size) {
+    .home-button-container{
+        margin-top: 15px;
+    }
+
+    .home-list-container{
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 10px;
+    }
+
+    .home-list-item-basic{
+        background-color: rgba(0, 0, 0, 0.2) !important;
+        border: 1px solid $sv-green-light !important;
+        font-family:$sv-font !important;
+        color: white !important;
+    }
+
+    .home-list-tf{
+        @extend .home-list-item-basic;
+        text-align: center;
+        color: white !important;
+        height: $home-tf-height;
+        line-height: $home-tf-height;
+        font-size: $home-tf-font-size;
+        font-weight: 600;
+    }
+
+    .home-list-title{
+        @extend .home-list-tf;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+
+    .home-list-footer{
+        @extend .home-list-tf;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    .home-no-items{
+        @extend .home-list-item-basic;
+        height: $home-no-items-height;
+        line-height: $home-no-items-height;
+        font-size: $home-no-items-font-size;
+        text-align: center;
+    }
+
+    .home-list-item{
+        @extend .home-list-item-basic;
+        text-decoration: none;
+        padding: 5px 0 5px 15px;
+        display: block;
+        border-left: none;
+        border-right: none;
+        position: relative;
+    }
+
+    .sv-expired{
+        color: rgba(30, 30, 30, 0.4) !important;
+    }
+
+    .outgoing-title{
+        font-weight: 600;
+        font-size: $home-item-title-font-size;
+        width: 70%;
+
+    }
+    .incoming-title{
+        width: 70%;
+    }
+
+
+    .home-list-date-incoming{
+        font-size: $home-item-date-font-size;
+        display: inline;
+        position: absolute;
+        right: 15px;
+        top:5px;
+        font-weight: $sv-font;
+    }
+
+    .home-list-date-outgoing{
+        font-size: $home-item-date-font-size;
+        display: inline;
+        position: absolute;
+        right: 15px;
+        top:15px;
+        font-weight: $sv-font;
+    }
+
+    .home-user-item{
+        @extend .home-list-item-basic;
+        background-color: transparent !important;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border: none !important;
+    }
+}
+
+@mixin new-snapvote($input-height, $input-margin, $input-font-size, $new-sv-img-big-height,$new-sv-img-big-width, $new-sv-img-small-height, $btn-answer-font-size) {
+    .sv-input-2{
+        width: 70%;
+        height: $input-height !important;
+        margin-left: 15% !important;
+        margin-top: $input-margin !important;
+        padding-left: 15px !important;
+        padding-top: 5px !important;
+        font-size: $input-font-size!important;
+        color: rgba(0, 0, 0, 0.7) !important;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none !important;
+    }
+
+    .img-new-sv-big{
+        position: relative !important;
+        background-color: white;
+        width: $new-sv-img-big-width;
+        height: $new-sv-img-big-height;
+        margin-left: (100%-$new-sv-img-big-width)/2;
+        margin-top: 35px;
+    }
+
+    .img-new-sv-small{
+        display: inline-block !important;
+        position: relative !important;
+        background-color: white;
+        width: 35%;
+        margin-left: 10%;
+        margin-top: 35px;
+        height: $new-sv-img-small-height;
+    }
+
+    .img-new-sv{
+        width: 100%;
+        height: 100%;
+    }
+    .take-pic-photo-small{
+        position: absolute;
+        bottom: 5px;
+        left: 20px;
+        font-size: 35px;
+    }
+    .take-pic-gallery-small{
+        position: absolute;
+        bottom: 5px;
+        right: 20px;
+        font-size: 30px;
+    }
+    .take-pic-photo{
+        position: absolute;
+        bottom: 5px;
+        left: 20px;
+        font-size: 50px;
+    }
+    .take-pic-gallery{
+        position: absolute;
+        bottom: 5px;
+        right: 20px;
+        font-size: 50px;
+    }
+    .answer-dropdown-container{
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .answer-container{
+        background-color: white;
+        border-radius: 5px;
+        display: inline-block;
+        width: 40%;
+    }
+    #answer-container-right{
+        float:right;
+    }
+    .button-answer-dropdown{
+        font-size: $btn-answer-font-size !important;
+        color: rgba(0, 0, 0, 0.8) !important;
+        font-family: $sv-font;
+        border: none;
+        padding: 7px 0 7px 0 !important;
+        width: 100%;
+        text-align: center;
+        margin-left: 2%;
+    }
+
+    #button-select-contacts{
+        margin-top:30px !important;
+    }
+}
+
+@mixin contacts($margin-top, $margin-top-2, $contact-tabs-height, $padding-top, $contacts-tab-button-font-size, $contacts-list-container-height, $contacts-groups-container-height, $button-groups-font-size, $button-groups-height, $button-groups-padding) {
+    .contacts-tabs-container{
+        @extend .sv-center;
+        background: white;
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+        margin-top: $margin-top;
+        height: $contact-tabs-height !important;
+    }
+
+    .contacts-tab-button{
+        display: inline-block;
+        border-radius: 5px;
+        text-align: center;
+        width: 49%;
+        height: 100%;
+        font-family: $sv-font;
+        font-weight: 100;
+        font-size: $contacts-tab-button-font-size;
+        padding-top: $padding-top;
+    }
+
+    .contacts-tab-button-selected{
+        @extend .contacts-tab-button;
+        background-color: red;
+        color: white;
+        font-weight: 600;
+    }
+
+    #contacts-counter{
+        margin-top:$margin-top-2;
+        text-align:center;
+    }
+
+    .scroll-container{
+        max-height: $contacts-list-container-height - 10;
+    }
+    .scroll-container-groups{
+        max-height: $contacts-groups-container-height - 10;
+    }
+
+    .contacts-list-container{
+        @extend .sv-center;
+        margin-top: $margin-top-2;
+        background-color: white;
+        padding: 5px;
+        border-radius: 7px;
+        max-height: $contacts-list-container-height;
+    }
+    .contacts-groups-container{
+        @extend .sv-center;
+        margin-top: $margin-top-2;
+        background-color: white;
+        padding: 5px;
+        border-radius: 7px;
+        max-height: $contacts-groups-container-height;
+    }
+
+    .contacts-item{
+        margin:1px !important;
+        border-radius: 5px !important;
+        height: 40px !important;
+        padding-top: 10px !important;
+        font-family: $sv-font !important;
+        border: none !important;
+    }
+    .contacts-item-toggled{
+        font-family: $sv-font !important;
+        background-color: red !important;
+        font-weight: 600;
+        color: white !important;
+    }
+
+    .groups-button-container{
+        @extend .sv-center;
+        margin-top: 15px;
+    }
+    .button-groups{
+        text-align: center;
+        font-family: $sv-font !important;
+        background-color: white;
+        font-size: $button-groups-font-size !important;
+        border-radius: 5px !important;
+        width: 45% !important;
+        height: $button-groups-height !important;
+        padding-top: $button-groups-padding !important;
+        display: inline-block !important;
+    }
+
+    .snap-it-btn-img{
+        display: block;
+        height: 10px;
+        margin-left: 47%;
+        margin-top: 10px;
+    }
+
+    .groups-edit-title{
+        background-color: white !important;
+        @extend .sv-center;
+        height: 50px !important;
+        padding: 10px;
+        font-family: $sv-font !important;
+        text-align: center;
+        font-size: 16px !important;
+        border-top-left-radius: 7px !important;
+        border-top-right-radius: 7px !important;
+    }
+    .groups-edit-footer{
+        @extend .groups-edit-title;
+        border: none !important;
+        border-radius: 0px !important;
+        margin-top: 2px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+        border-bottom: 2px solid $sv-green-dark !important;
+    }
+    .groups-edit-list-container{
+        @extend .sv-center;
+        background-color: white;
+        padding: 5px;
+        margin-top: 2px;
+        max-height: 370px;
+    }
+    .button-edit-group{
+        display: inline-block !important;
+        border: none !important;
+        background-color: red;
+        color: white;
+        font-family: $sv-font !important;
+        font-weight: 600;
+        font-size: 17px !important;
+        padding: 5px 15px 5px 15px;
+        margin-top: -7px !important;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+    }
+
+    .img-contact{
+        height: 16px;
+        display: inline;
+    }
+
+    .img-contact-small{
+        padding-top: 2px;
+        margin-top: 3px;
+        height: 12px;
+        display: inline;
+    }
+
+    .contact-text{
+        position: absolute;
+        top: 12px;
+        left: 50px;
+    }
+}
+
+@mixin choose-type($font-size, $margin-top, $margin-bottom) {
+
+    #choose-type-message{
+        margin-top: $margin-top;
+        margin-bottom:$margin-bottom;
+        font-size:$font-size;
+    }
+
+    #choose-type-img-2{
+        margin-top: 10px;
+    }
+}
+
+@mixin popups() {
+    .popup-body, .popup-head, .popup-title{
+        font-family: $sv-font !important;
+        color:rgba(0, 0, 0, 0.7);
+    }
+
+    .popup-body, .popup-head, .popup-buttons{
+        background-color : white;
+    }
+
+    .popup-buttons .button{
+        border: none !important;
+        background-color : $sv-green-light !important;
+        font-weight: 600;
+        color: white;
+    }
+    .popup-footer{
+        background-color: back !important;
+    }
+    .popup-custom{
+        .popup-body{
+            border: none;
+        }
+        .popup-title{
+            color: rgba(0, 0, 0, 0.5) !important;
+            font-size: 18px !important;
+        }
+        .popup-buttons{
+            .button{
+                border: none !important;
+                background-color: red !important;
+                color: white;
+                font-family: $sv-font !important;
+                font-weight: 600;
+                font-size: 17px !important;
+                padding: 5px 15px 5px 15px;
+                border-radius: 5px;
+            }
+
+        }
+    }
+    .popup-error{
+        height: 90% !important;
+        .popup-body{
+            border-top: 2px solid $sv-red;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.5) !important;
+            height: 50px !important;
+        }
+        .popup-title{
+            color: rgba(0, 0, 0, 0.5) !important;
+            font-size: 18px !important;
+        }
+        .popup-buttons{
+
+            background-color: black !important;
+        }
+        .popup-buttons{
+            padding: 0px !important;
+            border-top: 20px solid white !important;
+            background-color: $sv-red !important;
+            //border: 3px solid black !important;
+
+            .button{
+                width: 100% !important;
+                background-color: transparent !important;
+                color: white;
+                font-family: $sv-font !important;
+                font-weight: 600;
+                font-size: 17px !important;
+            }
+        }
+    }
+
+    .popup-body{
+        border-top: 2px solid $sv-green-light;
+    }
+    .popup-content{
+        height: 50px;
+        text-align: center;
+        font-size: 16px;
+        font-family: $sv-font !important;
+        line-height: 50px;
+    }
+    .popup-content-2{
+        height: 75px;
+        text-align: center;
+        font-size: 16px;
+        font-family: $sv-font !important;
+        line-height: 35px;
+    }
+}
+
+@mixin options() {
+    .options-custom{
+        position: absolute;
+        left:0;
+        width: 100%;
+    }
+
+    .options-item{
+        $font-family: $sv-font;
+        display: block !important;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        font-size: 16px;
+        text-decoration: none !important;
+        color:rgba(0, 0, 0, 0.5) !important;
+        padding-left: 15px;
+        position: relative !important;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .options-item-2{
+        $font-family: $sv-font;
+        display: inline-block !important;
+        height: 50px;
+        width: 100%;
+        line-height: 50px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        text-decoration: none !important;
+        color:rgba(0, 0, 0, 0.4) !important;
+        padding-left: 15px;
+        position: relative !important;
+    }
+    .options-item-bottom{
+        @extend .options-item;
+        border: none;
+    }
+
+    .options-arrow{
+        position: absolute;
+        right: 15px;
+        top:2px;
+        // float: right;
+        // margin-right: 15px;
+    }
+    .options-link{
+        display:block;
+        width:100%;
+        height:100%;
+    }
+    .options-arrow-2{
+        display: inline-block !important;
+        position: absolute;
+        right: 25px;
+        top: 176px;
+        font-size: 17px;
+        color: rgba(0, 0, 0, 0.4) !important;
+    }
+}
+
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 480px) {
+    //Buttons
+    @include buttons(16px, 35px)
+
+    //Text
+    @include messages(18px, 15px)
+
+    //Login
+    @include login(72%, 14%);
+
+    // Register
+    @include register(35px, 16px)
+
+    //Home
+    @include home(20px, 13px, 110px, 14px, 13px, 13px)
+
+    //Choose Type
+    @include choose-type(20px, 0px, 30px);
+
+    //New Snapvote
+    @include new-snapvote(35px, -20px, 14px, 260px, 60%, 180px, 17px)
+
+    //Contacts
+    @include contacts(-20px, 8px, 35px, 5px, 14px, 170px, 125px, 13px, 35px, 7px)
+
+    //Popups
+    @include popups()
+
+    //Options
+    @include options();
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
+    //Buttons
+    @include buttons(17px, 40px)
+
+    //Text
+    @include messages(20px, 16px)
+
+    //Login
+    @include login(82%, 9%);
+
+    // Register
+    @include register(40px, 16px)
+
+    //Home
+    @include home(40px, 16px, 140px, 16px, 14px, 14px)
+
+    //Choose Type
+    @include choose-type(20px, 0px, 30px);
+
+    //New Snapvote
+    @include new-snapvote(35px, -10px, 14px, 240px, 5   0%, 180px, 17px)
+
+    //Contacts
+    @include contacts(0px, 15px, 40px, 7px, 15px, 250px, 220px, 15px, 35px, 7px)
+
+    //Popups
+    @include popups()
+
+    //Options
+    @include options();
+}
+
+// @media only screen
+// and (min-device-width : 375px)
+// and (max-device-width : 667px) {
+//     //Buttons
+//     @include buttons(16px, 40px)
+//
+//     //Text
+//     @include messages(19px, 16px)
+//
+//     //Login
+//     @include login(82%, 9%);
+//
+//     // Register
+//     @include register(35px, 16px)
+//
+//     //Home
+//     @include home(40px, 17px, 140px, 16px, 15px, 15px)
+//
+//     //Choose Type
+//     @include choose-type(20px);
+//
+//     //New Snapvote
+//     @include new-snapvote(35px, 16px, 300px, 200px, 17px)
+//
+//     //Contacts
+//     @include contacts(40px, 16px, 270px)
+//
+//     //Popups
+//     @include popups()
+//
+//     //Options
+//     @include options();
+// }
+
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";

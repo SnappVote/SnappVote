@@ -1,0 +1,74 @@
+<ion-view view-title="Group Edit">
+    <!-- <ion-nav-buttons side="left">
+    <button class="button ion-chevron-left" ng-click="goBack()"></button>
+</ion-nav-buttons> -->
+<ion-content class="test">
+    <div class="sv-navbar">
+        <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
+        <img class="navbar-button" src="./img/b2.png"></img>
+        <img class="navbar-button" src="./img/b3.png"></img>
+    </div>
+    <div class="item groups-edit-title">ADD CONTACTS TO GROUP</div>
+    <div class="groups-edit-list-container">
+        <ion-scroll zooming="true" direction="y" style="max-height: 360px">
+        <div ng-repeat="contact in contacts track by $index"
+        class="item contacts-item"
+        ng-class="{'contacts-item-toggled': contact.toggled}"
+        ng-click="toggleContact(contact)">
+        <div ng-class="{'hidden': !contact.registered}">
+        <img class="img-contact" ng-class="{'hidden': contact.toggled}" src='./img/icon1.png'></img>
+        <img class="img-contact hidden" ng-class="{'shown': contact.toggled}" src='./img/icon2.png'></img>
+        </div>
+        <div ng-class="{'hidden': contact.registered}">
+            <img class="img-contact-small" ng-class="{'hidden': contact.toggled}" src='./img/icon4.png'></img>
+            <img class="img-contact-small hidden" ng-class="{'shown': contact.toggled}" src='./img/icon3.png'></img>
+    </div>
+
+        <span class="contact-text">{{contact.username}}</span>
+    </div>
+</ion-scroll>
+
+</div>
+<div class="item groups-edit-footer">
+    <div class="button-edit-group" style="float:left;" ng-click="goBack()">
+        CANCEL
+    </div>
+    <div class="button-edit-group" style="float:right;" ng-click="addContacts()">
+        OK
+    </div>
+</div>
+
+<!-- <div>{{response}}</div> -->
+</ion-content>
+<div class="sv-footer-bttom">
+    <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
+</div>
+<div class="hidden options-constainer" ng-class="{'shown' : optionsShown}">
+    <div class="options-title" ui-sref="home">
+        OPTIONS
+    </div>
+    <div class="options-item">
+        <a href="#/home">Home</a>
+        <a href="#/home" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item">
+        <a href="#/contacts/{{2}}">Contacts</a>
+        <a href="#/contacts/{{2}}" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item">
+        <a href="#/editprofile">Edit Profile</a>
+        <a href="#/editprofile" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item">
+        <a href="#/contacts/{{3}}">Invite Friends</a>
+        <a href="#/contacts/{{3}}" class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-item" ui-sref="login">
+        Logout
+        <a class="ion-chevron-right options-arrow"></a>
+    </div>
+    <div class="options-button" ng-click="closeOptions()">
+        OK
+    </div>
+</div>
+</ion-view>
