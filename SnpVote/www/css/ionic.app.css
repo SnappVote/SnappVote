@@ -1,11 +1,54 @@
 @charset "UTF-8";
+input[readonly] {
+  background-color: white !important; }
+
+.blur-filter {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); }
+
+.blur-filter-rm {
+  -webkit-filter: blur(0px) !important;
+  -moz-filter: blur(0px) !important;
+  -o-filter: blur(0px) !important;
+  -ms-filter: blur(0px) !important;
+  filter: blur(0px) !important; }
+
+.group-remove-img {
+  height: 15px;
+  width: 15px;
+  float: right;
+  margin-top: 2px; }
+
 .asdf {
   color: black !important;
   background-color: black !important; }
+  .asdf ::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #909; }
+  .asdf :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #909;
+    opacity: 1; }
+  .asdf ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #909;
+    opacity: 1; }
+  .asdf :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #909; }
 
 a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.5) !important; }
+
+.options-top {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  width: 25%; }
 
 .options-constainer {
   position: absolute;
@@ -54,7 +97,7 @@ a {
   background-color: white;
   padding: 10px;
   margin-top: 2px;
-  max-height: 400px;
+  max-height: 360px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px; }
 
@@ -229,7 +272,7 @@ ion-scroll {
     padding-left: 15px !important;
     padding-top: 10px !important;
     background-color: white !important;
-    color: rgba(0, 0, 0, 0.4); }
+    color: rgba(200, 200, 200, 0.3) !important; }
   .sv-input-4 {
     color: rgba(0, 0, 0, 0.9) !important;
     -webkit-touch-callout: none;
@@ -359,13 +402,16 @@ ion-scroll {
     right: 20px;
     font-size: 50px; }
   .answer-dropdown-container {
-    width: 70%;
-    margin-left: 15%; }
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    width: 80%; }
   .answer-container {
     background-color: white;
+    border: 1px solid #637F41;
     border-radius: 5px;
     display: inline-block;
-    width: 40%; }
+    width: 45%; }
   #answer-container-right {
     float: right; }
   .button-answer-dropdown {
@@ -379,6 +425,9 @@ ion-scroll {
     margin-left: 2%; }
   #button-select-contacts {
     margin-top: 30px !important; }
+  #answers-dropdown-cancel {
+    border: 1px solid #637F41 !important;
+    width: 100%; }
   .contacts-tabs-container {
     background: white;
     border: none;
@@ -468,7 +517,7 @@ ion-scroll {
     background-color: white;
     padding: 5px;
     margin-top: 2px;
-    max-height: 370px; }
+    max-height: 310px; }
   .button-edit-group {
     display: inline-block !important;
     border: none !important;
@@ -674,7 +723,7 @@ ion-scroll {
     padding-left: 15px !important;
     padding-top: 10px !important;
     background-color: white !important;
-    color: rgba(0, 0, 0, 0.4); }
+    color: rgba(200, 200, 200, 0.3) !important; }
   .sv-input-4 {
     color: rgba(0, 0, 0, 0.9) !important;
     -webkit-touch-callout: none;
@@ -804,13 +853,16 @@ ion-scroll {
     right: 20px;
     font-size: 50px; }
   .answer-dropdown-container {
-    width: 70%;
-    margin-left: 15%; }
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    width: 80%; }
   .answer-container {
     background-color: white;
+    border: 1px solid #637F41;
     border-radius: 5px;
     display: inline-block;
-    width: 40%; }
+    width: 45%; }
   #answer-container-right {
     float: right; }
   .button-answer-dropdown {
@@ -824,6 +876,9 @@ ion-scroll {
     margin-left: 2%; }
   #button-select-contacts {
     margin-top: 30px !important; }
+  #answers-dropdown-cancel {
+    border: 1px solid #637F41 !important;
+    width: 100%; }
   .contacts-tabs-container {
     background: white;
     border: none;
@@ -913,7 +968,7 @@ ion-scroll {
     background-color: white;
     padding: 5px;
     margin-top: 2px;
-    max-height: 370px; }
+    max-height: 310px; }
   .button-edit-group {
     display: inline-block !important;
     border: none !important;

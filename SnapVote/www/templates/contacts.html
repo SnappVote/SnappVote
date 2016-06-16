@@ -79,11 +79,13 @@
     <div class='hidden' ng-class="{'shown' : type == 1}">
         <div ng-class="{'hidden' : groups.length === 0}" class="contacts-groups-container">
             <ion-scroll zooming="true" direction="y" class="scroll-container-groups">
-                <div ng-repeat="group in groups"
+                <div ng-repeat="group in groups track by $index"
                 class="item contacts-item"
                 ng-class="{'contacts-item-toggled': group.toggled}"
                 ng-click="toggleGroup(group)">
                 {{group.name}}
+                <img class="group-remove-img" src="./img/icon4.png" ng-click="removeGroup($index)"></img>
+
             </div>
         </ion-scroll>
 
@@ -105,7 +107,7 @@
     </div>
 </div>
 
-<!-- <div>{{response}}</div> -->
+<div>{{response}}</div>
 
 </ion-content>
 <div class="sv-footer-fixed">

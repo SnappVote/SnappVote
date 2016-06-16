@@ -1,8 +1,5 @@
 angular.module('starter.controllers', [])
-.controller('LoginCtrl', function($scope, $ionicPlatform, $cordovaLocalNotification, $http, $location, $ionicPopup, Options, Snapvotes, Camera2, $timeout) {
-    $scope.token = "";
-
-
+.controller('LoginCtrl', function($scope, $ionicPlatform, ionicDatePicker, $cordovaLocalNotification, $http, $location, $ionicPopup, Options, Snapvotes, Camera2, $timeout) {
      $scope.notfTest = function(){
          var token = window.localStorage['pushtoken'];
 
@@ -57,48 +54,6 @@ angular.module('starter.controllers', [])
          });
      }
 
-    $scope.items = [];
-    $timeout(function () {
-        $scope.path = "http://i.imgur.com/HKqoudy.jpg";
-    }, 1000);
-    $scope.imgurl = "http://i.imgur.com/HKqoudy.jpg";
-    //$scope.items.push("iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
-    // console.log('hello');
-    // var url = 'http://creative2thoughts.com/test/v1/hello';
-    // Snapvotes.getSnappvoteById(19).then(function(resp) {
-    //     // console.log('asd');
-    //     var base64resp = resp.data[0].img_1;
-    //     // console.log(base64resp);
-    //     // $scope.response = resp.data[0].img_1;
-    //     // $scope.items.push(resp.data[0].img_1);
-    //     // for (var i = 0; i < $scope.items.length; i++) {
-    //     //     console.log($scope.items[i]);
-    //     // }
-    // }, function(err) {
-    //     $scope.response = err;
-    // });
-    // $http.get(url).then(function(resp) {
-    //     //$scope.response = resp;
-    //     // var confirmPopup = $ionicPopup.confirm({
-    //     //     title: 'Success',
-    //     //     template: resp.data
-    //     // });
-    //     // console.log(resp.data);
-    // },function(err){
-    //     $scope.response = err;
-    //     // var confirmPopup = $ionicPopup.confirm({
-    //     //     title:0989 'Error',
-    //     //     template: err.code
-    //     // });
-    // });
-    $scope.addPhotoGallery = function(position){
-        Camera2.getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM).then(function(imageURI) {
-            $scope.items[position] = imageURI;
-            Utils.saveShit(imageURI);
-        }, function(err) {
-            console.log(err);
-        });
-    }
     $scope.optionsShown = false;
     $scope.openOptions = function(){
         $scope.optionsShown = true;
@@ -109,10 +64,6 @@ angular.module('starter.controllers', [])
     $scope.goHome = function(){
         $location.path("/home/outgoing");
     };
-
-    $scope.sendOrder = function(){
-        console.log('asd');
-    }
     $scope.test = function(){
         var popup = $ionicPopup.show({
             title: 'Oops !',
@@ -124,93 +75,70 @@ angular.module('starter.controllers', [])
         });
     }
 
+    //This is the success callback from the login method
     var fbLoginSuccess = function(response) {
-        $scope.response = response;
-        $scope.$apply();
+      if (!response.authResponse){
+        fbLoginError("Cannot find the authResponse");
+        return;
+      }
+
+      var authResponse = response.authResponse;
+
+      getFacebookProfileInfo(authResponse)
+      .then(function(profileInfo) {
+
+        $ionicLoading.hide();
+        $state.go('app.home');
+
+      }, function(fail){
+        //fail get profile info
+        console.log('profile info fail', fail);
+      });
     };
 
 
     //This is the fail callback from the login method
     var fbLoginError = function(error){
-        $scope.response = error;
-        $scope.$apply();
-
+      console.log('fbLoginError', error);
+      $ionicLoading.hide();
     };
 
     $scope.facebookSignIn = function() {
-        facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
 
-    //   facebookConnectPlugin.getLoginStatus(function(success){
-    //    if(success.status === 'connected'){
-          // the user is logged in and has authenticated your app, and response.authResponse supplies
-          // the user's ID, a valid access token, a signed request, and the time the access token
-          // and signed request each expire
-        //   console.log('getLoginStatus', success.status);
-          //
-  // 				//check if we have our user saved
-  // 				var user = UserService.getUser('facebook');
-          //
-  // 				if(!user.userID)
-  // 				{
-  // 					getFacebookProfileInfo(success.authResponse)
-  // 					.then(function(profileInfo) {
-          //
-  // 						//for the purpose of this example I will store user data on local storage
-  // 						UserService.setUser({
-  // 							authResponse: success.authResponse,
-  // 							userID: profileInfo.id,
-  // 							name: profileInfo.name,
-  // 							email: profileInfo.email,
-  // 							picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
-  // 						});
-          //
-  // 						$state.go('app.home');
-          //
-  // 					}, function(fail){
-  // 						//fail get profile info
-  // 						console.log('profile info fail', fail);
-  // 					});
-  // 				}else{
-  // 					$state.go('app.home');
-  // 				}
+      facebookConnectPlugin.getLoginStatus(function(success){
+          console.log('getLoginStatus', success.status);
 
-  //      } else {
-  //         //if (success.status === 'not_authorized') the user is logged in to Facebook, but has not authenticated your app
-  //         //else The person is not logged into Facebook, so we're not sure if they are logged into this app or not.
-  //         console.log('getLoginStatus', success.status);
-  //
-  // // 			  $ionicLoading.show({
-  //       //     template: 'Logging in...'
-  //       //   });
-  //
-  //         //ask the permissions you need. You can learn more about FB permissions here: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
-  //       }
-  //     });
+              $ionicLoading.show({
+            template: 'Logging in...'
+          });
+
+          facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+      });
     };
 })
-.controller('EditProfileCtrl', function($scope, $http, $location, $ionicPopup, $timeout, $ionicHistory, Options, Snapvotes) {
+.controller('EditProfileCtrl', function($scope, $http, $location, $ionicPopup, $timeout, $ionicHistory, Options, Snapvotes, Utils) {
     $scope.form = {};
+     var url =  Utils.getBaseURL() + "/users/" + Utils.getSVUserId();
+     $http.get(url).then(function(resp) {
+         $scope.form.name = resp.data[0].username;
+         $scope.form.email = resp.data[0].email;
+         $scope.form.phone = resp.data[0].phone;
+
+         $scope.userId = resp.data[0].username;
+     }, function(err) {
+         $scope.response = err;
+     })
     $scope.editprofile = function(){
-        console.log($scope.form.name);
-        var counter = 0;
-        for (var key in $scope.form) {
-            console.log(key);
-            if ($scope.form.hasOwnProperty(key)) {
-                    counter++;
-            }
-        }
-        console.log(counter);
-        if (counter != 2) {
-            var popup = $ionicPopup.show({
-                title: 'Oops !',
-                template: 'All fields are mandatory.',
-                cssClass: 'popup-error',
-                buttons: [
-                    { text: 'OK' }
-                ]
-            });
-        }
-        else{
+        if(Utils.validateEmail($scope.form.email)){
+            var url = Utils.getBaseURL() + '/useredit/' + Utils.getSVUserId();
+            var dataJson = {};
+            dataJson['name'] = $scope.form.name;
+            dataJson['email'] = $scope.form.email;
+            $http.post(url, dataJson).then(function(resp) {
+
+            }, function(err) {
+
+            })
             var popup = $ionicPopup.show({
                 title: 'Success',
                 template: '<div class="popup-content">Profile edited.</div>'
@@ -219,6 +147,16 @@ angular.module('starter.controllers', [])
                 popup.close();
                 $location.path('/home');
             }, 2000);
+        }
+        else{
+            var popup = $ionicPopup.show({
+                title: 'Oops !',
+                template: 'Invalid email.',
+                cssClass: 'popup-error',
+                buttons: [
+                    { text: 'OK' }
+                ]
+            });
         }
 
     }
@@ -291,13 +229,14 @@ angular.module('starter.controllers', [])
     })
 
     Snapvotes.getIncoming().then(function(resp) {
+        //  $scope.response = resp;
         var expired = [];
 
         for (var i = 0; i < resp.data.length; i++) {
             var snapvote = resp.data[i];
             var asnwered = snapvote.answer_id === -1;
-            console.log(asnwered);
             var expireDate = new Date(snapvote.expire_date);
+            $scope.response = expireDate;
             var invalid = expireDate < new Date();
             snapvote.expired = !asnwered;
             snapvote.date_created = Utils.parseDateTime(snapvote.date_created);
@@ -320,6 +259,7 @@ angular.module('starter.controllers', [])
 
 
     }, function(err) {
+
         var popup = $ionicPopup.show({
             title: 'Oops !',
             template: 'There was an error fetching your incoming SnapVotes.',
@@ -354,12 +294,14 @@ angular.module('starter.controllers', [])
      }
  })
 
- .controller('NewSnapvoteCtrl', function($scope, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, $location, Camera2, Snapvotes, Options, Utils) {
+ .controller('NewSnapvoteCtrl', function($scope, ionicDatePicker, $ionicPopup, $ionicHistory, $stateParams, $ionicScrollDelegate, $location, Camera2, Snapvotes, Options, Utils) {
      $scope.type = $stateParams.id;
      $scope.inputs = {};
      $scope.items = [];
      $scope.answer1 = "...";
      $scope.answer2 = "...";
+     $scope.answersChoose = 1;
+     $scope.asdfg = 0;
      $scope.answersHidden = true;
      $scope.firstAnswers = ['Yes', 'Cool', 'Left', 'Add..'];
      $scope.secondAnswers = ['No', 'Nope', 'Right', 'Add..'];
@@ -371,6 +313,7 @@ angular.module('starter.controllers', [])
          ['Add..', 'Add..']
      ];
      $scope.optionsShown = false;
+
      $scope.openOptions = function(){
          $scope.optionsShown = true;
      }
@@ -510,14 +453,6 @@ angular.module('starter.controllers', [])
          var valid = true;
          if($scope.items.length === 0){
              valid = false;
-             var popup = $ionicPopup.show({
-                 title: 'Error',
-                 template: 'Take a photo or select one from your gallery.',
-                 cssClass: 'popup-error',
-                 buttons: [
-                     { text: 'OK' }
-                 ]
-             });
          }
          console.log($scope.inputs.length);
          var counter = 0;
@@ -529,37 +464,38 @@ angular.module('starter.controllers', [])
          }
          if(counter === 0){
              valid = false;
+         }
+         if($scope.answer1 == "..." || $scope.answer2 == "..."){
+             valid = false;
+         }
+         if($scope.asdfg == 0){
+             valid = false;
+         }
+
+         if(valid){
+             if($scope.type == 2){
+                 Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], $scope.items[1], $scope.answer1, $scope.answer2, $scope.asdfg);
+             }
+             else{
+                 Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], "...", $scope.answer1, $scope.answer2, $scope.asdfg);
+             }
+             $location.path('/contacts/1');
+         }else {
+
              var popup = $ionicPopup.show({
-                 title: 'Error',
-                 template: 'You have not entered subject.',
+                 title: 'Oops !',
+                 template: 'Please enter all fields',
                  cssClass: 'popup-error',
                  buttons: [
                      { text: 'OK' }
                  ]
              });
          }
-         if(valid){
-             if($scope.type == 2){
-                 Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], $scope.items[1], $scope.answer1, $scope.answer2, $scope.selectedDate);
-             }
-             else{
-                 Snapvotes.saveSnapvote($scope.inputs.question, $scope.items[0], "...", $scope.answer1, $scope.answer2, $scope.selectedDate);
-             }
-             $location.path('/contacts/1');
-         }
      }
      $scope.goBack = function() {
          $ionicHistory.goBack();
      }
-     var datePickerCallback = function (val) {
-         if (typeof(val) === 'undefined') {
-             //console.log('No date selected');
-         } else {
-             //console.log('Selected date is : ', val);
-             $scope.selectedDate = val;
-         }
-     };
-     $scope.datepickerObject = {
+     var asdf = {
          titleLabel: 'Voting Period',  //Optional
          closeLabel: 'Close',  //Optional
          setLabel: 'Set',  //Optional
@@ -572,14 +508,47 @@ angular.module('starter.controllers', [])
          showTodayButton: 'true', //Optional
          modalHeaderColor: 'bar-positive', //Optional
          modalFooterColor: 'bar-positive', //Optional
-         from: new Date((new Date()).valueOf() - 1000*60*60*24), //Optional
+         from: new Date(), //Optional
          to: new Date(2018, 8, 25),  //Optional
-         callback: function (val) {  //Mandatory
-             datePickerCallback(val);
+         callback: function (val) {
+             $scope.asdfg = new Date(val);
+           console.log('Return value from the datepicker popup is : ' + val, new Date(val));  //Mandatory
          },
          dateFormat: 'dd-MM-yyyy', //Optional
-         closeOnSelect: false, //Optional
+         closeOnSelect: true, //Optional
      };
+     $scope.openDatePicker = function(){
+       ionicDatePicker.openDatePicker(asdf);
+     };
+    //  var datePickerCallback = function (val) {
+    //      if (typeof(val) === 'undefined') {
+    //          //console.log('No date selected');
+    //      } else {
+    //          //console.log('Selected date is : ', val);
+    //          $scope.selectedDate = val;
+    //      }
+    //  };
+    //  $scope.datepickerObject = {
+    //      titleLabel: 'Voting Period',  //Optional
+    //      closeLabel: 'Close',  //Optional
+    //      setLabel: 'Set',  //Optional
+    //      setButtonType : 'button-assertive',  //Optional
+    //      todayButtonType : 'button-assertive',  //Optional
+    //      closeButtonType : 'button-assertive',  //Optional
+    //      inputDate: new Date(),  //Optional
+    //      mondayFirst: true,  //Optional
+    //      templateType: 'popup', //Optional
+    //      showTodayButton: 'true', //Optional
+    //      modalHeaderColor: 'bar-positive', //Optional
+    //      modalFooterColor: 'bar-positive', //Optional
+    //      from: new Date((new Date()).valueOf() - 1000*60*60*24), //Optional
+    //      to: new Date(2018, 8, 25),  //Optional
+    //      callback: function (val) {  //Mandatory
+    //          datePickerCallback(val);
+    //      },
+    //      dateFormat: 'dd-MM-yyyy', //Optional
+    //      closeOnSelect: false, //Optional
+    //  };
  })
 
  .controller('ContactsCtrl', function($scope, $http, $location, $ionicPopup, $stateParams, $ionicHistory, $timeout, Users, Groups, Utils, Snapvotes, Options) {
@@ -589,7 +558,7 @@ angular.module('starter.controllers', [])
          }
      });
      $scope.items = [];
-
+     $scope.hack = 0;
     //  Snapvotes.getSnappvoteById(27).then(function(resp) {
     //      console.log(resp.data[0].img_1);
     //  }, function(err) {
@@ -652,18 +621,31 @@ angular.module('starter.controllers', [])
 
      }
      $scope.toggleContact2 = function(contact){
+         $scope.hack = 1;
          if(!contact.registered){
              contact.toggled = !contact.toggled;
          }
      }
      $scope.invite = function(){
-         var popup = $ionicPopup.show({
-             title: 'Success',
-             template: '<div class="popup-content">Invites sent !</div>'
-         });
-         $timeout(function(){
-             popup.close();
-         }, 2500);
+         if($scope.hack == 0){
+             var popup = $ionicPopup.show({
+                 title: 'Oops..',
+                 template: '<div class="popup-content">No contacts selected.</div>'
+             });
+             $timeout(function(){
+                 popup.close();
+             }, 2500);
+         }
+         else{
+             var popup = $ionicPopup.show({
+                 title: 'Success',
+                 template: '<div class="popup-content">Invites sent !</div>'
+             });
+             $timeout(function(){
+                 popup.close();
+             }, 2500);
+         }
+
      }
      $scope.toggleGroup = function(group){
          group.toggled = !group.toggled;
@@ -716,32 +698,45 @@ angular.module('starter.controllers', [])
                  }
              }
          }
-        //  $scope.response = 'asd';
 
-        //  $scope.response = jsonPrint + " " + Utils.getSVUserId();
-         var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
-         $http.post(url, dataJson2).then(function(resp) {
-             $scope.response = resp.data;
-             var popup = $ionicPopup.show({
-                 title: 'SnapVote sent',
-                 template: '<div class="popup-content-2">Awesome ! Your SnapVote is sent successfully !</div>'
-             });
-             $timeout(function(){
-                 popup.close();
-                 $location.path('/home');
-            }, 2500);
-         }, function(err) {
-
-             $scope.response = err.data;
+         $scope.response = $scope.selectedContacts.length;
+         if($scope.selectedContacts.length === 0){
              var popup = $ionicPopup.show({
                  title: 'Oops !',
-                 template: 'Could not connect to server.',
+                 template: 'No contacts selected.',
                  cssClass: 'popup-error',
                  buttons: [
                      { text: 'OK' }
                  ]
              });
-         })
+         }
+         else{
+             //  $scope.response = jsonPrint + " " + Utils.getSVUserId();
+              var url = Utils.getBaseURL() + '/snappvotes/out/' + Utils.getSVUserId();
+              $http.post(url, dataJson2).then(function(resp) {
+                  $scope.response = resp.data;
+                  var popup = $ionicPopup.show({
+                      title: 'SnapVote sent',
+                      template: '<div class="popup-content-2">Awesome ! Your SnapVote is sent successfully !</div>'
+                  });
+                  $timeout(function(){
+                      popup.close();
+                     //$location.path('/home');
+                 }, 1000);
+              }, function(err) {
+
+                   $scope.response = err.data;
+                  var popup = $ionicPopup.show({
+                      title: 'Oops !',
+                      template: 'Could not connect to server.',
+                      cssClass: 'popup-error',
+                      buttons: [
+                          { text: 'OK' }
+                      ]
+                  });
+              })
+         }
+
      }
 
      function pushUnique(arr1, arr2){
@@ -787,12 +782,21 @@ angular.module('starter.controllers', [])
                  phone.number = phone.number.replace('-','');
                  phone.number = phone.number.replace(' ','');
                  phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
+                 phone.number = phone.number.replace(' ','');
                  phone.number = phone.number.replace('-','');
                  phone.number = phone.number.replace('-','');
                  phone.number = phone.number.replace('-','');
+                 var phonestr = phone.number + "";
+                 var lastFive = phonestr.substr(phonestr.length - 3);
+                 $scope.response = $scope.response + " " + contacts[i].displayName + " -> " + phone.number;
+
                  contactNumbers.push(phone.number);
                  $scope.contacts.push(contact);
-
+                //  $scope.response = contactNumbers;
                  //console.log(phone.number);
                 //  for (var variable in phone) {
                 //      if (phone.hasOwnProperty(variable)) {
@@ -804,7 +808,7 @@ angular.module('starter.controllers', [])
              dataJson['contacts_ids'] = contactNumbers;
              var url = Utils.getBaseURL() + '/asd';
              $http.post(url, dataJson).then(function(resp) {
-                //  $scope.response = resp;
+                 $scope.response = resp.data;
                  for (var i = 0; i < resp.data.length; i++) {
                      if (resp.data[i] != "") {
                          $scope.contacts[i].registered = true;
@@ -892,6 +896,9 @@ angular.module('starter.controllers', [])
                  ]
              });
          }
+     }
+     $scope.removeGroup = function(index){
+         $scope.groups.splice(index, 1);
      }
      $scope.goBack = function() {
          $ionicHistory.goBack();
@@ -1169,6 +1176,7 @@ angular.module('starter.controllers', [])
                 disabled = true;
                 var dataJson={};
                 $scope.form.country =  $scope.dial_code;
+                $scope.form.phone = $scope.dial_code + $scope.form.phone;
                 for(var key in $scope.form) dataJson[key]=$scope.form[key];
                 var url = Utils.getBaseURL() + '/users';
                 $http.post(url, dataJson).then(function(resp) {

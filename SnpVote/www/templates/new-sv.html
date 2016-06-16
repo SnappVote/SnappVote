@@ -1,9 +1,11 @@
 <ion-view view-title="New">
     <ion-content>
+        <div ng-class="{'blur-filter' : !answersHidden}">
         <div class="sv-navbar">
             <img class="navbar-button" src="./img/b1.png" ng-click="goBack()"></img>
             <img class="navbar-button" src="./img/b2.png"></img>
             <img class="navbar-button" src="./img/b3.png"></img>
+            <img class="options-top" src="./img/options.png" ng-click="openOptions()"></img>
         </div>
 
         <div style="position:absolute; width:100%; height: 20px; margin-bottom:30px;">
@@ -35,29 +37,13 @@
             <button class="button-answer">{{answer1}}</button>
             <button class="button-answer">{{answer2}}</button>
         </div>
-        <div class="answer-dropdown-container"ng-class="{'hidden' : answersHidden}">
-        <div class="answer-container">
-        <div ng-repeat="answer in firstAnswers track by $index" ng-click="updateAnswers($index, 0)">
-            <button class="button-answer-dropdown">{{answer}}</button>
-        </div>
-        </div>
-        <div class="answer-container" id="answer-container-right">
-        <div ng-repeat="answer in secondAnswers track by $index" ng-click="updateAnswers($index, 1)">
-            <button class="button-answer-dropdown">{{answer}}</button>
-        </div>
-       </div>
-       </div>
+
         <div class="message-small" style="text-align:center;">voting period</div>
-        <ionic-datepicker input-obj="datepickerObject">
-            <button class="button-standard">{{selectedDate | svdate}}</button>
+            <button class="button-standard" ng-click="openDatePicker()">{{asdfg | svdate}}</button>
         <!-- <button class="button button-block button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button> -->
-        </ionic-datepicker>
         <button class="button-standard" id="button-select-contacts" ng-click="goToContacts()">
             select contacts
         </button>
-        <div class="sv-footer">
-            <img class="footer-button" src="./img/options.png" ng-click="openOptions()"></img>
-        </div>
         <div class="hidden options-constainer" ng-class="{'shown' : optionsShown}">
             <div class="options-title">
                 OPTIONS
@@ -81,6 +67,22 @@
                 OK
             </div>
         </div>
+    </div>
+    <div class="answer-dropdown-container" ng-class="{'hidden' : answersHidden}">
+    <div class="answer-container">
+    <div ng-repeat="answer in firstAnswers track by $index" ng-click="updateAnswers($index, 0)">
+        <button class="button-answer-dropdown">{{answer}}</button>
+    </div>
+    </div>
+    <div class="answer-container" id="answer-container-right">
+    <div ng-repeat="answer in secondAnswers track by $index" ng-click="updateAnswers($index, 1)">
+        <button class="button-answer-dropdown">{{answer}}</button>
+    </div>
+   </div>
+   <button class="button-standard" id="answers-dropdown-cancel" ng-click="toggleAnswers()">
+       cancel
+   </button>
+   </div>
         <!-- <div>{{response}}</div> -->
     </ion-content>
 

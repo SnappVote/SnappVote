@@ -11,12 +11,13 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+    
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
     //   cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -183,6 +184,9 @@ app.filter('svdate', [function() {
         var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
         var firstDate = input;
         var secondDate = new Date(Date.now());
+        if((firstDate.getTime() - secondDate.getTime()) < 0){
+            return "today";
+        }
         var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) +1;
         var label = "";
         //console.log(diffDays);

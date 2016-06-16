@@ -1,6 +1,6 @@
 {
   "name": "SnpVote",
-  "app_id": "",
+  "app_id": "dedfaec8",
   "gulpStartupTasks": [
     "sass",
     "watch"
